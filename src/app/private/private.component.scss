@@ -1,0 +1,20 @@
+$highlight-color-dark: #2c5067;
+$komplementaer-color-dark: #d3af98;
+$highlight-color-mid: #527083;
+$komplementaer-color-mid: #e6c4af;
+$highlight-color-light: #7392a5;
+$komplementaer-color-light: #f3d5c2;
+$highlight-color-lighter: #7a9db8;
+$highlight-color-lighter: #fae4d7;
+
+// Complete Page Structure
+// ***********************
+.page-structure {
+    background-color: $highlight-color-mid;
+    display: grid;
+    grid-template-rows: 40px auto;
+    height: 100vh;
+    overflow: visible;
+
+
+}
