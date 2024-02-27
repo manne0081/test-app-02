@@ -5,7 +5,10 @@ import { HeaderMenuComponent } from './header-menu/header-menu.component';
 @Component({
     selector: 'app-private',
     standalone: true,
-    imports: [RouterModule, HeaderMenuComponent],
+    imports: [
+        RouterModule,
+        HeaderMenuComponent
+    ],
     templateUrl: './private.component.html',
     styleUrl: './private.component.scss'
 })
