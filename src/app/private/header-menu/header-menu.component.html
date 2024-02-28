@@ -12,7 +12,7 @@
 
             <!-- Logo -->
             <div class="header-item-container-1 logo">
-                <img src="../../assets/logo-design-49570.png" alt="">
+                <img src="../../assets/images/logo-design-49570.png" alt="">
             </div>
 
             <!-- Searching -->
@@ -29,7 +29,7 @@
             </div>
 
             <!-- Favorite -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classFavorite">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -64,7 +64,7 @@
             </div>
 
             <!-- Dashboard -->
-            <div class="header-item-container-1" routerLink="/private/dashboard">
+            <div class="header-item-container-1" [ngClass]="classDashboard" routerLink="/private/dashboard">
                 <div class="header-item-container-2">
 
                     <button (click)="setItemClass('/private/dashboard')" (click)="onSelectionChange('Dashboard')">
@@ -76,7 +76,7 @@
             </div>
 
             <!-- Workspace -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classWorkspace">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -107,7 +107,7 @@
             </div>
 
             <!-- Contacts -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classContacts">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -138,7 +138,7 @@
             </div>
 
             <!-- Operations -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classOperations">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -169,7 +169,7 @@
             </div>
 
             <!-- Order Processing -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classOrderProcessing">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -200,7 +200,7 @@
             </div>
 
             <!-- Accounting -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classAccounting">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -231,7 +231,7 @@
             </div>
 
             <!-- Product Management -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classProductManagement">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -262,7 +262,7 @@
             </div>
 
             <!-- Contracting -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classContracting">
                 <div class="header-item-container-2">
                     <div class="dropdown right">
 
@@ -293,7 +293,7 @@
             </div>
 
             <!-- Tools & Assets -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classToolsAssets">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -324,7 +324,7 @@
             </div>
 
             <!-- Statistics & Reporting -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classStatisticsReporting">
                 <div class="header-item-container-2">
                     <div class="dropdown right">
 
@@ -355,7 +355,7 @@
             </div>
 
             <!-- TEST -->
-            <div class="header-item-container-1">
+            <div class="header-item-container-1" [ngClass]="classPlaceholder">
                 <div class="header-item-container-2">
                     <div class="dropdown right">
 
@@ -368,7 +368,7 @@
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
-                                    <div *ngIf="item.class == '/private/statisticsReporting'" class="drop-item-container"
+                                    <div *ngIf="item.class == '/private/placeholder'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
                                         [routerLink]="item.url"

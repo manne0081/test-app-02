@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 
@@ -6,7 +7,7 @@ import { RouterModule, Router } from '@angular/router';
     standalone: true,
     imports: [
         RouterModule,
-
+        CommonModule,
     ],
     templateUrl: './header-menu.component.html',
     styleUrl: './header-menu.component.scss'
@@ -108,10 +109,10 @@ export class HeaderMenuComponent {
 
         // TEST
         // ****
-        { name: "TEST-1", class: "/private/statisticsReporting", url: "/private/sales-statistic", favorite: false },
-        { name: "TEST-2", class: "/private/statisticsReporting", url: "/private/team-statistic", favorite: false },
-        { name: "TEST-3", class: "/private/statisticsReporting", url: "/private/kpi-report", favorite: false },
-        { name: "TEST-4", class: "/private/statisticsReporting", url: "/private/click-report", favorite: false },
+        { name: "TEST-1", class: "/private/placeholder", url: "/private/test-1", favorite: false },
+        { name: "TEST-2", class: "/private/placeholder", url: "/private/test-2", favorite: false },
+        { name: "TEST-3", class: "/private/placeholder", url: "/private/test-3", favorite: false },
+        { name: "TEST-4", class: "/private/placeholder", url: "/private/test-4", favorite: false },
     ];
 
     constructor (private router: Router) {
