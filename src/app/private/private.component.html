@@ -18,6 +18,77 @@
     <!-- ***************** -->
     <div class="page-content-container">
 
+        <div class="content-title-container">
+
+            <!-- Button toggle Quicklinks -->
+            <!-- ------------------------ -->
+            <!-- <button class="content-title-quicklinks" [ngClass]="{'active' : quicklinksVisible}" (click)="toggleQuicklinkVisibility()">Quicklinks</button> -->
+            <button class="content-title-quicklinks" (click)="toggleQuicklinkVisibility()">Quicklinks</button>
+
+            <!-- Menuname -->
+            <!-- -------- -->
+            <!-- TODO -->
+            <!-- Wie komme ich jetzt in der private-component an die Info, welcher Menüpunkt gewählt wurde? -->
+            <span class="content-title-value">{{selectedValueFromMainMenu}}</span>
+
+            <!-- Button toggle AddInfos -->
+            <!-- ---------------------- -->
+            <!-- <button class="content-title-addinfo" [ngClass]="{'active' : addInfoVisible}" (click)="toggleAddInfoVisibility()">Add Info</button> -->
+            <button class="content-title-addinfo" (click)="toggleAddInfoVisibility()">Add Info</button>
+
+        </div>
+
+<!-- Different Classes wether quicklinks or addInfo should be visible or not -->
+        <!-- *********************************************************************** -->
+        <div [ngClass]="{'content-container-full' : quicklinksVisible && addInfoVisible,
+                            'content-container-without-quicklinks' : !quicklinksVisible && addInfoVisible,
+                            'content-container-without-addinfo' : quicklinksVisible && !addInfoVisible,
+                            'content-container-tiles-only' : !quicklinksVisible && !addInfoVisible
+                        }">
+        <!-- <div> -->
+
+            <!-- QUICKLINKS -->
+            <!-- ********** -->
+            <div class="quicklinks-container" *ngIf="quicklinksVisible">
+
+                <app-quicklinks></app-quicklinks>
+
+            </div>
+
+            <!-- Content -->
+            <!-- ******* -->
+            <div class="main-content-container">
+
+                <div class="content-header">
+                    Content-Header
+                </div>
+
+                <div class="content-items">
+                    <router-outlet></router-outlet>
+                </div>
+
+                <div class="content-actions">
+                    Actions
+                </div>
+
+            </div>
+
+            <!-- TODO -->
+            <!-- ADDITIONAL INFORMATION -->
+            <!-- ********************** -->
+            <div class="add-info-container" *ngIf="addInfoVisible">
+
+                <div class="add-info-header">AddInfo-Header</div>
+                <div class="add-info-items">Additional Infos</div>
+
+            </div>
+
+        </div>
+
+
+
+
+
 
 
     </div>

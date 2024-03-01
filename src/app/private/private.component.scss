@@ -16,5 +16,148 @@ $highlight-color-lighter: #fae4d7;
     height: 100vh;
     overflow: visible;
 
+    // Page Header
+    // ************
+    .page-header-container {
+        background-color: #2c5067;
+        z-index: 100;
+    }
+
+    // Page Content
+    // ************
+    .page-content-container {
+        background-color: white;
+        // background-color: lime;
+        margin: 12px;
+        border-radius: 8px;
+        display: grid;
+        grid-template-rows: 40px auto;
+
+        .content-title-container {
+            background-color: white;
+            border-bottom: 1px solid #b9b9b9;
+            align-items: center;
+            margin-top: -1px;
+            padding: 0 10px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+
+            button {
+                border: 1px solid rgba(44, 80, 103, .4);
+                border-radius: 4px;
+                padding: 2px 6px;
+                font-size: .9em;
+            }
+
+            button.active {
+                background-color: rgba(44, 80, 103, .3);
+                border: 1px solid rgba(44, 80, 103, .2);
+                padding: 2px 6px;
+            }
+
+            button:hover {
+                background-color: rgba(44, 80, 103, .6);
+                color: white;
+                cursor: pointer;
+            }
+
+            .content-title-quicklinks {
+                margin: 0 10px 0 0;
+            }
+
+            .content-title-value {
+                color: #2c5067;
+                font-size: 1.4em;
+                font-weight: bold;
+                margin-top: 1px;
+            }
+
+            .content-title-addinfo {
+                margin: 0 0 0 10px;
+            }
+        }
+
+        // Page-Content-Container-Width > With Quicklinks, Content and AddInfo
+        // *******************************************************************
+        .content-container-full {
+            background-color: #d6d6d6;
+            display: grid;
+            grid-template-columns: 250px auto 250px;
+        }
+
+        .content-container-without-quicklinks {
+            background-color: #d6d6d6;
+            display: grid;
+            grid-template-columns: auto 250px;
+        }
+
+        .content-container-without-addinfo {
+            background-color: #d6d6d6;
+            display: grid;
+            grid-template-columns: 250px auto;
+        }
+
+        .content-container-tiles-only {
+            background-color: #d6d6d6;
+            display: grid;
+            grid-template-columns: auto;
+        }
+
+        .quicklinks-container {
+            border-right: 1px solid rgb(180, 180, 180);
+            overflow-y: scroll;
+        }
+
+        .main-content-container {
+            background-color: orange;
+            background-image: url(../../assets/images/background_3.jpg);
+            display: grid;
+            grid-template-rows: 48px auto 48px;
+
+            .content-header {
+                background-color: white;
+                box-shadow: 0px 6px 4px -2px rgba(0, 0, 0, .20);
+                border-radius: 0 0 12px 12px;
+                padding: 4px 8px;
+                z-index: 10;
+            }
+
+            .content-items {
+                margin: -48px 0;
+                padding: 8px 8px;
+                padding: 56px 8px;
+                overflow-y: scroll;
+            }
+
+            .content-actions {
+                background-color: white;
+                box-shadow: 0px -6px 4px -2px rgba(0, 0, 0, .20);
+                border-radius: 12px 12px 0 0;
+                padding: 4px 8px;
+                z-index: 1;
+            }
+        }
+
+        .add-info-container {
+            // background-color: lime;
+            border-left: 1px solid rgb(180, 180, 180);
+            display: grid;
+            grid-template-rows: 40px auto;
+            overflow-y: scroll;
+
+            .add-info-header {
+                // background-color: yellow;
+                box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, .20);
+                padding: 4px 8px;
+                z-index: 1;
+            }
+
+            .add-info-items {
+                padding: 8px 8px;
+
+            }
+        }
+
+    }
 
 }
