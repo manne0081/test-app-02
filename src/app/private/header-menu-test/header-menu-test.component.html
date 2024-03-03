@@ -1,0 +1,342 @@
+<!-- <button mat-button [matMenuTriggerFor]="animals">Animal index</button>
+
+<mat-menu #animals="matMenu">
+<button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
+<button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+</mat-menu>
+
+<mat-menu #vertebrates="matMenu">
+<button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
+<button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
+<button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+<button mat-menu-item>Birds</button>
+<button mat-menu-item>Mammals</button>
+</mat-menu>
+
+<mat-menu #invertebrates="matMenu">
+<button mat-menu-item>Insects</button>
+<button mat-menu-item>Molluscs</button>
+<button mat-menu-item>Crustaceans</button>
+<button mat-menu-item>Corals</button>
+<button mat-menu-item>Arachnids</button>
+<button mat-menu-item>Velvet worms</button>
+<button mat-menu-item>Horseshoe crabs</button>
+</mat-menu>
+
+<mat-menu #fish="matMenu">
+<button mat-menu-item>Baikal oilfish</button>
+<button mat-menu-item>Bala shark</button>
+<button mat-menu-item>Ballan wrasse</button>
+<button mat-menu-item>Bamboo shark</button>
+<button mat-menu-item>Banded killifish</button>
+</mat-menu>
+
+<mat-menu #amphibians="matMenu">
+<button mat-menu-item>Sonoran desert toad</button>
+<button mat-menu-item>Western toad</button>
+<button mat-menu-item>Arroyo toad</button>
+<button mat-menu-item>Yosemite toad</button>
+</mat-menu>
+
+<mat-menu #reptiles="matMenu">
+<button mat-menu-item>Banded Day Gecko</button>
+<button mat-menu-item>Banded Gila Monster</button>
+<button mat-menu-item>Black Tree Monitor</button>
+<button mat-menu-item>Blue Spiny Lizard</button>
+<button mat-menu-item disabled>Velociraptor</button>
+</mat-menu> -->
+
+
+
+<div class="menu-container">
+
+    <div class="menu-wrapper">
+
+        <!-- HEADER LEFT -->
+        <!-- *********** -->
+        <div class="menu-wrapper left">
+
+            <!-- Logo -->
+            <div class="header-item-container-1 logo">
+                <img src="../../assets/images/logo-design-49570.png" alt="">
+            </div>
+
+            <!-- Searching -->
+            <div class="header-item-container-1">
+                <div class="header-item-container-2" style="padding-left: 0px">
+
+                    <button class="icon">
+                        <span class="icon-search" style="font-size: 1.2em"></span>
+                    </button>
+
+                    <!-- todo -->
+
+                </div>
+            </div>
+
+            <!-- Favorite -->
+            <div class="header-item-container-1">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="icon drop-button">
+                            <span class="icon-star favorite" style="font-size: 1.5em; position: relative; top: 1px;"></span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+
+                                <!-- todo -->
+                                <!-- Die letzten X geöffneten url's anzeigen. Art und Weise und wie viele ist noch unklar -->
+
+
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.favorite" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        routerLink="{{item.url}}"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <span class="icon-star is-favorite" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workspace -->
+            <div class="header-item-container-1">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-pencilwrench menu-icon" style="position: relative; top: 1px;"></span>
+                            <span>Workspace</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test -->
+            <div class="header-item-container-1">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-pencilwrench menu-icon" style="position: relative; top: 1px;"></span>
+                            <span>Test</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEST -->
+            <div class="header-item-container-1">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button" mat-button [matMenuTriggerFor]="animals">
+                            <span>Dropdown Test</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+
+                                <mat-menu #animals="matMenu">
+                                    <button mat-menu-item [matMenuTriggerFor]="test_1">
+                                        <span>Sub-1</span>
+                                    </button>
+                                    <button mat-menu-item [matMenuTriggerFor]="test_2">
+                                        <span>Sub-2</span>
+                                    </button>
+                                </mat-menu>
+
+                                <mat-menu #test_1="matMenu">
+                                    <button mat-menu-item>
+                                        <span>Sub-1 Sub-1</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Sub-1 Sub-2</span>
+                                    </button>
+                                </mat-menu>
+
+                                <mat-menu #test_2="matMenu">
+                                    <button mat-menu-item>
+                                        <span>Sub-2 Sub-1</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Sub-2 Sub-2</span>
+                                    </button>
+                                </mat-menu>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admininstration -->
+            <div style="
+                    /* background-color: lime; */
+                    display: flex;
+                    align-items: center;
+                ">
+
+                <!-- Dropdown-Button -> Administration -->
+                <!-- ********************************* -->
+                <button mat-button [matMenuTriggerFor]="admin">Administration</button>
+
+                <!-- administration -->
+                <mat-menu #admin="matMenu">
+                    <button mat-menu-item [matMenuTriggerFor]="userManagement">Mitarbeiterverwaltung</button>
+                    <button mat-menu-item [matMenuTriggerFor]="infoManagement">Informationsmanagement</button>
+                    <button mat-menu-item [matMenuTriggerFor]="systemManagement">Systemverwaltung</button>
+                    <button mat-menu-item [matMenuTriggerFor]="systemMonitoring">System-Monitoring</button>
+                </mat-menu>
+
+                <!-- administration -> user-management -->
+                <mat-menu #userManagement="matMenu">
+                    <button mat-menu-item>Mitarbeiter</button>
+                    <button mat-menu-item>Teams</button>
+                    <button mat-menu-item>Rechte & Rollen</button>
+                </mat-menu>
+
+                <!-- administration -> info-management -->
+                <mat-menu #infoManagement="matMenu">
+                    <button mat-menu-item>Statische Seiten</button>
+                    <button mat-menu-item>Wikiseiten</button>
+                    <button mat-menu-item>Hinweise</button>
+                    <button mat-menu-item>Textbausteine</button>
+                    <button mat-menu-item>System-Mails</button>
+                    <button mat-menu-item>Changelogs</button>
+                    <button mat-menu-item>E-Mail Anhänge</button>
+                </mat-menu>
+
+                <!-- administration -> system-management -->
+                <mat-menu #systemManagement="matMenu">
+                    <button mat-menu-item>Mandanten</button>
+                    <button mat-menu-item>Übersetzung</button>
+                    <button mat-menu-item>Mandanten-Konfigurationen</button>
+                    <button mat-menu-item>Margenmodelle</button>
+                    <button mat-menu-item>Merkmale</button>
+                    <button mat-menu-item>Unternehmensbranchen</button>
+                    <button mat-menu-item>Leistungsbereiche</button>
+                    <button mat-menu-item>Art der Arbeit</button>
+                    <button mat-menu-item>Property Mappings</button>
+                    <button mat-menu-item>Potentiale</button>
+                    <button mat-menu-item>PDF-Layouts</button>
+                    <button mat-menu-item>Angebotsablehnungsgrund</button>
+                    <button mat-menu-item>Fachrichtung Jobmenü</button>
+                    <button mat-menu-item>Kategorie</button>
+                    <button mat-menu-item>Agenturen</button>
+                    <button mat-menu-item>Tracking Share Link</button>
+                    <button mat-menu-item>Uploads</button>
+                </mat-menu>
+
+                <!-- administration -> system-monitoring -->
+                <mat-menu #systemMonitoring="matMenu">
+                    <button mat-menu-item>ElasticSearch</button>
+                    <button mat-menu-item>Posting-Access</button>
+                    <button mat-menu-item>Einstellungen</button>
+                    <button mat-menu-item>Status-Changer</button>
+                    <button mat-menu-item>Migration-Status</button>
+                    <button mat-menu-item>Audit-Log</button>
+                    <button mat-menu-item>E-Mails</button>
+                    <button mat-menu-item>Cron Jobs</button>
+                    <button mat-menu-item>Elastic Reindex Data</button>
+                </mat-menu>
+
+            </div>
+
+            <!-- Test -->
+            <div style="display: flex; align-items: center;">
+
+                <!-- Dropdown-Button -> Administration -->
+                <!-- ********************************* -->
+                <button mat-button [matMenuTriggerFor]="test">TEST</button>
+
+                <!-- administration -->
+                <mat-menu #test="matMenu">
+                <button mat-menu-item [matMenuTriggerFor]="test1">TEST - Sub-1</button>
+                <button mat-menu-item [matMenuTriggerFor]="test2">TEST - Sub-2</button>
+                <button mat-menu-item>TEST - Sub-3</button>
+                </mat-menu>
+
+                <mat-menu #test1="matMenu">
+                <button mat-menu-item [matMenuTriggerFor]="test1_2">TEST - Sub-1  Sub-1</button>
+                <button mat-menu-item>TEST - Sub-1  Sub-2</button>
+                <button mat-menu-item>TEST-SUB-3</button>
+                </mat-menu>
+
+                <mat-menu #test1_2="matMenu">
+                    <button mat-menu-item>TEST - Sub-1  Sub-1</button>
+                    <button mat-menu-item disabled="">TEST - Sub-1  Sub-2</button>
+                    <button mat-menu-item>TEST - Sub-1  Sub-3</button>
+                </mat-menu>
+
+                <mat-menu #test2="matMenu">
+                <button mat-menu-item>TEST - Sub-2  Sub-1</button>
+                <button mat-menu-item disabled="">TEST - Sub-2  Sub-2</button>
+                <button mat-menu-item>TEST - Sub-2  Sub-3</button>
+                </mat-menu>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+        <!-- HEADER RIGHT -->
+        <!-- ************ -->
+        <div class="menu-wrapper right">
+            WIP
+        </div>
+
+    </div>
+
+</div>

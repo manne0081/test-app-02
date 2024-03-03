@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
+import { HeaderMenuTestComponent } from './header-menu-test/header-menu-test.component';
 import { QuicklinksComponent } from './quicklinks/quicklinks.component';
 @Component({
     selector: 'app-private',
@@ -11,6 +12,7 @@ import { QuicklinksComponent } from './quicklinks/quicklinks.component';
         CommonModule,
         RouterModule,
         HeaderMenuComponent,
+        HeaderMenuTestComponent,
         QuicklinksComponent,
     ],
     templateUrl: './private.component.html',
