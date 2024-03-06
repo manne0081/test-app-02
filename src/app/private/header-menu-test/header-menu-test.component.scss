@@ -117,9 +117,9 @@ $content-background: #d6d6d6;
 
                         .drop-item-container {
                             background-color: white;
-                            background-color: #d3d3d3;
+                            background-color: #dbdbdb;
+                            // background-color: orange;
                             padding: 8px 8px 10px 16px;
-                            // width: max-content;
                             min-width: 300px;
                             display: flex;
                             flex-direction: row;
@@ -147,7 +147,17 @@ $content-background: #d6d6d6;
                                 color: #fff982;
                                 text-shadow: 0 0 3px rgb(153, 145, 26), 0 0 5px rgb(105, 99, 12);
                             }
+
+
+                            .sub-menu-container {
+                                background-color: lime;
+                                display: flex;
+
+                            }
+
+
                         }
+
 
                         .drop-item-container:hover {
                             background-color: rgb(250, 250, 250);
