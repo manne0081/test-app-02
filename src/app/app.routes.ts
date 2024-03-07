@@ -7,7 +7,8 @@ import { PrivateComponent } from './private/private.component';
 import { DashboardComponent } from './private/dashboard/dashboard.component';
 
 export const routes: Routes = [
-    { path: '',   redirectTo: 'home', pathMatch: 'full' },
+    // { path: '',   redirectTo: 'home', pathMatch: 'full' },
+    { path: '',   redirectTo: 'private/dashboard', pathMatch: 'full' },
 
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
