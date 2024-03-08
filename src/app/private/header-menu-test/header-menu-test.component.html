@@ -97,34 +97,39 @@
 
                         <button class="drop-button">
                             <span class="icon-pencilwrench menu-icon" style="position: relative; top: 1px;"></span>
-                            <span>Test</span>
+                            <span>Test-1</span>
                         </button>
 
-                        <div class="drop-content-container">
-                            <div class="drop-content-wrapper">
-                                <ng-container *ngFor="let item of menuItems, index as i">
+                        <div class="drop-content-container" style="background-color: transparent;">
 
-                                    <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
-                                        (click)="setItemClass(item.class)"
-                                        (click)="onSelectionChange(item.name)"
-                                        [routerLink]="item.url"
-                                    >
+                            <div class="drop-sub-sub-menu-container" style="background-color: lime; display: flex;">
 
-                                        <div class="sub-menu-container">
-                                            <div class="sub-menu-button">
-                                                <span class="sub-menu-label">{{item.name}}</span>
-                                                <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
-                                            </div>
-                                            <div class="sub-menu-content-container">
-                                                test
+                                <div class="drop-content-wrapper">
+                                    <ng-container *ngFor="let item of menuItems, index as i">
+
+                                        <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
+                                            (click)="setItemClass(item.class)"
+                                            (click)="onSelectionChange(item.name)"
+                                            [routerLink]="item.url"
+                                        >
+                                            <div class="sub-menu-container">
+                                                <div class="sub-menu-button">
+                                                    <span class="sub-menu-label">{{item.name}}</span>
+                                                    <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                                </div>
                                             </div>
 
                                         </div>
 
-                                    </div>
+                                    </ng-container>
+                                </div>
 
-                                </ng-container>
+                                <div class="sub-menu-content-container">
+                                    Sub-Sub-Menu
+                                </div>
+
                             </div>
+
                         </div>
 
                     </div>
@@ -179,18 +184,18 @@
 
             <!-- Admininstration -->
             <div style="
-                    /* background-color: lime; */
+                    background-color: lime;
                     display: flex;
                     align-items: center;
                 ">
 
                 <!-- Dropdown-Button -> Administration -->
                 <!-- ********************************* -->
-                <button mat-button [matMenuTriggerFor]="admin">Administration</button>
+                <button mat-button [matMenuTriggerFor]="admin" style="background-color: orange;">Administration</button>
 
                 <!-- administration -->
-                <mat-menu #admin="matMenu">
-                    <button mat-menu-item [matMenuTriggerFor]="userManagement">Mitarbeiterverwaltung</button>
+                <mat-menu #admin="matMenu" style="background-color: red; padding: 12px; margin: 12px;">
+                    <button mat-menu-item [matMenuTriggerFor]="userManagement" style="background-color: yellowgreen;">Mitarbeiterverwaltung</button>
                     <button mat-menu-item [matMenuTriggerFor]="infoManagement">Informationsmanagement</button>
                     <button mat-menu-item [matMenuTriggerFor]="systemManagement">Systemverwaltung</button>
                     <button mat-menu-item [matMenuTriggerFor]="systemMonitoring">System-Monitoring</button>
