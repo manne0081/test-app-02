@@ -281,8 +281,10 @@ $content-background: #d6d6d6;
 ::ng-deep .p-class {
     background-color: orange !important;
     padding: 0 !important;
+    margin: 0 !important;
 
     button {
+        background-color: red;;
         // margin: 0 !important;
         // padding: 0 !important;
     }
