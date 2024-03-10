@@ -136,123 +136,76 @@
                 </div>
             </div>
 
-            <!-- TEST -->
+            <!-- Dropdown-Button -> Administration -->
+            <!-- ********************************* -->
             <div class="header-item-container-1">
                 <div class="header-item-container-2">
                     <div class="dropdown">
-
-                        <button class="drop-button" mat-button [matMenuTriggerFor]="animals">
-                            <span>Dropdown Test</span>
+                        <button class="drop-button" mat-button [matMenuTriggerFor]="admin">
+                            <span>Administration</span>
                         </button>
 
-                        <div class="drop-content-container">
-                            <div class="drop-content-wrapper">
+                        <!-- administration -->
+                        <mat-menu #admin="matMenu" class="p-class">
+                            <button mat-menu-item [matMenuTriggerFor]="userManagement">Mitarbeiterverwaltung</button>
+                            <button mat-menu-item [matMenuTriggerFor]="infoManagement">Informationsmanagement</button>
+                            <button mat-menu-item [matMenuTriggerFor]="systemManagement">Systemverwaltung</button>
+                            <button mat-menu-item [matMenuTriggerFor]="systemMonitoring">System-Monitoring</button>
+                        </mat-menu>
 
-                                <mat-menu #animals="matMenu">
-                                    <button mat-menu-item [matMenuTriggerFor]="test_1">
-                                        <span>Sub-1</span>
-                                    </button>
-                                    <button mat-menu-item [matMenuTriggerFor]="test_2">
-                                        <span>Sub-2</span>
-                                    </button>
-                                </mat-menu>
+                        <!-- administration -> user-management -->
+                        <mat-menu #userManagement="matMenu">
+                            <button mat-menu-item>Mitarbeiter</button>
+                            <button mat-menu-item>Teams</button>
+                            <button mat-menu-item>Rechte & Rollen</button>
+                        </mat-menu>
 
-                                <mat-menu #test_1="matMenu">
-                                    <button mat-menu-item>
-                                        <span>Sub-1 Sub-1</span>
-                                    </button>
-                                    <button mat-menu-item>
-                                        <span>Sub-1 Sub-2</span>
-                                    </button>
-                                </mat-menu>
+                        <!-- administration -> info-management -->
+                        <mat-menu #infoManagement="matMenu">
+                            <button mat-menu-item>Statische Seiten</button>
+                            <button mat-menu-item>Wikiseiten</button>
+                            <button mat-menu-item>Hinweise</button>
+                            <button mat-menu-item>Textbausteine</button>
+                            <button mat-menu-item>System-Mails</button>
+                            <button mat-menu-item>Changelogs</button>
+                            <button mat-menu-item>E-Mail Anhänge</button>
+                        </mat-menu>
 
-                                <mat-menu #test_2="matMenu">
-                                    <button mat-menu-item>
-                                        <span>Sub-2 Sub-1</span>
-                                    </button>
-                                    <button mat-menu-item>
-                                        <span>Sub-2 Sub-2</span>
-                                    </button>
-                                </mat-menu>
+                        <!-- administration -> system-management -->
+                        <mat-menu #systemManagement="matMenu">
+                            <button mat-menu-item>Mandanten</button>
+                            <button mat-menu-item>Übersetzung</button>
+                            <button mat-menu-item>Mandanten-Konfigurationen</button>
+                            <button mat-menu-item>Margenmodelle</button>
+                            <button mat-menu-item>Merkmale</button>
+                            <button mat-menu-item>Unternehmensbranchen</button>
+                            <button mat-menu-item>Leistungsbereiche</button>
+                            <button mat-menu-item>Art der Arbeit</button>
+                            <button mat-menu-item>Property Mappings</button>
+                            <button mat-menu-item>Potentiale</button>
+                            <button mat-menu-item>PDF-Layouts</button>
+                            <button mat-menu-item>Angebotsablehnungsgrund</button>
+                            <button mat-menu-item>Fachrichtung Jobmenü</button>
+                            <button mat-menu-item>Kategorie</button>
+                            <button mat-menu-item>Agenturen</button>
+                            <button mat-menu-item>Tracking Share Link</button>
+                            <button mat-menu-item>Uploads</button>
+                        </mat-menu>
 
-                            </div>
-                        </div>
-
+                        <!-- administration -> system-monitoring -->
+                        <mat-menu #systemMonitoring="matMenu">
+                            <button mat-menu-item>ElasticSearch</button>
+                            <button mat-menu-item>Posting-Access</button>
+                            <button mat-menu-item>Einstellungen</button>
+                            <button mat-menu-item>Status-Changer</button>
+                            <button mat-menu-item>Migration-Status</button>
+                            <button mat-menu-item>Audit-Log</button>
+                            <button mat-menu-item>E-Mails</button>
+                            <button mat-menu-item>Cron Jobs</button>
+                            <button mat-menu-item>Elastic Reindex Data</button>
+                        </mat-menu>
                     </div>
                 </div>
-            </div>
-
-            <!-- Admininstration -->
-            <div style="
-                    background-color: lime;
-                    display: flex;
-                    align-items: center;
-                ">
-
-                <!-- Dropdown-Button -> Administration -->
-                <!-- ********************************* -->
-                <button mat-button [matMenuTriggerFor]="admin" style="background-color: orange;">Administration</button>
-
-                <!-- administration -->
-                <mat-menu #admin="matMenu" style="background-color: red; padding: 12px; margin: 12px;">
-                    <button mat-menu-item [matMenuTriggerFor]="userManagement" style="background-color: yellowgreen;">Mitarbeiterverwaltung</button>
-                    <button mat-menu-item [matMenuTriggerFor]="infoManagement">Informationsmanagement</button>
-                    <button mat-menu-item [matMenuTriggerFor]="systemManagement">Systemverwaltung</button>
-                    <button mat-menu-item [matMenuTriggerFor]="systemMonitoring">System-Monitoring</button>
-                </mat-menu>
-
-                <!-- administration -> user-management -->
-                <mat-menu #userManagement="matMenu">
-                    <button mat-menu-item>Mitarbeiter</button>
-                    <button mat-menu-item>Teams</button>
-                    <button mat-menu-item>Rechte & Rollen</button>
-                </mat-menu>
-
-                <!-- administration -> info-management -->
-                <mat-menu #infoManagement="matMenu">
-                    <button mat-menu-item>Statische Seiten</button>
-                    <button mat-menu-item>Wikiseiten</button>
-                    <button mat-menu-item>Hinweise</button>
-                    <button mat-menu-item>Textbausteine</button>
-                    <button mat-menu-item>System-Mails</button>
-                    <button mat-menu-item>Changelogs</button>
-                    <button mat-menu-item>E-Mail Anhänge</button>
-                </mat-menu>
-
-                <!-- administration -> system-management -->
-                <mat-menu #systemManagement="matMenu">
-                    <button mat-menu-item>Mandanten</button>
-                    <button mat-menu-item>Übersetzung</button>
-                    <button mat-menu-item>Mandanten-Konfigurationen</button>
-                    <button mat-menu-item>Margenmodelle</button>
-                    <button mat-menu-item>Merkmale</button>
-                    <button mat-menu-item>Unternehmensbranchen</button>
-                    <button mat-menu-item>Leistungsbereiche</button>
-                    <button mat-menu-item>Art der Arbeit</button>
-                    <button mat-menu-item>Property Mappings</button>
-                    <button mat-menu-item>Potentiale</button>
-                    <button mat-menu-item>PDF-Layouts</button>
-                    <button mat-menu-item>Angebotsablehnungsgrund</button>
-                    <button mat-menu-item>Fachrichtung Jobmenü</button>
-                    <button mat-menu-item>Kategorie</button>
-                    <button mat-menu-item>Agenturen</button>
-                    <button mat-menu-item>Tracking Share Link</button>
-                    <button mat-menu-item>Uploads</button>
-                </mat-menu>
-
-                <!-- administration -> system-monitoring -->
-                <mat-menu #systemMonitoring="matMenu">
-                    <button mat-menu-item>ElasticSearch</button>
-                    <button mat-menu-item>Posting-Access</button>
-                    <button mat-menu-item>Einstellungen</button>
-                    <button mat-menu-item>Status-Changer</button>
-                    <button mat-menu-item>Migration-Status</button>
-                    <button mat-menu-item>Audit-Log</button>
-                    <button mat-menu-item>E-Mails</button>
-                    <button mat-menu-item>Cron Jobs</button>
-                    <button mat-menu-item>Elastic Reindex Data</button>
-                </mat-menu>
-
             </div>
 
             <!-- Test -->

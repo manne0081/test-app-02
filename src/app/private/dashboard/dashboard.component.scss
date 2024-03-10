@@ -1,0 +1,36 @@
+nav {
+    background-color: lime;
+    display: flex;
+    padding: 6px 12px;
+
+    .dropdown {
+        background-color: lightblue;
+
+        .button {
+            background-color: lightcoral;
+            display: inline-block;
+            padding: 6px 12px;
+        }
+
+        .drop-container {
+            background-color: lightcyan;
+            display: none;
+
+            .drop-item {
+                background-color: orange;
+                padding: 6px 12px;
+            }
+        }
+
+        .button:hover .drop-container {
+            background-color: yellow;
+            display: block;
+        }
+
+    }
+
+
+
+}
+
+

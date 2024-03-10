@@ -275,3 +275,16 @@ $content-background: #d6d6d6;
         }
     }
 }
+
+
+
+::ng-deep .p-class {
+    background-color: orange !important;
+    padding: 0 !important;
+
+    button {
+        // margin: 0 !important;
+        // padding: 0 !important;
+    }
+
+}
