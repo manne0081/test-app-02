@@ -50,7 +50,7 @@ nav {
 
     li {
         position: relative;
-        padding: 8px 12px;
+        padding: 12px 16px;
         overflow: visible;
     }
 
@@ -65,7 +65,7 @@ nav {
 }
 
 .drop-sub-menu-container {
-    background-color: lime;
+    background-color: lightcoral;
     border-radius: 4px;
     position: absolute;
     left: 100%;
@@ -74,7 +74,7 @@ nav {
     display: none;
 
     li {
-        padding: 8px 12px;
+        padding: 12px 16px;
     }
 
     li:hover {

@@ -80,7 +80,6 @@ $content-background: #d6d6d6;
                     text-shadow: 0 0 3px rgb(153, 145, 26), 0 0 5px rgb(105, 99, 12);
                 }
 
-
             }
 
             button:hover:not(.drop-button) {
@@ -278,15 +277,14 @@ $content-background: #d6d6d6;
 
 
 
-::ng-deep .p-class {
-    background-color: orange !important;
-    padding: 0 !important;
-    margin: 0 !important;
+::ng-deep .mat-mdc-menu-content {
+    background-color: rgb(241, 241, 241);
+    background-color: orange;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 2px;
+    box-shadow: 10px 10px #000;
+}
 
-    button {
-        background-color: red;;
-        // margin: 0 !important;
-        // padding: 0 !important;
-    }
-
+::ng-deep .pClass {
+    background-color: lime;
 }

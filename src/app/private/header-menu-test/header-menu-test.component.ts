@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, Input } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule, MenuPositionX } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuTrigger } from '@angular/material/menu';
 
@@ -19,6 +19,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 
 export class HeaderMenuTestComponent {
+    @Input() xPosition?: MenuPositionX = 'before';
     @Output() selectionChanged: EventEmitter<string> = new EventEmitter<string>();
     @ViewChild('animalsTrigger') animalsTrigger!: MatMenuTrigger;
 

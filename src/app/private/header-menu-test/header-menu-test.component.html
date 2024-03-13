@@ -146,7 +146,7 @@
                         </button>
 
                         <!-- administration -->
-                        <mat-menu #admin="matMenu" class="p-class">
+                        <mat-menu #admin="matMenu" class="drop-container-test">
                             <button mat-menu-item [matMenuTriggerFor]="userManagement">Mitarbeiterverwaltung</button>
                             <button mat-menu-item [matMenuTriggerFor]="infoManagement">Informationsmanagement</button>
                             <button mat-menu-item [matMenuTriggerFor]="systemManagement">Systemverwaltung</button>
@@ -154,14 +154,14 @@
                         </mat-menu>
 
                         <!-- administration -> user-management -->
-                        <mat-menu #userManagement="matMenu">
+                        <mat-menu #userManagement="matMenu" class="drop-sub-container-test">
                             <button mat-menu-item>Mitarbeiter</button>
                             <button mat-menu-item>Teams</button>
                             <button mat-menu-item>Rechte & Rollen</button>
                         </mat-menu>
 
                         <!-- administration -> info-management -->
-                        <mat-menu #infoManagement="matMenu">
+                        <mat-menu #infoManagement="matMenu" class="drop-sub-container-test">
                             <button mat-menu-item>Statische Seiten</button>
                             <button mat-menu-item>Wikiseiten</button>
                             <button mat-menu-item>Hinweise</button>
@@ -172,7 +172,7 @@
                         </mat-menu>
 
                         <!-- administration -> system-management -->
-                        <mat-menu #systemManagement="matMenu">
+                        <mat-menu #systemManagement="matMenu" class="drop-sub-container-test">
                             <button mat-menu-item>Mandanten</button>
                             <button mat-menu-item>Übersetzung</button>
                             <button mat-menu-item>Mandanten-Konfigurationen</button>
@@ -193,7 +193,7 @@
                         </mat-menu>
 
                         <!-- administration -> system-monitoring -->
-                        <mat-menu #systemMonitoring="matMenu">
+                        <mat-menu #systemMonitoring="matMenu" class="drop-sub-container-test">
                             <button mat-menu-item>ElasticSearch</button>
                             <button mat-menu-item>Posting-Access</button>
                             <button mat-menu-item>Einstellungen</button>
@@ -208,41 +208,33 @@
                 </div>
             </div>
 
-            <!-- Test -->
-            <div style="display: flex; align-items: center;">
+            {{ xPosition }}
 
-                <!-- Dropdown-Button -> Administration -->
-                <!-- ********************************* -->
-                <button mat-button [matMenuTriggerFor]="test">TEST</button>
+            <!-- TEST mat-menu -->
+            <button mat-button [matMenuTriggerFor]="dropdown">mat-menu</button>
 
-                <!-- administration -->
-                <mat-menu #test="matMenu">
-                <button mat-menu-item [matMenuTriggerFor]="test1">TEST - Sub-1</button>
-                <button mat-menu-item [matMenuTriggerFor]="test2">TEST - Sub-2</button>
-                <button mat-menu-item>TEST - Sub-3</button>
-                </mat-menu>
+            <mat-menu #dropdown="matMenu" class="pClass">
+                <button mat-menu-item [matMenuTriggerFor]="subDropdown1">Submenu 1</button>
+                <button mat-menu-item [matMenuTriggerFor]="subDropdown2">Submenu 2</button>
+            </mat-menu>
 
-                <mat-menu #test1="matMenu">
-                <button mat-menu-item [matMenuTriggerFor]="test1_2">TEST - Sub-1  Sub-1</button>
-                <button mat-menu-item>TEST - Sub-1  Sub-2</button>
-                <button mat-menu-item>TEST-SUB-3</button>
-                </mat-menu>
+            <mat-menu #subDropdown1="matMenu">
+                <button mat-menu-item [matMenuTriggerFor]="sub1sub1">Submenu 1 - Submenu 1</button>
+                <button mat-menu-item>Submenu 1 - Menu 1</button>
+                <button mat-menu-item disabled>Submenu 1 - Menu 2</button>
+            </mat-menu>
 
-                <mat-menu #test1_2="matMenu">
-                    <button mat-menu-item>TEST - Sub-1  Sub-1</button>
-                    <button mat-menu-item disabled="">TEST - Sub-1  Sub-2</button>
-                    <button mat-menu-item>TEST - Sub-1  Sub-3</button>
-                </mat-menu>
+            <mat-menu #subDropdown2="matMenu">
+                <button mat-menu-item>Submenu 2 - Menu 1</button>
+                <button mat-menu-item>Submenu 2 - Menu 2</button>
+                <button mat-menu-item disabled>Submenu 2 - Menu 3</button>
+            </mat-menu>
 
-                <mat-menu #test2="matMenu">
-                <button mat-menu-item>TEST - Sub-2  Sub-1</button>
-                <button mat-menu-item disabled="">TEST - Sub-2  Sub-2</button>
-                <button mat-menu-item>TEST - Sub-2  Sub-3</button>
-                </mat-menu>
-
-
-
-            </div>
+            <mat-menu #sub1sub1="matMenu">
+                <button mat-menu-item>Submenu 1 - Submenu 1 - Menu 1</button>
+                <button mat-menu-item disabled>Submenu 1 - Submenu 1 - Menu 2</button>
+                <button mat-menu-item>Submenu 1 - Submenu 1 - Menu 3</button>
+            </mat-menu>
 
 
 
