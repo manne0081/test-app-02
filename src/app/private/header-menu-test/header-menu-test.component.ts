@@ -20,6 +20,8 @@ import { MatMenuTrigger } from '@angular/material/menu';
 
 export class HeaderMenuTestComponent {
     @Input() xPosition?: MenuPositionX;
+    @Input('class') panelClass: string = 'panel-test';
+
     @Output() selectionChanged: EventEmitter<string> = new EventEmitter<string>();
     @ViewChild('animalsTrigger') animalsTrigger!: MatMenuTrigger;
 

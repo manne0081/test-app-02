@@ -146,7 +146,7 @@
                         </button>
 
                         <!-- administration -->
-                        <mat-menu #admin="matMenu" class="drop-container-test">
+                        <mat-menu #admin="matMenu">
                             <button mat-menu-item [matMenuTriggerFor]="userManagement">Mitarbeiterverwaltung</button>
                             <button mat-menu-item [matMenuTriggerFor]="infoManagement">Informationsmanagement</button>
                             <button mat-menu-item [matMenuTriggerFor]="systemManagement">Systemverwaltung</button>
@@ -213,7 +213,7 @@
             <!-- TEST mat-menu -->
             <button mat-button [matMenuTriggerFor]="dropdown">mat-menu</button>
 
-            <mat-menu #dropdown="matMenu" class="pClass">
+            <mat-menu #dropdown="matMenu" [class]="panelClass">
                 <button mat-menu-item [matMenuTriggerFor]="subDropdown1">Submenu 1</button>
                 <button mat-menu-item [matMenuTriggerFor]="subDropdown2">Submenu 2</button>
             </mat-menu>

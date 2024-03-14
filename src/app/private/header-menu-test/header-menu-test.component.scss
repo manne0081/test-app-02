@@ -277,14 +277,18 @@ $content-background: #d6d6d6;
 
 
 
-::ng-deep .mat-mdc-menu-content {
-    background-color: rgb(241, 241, 241);
-    background-color: orange;
-    border: 1px solid rgb(224, 224, 224);
-    border-radius: 2px;
-    box-shadow: 10px 10px #000;
-}
+// ::ng-deep .mat-mdc-menu-content {
+//     background-color: rgb(241, 241, 241);
+//     background-color: orange;
+//     border: 1px solid rgb(224, 224, 224);
+//     border-radius: 2px;
+//     box-shadow: 10px 10px #000;
+// }
 
-::ng-deep .pClass {
-    background-color: lime;
+// ::ng-deep .pClass {
+//     background-color: lime;
+// }
+
+.panel-test {
+    background-color: red;
 }
