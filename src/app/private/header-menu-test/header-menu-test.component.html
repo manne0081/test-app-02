@@ -90,52 +90,6 @@
                 </div>
             </div>
 
-            <!-- Test -->
-            <div class="header-item-container-1">
-                <div class="header-item-container-2">
-                    <div class="dropdown">
-
-                        <button class="drop-button">
-                            <span class="icon-pencilwrench menu-icon" style="position: relative; top: 1px;"></span>
-                            <span>Test-1</span>
-                        </button>
-
-                        <div class="drop-content-container" style="background-color: transparent;">
-
-                            <div class="drop-sub-sub-menu-container" style="background-color: lime; display: flex;">
-
-                                <div class="drop-content-wrapper">
-                                    <ng-container *ngFor="let item of menuItems, index as i">
-
-                                        <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
-                                            (click)="setItemClass(item.class)"
-                                            (click)="onSelectionChange(item.name)"
-                                            [routerLink]="item.url"
-                                        >
-                                            <div class="sub-menu-container">
-                                                <div class="sub-menu-button">
-                                                    <span class="sub-menu-label">{{item.name}}</span>
-                                                    <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </ng-container>
-                                </div>
-
-                                <div class="sub-menu-content-container">
-                                    Sub-Sub-Menu
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
             <!-- Dropdown-Button -> Administration -->
             <!-- ********************************* -->
             <div class="header-item-container-1">
@@ -207,36 +161,6 @@
                     </div>
                 </div>
             </div>
-
-            {{ xPosition }}
-
-            <!-- TEST mat-menu -->
-            <button mat-button [matMenuTriggerFor]="dropdown">mat-menu</button>
-
-            <mat-menu #dropdown="matMenu" [class]="panelClass">
-                <button mat-menu-item [matMenuTriggerFor]="subDropdown1">Submenu 1</button>
-                <button mat-menu-item [matMenuTriggerFor]="subDropdown2">Submenu 2</button>
-            </mat-menu>
-
-            <mat-menu #subDropdown1="matMenu">
-                <button mat-menu-item [matMenuTriggerFor]="sub1sub1">Submenu 1 - Submenu 1</button>
-                <button mat-menu-item>Submenu 1 - Menu 1</button>
-                <button mat-menu-item disabled>Submenu 1 - Menu 2</button>
-            </mat-menu>
-
-            <mat-menu #subDropdown2="matMenu">
-                <button mat-menu-item>Submenu 2 - Menu 1</button>
-                <button mat-menu-item>Submenu 2 - Menu 2</button>
-                <button mat-menu-item disabled>Submenu 2 - Menu 3</button>
-            </mat-menu>
-
-            <mat-menu #sub1sub1="matMenu">
-                <button mat-menu-item>Submenu 1 - Submenu 1 - Menu 1</button>
-                <button mat-menu-item disabled>Submenu 1 - Submenu 1 - Menu 2</button>
-                <button mat-menu-item>Submenu 1 - Submenu 1 - Menu 3</button>
-            </mat-menu>
-
-
 
         </div>
 

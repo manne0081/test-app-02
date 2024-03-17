@@ -277,18 +277,37 @@ $content-background: #d6d6d6;
 
 
 
-// ::ng-deep .mat-mdc-menu-content {
-//     background-color: rgb(241, 241, 241);
-//     background-color: orange;
-//     border: 1px solid rgb(224, 224, 224);
-//     border-radius: 2px;
-//     box-shadow: 10px 10px #000;
+// .mat-mdc-menu-trigger.drop-button.mdc-button.mat-mdc-button.mat-unthemed.mat-mdc-button-base {
 // }
 
-// ::ng-deep .pClass {
-//     background-color: lime;
-// }
+::ng-deep .mat-mdc-menu-trigger {
+    // background-color: lime !important;
+    margin-bottom: 3px !important;
+}
 
-.panel-test {
-    background-color: red;
+::ng-deep .cdk-overlay-pane:first-child {
+    background-color: white !important;
+    background-color: rgb(240, 240, 240) !important;
+    border-radius: 6px;
+}
+
+::ng-deep .mat-mdc-menu-panel {
+    background-color: transparent !important;
+    // background-color: red !important;
+}
+
+::ng-deep .mat-mdc-menu-content {
+    // background-color: white !important;
+    padding: 0px !important;
+    border-radius: 6px !important;
+}
+
+::ng-deep .mat-mdc-menu-item {
+    background-color: transparent !important;
+    // background-color: lightgreen !important;
+}
+
+::ng-deep .mat-mdc-menu-item:hover {
+    background-color: transparent !important;
+    background-color: #c9d1d6 !important;
 }
