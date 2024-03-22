@@ -277,12 +277,9 @@ $content-background: #d6d6d6;
 
 
 
-// .mat-mdc-menu-trigger.drop-button.mdc-button.mat-mdc-button.mat-unthemed.mat-mdc-button-base {
-// }
-
 ::ng-deep .mat-mdc-menu-trigger {
     // background-color: lime !important;
-    margin-bottom: 3px !important;
+    // margin-bottom: 3px !important;
 }
 
 ::ng-deep .cdk-overlay-pane:first-child {
@@ -310,4 +307,8 @@ $content-background: #d6d6d6;
 ::ng-deep .mat-mdc-menu-item:hover {
     background-color: transparent !important;
     background-color: #c9d1d6 !important;
+}
+
+.test4 {
+    background-color: red !important;
 }
