@@ -38,26 +38,26 @@ export class HeaderMenuComponent {
         // *********
         { name: "Aufgaben", class: "/private/workspace", url: "/private/task", favorite: true },
         { name: "Planner", class: "/private/workspace", url: "/private/planner", favorite: false },
-        { name: "Kampagnen", class: "/private/workspace", url: "/private/campagne", favorite: false },
+        { name: "Kampagnen", class: "/private/workspace", url: "/private/campagne", favorite: true },
         { name: "E-Mail", class: "/private/workspace", url: "/private/email", favorite: false },
 
         // Contact (as Kontakte)
         // *********************
         { name: "Unternehmen", class: "/private/contact", url: "/private/company", favorite: false },
-        { name: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: false },
-        { name: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: false },
-        { name: "Benutzer", class: "/private/contact", url: "/private/user", favorite: false },
+        { name: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: true },
+        { name: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: true },
+        { name: "Benutzer", class: "/private/contact", url: "/private/user", favorite: true },
         { name: "Modulberechtigungen", class: "/private/contact", url: "/private/module-auth", favorite: false },
         { name: "Unternehmenswiki", class: "/private/contact", url: "/private/company-wiki", favorite: false },
-        { name: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: false },
+        { name: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: true },
         { name: "Adressen", class: "/private/contact", url: "/private/address", favorite: false },
 
         // operations (as Vorgänge & Belege)
         // *********************************
-        { name: "Verkaufsvorgänge", class: "/private/operations", url: "/private/sales-transaction", favorite: false },
+        { name: "Verkaufsvorgänge", class: "/private/operations", url: "/private/sales-transaction", favorite: true },
         { name: "Angebote", class: "/private/operations", url: "/private/offer", favorite: false },
         { name: "Aufträge", class: "/private/operations", url: "/private/order", favorite: false },
-        { name: "Rechnungen", class: "/private/operations", url: "/private/invoice", favorite: false },
+        { name: "Rechnungen", class: "/private/operations", url: "/private/invoice", favorite: true },
         { name: "Teilaufträge", class: "/private/operations", url: "/private/partial-order", favorite: false },
         { name: "Alle Belege", class: "/private/operations", url: "/private/document", favorite: false },
 
@@ -65,38 +65,38 @@ export class HeaderMenuComponent {
         // ***************************************
         { name: "Multipostings", class: "/private/orderProcessing", url: "/private/multiposting", favorite: false },
         { name: "Postings", class: "/private/orderProcessing", url: "/private/posting", favorite: false },
-        { name: "Stellenanzeigen", class: "/private/orderProcessing", url: "/private/advertisements", favorite: false },
-        { name: "Print", class: "/private/orderProcessing", url: "/private/print", favorite: false },
+        { name: "Stellenanzeigen", class: "/private/orderProcessing", url: "/private/advertisements", favorite: true },
+        { name: "Print", class: "/private/orderProcessing", url: "/private/print", favorite: true },
         { name: "Dienstleistungen & Sonstiges", class: "/private/orderProcessing", url: "/private/service", favorite: false },
 
         // accounting (as Rechnungswesen)
         // ******************************
-        { name: "Ausgangsrechungen", class: "/private/accounting", url: "/private/invoice-out", favorite: false },
+        { name: "Ausgangsrechungen", class: "/private/accounting", url: "/private/invoice-out", favorite: true },
         { name: "Rechnungspositionsgruppen", class: "/private/accounting", url: "/private/inv-position-group", favorite: false },
         { name: "Auftragspositionen", class: "/private/accounting", url: "/private/order-position", favorite: false },
-        { name: "Belegs-PDFs", class: "/private/accounting", url: "/private/documents-pdf", favorite: false },
+        { name: "Belegs-PDFs", class: "/private/accounting", url: "/private/documents-pdf", favorite: true },
         { name: "Eingangsrechnungen", class: "/private/accounting", url: "/private/invoice-in", favorite: false },
 
         // productManagement (as Produktverwaltung)
         // ****************************************
         { name: "Produkte", class: "/private/productManagement", url: "/private/product", favorite: false },
-        { name: "Produktvarianten", class: "/private/productManagement", url: "/private/product-variant", favorite: false },
-        { name: "Produktgruppen", class: "/private/productManagement", url: "/private/product-group", favorite: false },
+        { name: "Produktvarianten", class: "/private/productManagement", url: "/private/product-variant", favorite: true },
+        { name: "Produktgruppen", class: "/private/productManagement", url: "/private/product-group", favorite: true },
         { name: "PGV-Gruppen", class: "/private/productManagement", url: "/private/product-group-variant", favorite: false },
         { name: "Positionsvorlagen", class: "/private/productManagement", url: "/private/position-template", favorite: false },
-        { name: "Übertragungswege", class: "/private/productManagement", url: "/private/trans-path", favorite: false },
+        { name: "Übertragungswege", class: "/private/productManagement", url: "/private/trans-path", favorite: true },
         { name: "Zusatzangaben", class: "/private/productManagement", url: "/private/additional-data", favorite: false },
 
         // Vertragswesen (as contracting)
         // ******************************
         { name: "Kundenverträge", class: "/private/contracting", url: "/private/customer-contract", favorite: false },
-        { name: "Lieferantenverträge", class: "/private/contracting", url: "/private/supplier-contract", favorite: false },
+        { name: "Lieferantenverträge", class: "/private/contracting", url: "/private/supplier-contract", favorite: true },
         { name: "Partner-Konfiguration", class: "/private/contracting", url: "/private/partner-config", favorite: false },
 
         // toolsAssets (as Tools & Assets)
         // *******************************
-        { name: "Smart-Template", class: "/private/toolsAssets", url: "/private/smart-template", favorite: false },
-        { name: "Bewerbungsformulare", class: "/private/toolsAssets", url: "/private/job-form", favorite: false },
+        { name: "Smart-Template", class: "/private/toolsAssets", url: "/private/smart-template", favorite: true },
+        { name: "Bewerbungsformulare", class: "/private/toolsAssets", url: "/private/job-form", favorite: true },
         { name: "Schnittstellen", class: "/private/toolsAssets", url: "/private/interface", favorite: false },
         { name: "Global-Fonts", class: "/private/toolsAssets", url: "/private/global-font", favorite: false },
 
@@ -104,8 +104,8 @@ export class HeaderMenuComponent {
         // **********************************************
         { name: "Umsatzstatistik", class: "/private/statisticsReporting", url: "/private/sales-statistic", favorite: false },
         { name: "Teamstatistik", class: "/private/statisticsReporting", url: "/private/team-statistic", favorite: false },
-        { name: "KPI-Report", class: "/private/statisticsReporting", url: "/private/kpi-report", favorite: false },
-        { name: "Klick-Report", class: "/private/statisticsReporting", url: "/private/click-report", favorite: false },
+        { name: "KPI-Report", class: "/private/statisticsReporting", url: "/private/kpi-report", favorite: true },
+        { name: "Klick-Report", class: "/private/statisticsReporting", url: "/private/click-report", favorite: true },
 
         // TEST
         // ****
