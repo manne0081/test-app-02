@@ -302,6 +302,14 @@ span.icon-star:hover{
 ::ng-deep .mat-mdc-menu-panel {
     background-color: transparent !important;
     // background-color: red !important;
+
+    span {
+        // background-color: lime;
+    }
+
+    span.icon-star{
+        // background-color: yellow;
+    }
 }
 
 ::ng-deep .mat-mdc-menu-content {
