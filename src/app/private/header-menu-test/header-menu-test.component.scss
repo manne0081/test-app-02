@@ -276,6 +276,17 @@ $content-background: #d6d6d6;
 }
 
 
+span.icon-star {
+    font-size: 1.4em;
+    color: rgb(200, 200, 200);
+}
+
+span.icon-star:hover{
+    font-size: 1.4em;
+    color: #fff982;
+    text-shadow: 0 0 3px rgb(153, 145, 26), 0 0 5px rgb(105, 99, 12);
+}
+
 
 ::ng-deep .mat-mdc-menu-trigger {
     // background-color: lime !important;

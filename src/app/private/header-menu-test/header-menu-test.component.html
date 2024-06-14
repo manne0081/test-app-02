@@ -110,7 +110,10 @@
                         <!-- administration -> user-management -->
                         <mat-menu #userManagement="matMenu" class="drop-sub-container-test">
                             <ng-template matMenuContent let-name="name">
-                                <button mat-menu-item>Mitarbeiter</button>
+                                <button mat-menu-item>
+                                    <span>Mitarbeiter</span>
+                                    <span class="icon-star"></span>    <!-- (click)="toggleFavorite(item); $event.stopPropagation();" -->
+                                </button>
                                 <button mat-menu-item>Teams</button>
                                 <button mat-menu-item>Rechte & Rollen</button>
                             </ng-template>
@@ -149,7 +152,7 @@
                         </mat-menu>
 
                         <!-- administration -> system-monitoring -->
-                        <mat-menu #systemMonitoring="matMenu" class="drop-sub-container-test" overlayPanelClass="test4" xPosition="before">
+                        <mat-menu #systemMonitoring="matMenu" class="drop-sub-container-test" overlayPanelClass="test4">    <!-- xPosition="before" -->
                             <ng-template matMenuContent>
                                 <button mat-menu-item>ElasticSearch</button>
                                 <button mat-menu-item>Posting-Access</button>

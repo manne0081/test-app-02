@@ -7,14 +7,11 @@
     <!-- ****** -->
     <div class="page-header-container" style="overflow: visible;">
 
-        <app-header-menu></app-header-menu>
-        <!-- <app-header-menu-test [xPosition]="'before'"></app-header-menu-test> -->
+        <app-header-menu *ngIf="menu1"></app-header-menu>
+        <app-header-menu-test *ngIf="menu2" [xPosition]="'before'"></app-header-menu-test>
         <!-- <app-header-menu-test-2></app-header-menu-test-2> -->
 
-        <!-- <app-main-menu (selectionChanged)="onMainMenuSelectionChanged($event)"></app-main-menu> -->
-
     </div>
-
 
     <!-- CONTENT-CONTAINER -->
     <!-- ***************** -->
@@ -40,7 +37,7 @@
 
         </div>
 
-<!-- Different Classes wether quicklinks or addInfo should be visible or not -->
+        <!-- Different Classes wether quicklinks or addInfo should be visible or not -->
         <!-- *********************************************************************** -->
         <div [ngClass]="{'content-container-full' : quicklinksVisible && addInfoVisible,
                             'content-container-without-quicklinks' : !quicklinksVisible && addInfoVisible,
@@ -66,6 +63,8 @@
                 </div>
 
                 <div class="content-items">
+                    <button (click)="toggleMenu()" style="padding: 4px 8px;">Toggle Menu</button>
+                    <br><br>
                     <router-outlet></router-outlet>
                 </div>
 
@@ -86,12 +85,6 @@
             </div>
 
         </div>
-
-
-
-
-
-
 
     </div>
 

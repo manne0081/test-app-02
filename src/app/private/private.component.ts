@@ -25,6 +25,8 @@ export class PrivateComponent {
     selectedValueFromMainMenu: string = '';
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
+    menu1: boolean = true;
+    menu2: boolean = false;
 
     constructor() {
     }
@@ -44,5 +46,10 @@ export class PrivateComponent {
 
     toggleAddInfoVisibility(): void {
         this.addInfoVisible = !this.addInfoVisible;
+    }
+
+    toggleMenu(): void {
+        this.menu1 = !this.menu1;
+        this.menu2 = !this.menu2;
     }
 }
