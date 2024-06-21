@@ -1,145 +1,414 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="nav-test" id="navbarDropdownMenuLink" role="button"
-                    data-mdb-toggle="dropdown" aria-expanded="false">
-                    Dropdown link
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li>
-                        <a class="dropdown-item" href="nav-test">Action</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="nav-test">Another action</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="nav-test">
-                            Submenu &raquo;
-                        </a>
-                        <ul class="dropdown-menu dropdown-submenu">
-                            <li>
-                                <a class="dropdown-item" href="nav-test">Submenu item 1</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="nav-test">Submenu item 2</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="nav-test">Submenu item 3 &raquo;</a>
-                                <ul class="dropdown-menu dropdown-submenu">
-                                    <li>
-                                        <a class="dropdown-item" href="nav-test">Multi level 1</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="nav-test">Multi level 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="nav-test">Submenu item 4</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="nav-test">Submenu item 5</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+<div class="menu-container">
+
+    <div class="menu-wrapper">
+
+        <!-- HEADER LEFT -->
+        <!-- *********** -->
+        <div class="menu-wrapper left">
+
+            <!-- Logo -->
+            <div class="header-item-container-1 logo">
+                <img src="../../assets/images/logo-design-49570.png" alt="">
+            </div>
+
+            <!-- Searching -->
+            <div class="header-item-container-1">
+                <div class="header-item-container-2" style="padding-left: 0px">
+
+                    <button class="icon">
+                        <span class="icon-search" style="font-size: 1.2em"></span>
+                    </button>
+
+                    <!-- todo -->
+
+                </div>
+            </div>
+
+            <!-- Favorite -->
+            <div class="header-item-container-1" [ngClass]="classFavorite">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="icon drop-button">
+                            <span class="icon-star favorite" style="font-size: 1.5em; position: relative; top: 1px;"></span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+
+                                <!-- todo -->
+                                <!-- Die letzten X geöffneten url's anzeigen. Art und Weise und wie viele ist noch unklar -->
+
+
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.favorite" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        routerLink="{{item.url}}"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <span class="icon-star is-favorite" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="header-item-container-1" [ngClass]="classDashboard" routerLink="/private/dashboard">
+                <div class="header-item-container-2">
+
+                    <button (click)="setItemClass('/private/dashboard')" (click)="onSelectionChange('Dashboard')">
+                        <span class="icon-grid menu-icon" style="position: relative; top: 1px;"></span>
+                        <span>Dashboard</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Workspace -->
+            <div class="header-item-container-1" [ngClass]="classWorkspace">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-pencilwrench menu-icon" style="position: relative; top: 1px;"></span>
+                            <span>Workspace</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacts -->
+            <div class="header-item-container-1" [ngClass]="classContacts">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-group menu-icon"></span>
+                            <span>Kontakte</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/contact'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operations -->
+            <div class="header-item-container-1" [ngClass]="classOperations">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-handshake-o menu-icon"></span>
+                            <span>Vorgänge & Belege</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/operations'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Processing -->
+            <div class="header-item-container-1" [ngClass]="classOrderProcessing">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-paperplane menu-icon"></span>
+                            <span>Auftragsabwicklung</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/orderProcessing'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accounting -->
+            <div class="header-item-container-1" [ngClass]="classAccounting">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-coins menu-icon"></span>
+                            <span>Rechnungswesen</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/accounting'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Management -->
+            <div class="header-item-container-1" [ngClass]="classProductManagement">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-cubes menu-icon" style="position: relative; top: 1px;"></span>
+                            <span>Produktverwaltung</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/productManagement'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contracting -->
+            <div class="header-item-container-1" [ngClass]="classContracting">
+                <div class="header-item-container-2">
+                    <div class="dropdown right">
+
+                        <button class="drop-button">
+                            <span class="icon-medal menu-icon" style="position: relative; top: 1px;"></span>
+                            <span>Vertragswesen</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/contracting'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Assets -->
+            <div class="header-item-container-1" [ngClass]="classToolsAssets">
+                <div class="header-item-container-2">
+                    <div class="dropdown">
+
+                        <button class="drop-button">
+                            <span class="icon-tools menu-icon"></span>
+                            <span>Tools & Assets</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/toolsAssets'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics & Reporting -->
+            <div class="header-item-container-1" [ngClass]="classStatisticsReporting">
+                <div class="header-item-container-2">
+                    <div class="dropdown right">
+
+                        <button class="drop-button">
+                            <span class="icon-bar-graph-2 menu-icon"></span>
+                            <span>Statistik & Reporting</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/statisticsReporting'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
+                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEST -->
+            <div class="header-item-container-1" [ngClass]="classPlaceholder">
+                <div class="header-item-container-2">
+                    <div class="dropdown right">
+
+                        <button class="drop-button">
+                            <span class="icon-bar-graph-2 menu-icon"></span>
+                            <span>TEST</span>
+                        </button>
+
+                        <div class="drop-content-container">
+                            <div class="drop-content-wrapper">
+                                <ng-container *ngFor="let item of menuItems, index as i">
+
+                                    <div *ngIf="item.class == '/private/placeholder'" class="drop-item-container"
+                                        (click)="setItemClass(item.class)"
+                                        (click)="onSelectionChange(item.name)"
+                                        [routerLink]="item.url"
+                                    >
+                                        <span class="sub-menu-label">{{item.name}}</span>
+                                        <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
+                                    </div>
+
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder -->
+            <!-- <div class="header-item-container-1" [ngClass]="classPlaceholder">
+                <div class="header-item-container-2">
+                    <button class="drop-button">
+                        <span routerLink="/test3" style="cursor: pointer;">TEST-3</span>
+                    </button>
+                </div>
+            </div> -->
+
+        </div>
+
+
+
+        <!-- HEADER RIGHT -->
+        <!-- ************ -->
+        <div class="menu-wrapper right">
+            WIP
+        </div>
+
     </div>
-</nav> -->
 
-<nav>
-    <h3 style="margin: 1px 0 0 6px;">WIP</h3>
-
-    <!-- Dashbaord -->
-    <ul class="drop-button" style="margin-left: 6px;">
-        <label for="">Dashboard</label>
-    </ul>
-
-    <!-- Workspace -->
-    <ul class="drop-button">
-        <label for="">Workspace</label>
-        <ul class="drop-menu-container">
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-        </ul>
-    </ul>
-
-    <!-- <div style="background-color: blue;"> -->
-        <ul class="drop-button">
-
-            <label for="">Admininstration</label>
-
-            <ul class="drop-menu-container">
-                <li>Mitarbeiterverwaltung
-                    <ul class="drop-sub-menu-container">
-                        <li>Mitarbeiter</li>
-                        <li>Teams</li>
-                        <li>Rechte & Rollen</li>
-                    </ul>
-                </li>
-
-                <li>Informationsmanagement
-                    <ul class="drop-sub-menu-container">
-                        <li>Statische Seiten</li>
-                        <li>Wikiseiten</li>
-                        <li>Hinweise</li>
-                        <li>Textbausteine</li>
-                        <li>System-Mails</li>
-                        <li>Changelogs</li>
-                        <li>E-Mail Anhänge</li>
-                    </ul>
-                </li>
-
-                <li>Systemverwaltung
-                    <ul class="drop-sub-menu-container">
-                        <li>Mandanten</li>
-                        <li>Übersetzung</li>
-                        <li>Mandanten-Konfigurationen</li>
-                        <li>Margenmodelle</li>
-                        <li>Merkmale</li>
-                        <li>Unternehmensbranchen</li>
-                        <li>Leistungsbereiche</li>
-                        <li>Art der Arbeit</li>
-                        <li>Property Mappings</li>
-                        <li>Potentiale</li>
-                        <li>PDF-Layouts</li>
-                        <li>Angebotsablehnungsgrund</li>
-                        <li>Fachrichtung Jobmenü</li>
-                        <li>Kategorie</li>
-                        <li>Agenturen</li>
-                        <li>Tracking Share Link</li>
-                        <li>Uploads</li>
-                    </ul>
-                </li>
-
-                <li>System-Monitoring
-                    <ul class="drop-sub-menu-container">
-                        <li>ElasticSearch</li>
-                        <li>Posting-Access</li>
-                        <li>Einstellungen</li>
-                        <li>Status-Changer</li>
-                        <li>Migration-Status</li>
-                        <li>Audit-Log</li>
-                        <li>E-Mails</li>
-                        <li>Cron Jobs</li>
-                        <li>Elestic Reindex Data</li>
-                    </ul>
-                </li>
-            </ul>
-
-        </ul>
-    <!-- </div> -->
-
-    <!-- Placeholder -->
-    <ul class="drop-button">
-        <label for="">Placeholder</label>
-    </ul>
-
-</nav>
-
-
-
-
+</div>
