@@ -29,11 +29,11 @@
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button class="icon drop-button">
+                        <button id="menuFavorites" #dropdownButtonFavorites class="icon drop-button" (click)="openDropdown($event, 'favorites')">    <!--  (click)="openDropdown('favorites')" -->
                             <span class="icon-star favorite" style="font-size: 1.5em; position: relative; top: 1px;"></span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownFavorites" #dropdownFavorites class="drop-content-container" *ngIf="showSubFavorites">
                             <div class="drop-content-wrapper">
 
                                 <!-- todo -->
@@ -45,6 +45,7 @@
                                     <div *ngIf="item.favorite" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         routerLink="{{item.url}}"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -76,18 +77,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button class="drop-button">
+                        <button #dropdownButtonWorkspace class="drop-button" (click)="openDropdown($event, 'workspace')">
                             <span class="icon-pencilwrench menu-icon" style="position: relative; top: 1px;"></span>
                             <span>Workspace</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div #dropdownWorkspace class="drop-content-container" *ngIf="showSubWorkspace">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -103,23 +105,24 @@
                 </div>
             </div>
 
-            <!-- Contacts -->
+            <!-- Contact -->
             <div class="header-item-container-1" [ngClass]="classContacts">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button class="drop-button">
+                        <button id="menuContact" #dropdownButtonContact class="drop-button" (click)="openDropdown($event, 'contact')">
                             <span class="icon-group menu-icon"></span>
                             <span>Kontakte</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownContact" #dropdownContact class="drop-content-container" *ngIf="showSubContact">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/contact'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -140,18 +143,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button class="drop-button">
+                        <button id="menuOperations" #dropdownButtonOperations class="drop-button" (click)="openDropdown($event, 'operations')">
                             <span class="icon-handshake-o menu-icon"></span>
                             <span>Vorgänge & Belege</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownOperations" #dropdownOperations class="drop-content-container" *ngIf="showSubOperations">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/operations'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -172,18 +176,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button class="drop-button">
+                        <button id="menuOrderProcessing" #dropdownButtonOrderProcessing class="drop-button" (click)="openDropdown($event, 'orderProcessing')">
                             <span class="icon-paperplane menu-icon"></span>
                             <span>Auftragsabwicklung</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownOrderProcessing" #dropdownOrderProcessing class="drop-content-container" *ngIf="showSubOrderProcessing">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/orderProcessing'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -204,18 +209,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button class="drop-button">
+                        <button id="menuAccounting" #dropdownButtonAccounting class="drop-button" (click)="openDropdown($event, 'accounting')">
                             <span class="icon-coins menu-icon"></span>
                             <span>Rechnungswesen</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownAccounting" #dropdownAccounting class="drop-content-container" *ngIf="showSubAccounting">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/accounting'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -236,18 +242,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button class="drop-button">
+                        <button id="menuProductManagement" #dropdownButtonProductManagement class="drop-button"(click)="openDropdown($event, 'productManagement')">
                             <span class="icon-cubes menu-icon" style="position: relative; top: 1px;"></span>
                             <span>Produktverwaltung</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownProductManagement" #dropdownProductManagement class="drop-content-container" *ngIf="showSubProductManagement">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/productManagement'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -268,18 +275,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown right">
 
-                        <button class="drop-button">
+                        <button id="menuContracting" #dropdownButtonContracting class="drop-button"(click)="openDropdown($event, 'contracting')">
                             <span class="icon-medal menu-icon" style="position: relative; top: 1px;"></span>
                             <span>Vertragswesen</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownContracting" #dropdownContracting class="drop-content-container" *ngIf="showSubContracting">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/contracting'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -300,18 +308,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button class="drop-button">
+                        <button id="menuToolsAssets" #dropdownButtonToolsAssets class="drop-button" (click)="openDropdown($event, 'toolsAssets')">
                             <span class="icon-tools menu-icon"></span>
                             <span>Tools & Assets</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownToolsAssets" #dropdownToolsAssets class="drop-content-container" *ngIf="showSubToolsAssets">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/toolsAssets'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -332,18 +341,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown right">
 
-                        <button class="drop-button">
+                        <button id="menuStatisticsReporting" #dropdownButtonStatisticsReporting class="drop-button" (click)="openDropdown($event, 'statisticsReporting')">
                             <span class="icon-bar-graph-2 menu-icon"></span>
                             <span>Statistik & Reporting</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownStatisticsReporting" #dropdownStatisticsReporting class="drop-content-container" *ngIf="showSubStatisticsReporting">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/statisticsReporting'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -364,18 +374,19 @@
                 <div class="header-item-container-2">
                     <div class="dropdown right">
 
-                        <button class="drop-button">
+                        <button id="menuTest" #dropdownButtonTest class="drop-button" (click)="openDropdown($event, 'test')">
                             <span class="icon-bar-graph-2 menu-icon"></span>
                             <span>TEST</span>
                         </button>
 
-                        <div class="drop-content-container">
+                        <div id="dropdownTest" #dropdownTest class="drop-content-container" *ngIf="showSubTest">
                             <div class="drop-content-wrapper">
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.class == '/private/placeholder'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
                                         (click)="onSelectionChange(item.name)"
+                                        (click)="closeAllDropdowns()"
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
@@ -400,7 +411,6 @@
             </div> -->
 
         </div>
-
 
 
         <!-- HEADER RIGHT -->

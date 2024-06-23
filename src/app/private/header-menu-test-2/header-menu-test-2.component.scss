@@ -108,6 +108,7 @@ $content-background: #d6d6d6;
                     position: fixed;
                     padding-top: 3px;
                     display: none;
+                    display: block;
 
                     .drop-content-wrapper {
                         background-color: white;
@@ -182,7 +183,7 @@ $content-background: #d6d6d6;
             }
 
             .dropdown:hover .drop-content-container {
-                display: block;
+                // display: block;
             }
 
             .dropdown:hover .drop-button {

@@ -13,6 +13,7 @@ $highlight-color-lighter: #fae4d7;
     background-color: $highlight-color-mid;
     display: grid;
     grid-template-rows: 52px auto;
+    // grid-template-rows: auto auto;
     height: 100vh;
     overflow: visible;
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 
 @Component({
@@ -16,6 +16,29 @@ import { RouterModule, Router } from '@angular/router';
 export class HeaderMenuTest2Component {
     @Output() selectionChanged: EventEmitter<string> = new EventEmitter<string>();
 
+    @ViewChild('dropdownButtonFavorites') dropdownButtonFavorites!: ElementRef;
+    @ViewChild('dropdownFavorites') dropdownFavorites!: ElementRef;
+    @ViewChild('dropdownButtonWorkspace') dropdownButtonWorkspace!: ElementRef;
+    @ViewChild('dropdownWorkspace') dropdownWorkspace!: ElementRef;
+    @ViewChild('dropdownButtonContact') dropdownButtonContact!: ElementRef;
+    @ViewChild('dropdownContact') dropdownContact!: ElementRef;
+    @ViewChild('dropdownButtonOperations') dropdownButtonOperations!: ElementRef;
+    @ViewChild('dropdownOperations') dropdownOperations!: ElementRef;
+    @ViewChild('dropdownButtonOrderProcessing') dropdownButtonOrderProcessing!: ElementRef;
+    @ViewChild('dropdownOrderProcessing') dropdownOrderProcessing!: ElementRef;
+    @ViewChild('dropdownButtonAccounting') dropdownButtonAccounting!: ElementRef;
+    @ViewChild('dropdownAccounting') dropdownAccounting!: ElementRef;
+    @ViewChild('dropdownButtonProductManagement') dropdownButtonProductManagement!: ElementRef;
+    @ViewChild('dropdownProductManagement') dropdownProductManagement!: ElementRef;
+    @ViewChild('dropdownButtonContracting') dropdownButtonContracting!: ElementRef;
+    @ViewChild('dropdownContracting') dropdownContracting!: ElementRef;
+    @ViewChild('dropdownButtonToolsAssets') dropdownButtonToolsAssets!: ElementRef;
+    @ViewChild('dropdownToolsAssets') dropdownToolsAssets!: ElementRef;
+    @ViewChild('dropdownButtonStatisticsReporting') dropdownButtonStatisticsReporting!: ElementRef;
+    @ViewChild('dropdownStatisticsReporting') dropdownStatisticsReporting!: ElementRef;
+    @ViewChild('dropdownButtonTest') dropdownButtonTest!: ElementRef;
+    @ViewChild('dropdownTest') dropdownTest!: ElementRef;
+
     classFavorite: string ="";
     classDashboard: string ="";
     classWorkspace: string ="";
@@ -29,6 +52,18 @@ export class HeaderMenuTest2Component {
     classStatisticsReporting: string ="";
     classPlaceholder: string ="";
 
+    showSubFavorites: boolean = false;
+    showSubWorkspace: boolean = false;
+    showSubContact: boolean = false;
+    showSubOperations: boolean = false;
+    showSubOrderProcessing: boolean = false;
+    showSubAccounting: boolean = false;
+    showSubProductManagement: boolean = false;
+    showSubContracting: boolean = false;
+    showSubToolsAssets: boolean = false;
+    showSubStatisticsReporting: boolean = false;
+    showSubTest: boolean = false;
+
     menuItems: { name: string, class: string, url: string, favorite: boolean } [] = [
         // Dashboard
         // *********
@@ -38,18 +73,18 @@ export class HeaderMenuTest2Component {
         // *********
         { name: "Aufgaben", class: "/private/workspace", url: "/private/task", favorite: true },
         { name: "Planner", class: "/private/workspace", url: "/private/planner", favorite: false },
-        { name: "Kampagnen", class: "/private/workspace", url: "/private/campagne", favorite: true },
+        { name: "Kampagnen", class: "/private/workspace", url: "/private/campagne", favorite: false },
         { name: "E-Mail", class: "/private/workspace", url: "/private/email", favorite: false },
 
         // Contact (as Kontakte)
         // *********************
-        { name: "Unternehmen", class: "/private/contact", url: "/private/company", favorite: false },
-        { name: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: true },
-        { name: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: true },
-        { name: "Benutzer", class: "/private/contact", url: "/private/user", favorite: true },
+        { name: "Unternehmen", class: "/private/contact", url: "/private/company", favorite: true },
+        { name: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: false },
+        { name: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: false },
+        { name: "Benutzer", class: "/private/contact", url: "/private/user", favorite: false },
         { name: "Modulberechtigungen", class: "/private/contact", url: "/private/module-auth", favorite: false },
         { name: "Unternehmenswiki", class: "/private/contact", url: "/private/company-wiki", favorite: false },
-        { name: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: true },
+        { name: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: false },
         { name: "Adressen", class: "/private/contact", url: "/private/address", favorite: false },
 
         // operations (as Vorgänge & Belege)
@@ -57,16 +92,16 @@ export class HeaderMenuTest2Component {
         { name: "Verkaufsvorgänge", class: "/private/operations", url: "/private/sales-transaction", favorite: true },
         { name: "Angebote", class: "/private/operations", url: "/private/offer", favorite: false },
         { name: "Aufträge", class: "/private/operations", url: "/private/order", favorite: false },
-        { name: "Rechnungen", class: "/private/operations", url: "/private/invoice", favorite: true },
+        { name: "Rechnungen", class: "/private/operations", url: "/private/invoice", favorite: false },
         { name: "Teilaufträge", class: "/private/operations", url: "/private/partial-order", favorite: false },
         { name: "Alle Belege", class: "/private/operations", url: "/private/document", favorite: false },
 
         // orderProcessing (as Auftragsabwicklung)
         // ***************************************
-        { name: "Multipostings", class: "/private/orderProcessing", url: "/private/multiposting", favorite: false },
+        { name: "Multipostings", class: "/private/orderProcessing", url: "/private/multiposting", favorite: true },
         { name: "Postings", class: "/private/orderProcessing", url: "/private/posting", favorite: false },
-        { name: "Stellenanzeigen", class: "/private/orderProcessing", url: "/private/advertisements", favorite: true },
-        { name: "Print", class: "/private/orderProcessing", url: "/private/print", favorite: true },
+        { name: "Stellenanzeigen", class: "/private/orderProcessing", url: "/private/advertisements", favorite: false },
+        { name: "Print", class: "/private/orderProcessing", url: "/private/print", favorite: false },
         { name: "Dienstleistungen & Sonstiges", class: "/private/orderProcessing", url: "/private/service", favorite: false },
 
         // accounting (as Rechnungswesen)
@@ -74,38 +109,38 @@ export class HeaderMenuTest2Component {
         { name: "Ausgangsrechungen", class: "/private/accounting", url: "/private/invoice-out", favorite: true },
         { name: "Rechnungspositionsgruppen", class: "/private/accounting", url: "/private/inv-position-group", favorite: false },
         { name: "Auftragspositionen", class: "/private/accounting", url: "/private/order-position", favorite: false },
-        { name: "Belegs-PDFs", class: "/private/accounting", url: "/private/documents-pdf", favorite: true },
+        { name: "Belegs-PDFs", class: "/private/accounting", url: "/private/documents-pdf", favorite: false },
         { name: "Eingangsrechnungen", class: "/private/accounting", url: "/private/invoice-in", favorite: false },
 
         // productManagement (as Produktverwaltung)
         // ****************************************
-        { name: "Produkte", class: "/private/productManagement", url: "/private/product", favorite: false },
-        { name: "Produktvarianten", class: "/private/productManagement", url: "/private/product-variant", favorite: true },
-        { name: "Produktgruppen", class: "/private/productManagement", url: "/private/product-group", favorite: true },
+        { name: "Produkte", class: "/private/productManagement", url: "/private/product", favorite: true },
+        { name: "Produktvarianten", class: "/private/productManagement", url: "/private/product-variant", favorite: false },
+        { name: "Produktgruppen", class: "/private/productManagement", url: "/private/product-group", favorite: false },
         { name: "PGV-Gruppen", class: "/private/productManagement", url: "/private/product-group-variant", favorite: false },
         { name: "Positionsvorlagen", class: "/private/productManagement", url: "/private/position-template", favorite: false },
-        { name: "Übertragungswege", class: "/private/productManagement", url: "/private/trans-path", favorite: true },
+        { name: "Übertragungswege", class: "/private/productManagement", url: "/private/trans-path", favorite: false },
         { name: "Zusatzangaben", class: "/private/productManagement", url: "/private/additional-data", favorite: false },
 
         // Vertragswesen (as contracting)
         // ******************************
-        { name: "Kundenverträge", class: "/private/contracting", url: "/private/customer-contract", favorite: false },
-        { name: "Lieferantenverträge", class: "/private/contracting", url: "/private/supplier-contract", favorite: true },
+        { name: "Kundenverträge", class: "/private/contracting", url: "/private/customer-contract", favorite: true },
+        { name: "Lieferantenverträge", class: "/private/contracting", url: "/private/supplier-contract", favorite: false },
         { name: "Partner-Konfiguration", class: "/private/contracting", url: "/private/partner-config", favorite: false },
 
         // toolsAssets (as Tools & Assets)
         // *******************************
         { name: "Smart-Template", class: "/private/toolsAssets", url: "/private/smart-template", favorite: true },
-        { name: "Bewerbungsformulare", class: "/private/toolsAssets", url: "/private/job-form", favorite: true },
+        { name: "Bewerbungsformulare", class: "/private/toolsAssets", url: "/private/job-form", favorite: false },
         { name: "Schnittstellen", class: "/private/toolsAssets", url: "/private/interface", favorite: false },
         { name: "Global-Fonts", class: "/private/toolsAssets", url: "/private/global-font", favorite: false },
 
         // statisticsReporting (as Statistik & Reporting)
         // **********************************************
-        { name: "Umsatzstatistik", class: "/private/statisticsReporting", url: "/private/sales-statistic", favorite: false },
+        { name: "Umsatzstatistik", class: "/private/statisticsReporting", url: "/private/sales-statistic", favorite: true },
         { name: "Teamstatistik", class: "/private/statisticsReporting", url: "/private/team-statistic", favorite: false },
-        { name: "KPI-Report", class: "/private/statisticsReporting", url: "/private/kpi-report", favorite: true },
-        { name: "Klick-Report", class: "/private/statisticsReporting", url: "/private/click-report", favorite: true },
+        { name: "KPI-Report", class: "/private/statisticsReporting", url: "/private/kpi-report", favorite: false },
+        { name: "Klick-Report", class: "/private/statisticsReporting", url: "/private/click-report", favorite: false },
 
         // TEST
         // ****
@@ -115,7 +150,7 @@ export class HeaderMenuTest2Component {
         { name: "TEST-4", class: "/private/placeholder", url: "/private/test-4", favorite: false },
     ];
 
-    constructor (private router: Router) {
+    constructor (private router: Router, private eRef: ElementRef) {
     }
 
     ngOnInit(): void {
@@ -123,16 +158,18 @@ export class HeaderMenuTest2Component {
         this.onSelectionChange('Dashboard');
     }
 
-    /*  Sends the name of the current selected menu-item to the parant (private) component to show the menu-name at the content title
-        @param: selectedValue > Name of the current menu-item
-    */
+    /**
+     * Sends the name of the current selected menu-item to the parant (private) component to show the menu-name at the content title
+     * @param selectedValue
+     */
     onSelectionChange(selectedValue: string): void {
         this.selectionChanged.emit(selectedValue);
     }
 
-    /*  Changes the CSS-Classes from the active / pre-active / post-active menu-item
-        @param: url > gets the current url from the button when it is clicked
-    */
+    /**
+     * Changes the CSS-Classes from the active / pre-active / post-active menu-item
+     * @param url
+     */
     setItemClass(url: string): void {
         if (url == "/private/dashboard") {
             this.classFavorite = "pre-active";
@@ -276,8 +313,170 @@ export class HeaderMenuTest2Component {
         };
     }
 
-    /*  toggles the favorite-icon at the menu-items
-        @param: item
+    /**
+     *
+     * @param event
+     * @param name
+     */
+    openDropdown(event: Event, name: string): void {
+        this.closeAllDropdowns();
+
+        switch (name) {
+            case 'favorites':
+                this.showSubFavorites = !this.showSubFavorites;
+                break;
+            case 'workspace':
+                this.showSubWorkspace = !this.showSubWorkspace;
+                break;
+            case 'contact':
+                this.showSubContact = !this.showSubContact;
+                break;
+            case 'operations':
+                this.showSubOperations = !this.showSubOperations;
+                break;
+            case 'orderProcessing':
+                this.showSubOrderProcessing = !this.showSubOrderProcessing;
+                break;
+            case 'accounting':
+                this.showSubAccounting = !this.showSubAccounting;
+                break;
+            case 'productManagement':
+                this.showSubProductManagement = !this.showSubProductManagement;
+                break;
+            case 'contracting':
+                this.showSubContracting = !this.showSubContracting;
+                break;
+            case 'toolsAssets':
+                this.showSubToolsAssets = !this.showSubToolsAssets;
+                break;
+            case 'statisticsReporting':
+                this.showSubStatisticsReporting = !this.showSubStatisticsReporting;
+                break;
+            case 'test':
+                this.showSubTest = !this.showSubTest;
+                break;
+        }
+    }
+
+    /**
+     *
+     */
+    closeAllDropdowns() {
+        this.showSubFavorites = false;
+        this.showSubWorkspace = false;
+        this.showSubContact = false;
+        this.showSubOperations = false;
+        this.showSubOrderProcessing = false;
+        this.showSubAccounting = false;
+        this.showSubProductManagement = false;
+        this.showSubContracting = false;
+        this.showSubToolsAssets = false;
+        this.showSubStatisticsReporting = false;
+        this.showSubTest = false;
+    }
+
+    /**
+     *
+     * @param event
+     */
+    @HostListener('document:click', ['$event'])
+    onClickOutsid(event: Event) {
+        const target = event.target as HTMLElement;
+        const elementId = target.id;
+        const elementClasses = target.className;
+
+        if (
+            this.showSubFavorites &&
+            !this.dropdownFavorites.nativeElement.contains(event.target) &&
+            !this.dropdownButtonFavorites.nativeElement.contains(event.target)
+        ) {
+            this.showSubFavorites = false;
+        }
+
+        if (
+            this.showSubWorkspace &&
+            !this.dropdownWorkspace.nativeElement.contains(event.target) &&
+            !this.dropdownButtonWorkspace.nativeElement.contains(event.target)
+        ) {
+            this.showSubWorkspace = false;
+        }
+
+        if (
+            this.showSubContact &&
+            !this.dropdownContact.nativeElement.contains(event.target) &&
+            !this.dropdownButtonContact.nativeElement.contains(event.target)
+        ) {
+            this.showSubContact = false;
+        }
+
+        if (
+            this.showSubOperations &&
+            !this.dropdownOperations.nativeElement.contains(event.target) &&
+            !this.dropdownButtonOperations.nativeElement.contains(event.target)
+        ) {
+            this.showSubOperations = false;
+        }
+
+        if (
+            this.showSubOrderProcessing &&
+            !this.dropdownOrderProcessing.nativeElement.contains(event.target) &&
+            !this.dropdownButtonOrderProcessing.nativeElement.contains(event.target)
+        ) {
+            this.showSubOrderProcessing = false;
+        }
+
+        if (
+            this.showSubAccounting &&
+            !this.dropdownAccounting.nativeElement.contains(event.target) &&
+            !this.dropdownButtonAccounting.nativeElement.contains(event.target)
+        ) {
+            this.showSubAccounting = false;
+        }
+
+        if (
+            this.showSubProductManagement &&
+            !this.dropdownProductManagement.nativeElement.contains(event.target) &&
+            !this.dropdownButtonProductManagement.nativeElement.contains(event.target)
+        ) {
+            this.showSubProductManagement = false;
+        }
+
+        if (
+            this.showSubContracting &&
+            !this.dropdownContracting.nativeElement.contains(event.target) &&
+            !this.dropdownButtonContracting.nativeElement.contains(event.target)
+        ) {
+            this.showSubContracting = false;
+        }
+
+        if (
+            this.showSubToolsAssets &&
+            !this.dropdownToolsAssets.nativeElement.contains(event.target) &&
+            !this.dropdownButtonToolsAssets.nativeElement.contains(event.target)
+        ) {
+            this.showSubToolsAssets = false;
+        }
+
+        if (
+            this.showSubStatisticsReporting &&
+            !this.dropdownStatisticsReporting.nativeElement.contains(event.target) &&
+            !this.dropdownButtonStatisticsReporting.nativeElement.contains(event.target)
+        ) {
+            this.showSubStatisticsReporting = false;
+        }
+
+        if (
+            this.showSubTest &&
+            !this.dropdownTest.nativeElement.contains(event.target) &&
+            !this.dropdownButtonTest.nativeElement.contains(event.target)
+        ) {
+            this.showSubTest = false;
+        }
+    }
+
+   /**
+    * toggles the favorite-icon at the menu-items
+    * @param item
     */
     toggleFavorite(item: any) {
         item.favorite = !item.favorite;

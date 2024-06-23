@@ -25,6 +25,8 @@ export class PrivateComponent {
     selectedValueFromMainMenu: string = '';
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
+
+    toggleMenuTitel: string = "Toggle menu to hover";
     menu1: boolean = false;
     menu2: boolean = false;
     menu3: boolean = true;
@@ -51,6 +53,12 @@ export class PrivateComponent {
 
     toggleMenu(): void {
         this.menu3 = !this.menu3;
-        this.menu2 = !this.menu2;
+        this.menu1 = !this.menu1;
+
+        if (this.menu3) {
+            this.toggleMenuTitel = "Toggle menu to hover";
+        } else {
+            this.toggleMenuTitel = "Toggle menu to click";
+        }
     }
 }
