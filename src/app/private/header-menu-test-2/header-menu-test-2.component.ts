@@ -64,7 +64,9 @@ export class HeaderMenuTest2Component {
     showSubStatisticsReporting: boolean = false;
     showSubTest: boolean = false;
 
-    menuItems: { name: string, title: string, class: string, url: string, favorite: boolean, hasDropdown: boolean, iconOnly: boolean } [] = [
+
+
+    menuSubItems: { name: string, title: string, class: string, url: string, favorite: boolean, hasDropdown: boolean, iconOnly: boolean } [] = [
         // Favorites
         // *********
         { name: "favorites", title: "Favorites", class: "/private/favorites", url: "/private/favorites", favorite: false, hasDropdown: true, iconOnly: true },

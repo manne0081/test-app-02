@@ -36,7 +36,7 @@
                         <div id="dropdownFavorites" #dropdownFavorites class="drop-content-container" *ngIf="showSubFavorites">
                             <div class="drop-content-wrapper">
 
-                                <ng-container *ngFor="let item of menuItems, index as i">
+                                <ng-container *ngFor="let item of menuSubItems, index as i">
 
                                     <div *ngIf="item.favorite" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
@@ -80,7 +80,7 @@
 
                         <div #dropdownWorkspace class="drop-content-container" *ngIf="showSubWorkspace">
                             <div class="drop-content-wrapper">
-                                <ng-container *ngFor="let item of menuItems, index as i">
+                                <ng-container *ngFor="let item of menuSubItems, index as i">
 
                                     <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
@@ -379,7 +379,7 @@
 
                         <div id="dropdownTest" #dropdownTest class="drop-content-container" *ngIf="showSubTest">
                             <div class="drop-content-wrapper">
-                                <ng-container *ngFor="let item of menuItems, index as i">
+                                <ng-container *ngFor="let item of menuSubItems, index as i">
 
                                     <div *ngIf="item.class == '/private/placeholder'" class="drop-item-container"
                                         (click)="setItemClass(item.class)"
