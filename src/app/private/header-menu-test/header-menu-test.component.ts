@@ -22,8 +22,9 @@ export class HeaderMenuTestComponent {
     @Input() xPosition?: MenuPositionX;
     @Input() backdropClass: string = 'panel-test';
 
-    @Output() selectionChanged: EventEmitter<string> = new EventEmitter<string>();
     @ViewChild('animalsTrigger') animalsTrigger!: MatMenuTrigger;
+
+    @Output() selectionChanged: EventEmitter<string> = new EventEmitter<string>();
 
     classFavorite: string ="";
     classDashboard: string ="";

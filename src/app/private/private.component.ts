@@ -31,12 +31,13 @@ export class PrivateComponent {
     menu2: boolean = false;
     menu3: boolean = true;
 
-    constructor() {
+    constructor(private router: RouterModule) {
     }
 
     ngOnInit(): void {
         this.toggleQuicklinkVisibility();
         this.toggleAddInfoVisibility();
+        this.onMainMenuSelectionChanged('Dashboard');
     }
 
     onMainMenuSelectionChanged(selectedValue: string) {
