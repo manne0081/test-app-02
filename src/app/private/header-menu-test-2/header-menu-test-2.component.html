@@ -36,10 +36,6 @@
                         <div id="dropdownFavorites" #dropdownFavorites class="drop-content-container" *ngIf="showSubFavorites">
                             <div class="drop-content-wrapper">
 
-                                <!-- todo -->
-                                <!-- Die letzten X geöffneten url's anzeigen. Art und Weise und wie viele ist noch unklar -->
-
-
                                 <ng-container *ngFor="let item of menuItems, index as i">
 
                                     <div *ngIf="item.favorite" class="drop-item-container"
@@ -73,7 +69,7 @@
             </div>
 
             <!-- Workspace -->
-            <div class="header-item-container-1" [ngClass]="classWorkspace">
+            <!-- <div class="header-item-container-1" [ngClass]="classWorkspace">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -93,7 +89,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -103,10 +98,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Contact -->
-            <div class="header-item-container-1" [ngClass]="classContacts">
+            <!-- <div class="header-item-container-1" [ngClass]="classContacts">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -126,7 +121,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -136,10 +130,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Operations -->
-            <div class="header-item-container-1" [ngClass]="classOperations">
+            <!-- <div class="header-item-container-1" [ngClass]="classOperations">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -159,7 +153,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -169,10 +162,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Order Processing -->
-            <div class="header-item-container-1" [ngClass]="classOrderProcessing">
+            <!-- <div class="header-item-container-1" [ngClass]="classOrderProcessing">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -192,7 +185,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -202,10 +194,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Accounting -->
-            <div class="header-item-container-1" [ngClass]="classAccounting">
+            <!-- <div class="header-item-container-1" [ngClass]="classAccounting">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -225,7 +217,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -235,10 +226,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Product Management -->
-            <div class="header-item-container-1" [ngClass]="classProductManagement">
+            <!-- <div class="header-item-container-1" [ngClass]="classProductManagement">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -258,7 +249,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -268,10 +258,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Contracting -->
-            <div class="header-item-container-1" [ngClass]="classContracting">
+            <!-- <div class="header-item-container-1" [ngClass]="classContracting">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -291,7 +281,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -301,10 +290,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Tools & Assets -->
-            <div class="header-item-container-1" [ngClass]="classToolsAssets">
+            <!-- <div class="header-item-container-1" [ngClass]="classToolsAssets">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -324,7 +313,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -334,10 +322,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Statistics & Reporting -->
-            <div class="header-item-container-1" [ngClass]="classStatisticsReporting">
+            <!-- <div class="header-item-container-1" [ngClass]="classStatisticsReporting">
                 <div class="header-item-container-2">
                     <div class="dropdown right">
 
@@ -357,7 +345,6 @@
                                         [routerLink]="item.url"
                                     >
                                         <span class="sub-menu-label">{{item.name}}</span>
-                                        <!-- <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span> -->
                                         <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
                                     </div>
 
@@ -367,7 +354,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- TEST -->
             <div class="header-item-container-1" [ngClass]="classPlaceholder">
