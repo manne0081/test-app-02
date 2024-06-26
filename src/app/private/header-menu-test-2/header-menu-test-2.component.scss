@@ -80,6 +80,16 @@ $content-background: #d6d6d6;
                     text-shadow: 0 0 3px rgb(153, 145, 26), 0 0 5px rgb(105, 99, 12);
                 }
 
+                span.icon-search {
+                    font-size: 1.2em;
+                }
+
+                span.icon-star.favorite {
+                    font-size: 1.5em;
+                    position: relative;
+                    top: 1px;
+                }
+
 
             }
 

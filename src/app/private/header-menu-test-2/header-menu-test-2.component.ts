@@ -64,7 +64,13 @@ export class HeaderMenuTest2Component {
     showSubStatisticsReporting: boolean = false;
     showSubTest: boolean = false;
 
-
+    menuItems: { name: string, hasIconOnly: boolean, iconClass: string, title: string, container1Class: string, } [] = [
+        { name: 'searching', hasIconOnly: true, iconClass: 'icon-search', title: '', container1Class: 'classContacts' },
+        { name: 'favorites', hasIconOnly: true, iconClass: 'icon-star favorite', title: '', container1Class: 'classFavorite' },
+        { name: 'dashboard', hasIconOnly: false, iconClass: 'icon-grid menu-icon', title: 'Dashboard', container1Class: 'classDashboard' },
+        { name: 'workspace', hasIconOnly: false, iconClass: 'icon-pencilwrench menu-icon', title: 'Workspace', container1Class: 'classWorkspace' },
+        { name: 'contacts', hasIconOnly: false, iconClass: 'icon-group menu-icon', title: 'Kontakte', container1Class: 'classContacts' },
+    ]
 
     menuSubItems: { name: string, title: string, class: string, url: string, favorite: boolean, hasDropdown: boolean, iconOnly: boolean } [] = [
         // Favorites
