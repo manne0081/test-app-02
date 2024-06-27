@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, EventEmitter, Output, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, HostListener, ElementRef, QueryList, ViewChild, AfterViewInit, ViewChildren } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 
 @Component({
@@ -13,31 +13,34 @@ import { RouterModule, Router } from '@angular/router';
     styleUrl: './header-menu-test-2.component.scss'
 })
 
-export class HeaderMenuTest2Component {
+export class HeaderMenuTest2Component implements AfterViewInit {
     @Output() selectionChanged: EventEmitter<string> = new EventEmitter<string>();
 
-    @ViewChild('dropdownButtonFavorites') dropdownButtonFavorites!: ElementRef;
-    @ViewChild('dropdownFavorites') dropdownFavorites!: ElementRef;
-    @ViewChild('dropdownButtonWorkspace') dropdownButtonWorkspace!: ElementRef;
-    @ViewChild('dropdownWorkspace') dropdownWorkspace!: ElementRef;
-    @ViewChild('dropdownButtonContact') dropdownButtonContact!: ElementRef;
-    @ViewChild('dropdownContact') dropdownContact!: ElementRef;
-    @ViewChild('dropdownButtonOperations') dropdownButtonOperations!: ElementRef;
-    @ViewChild('dropdownOperations') dropdownOperations!: ElementRef;
-    @ViewChild('dropdownButtonOrderProcessing') dropdownButtonOrderProcessing!: ElementRef;
-    @ViewChild('dropdownOrderProcessing') dropdownOrderProcessing!: ElementRef;
-    @ViewChild('dropdownButtonAccounting') dropdownButtonAccounting!: ElementRef;
-    @ViewChild('dropdownAccounting') dropdownAccounting!: ElementRef;
-    @ViewChild('dropdownButtonProductManagement') dropdownButtonProductManagement!: ElementRef;
-    @ViewChild('dropdownProductManagement') dropdownProductManagement!: ElementRef;
-    @ViewChild('dropdownButtonContracting') dropdownButtonContracting!: ElementRef;
-    @ViewChild('dropdownContracting') dropdownContracting!: ElementRef;
-    @ViewChild('dropdownButtonToolsAssets') dropdownButtonToolsAssets!: ElementRef;
-    @ViewChild('dropdownToolsAssets') dropdownToolsAssets!: ElementRef;
-    @ViewChild('dropdownButtonStatisticsReporting') dropdownButtonStatisticsReporting!: ElementRef;
-    @ViewChild('dropdownStatisticsReporting') dropdownStatisticsReporting!: ElementRef;
-    @ViewChild('dropdownButtonTest') dropdownButtonTest!: ElementRef;
-    @ViewChild('dropdownTest') dropdownTest!: ElementRef;
+    @ViewChildren('dropdownButton') buttons!: QueryList<ElementRef>;
+    @ViewChildren('dropdown') dropdowns!: QueryList<ElementRef>;
+
+    // @ViewChild('dropdownButtonFavorites') dropdownButtonFavorites!: ElementRef;
+    // @ViewChild('dropdownFavorites') dropdownFavorites!: ElementRef;
+    // @ViewChild('dropdownButtonWorkspace') dropdownButtonWorkspace!: ElementRef;
+    // @ViewChild('dropdownWorkspace') dropdownWorkspace!: ElementRef;
+    // @ViewChild('dropdownButtonContact') dropdownButtonContact!: ElementRef;
+    // @ViewChild('dropdownContact') dropdownContact!: ElementRef;
+    // @ViewChild('dropdownButtonOperations') dropdownButtonOperations!: ElementRef;
+    // @ViewChild('dropdownOperations') dropdownOperations!: ElementRef;
+    // @ViewChild('dropdownButtonOrderProcessing') dropdownButtonOrderProcessing!: ElementRef;
+    // @ViewChild('dropdownOrderProcessing') dropdownOrderProcessing!: ElementRef;
+    // @ViewChild('dropdownButtonAccounting') dropdownButtonAccounting!: ElementRef;
+    // @ViewChild('dropdownAccounting') dropdownAccounting!: ElementRef;
+    // @ViewChild('dropdownButtonProductManagement') dropdownButtonProductManagement!: ElementRef;
+    // @ViewChild('dropdownProductManagement') dropdownProductManagement!: ElementRef;
+    // @ViewChild('dropdownButtonContracting') dropdownButtonContracting!: ElementRef;
+    // @ViewChild('dropdownContracting') dropdownContracting!: ElementRef;
+    // @ViewChild('dropdownButtonToolsAssets') dropdownButtonToolsAssets!: ElementRef;
+    // @ViewChild('dropdownToolsAssets') dropdownToolsAssets!: ElementRef;
+    // @ViewChild('dropdownButtonStatisticsReporting') dropdownButtonStatisticsReporting!: ElementRef;
+    // @ViewChild('dropdownStatisticsReporting') dropdownStatisticsReporting!: ElementRef;
+    // @ViewChild('dropdownButtonTest') dropdownButtonTest!: ElementRef;
+    // @ViewChild('dropdownTest') dropdownTest!: ElementRef;
 
     classFavorite: string ="";
     classDashboard: string ="";
@@ -52,6 +55,7 @@ export class HeaderMenuTest2Component {
     classStatisticsReporting: string ="";
     classPlaceholder: string ="";
 
+    // Alt > Kann weg, wenn die neue Art und Weise funktioniert
     showSubFavorites: boolean = false;
     showSubWorkspace: boolean = false;
     showSubContact: boolean = false;
@@ -64,12 +68,32 @@ export class HeaderMenuTest2Component {
     showSubStatisticsReporting: boolean = false;
     showSubTest: boolean = false;
 
-    menuItems: { name: string, hasIconOnly: boolean, iconClass: string, title: string, container1Class: string, } [] = [
-        { name: 'searching', hasIconOnly: true, iconClass: 'icon-search', title: '', container1Class: 'classContacts' },
-        { name: 'favorites', hasIconOnly: true, iconClass: 'icon-star favorite', title: '', container1Class: 'classFavorite' },
-        { name: 'dashboard', hasIconOnly: false, iconClass: 'icon-grid menu-icon', title: 'Dashboard', container1Class: 'classDashboard' },
-        { name: 'workspace', hasIconOnly: false, iconClass: 'icon-pencilwrench menu-icon', title: 'Workspace', container1Class: 'classWorkspace' },
-        { name: 'contacts', hasIconOnly: false, iconClass: 'icon-group menu-icon', title: 'Kontakte', container1Class: 'classContacts' },
+    menuItems: { name: string,
+                 hasIconOnly: boolean,
+                 iconClass: string,
+                 container1Class: string,
+
+                 title?: string,
+                 class?: string,
+                 showSubMenu?: boolean,
+                 routerLink?: string,
+                 buttonRef?: ElementRef,
+                 dropdownRef?: ElementRef } [] = [
+
+                    { name: 'searching', hasIconOnly: true, iconClass: 'icon-search', container1Class: 'classContacts',
+                      class: '', showSubMenu: false },
+
+                    { name: 'favorites', hasIconOnly: true, iconClass: 'icon-star favorite', container1Class: 'classFavorite',
+                      class: '/private/favorites', showSubMenu: false },
+
+                    { name: 'dashboard', hasIconOnly: false, iconClass: 'icon-grid menu-icon', title: 'Dashboard', container1Class: 'classDashboard',
+                      class: '', showSubMenu: false, routerLink: '/private/dashboard' },
+
+                    { name: 'workspace', hasIconOnly: false, iconClass: 'icon-pencilwrench menu-icon', title: 'Workspace', container1Class: 'classWorkspace',
+                      class: '/private/workspace', showSubMenu: false },
+
+                    { name: 'contact', hasIconOnly: false, iconClass: 'icon-group menu-icon', title: 'Kontakte', container1Class: 'classContacts',
+                      class: '/private/contact', showSubMenu: false },
     ]
 
     menuSubItems: { name: string, title: string, class: string, url: string, favorite: boolean, hasDropdown: boolean, iconOnly: boolean } [] = [
@@ -83,21 +107,21 @@ export class HeaderMenuTest2Component {
 
         // Workspace
         // *********
-        { name: "aufgaben", title: "", class: "/private/workspace", url: "/private/task", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "planner", title: "", class: "/private/workspace", url: "/private/planner", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "kampagnen", title: "", class: "/private/workspace", url: "/private/campagne", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "email", title: "", class: "/private/workspace", url: "/private/email", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "task", title: "Aufgaben", class: "/private/workspace", url: "/private/task", favorite: true, hasDropdown: true, iconOnly: false },
+        { name: "planner", title: "Planner", class: "/private/workspace", url: "/private/planner", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "campagne", title: "Kampangen", class: "/private/workspace", url: "/private/campagne", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "email", title: "E-Mail", class: "/private/workspace", url: "/private/email", favorite: false, hasDropdown: true, iconOnly: false },
 
         // Contact (as Kontakte)
         // *********************
-        { name: "unternehmen", title: "", class: "/private/contact", url: "/private/company", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "lieferanten", title: "", class: "/private/contact", url: "/private/supplier", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "ansprechpartner", title: "", class: "/private/contact", url: "/private/contact", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "benutzer", title: "", class: "/private/contact", url: "/private/user", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "modulberechtigungen", title: "", class: "/private/contact", url: "/private/module-auth", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "unternehmenswiki", title: "", class: "/private/contact", url: "/private/company-wiki", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "debitorDaten", title: "", class: "/private/contact", url: "/private/debitor-data", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "adressen", title: "", class: "/private/contact", url: "/private/address", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "company", title: "Unternehmen", class: "/private/contact", url: "/private/company", favorite: true, hasDropdown: true, iconOnly: false },
+        { name: "supplier", title: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "contact", title: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "user", title: "Benutzer", class: "/private/contact", url: "/private/user", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "module-auth", title: "Modulberechtigungen", class: "/private/contact", url: "/private/module-auth", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "company-wiki", title: "Unternehmens-Wiki", class: "/private/contact", url: "/private/company-wiki", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "debitor-data", title: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "address", title: "Adressen", class: "/private/contact", url: "/private/address", favorite: false, hasDropdown: true, iconOnly: false },
 
         // operations (as Vorgänge & Belege)
         // *********************************
@@ -169,6 +193,40 @@ export class HeaderMenuTest2Component {
         this.setItemClass("/private/dashboard");
         this.onSelectionChange('Dashboard');
     }
+
+    ngAfterViewInit() {
+        // if (this.buttons) {
+        //     this.buttons.forEach((button, index) => {
+        //         this.menuItems[index].buttonRef = button;
+        //     });
+        // } else {
+        //     console.error('Buttons QueryList is not initialized');
+        // }
+
+        console.log('ngAfterViewInit - Buttons QueryList:', this.buttons);
+
+        if (this.buttons && this.buttons.toArray().length > 0) {
+            this.buttons.forEach((button, index) => {
+                console.log(`Assigning buttonRef for index ${index}`);
+                this.menuItems[index].buttonRef = button;
+            });
+        } else {
+            console.error('Buttons QueryList is not initialized or empty');
+        }
+
+        if (this.dropdowns && this.dropdowns.toArray().length > 0) {
+            this.dropdowns.forEach((dropdown, index) => {
+                console.log(`Assigning dropdownRef for index ${index}`);
+                this.menuItems[index].dropdownRef = dropdown;
+            });
+        } else {
+            console.error('Dropdowns QueryList is not initialized or empty');
+        }
+    }
+
+
+
+
 
     /**
      * Sends the name of the current selected menu-item to the parant (private) component to show the menu-name at the content title
@@ -333,58 +391,76 @@ export class HeaderMenuTest2Component {
     openDropdown(event: Event, name: string): void {
         this.closeAllDropdowns();
 
-        switch (name) {
-            case 'favorites':
-                this.showSubFavorites = !this.showSubFavorites;
-                break;
-            case 'workspace':
-                this.showSubWorkspace = !this.showSubWorkspace;
-                break;
-            case 'contact':
-                this.showSubContact = !this.showSubContact;
-                break;
-            case 'operations':
-                this.showSubOperations = !this.showSubOperations;
-                break;
-            case 'orderProcessing':
-                this.showSubOrderProcessing = !this.showSubOrderProcessing;
-                break;
-            case 'accounting':
-                this.showSubAccounting = !this.showSubAccounting;
-                break;
-            case 'productManagement':
-                this.showSubProductManagement = !this.showSubProductManagement;
-                break;
-            case 'contracting':
-                this.showSubContracting = !this.showSubContracting;
-                break;
-            case 'toolsAssets':
-                this.showSubToolsAssets = !this.showSubToolsAssets;
-                break;
-            case 'statisticsReporting':
-                this.showSubStatisticsReporting = !this.showSubStatisticsReporting;
-                break;
-            case 'test':
-                this.showSubTest = !this.showSubTest;
-                break;
-        }
+        this.menuItems.forEach(item => {
+            console.log('openDropdown > menu-items: ' + item.name);
+            if (item.name == name) {
+                console.log('openDropdown > clicked-name: ' + name);
+                item.showSubMenu = true;
+            }
+        });
+
+        // Alt, kann weg wenn das neue funktioniert
+        // ########################################
+        // switch (name) {
+        //     case 'favorites':
+        //         this.showSubFavorites = !this.showSubFavorites;
+        //         break;
+        //     case 'workspace':
+        //         this.showSubWorkspace = !this.showSubWorkspace;
+        //         break;
+        //     case 'contact':
+        //         console.log('openDropdown2: ' + name);
+        //         this.showSubContact = !this.showSubContact;
+        //         console.log('showSubContact: ' + this.showSubContact);
+        //         break;
+        //     case 'operations':
+        //         this.showSubOperations = !this.showSubOperations;
+        //         break;
+        //     case 'orderProcessing':
+        //         this.showSubOrderProcessing = !this.showSubOrderProcessing;
+        //         break;
+        //     case 'accounting':
+        //         this.showSubAccounting = !this.showSubAccounting;
+        //         break;
+        //     case 'productManagement':
+        //         this.showSubProductManagement = !this.showSubProductManagement;
+        //         break;
+        //     case 'contracting':
+        //         this.showSubContracting = !this.showSubContracting;
+        //         break;
+        //     case 'toolsAssets':
+        //         this.showSubToolsAssets = !this.showSubToolsAssets;
+        //         break;
+        //     case 'statisticsReporting':
+        //         this.showSubStatisticsReporting = !this.showSubStatisticsReporting;
+        //         break;
+        //     case 'test':
+        //         this.showSubTest = !this.showSubTest;
+        //         break;
+        // }
     }
 
     /**
      *
      */
     closeAllDropdowns() {
-        this.showSubFavorites = false;
-        this.showSubWorkspace = false;
-        this.showSubContact = false;
-        this.showSubOperations = false;
-        this.showSubOrderProcessing = false;
-        this.showSubAccounting = false;
-        this.showSubProductManagement = false;
-        this.showSubContracting = false;
-        this.showSubToolsAssets = false;
-        this.showSubStatisticsReporting = false;
-        this.showSubTest = false;
+        this.menuItems.forEach(item => {
+            item.showSubMenu = false;
+        });
+
+        // Alt, kann weg wenn das neue funktioniert
+        // ########################################
+        // this.showSubFavorites = false;
+        // this.showSubWorkspace = false;
+        // this.showSubContact = false;
+        // this.showSubOperations = false;
+        // this.showSubOrderProcessing = false;
+        // this.showSubAccounting = false;
+        // this.showSubProductManagement = false;
+        // this.showSubContracting = false;
+        // this.showSubToolsAssets = false;
+        // this.showSubStatisticsReporting = false;
+        // this.showSubTest = false;
     }
 
     /**
@@ -393,97 +469,111 @@ export class HeaderMenuTest2Component {
      */
     @HostListener('document:click', ['$event'])
     onClickOutsid(event: Event) {
+
         const target = event.target as HTMLElement;
-        const elementId = target.id;
-        const elementClasses = target.className;
+        this.menuItems.forEach(item => {
+            if (item.showSubMenu &&
+                item.dropdownRef &&
+                item.buttonRef &&
+                !item.dropdownRef.nativeElement.contains(target) &&
+                !item.buttonRef.nativeElement.contains(target)) {
+                item.showSubMenu = false;
+            }
+        });
 
-        if (
-            this.showSubFavorites &&
-            !this.dropdownFavorites.nativeElement.contains(event.target) &&
-            !this.dropdownButtonFavorites.nativeElement.contains(event.target)
-        ) {
-            this.showSubFavorites = false;
-        }
 
-        if (
-            this.showSubWorkspace &&
-            !this.dropdownWorkspace.nativeElement.contains(event.target) &&
-            !this.dropdownButtonWorkspace.nativeElement.contains(event.target)
-        ) {
-            this.showSubWorkspace = false;
-        }
+        // Alt > Kann weg, wenn das neu funktioniert...
+        // const target = event.target as HTMLElement;
+        // const elementId = target.id;
+        // const elementClasses = target.className;
 
-        if (
-            this.showSubContact &&
-            !this.dropdownContact.nativeElement.contains(event.target) &&
-            !this.dropdownButtonContact.nativeElement.contains(event.target)
-        ) {
-            this.showSubContact = false;
-        }
+        // if (
+        //     this.showSubFavorites &&
+        //     !this.dropdownFavorites.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonFavorites.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubFavorites = false;
+        // }
 
-        if (
-            this.showSubOperations &&
-            !this.dropdownOperations.nativeElement.contains(event.target) &&
-            !this.dropdownButtonOperations.nativeElement.contains(event.target)
-        ) {
-            this.showSubOperations = false;
-        }
+        // if (
+        //     this.showSubWorkspace &&
+        //     !this.dropdownWorkspace.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonWorkspace.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubWorkspace = false;
+        // }
 
-        if (
-            this.showSubOrderProcessing &&
-            !this.dropdownOrderProcessing.nativeElement.contains(event.target) &&
-            !this.dropdownButtonOrderProcessing.nativeElement.contains(event.target)
-        ) {
-            this.showSubOrderProcessing = false;
-        }
+        // if (
+        //     this.showSubContact &&
+        //     !this.dropdownContact.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonContact.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubContact = false;
+        // }
 
-        if (
-            this.showSubAccounting &&
-            !this.dropdownAccounting.nativeElement.contains(event.target) &&
-            !this.dropdownButtonAccounting.nativeElement.contains(event.target)
-        ) {
-            this.showSubAccounting = false;
-        }
+        // if (
+        //     this.showSubOperations &&
+        //     !this.dropdownOperations.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonOperations.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubOperations = false;
+        // }
 
-        if (
-            this.showSubProductManagement &&
-            !this.dropdownProductManagement.nativeElement.contains(event.target) &&
-            !this.dropdownButtonProductManagement.nativeElement.contains(event.target)
-        ) {
-            this.showSubProductManagement = false;
-        }
+        // if (
+        //     this.showSubOrderProcessing &&
+        //     !this.dropdownOrderProcessing.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonOrderProcessing.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubOrderProcessing = false;
+        // }
 
-        if (
-            this.showSubContracting &&
-            !this.dropdownContracting.nativeElement.contains(event.target) &&
-            !this.dropdownButtonContracting.nativeElement.contains(event.target)
-        ) {
-            this.showSubContracting = false;
-        }
+        // if (
+        //     this.showSubAccounting &&
+        //     !this.dropdownAccounting.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonAccounting.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubAccounting = false;
+        // }
 
-        if (
-            this.showSubToolsAssets &&
-            !this.dropdownToolsAssets.nativeElement.contains(event.target) &&
-            !this.dropdownButtonToolsAssets.nativeElement.contains(event.target)
-        ) {
-            this.showSubToolsAssets = false;
-        }
+        // if (
+        //     this.showSubProductManagement &&
+        //     !this.dropdownProductManagement.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonProductManagement.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubProductManagement = false;
+        // }
 
-        if (
-            this.showSubStatisticsReporting &&
-            !this.dropdownStatisticsReporting.nativeElement.contains(event.target) &&
-            !this.dropdownButtonStatisticsReporting.nativeElement.contains(event.target)
-        ) {
-            this.showSubStatisticsReporting = false;
-        }
+        // if (
+        //     this.showSubContracting &&
+        //     !this.dropdownContracting.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonContracting.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubContracting = false;
+        // }
 
-        if (
-            this.showSubTest &&
-            !this.dropdownTest.nativeElement.contains(event.target) &&
-            !this.dropdownButtonTest.nativeElement.contains(event.target)
-        ) {
-            this.showSubTest = false;
-        }
+        // if (
+        //     this.showSubToolsAssets &&
+        //     !this.dropdownToolsAssets.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonToolsAssets.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubToolsAssets = false;
+        // }
+
+        // if (
+        //     this.showSubStatisticsReporting &&
+        //     !this.dropdownStatisticsReporting.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonStatisticsReporting.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubStatisticsReporting = false;
+        // }
+
+        // if (
+        //     this.showSubTest &&
+        //     !this.dropdownTest.nativeElement.contains(event.target) &&
+        //     !this.dropdownButtonTest.nativeElement.contains(event.target)
+        // ) {
+        //     this.showSubTest = false;
+        // }
     }
 
    /**

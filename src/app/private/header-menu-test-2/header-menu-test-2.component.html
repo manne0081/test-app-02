@@ -12,24 +12,22 @@
             </div>
 
             <!-- Searching -->
-            <div class="header-item-container-1">
+            <!-- <div class="header-item-container-1">
                 <div class="header-item-container-2" style="padding-left: 0px">
 
                     <button class="icon">
                         <span class="icon-search"></span>
                     </button>
 
-                    <!-- todo -->
-
                 </div>
-            </div>
+            </div> -->
 
             <!-- Favorite -->
-            <div class="header-item-container-1" [ngClass]="classFavorite">
+            <!-- <div class="header-item-container-1" [ngClass]="classFavorite">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
-                        <button id="menuFavorites" #dropdownButtonFavorites class="icon drop-button" (click)="openDropdown($event, 'favorites')">    <!--  (click)="openDropdown('favorites')" -->
+                        <button id="menuFavorites" #dropdownButtonFavorites class="icon drop-button" (click)="openDropdown($event, 'favorites')">
                             <span class="icon-star favorite"></span>
                         </button>
 
@@ -54,10 +52,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Dashboard -->
-            <div class="header-item-container-1" [ngClass]="classDashboard" routerLink="/private/dashboard">
+            <!-- <div class="header-item-container-1" [ngClass]="classDashboard" routerLink="/private/dashboard">
                 <div class="header-item-container-2">
 
                     <button (click)="setItemClass('/private/dashboard')" (click)="onSelectionChange('Dashboard')">
@@ -66,10 +64,10 @@
                     </button>
 
                 </div>
-            </div>
+            </div> -->
 
             <!-- Workspace -->
-            <div class="header-item-container-1" [ngClass]="classWorkspace">
+            <!-- <div class="header-item-container-1" [ngClass]="classWorkspace">
                 <div class="header-item-container-2">
                     <div class="dropdown">
 
@@ -98,7 +96,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
 
@@ -107,28 +105,31 @@
 
             <div *ngFor="let menuItem of menuItems" class="header-item-container-1" [ngClass]="menuItem.container1Class">
                 <div class="header-item-container-2">
-                    <div class="dropdown">
+                    <div class="dropdown" #dropdown>
 
-                        <button id="menuContact" #dropdownButtonContact class="drop-button" (click)="openDropdown($event, 'contact')">
+                        <!-- <button id="menuContact" #dropdownButtonContact class="drop-button" (click)="openDropdown($event, menuItem.name)" routerLink="{{menuItem.routerLink}}"> -->
+                        <button id="menuContact" #dropdownButton class="drop-button" (click)="openDropdown($event, menuItem.name)" routerLink="{{menuItem.routerLink}}">
                             <span class="{{menuItem.iconClass}}"></span>
                             <span *ngIf="!menuItem.hasIconOnly">{{menuItem.title}}</span>
                         </button>
 
-                        <div id="dropdownContact" #dropdownContact class="drop-content-container" *ngIf="showSubContact">
+                        <div id="dropdownContact" class="drop-content-container" *ngIf="menuItem.showSubMenu">    <!--  *ngIf="showSubContact" -->
                             <div class="drop-content-wrapper">
-                                <ng-container *ngFor="let item of menuSubItems, index as i">
 
-                                    <!-- <div *ngIf="item.class == '/private/contact'" class="drop-item-container"
-                                        (click)="setItemClass(item.class)"
-                                        (click)="onSelectionChange(item.name)"
+                                <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
+
+                                    <div *ngIf="menuSubItem.class == menuItem.class" class="drop-item-container"
+                                        (click)="setItemClass(menuSubItem.class)"
+                                        (click)="onSelectionChange(menuSubItem.title)"
                                         (click)="closeAllDropdowns()"
-                                        [routerLink]="item.url"
+                                        [routerLink]="menuSubItem.url"
                                     >
-                                        <span class="sub-menu-label">{{item.name}}</span>
-                                        <span [ngClass]="item.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
-                                    </div> -->
+                                        <span class="sub-menu-label">{{menuSubItem.title}}</span>
+                                        <span [ngClass]="menuSubItem.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(menuSubItem); $event.stopPropagation();"></span>
+                                    </div>
 
                                 </ng-container>
+
                             </div>
                         </div>
 
