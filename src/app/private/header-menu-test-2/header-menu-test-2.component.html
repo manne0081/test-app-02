@@ -117,7 +117,6 @@
                             <div class="drop-content-wrapper">
 
                                 <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
-
                                     <div *ngIf="menuSubItem.parentName == menuItem.name" class="drop-item-container"
                                         (click)="setItemClass(menuSubItem.parentName)"
                                         (click)="onSelectionChange(menuSubItem.title)"
@@ -127,7 +126,6 @@
                                         <span class="sub-menu-label">{{menuSubItem.title}}</span>
                                         <span [ngClass]="menuSubItem.favorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(menuSubItem); $event.stopPropagation();"></span>
                                     </div>
-
                                 </ng-container>
 
                             </div>

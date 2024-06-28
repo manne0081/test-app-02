@@ -80,6 +80,8 @@ export class HeaderMenuTest2Component implements AfterViewInit {
                  buttonRef?: ElementRef,
                  dropdownRef?: ElementRef } [] = [
 
+                    // { name: 'placeholder', hasIconOnly: false, iconClass: '' },
+
                     { name: 'searching', hasIconOnly: true, iconClass: 'icon-search',
                       class: '', showSubMenu: false },
 
@@ -98,94 +100,94 @@ export class HeaderMenuTest2Component implements AfterViewInit {
                     { name: 'placeholder', hasIconOnly: false, iconClass: '' },
     ]
 
-    menuSubItems: { name: string, parentName?: string, title: string, class: string, url: string, favorite: boolean, hasDropdown: boolean, iconOnly: boolean } [] = [
+    menuSubItems: { name: string, parentName?: string, title: string, class: string, url: string, favorite: boolean, hasDropdown: boolean } [] = [
         // Favorites
         // *********
-        { name: "favorites", parentName: 'favorites', title: "Favorites", class: "/private/favorites", url: "/private/favorites", favorite: false, hasDropdown: true, iconOnly: true },
+        { parentName: 'favorites', name: "favorites", title: "Favorites", class: "/private/favorites", url: "/private/favorites", favorite: false, hasDropdown: true },
 
         // Dashboard
         // *********
-        { name: "dashboard", title: "Dashboard", class: "/private/dashboard", url: "/private/dashbaord", favorite: false, hasDropdown: false, iconOnly: false },
+        { name: "dashboard", title: "Dashboard", class: "/private/dashboard", url: "/private/dashbaord", favorite: false, hasDropdown: false },
 
         // Workspace
         // *********
-        { name: "task", parentName: 'workspace', title: "Aufgaben", class: "/private/workspace", url: "/private/task", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "planner", parentName: 'workspace', title: "Planner", class: "/private/workspace", url: "/private/planner", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "campagne", parentName: 'workspace', title: "Kampangen", class: "/private/workspace", url: "/private/campagne", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "email", parentName: 'workspace', title: "E-Mail", class: "/private/workspace", url: "/private/email", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "task", parentName: 'workspace', title: "Aufgaben", class: "/private/workspace", url: "/private/task", favorite: true, hasDropdown: true },
+        { name: "planner", parentName: 'workspace', title: "Planner", class: "/private/workspace", url: "/private/planner", favorite: false, hasDropdown: true },
+        { name: "campagne", parentName: 'workspace', title: "Kampangen", class: "/private/workspace", url: "/private/campagne", favorite: false, hasDropdown: true },
+        { name: "email", parentName: 'workspace', title: "E-Mail", class: "/private/workspace", url: "/private/email", favorite: false, hasDropdown: true },
 
         // Contact (as Kontakte)
         // *********************
-        { name: "company", parentName: 'contact', title: "Unternehmen", class: "/private/contact", url: "/private/company", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "supplier", parentName: 'contact', title: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "contact", parentName: 'contact', title: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "user", parentName: 'contact', title: "Benutzer", class: "/private/contact", url: "/private/user", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "module-auth", parentName: 'contact', title: "Modulberechtigungen", class: "/private/contact", url: "/private/module-auth", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "company-wiki", parentName: 'contact', title: "Unternehmens-Wiki", class: "/private/contact", url: "/private/company-wiki", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "debitor-data", parentName: 'contact', title: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "address", parentName: 'contact', title: "Adressen", class: "/private/contact", url: "/private/address", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "company", parentName: 'contact', title: "Unternehmen", class: "/private/contact", url: "/private/company", favorite: true, hasDropdown: true },
+        { name: "supplier", parentName: 'contact', title: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: false, hasDropdown: true },
+        { name: "contact", parentName: 'contact', title: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: false, hasDropdown: true },
+        { name: "user", parentName: 'contact', title: "Benutzer", class: "/private/contact", url: "/private/user", favorite: false, hasDropdown: true },
+        { name: "module-auth", parentName: 'contact', title: "Modulberechtigungen", class: "/private/contact", url: "/private/module-auth", favorite: false, hasDropdown: true },
+        { name: "company-wiki", parentName: 'contact', title: "Unternehmens-Wiki", class: "/private/contact", url: "/private/company-wiki", favorite: false, hasDropdown: true },
+        { name: "debitor-data", parentName: 'contact', title: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: false, hasDropdown: true },
+        { name: "address", parentName: 'contact', title: "Adressen", class: "/private/contact", url: "/private/address", favorite: false, hasDropdown: true },
 
         // operations (as Vorgänge & Belege)
         // *********************************
-        { name: "verkaufsvorgänge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/sales-transaction", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "angebote", parentName: 'operations', title: "", class: "/private/operations", url: "/private/offer", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "aufträge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/order", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "rechnungen", parentName: 'operations', title: "", class: "/private/operations", url: "/private/invoice", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "teilaufträge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/partial-order", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "alleBelege", parentName: 'operations', title: "", class: "/private/operations", url: "/private/document", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "verkaufsvorgänge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/sales-transaction", favorite: true, hasDropdown: true },
+        { name: "angebote", parentName: 'operations', title: "", class: "/private/operations", url: "/private/offer", favorite: false, hasDropdown: true },
+        { name: "aufträge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/order", favorite: false, hasDropdown: true },
+        { name: "rechnungen", parentName: 'operations', title: "", class: "/private/operations", url: "/private/invoice", favorite: false, hasDropdown: true },
+        { name: "teilaufträge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/partial-order", favorite: false, hasDropdown: true },
+        { name: "alleBelege", parentName: 'operations', title: "", class: "/private/operations", url: "/private/document", favorite: false, hasDropdown: true },
 
         // orderProcessing (as Auftragsabwicklung)
         // ***************************************
-        { name: "multipostings", title: "", class: "/private/orderProcessing", url: "/private/multiposting", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "postings", title: "", class: "/private/orderProcessing", url: "/private/posting", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "stellenanzeigen", title: "", class: "/private/orderProcessing", url: "/private/advertisements", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "print", title: "", class: "/private/orderProcessing", url: "/private/print", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "dienstleistungenSonstiges", title: "", class: "/private/orderProcessing", url: "/private/service", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "multipostings", title: "", class: "/private/orderProcessing", url: "/private/multiposting", favorite: true, hasDropdown: true },
+        { name: "postings", title: "", class: "/private/orderProcessing", url: "/private/posting", favorite: false, hasDropdown: true },
+        { name: "stellenanzeigen", title: "", class: "/private/orderProcessing", url: "/private/advertisements", favorite: false, hasDropdown: true },
+        { name: "print", title: "", class: "/private/orderProcessing", url: "/private/print", favorite: false, hasDropdown: true },
+        { name: "dienstleistungenSonstiges", title: "", class: "/private/orderProcessing", url: "/private/service", favorite: false, hasDropdown: true },
 
         // accounting (as Rechnungswesen)
         // ******************************
-        { name: "ausgangsrechungen", title: "", class: "/private/accounting", url: "/private/invoice-out", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "rechnungspositionsgruppen", title: "", class: "/private/accounting", url: "/private/inv-position-group", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "auftragspositionen", title: "", class: "/private/accounting", url: "/private/order-position", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "belegsPDFs", title: "", class: "/private/accounting", url: "/private/documents-pdf", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "eingangsrechnungen", title: "", class: "/private/accounting", url: "/private/invoice-in", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "ausgangsrechungen", title: "", class: "/private/accounting", url: "/private/invoice-out", favorite: true, hasDropdown: true },
+        { name: "rechnungspositionsgruppen", title: "", class: "/private/accounting", url: "/private/inv-position-group", favorite: false, hasDropdown: true },
+        { name: "auftragspositionen", title: "", class: "/private/accounting", url: "/private/order-position", favorite: false, hasDropdown: true },
+        { name: "belegsPDFs", title: "", class: "/private/accounting", url: "/private/documents-pdf", favorite: false, hasDropdown: true },
+        { name: "eingangsrechnungen", title: "", class: "/private/accounting", url: "/private/invoice-in", favorite: false, hasDropdown: true },
 
         // productManagement (as Produktverwaltung)
         // ****************************************
-        { name: "produkte", title: "", class: "/private/productManagement", url: "/private/product", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "produktvarianten", title: "", class: "/private/productManagement", url: "/private/product-variant", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "produktgruppen", title: "", class: "/private/productManagement", url: "/private/product-group", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "pgvGruppen", title: "", class: "/private/productManagement", url: "/private/product-group-variant", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "positionsvorlagen", title: "", class: "/private/productManagement", url: "/private/position-template", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "übertragungswege", title: "", class: "/private/productManagement", url: "/private/trans-path", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "zusatzangaben", title: "", class: "/private/productManagement", url: "/private/additional-data", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "produkte", title: "", class: "/private/productManagement", url: "/private/product", favorite: true, hasDropdown: true },
+        { name: "produktvarianten", title: "", class: "/private/productManagement", url: "/private/product-variant", favorite: false, hasDropdown: true },
+        { name: "produktgruppen", title: "", class: "/private/productManagement", url: "/private/product-group", favorite: false, hasDropdown: true },
+        { name: "pgvGruppen", title: "", class: "/private/productManagement", url: "/private/product-group-variant", favorite: false, hasDropdown: true },
+        { name: "positionsvorlagen", title: "", class: "/private/productManagement", url: "/private/position-template", favorite: false, hasDropdown: true },
+        { name: "übertragungswege", title: "", class: "/private/productManagement", url: "/private/trans-path", favorite: false, hasDropdown: true },
+        { name: "zusatzangaben", title: "", class: "/private/productManagement", url: "/private/additional-data", favorite: false, hasDropdown: true },
 
         // Vertragswesen (as contracting)
         // ******************************
-        { name: "kundenverträge", title: "", class: "/private/contracting", url: "/private/customer-contract", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "lieferantenverträge", title: "", class: "/private/contracting", url: "/private/supplier-contract", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "partnerKonfiguration", title: "", class: "/private/contracting", url: "/private/partner-config", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "kundenverträge", title: "", class: "/private/contracting", url: "/private/customer-contract", favorite: true, hasDropdown: true },
+        { name: "lieferantenverträge", title: "", class: "/private/contracting", url: "/private/supplier-contract", favorite: false, hasDropdown: true },
+        { name: "partnerKonfiguration", title: "", class: "/private/contracting", url: "/private/partner-config", favorite: false, hasDropdown: true },
 
         // toolsAssets (as Tools & Assets)
         // *******************************
-        { name: "smartTemplate", title: "", class: "/private/toolsAssets", url: "/private/smart-template", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "bewerbungsformulare", title: "", class: "/private/toolsAssets", url: "/private/job-form", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "schnittstellen", title: "", class: "/private/toolsAssets", url: "/private/interface", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "globalFonts", title: "", class: "/private/toolsAssets", url: "/private/global-font", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "smartTemplate", title: "", class: "/private/toolsAssets", url: "/private/smart-template", favorite: true, hasDropdown: true },
+        { name: "bewerbungsformulare", title: "", class: "/private/toolsAssets", url: "/private/job-form", favorite: false, hasDropdown: true },
+        { name: "schnittstellen", title: "", class: "/private/toolsAssets", url: "/private/interface", favorite: false, hasDropdown: true },
+        { name: "globalFonts", title: "", class: "/private/toolsAssets", url: "/private/global-font", favorite: false, hasDropdown: true },
 
         // statisticsReporting (as Statistik & Reporting)
         // **********************************************
-        { name: "umsatzstatistik", title: "", class: "/private/statisticsReporting", url: "/private/sales-statistic", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "teamstatistik", title: "", class: "/private/statisticsReporting", url: "/private/team-statistic", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "kpiReport", title: "", class: "/private/statisticsReporting", url: "/private/kpi-report", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "klickReport", title: "", class: "/private/statisticsReporting", url: "/private/click-report", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "umsatzstatistik", title: "", class: "/private/statisticsReporting", url: "/private/sales-statistic", favorite: true, hasDropdown: true },
+        { name: "teamstatistik", title: "", class: "/private/statisticsReporting", url: "/private/team-statistic", favorite: false, hasDropdown: true },
+        { name: "kpiReport", title: "", class: "/private/statisticsReporting", url: "/private/kpi-report", favorite: false, hasDropdown: true },
+        { name: "klickReport", title: "", class: "/private/statisticsReporting", url: "/private/click-report", favorite: false, hasDropdown: true },
 
         // TEST
         // ****
-        { name: "TEST-1", title: "", class: "/private/placeholder", url: "/private/test-1", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "TEST-2", title: "", class: "/private/placeholder", url: "/private/test-2", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "TEST-3", title: "", class: "/private/placeholder", url: "/private/test-3", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "TEST-4", title: "", class: "/private/placeholder", url: "/private/test-4", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "TEST-1", title: "", class: "/private/placeholder", url: "/private/test-1", favorite: false, hasDropdown: true },
+        { name: "TEST-2", title: "", class: "/private/placeholder", url: "/private/test-2", favorite: false, hasDropdown: true },
+        { name: "TEST-3", title: "", class: "/private/placeholder", url: "/private/test-3", favorite: false, hasDropdown: true },
+        { name: "TEST-4", title: "", class: "/private/placeholder", url: "/private/test-4", favorite: false, hasDropdown: true },
     ];
 
     constructor (private router: Router, private eRef: ElementRef) {
@@ -244,6 +246,11 @@ export class HeaderMenuTest2Component implements AfterViewInit {
      */
     setItemClass(name: string): void {
 
+        if (name == 'searching') {
+            console.log("Funktion wird unterbrochen.");
+            return;
+        }
+
         this.menuItems.forEach((item) => {
             item.class = '';
         });
@@ -252,18 +259,18 @@ export class HeaderMenuTest2Component implements AfterViewInit {
 
             if (item.name === name) {
                 item.class = 'active';
-                console.log(`Item "${name}" found at index ${index}. Set to 'active'.`);
+                // console.log(`Item "${name}" found at index ${index}. Set to 'active'.`);
 
                 // Set 'pre-active' for the previous item if it exists
                 if (index > 0) {
                     this.menuItems[index - 1].class = 'pre-active';
-                    console.log(`Previous item at index ${index - 1} set to 'pre-active'.`);
+                    // console.log(`Previous item at index ${index - 1} set to 'pre-active'.`);
                 }
 
                 // Set 'post-active' for the next item if it exists
                 if (index < this.menuItems.length - 1) {
                     this.menuItems[index + 1].class = 'post-active';
-                    console.log(`Next item at index ${index + 1} set to 'post-active'.`);
+                    // console.log(`Next item at index ${index + 1} set to 'post-active'.`);
                 } else {
                     console.log(`Next item at index ${index + 1} does not exist.`);
                 }
@@ -428,7 +435,7 @@ export class HeaderMenuTest2Component implements AfterViewInit {
         this.menuItems.forEach((item, index) => {
             // console.log('openDropdown > menu-items: ' + item.name);
             if (item.name == name) {
-                console.log('openDropdown > clicked-name > item.name: ' + item.name + '  -  name: ' + name);
+                console.log('item.name: ' + item.name + '  -  name: ' + name);
                 item.showSubMenu = true;
             }
         });

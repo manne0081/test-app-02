@@ -11,178 +11,26 @@
                 <img src="../../assets/images/logo-design-49570.png" alt="">
             </div>
 
-            <!-- Searching -->
-            <div class="header-item-container-1">
-                <div class="header-item-container-2" style="padding-left: 0px">
-
-                    <button class="icon">
-                        <span class="icon-search" style="font-size: 1.2em"></span>
-                    </button>
-
-                    <!-- todo -->
-
-                </div>
-            </div>
-
-            <!-- Favorite -->
-            <div class="header-item-container-1">
-                <div class="header-item-container-2">
-                    <div class="dropdown">
-
-                        <button class="icon drop-button">
-                            <span class="icon-star favorite" style="font-size: 1.5em; position: relative; top: 1px;"></span>
-                        </button>
-
-                        <div class="drop-content-container">
-                            <div class="drop-content-wrapper">
-
-                                <!-- todo -->
-                                <!-- Die letzten X geöffneten url's anzeigen. Art und Weise und wie viele ist noch unklar -->
-
-
-                                <ng-container *ngFor="let item of menuItems, index as i">
-
-                                    <div *ngIf="item.favorite" class="drop-item-container"
-                                        (click)="setItemClass(item.class)"
-                                        (click)="onSelectionChange(item.name)"
-                                        routerLink="{{item.url}}"
-                                    >
-                                        <span class="sub-menu-label">{{item.name}}</span>
-                                        <span class="icon-star is-favorite" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
-                                    </div>
-
-                                </ng-container>
-                            </div>
-                        </div>
-
+            <div class="header-item-container-green" *ngFor="let menuItem of menuItems, index">
+                <div class="header-item-container-white" [ngClass]="menuItem.status">
+                    <div class="header-item-button">
+                        <span>
+                            {{menuItem.name}}
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- Workspace -->
-            <div class="header-item-container-1">
-                <div class="header-item-container-2">
-                    <div class="dropdown">
 
-                        <button class="drop-button">
-                            <span class="icon-pencilwrench menu-icon" style="position: relative; top: 1px;"></span>
-                            <span>Workspace</span>
-                        </button>
-
-                        <div class="drop-content-container">
-                            <div class="drop-content-wrapper">
-                                <ng-container *ngFor="let item of menuItems, index as i">
-
-                                    <div *ngIf="item.class == '/private/workspace'" class="drop-item-container"
-                                        (click)="setItemClass(item.class)"
-                                        (click)="onSelectionChange(item.name)"
-                                        [routerLink]="item.url"
-                                    >
-                                        <span class="sub-menu-label">{{item.name}}</span>
-                                        <span class="icon-star" (click)="toggleFavorite(item); $event.stopPropagation();"></span>
-                                    </div>
-
-                                </ng-container>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dropdown-Button -> Administration -->
-            <!-- ********************************* -->
-            <div class="header-item-container-1">
-                <div class="header-item-container-2">
-                    <div class="dropdown">
-                        <button class="drop-button" mat-button [matMenuTriggerFor]="admin">
-                            <span>Administration</span>
-                        </button>
-
-                        <!-- administration -->
-                        <mat-menu #admin="matMenu" panelClass="test4">
-                            <button mat-menu-item [matMenuTriggerFor]="userManagement">Mitarbeiterverwaltung</button>
-                            <button mat-menu-item [matMenuTriggerFor]="infoManagement">Informationsmanagement</button>
-                            <button mat-menu-item [matMenuTriggerFor]="systemManagement">Systemverwaltung</button>
-                            <button mat-menu-item [matMenuTriggerFor]="systemMonitoring">System-Monitoring</button>
-                            <button mat-menu-item>
-                                <span>Test 1</span>
-                                <span class="icon-star"></span>
-                            </button>
-                            <button mat-menu-item>Test 2</button>
-                        </mat-menu>
-
-                        <!-- administration -> user-management -->
-                        <mat-menu #userManagement="matMenu" class="drop-sub-container-test">
-                            <ng-template matMenuContent let-name="name">
-                                <button mat-menu-item>
-                                    <span>Mitarbeiter</span>
-                                    <span class="icon-star"></span>    <!-- (click)="toggleFavorite(item); $event.stopPropagation();" -->
-                                </button>
-                                <button mat-menu-item>Teams</button>
-                                <button mat-menu-item>Rechte & Rollen</button>
-                            </ng-template>
-                        </mat-menu>
-
-                        <!-- administration -> info-management -->
-                        <mat-menu #infoManagement="matMenu" class="drop-sub-container-test">
-                            <button mat-menu-item>Statische Seiten</button>
-                            <button mat-menu-item>Wikiseiten</button>
-                            <button mat-menu-item>Hinweise</button>
-                            <button mat-menu-item>Textbausteine</button>
-                            <button mat-menu-item>System-Mails</button>
-                            <button mat-menu-item>Changelogs</button>
-                            <button mat-menu-item>E-Mail Anhänge</button>
-                        </mat-menu>
-
-                        <!-- administration -> system-management -->
-                        <mat-menu #systemManagement="matMenu" class="drop-sub-container-test">
-                            <button mat-menu-item>Mandanten</button>
-                            <button mat-menu-item>Übersetzung</button>
-                            <button mat-menu-item>Mandanten-Konfigurationen</button>
-                            <button mat-menu-item>Margenmodelle</button>
-                            <button mat-menu-item>Merkmale</button>
-                            <button mat-menu-item>Unternehmensbranchen</button>
-                            <button mat-menu-item>Leistungsbereiche</button>
-                            <button mat-menu-item>Art der Arbeit</button>
-                            <button mat-menu-item>Property Mappings</button>
-                            <button mat-menu-item>Potentiale</button>
-                            <button mat-menu-item>PDF-Layouts</button>
-                            <button mat-menu-item>Angebotsablehnungsgrund</button>
-                            <button mat-menu-item>Fachrichtung Jobmenü</button>
-                            <button mat-menu-item>Kategorie</button>
-                            <button mat-menu-item>Agenturen</button>
-                            <button mat-menu-item>Tracking Share Link</button>
-                            <button mat-menu-item>Uploads</button>
-                        </mat-menu>
-
-                        <!-- administration -> system-monitoring -->
-                        <mat-menu #systemMonitoring="matMenu" class="drop-sub-container-test" overlayPanelClass="test4">    <!-- xPosition="before" -->
-                            <ng-template matMenuContent>
-                                <button mat-menu-item>ElasticSearch</button>
-                                <button mat-menu-item>Posting-Access</button>
-                                <button mat-menu-item>Einstellungen</button>
-                                <button mat-menu-item>Status-Changer</button>
-                                <button mat-menu-item>Migration-Status</button>
-                                <button mat-menu-item>Audit-Log</button>
-                                <button mat-menu-item>E-Mails</button>
-                                <button mat-menu-item>Cron Jobs</button>
-                                <button mat-menu-item disabled>Elastic Reindex Data</button>
-                            </ng-template>
-                        </mat-menu>
-                    </div>
-                </div>
-            </div>
 
         </div>
+
 
 
         <!-- HEADER RIGHT -->
         <!-- ************ -->
         <div class="menu-wrapper right">
-
             WIP
-
         </div>
 
     </div>

@@ -26,10 +26,10 @@ export class PrivateComponent {
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
 
-    toggleMenuTitel: string = "Toggle menu to hover";
+    toggleMenuTitel?: string;
     menu1: boolean = false;
-    menu2: boolean = false;
-    menu3: boolean = true;
+    menu2: boolean = true;
+    menu3: boolean = false;
 
     constructor(private router: RouterModule) {
     }
@@ -38,6 +38,7 @@ export class PrivateComponent {
         this.toggleQuicklinkVisibility();
         this.toggleAddInfoVisibility();
         this.onMainMenuSelectionChanged('Dashboard');
+        this.setButtonTitle();
     }
 
     onMainMenuSelectionChanged(selectedValue: string) {
@@ -53,13 +54,19 @@ export class PrivateComponent {
     }
 
     toggleMenu(): void {
+        // this.menu1 = !this.menu1;
+        this.menu2 = !this.menu2;
         this.menu3 = !this.menu3;
-        this.menu1 = !this.menu1;
 
+        this.setButtonTitle();
+    }
+
+    setButtonTitle(): void {
         if (this.menu3) {
-            this.toggleMenuTitel = "Toggle menu to hover";
+            this.toggleMenuTitel = "Toggle menu to Menu-2";
         } else {
-            this.toggleMenuTitel = "Toggle menu to click";
+            this.toggleMenuTitel = "Toggle menu to Menu-3";
         }
     }
+
 }

@@ -37,13 +37,15 @@ $test-app-02-theme: mat.define-light-theme((
 // ************************
 @import './assets/fonts/style.css';
 
+
+
 // GLOBAL VARIABLES
-// ****************
+// ################
+
 :root {
-    // Coloring
-    // --------
+    //  ##  COLORING  ##
+    //  ################
     --background-color: #edf0f5;
-    // --background-color: #53688d;
     --primary-highlight-color: #2c5067;  // rgb(44, 80, 103)
     --secondary-highlight-color: #e2e7eb;  // rgb(44, 80, 103)
     --primary-font-color: #4f4f4f;
@@ -54,8 +56,8 @@ $test-app-02-theme: mat.define-light-theme((
     --scrolbar-color: rgba(44, 80, 103, 0.28);  // #C4CED4
     --scrolbar-bg-color: white;
 
-    // Sizing
-    // ------
+    //  ##  SIZING  ##
+    //  ##############
     --primary-sizing-factor: 42px;
     --width-100: 100vw;
     --height-100: 100vh;
@@ -71,10 +73,14 @@ $test-app-02-theme: mat.define-light-theme((
     --additional-info-width: calc(var(--quicklinks-width) - var(--navigation-width));
 }
 
-// GLOBAL TAG STYLINGS
-// *******************
+
+
+// GLOBAL TAGS
+// ###########
+
 * {
     font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif; ;
     font-size: 16px;
     color: var(--primary-font-color);
     margin: 0px;
@@ -83,8 +89,11 @@ $test-app-02-theme: mat.define-light-theme((
     overflow: hidden;
 }
 
+html { height: 100%; }
+
 body {
     background-color: var(--background-color);
+    height: 100%;
 }
 
 h1 {
@@ -122,7 +131,8 @@ input {
 
 
 // Specialy for Scrollbar
-// **********************
+// ######################
+
 /* width */
 ::-webkit-scrollbar {
     width: 4px;
@@ -155,5 +165,3 @@ input {
     background: rgba(44, 80, 103, .6);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
