@@ -36,6 +36,11 @@ export class HeaderMenuTestComponent implements AfterViewInit {
         { parentName: 'contacts', name: 'company', title: 'Unternehmen', isFavorite: false },
         { parentName: 'contacts', name: 'supplier', title: 'Lieferanten', isFavorite: false },
         { parentName: 'contacts', name: 'contact', title: 'Ansprechpartner', isFavorite: false },
+        { parentName: 'contacts', name: 'user', title: 'Benutzer', isFavorite: false },
+        { parentName: 'contacts', name: 'module-auth', title: 'Modulberechtigungen', isFavorite: false },
+        { parentName: 'contacts', name: 'company-wiki', title: 'Unternehmens-Wiki', isFavorite: false },
+        { parentName: 'contacts', name: 'debitor-data', title: 'Debitor Daten', isFavorite: false },
+        { parentName: 'contacts', name: 'address', title: 'Adressen', isFavorite: false },
     ]
 
     constructor (private router: Router, private eRef: ElementRef) {
