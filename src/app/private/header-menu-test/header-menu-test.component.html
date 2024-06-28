@@ -13,11 +13,11 @@
 
             <div class="header-item-container-green" *ngFor="let menuItem of menuItems, index">
                 <div class="header-item-container-white" [ngClass]="menuItem.status">
-                    <div class="dropdown-container">
+                    <div #dropdown class="dropdown-container">
 
-                        <button class="drop-button" [ngClass]="menuItem.status">
-                            <span class="button-icon" [ngClass]="menuItem.iconClass"></span>
-                            <span class="button-text">{{menuItem.name}}</span>
+                        <button #dropdownButton class="drop-button" [ngClass]="menuItem.status" *ngIf="menuItem.name!='placeholder'" (click)="openDropdown(menuItem.name)">
+                            <span [class]="'button-icon ' + menuItem.iconClass" [ngClass]="{ 'button-icon-is-favorite': menuItem.isFavorite }"></span>
+                            <span class="button-text" *ngIf="menuItem.hasTitle">{{menuItem.title}}</span>
                         </button>
 
                         <div class="drop-content-container" *ngIf="menuItem.showDropdown">
@@ -25,7 +25,7 @@
                                 <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
                                     <div class="drop-item-container" *ngIf="menuSubItem.parentName == menuItem.name">
                                         <span class="drop-item">{{menuSubItem.title}}</span>
-                                        <span class="icon-star"></span>
+                                        <span [ngClass]="menuSubItem.isFavorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(menuSubItem.name)"></span>
                                     </div>
                                 </ng-container>
 
