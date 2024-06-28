@@ -1,3 +1,7 @@
+// LOCAL VARIABLES
+// ###############
+$buttonBorderRadius: 16px;
+
 // MAIN-MENU
 // *********
 .menu-container {
@@ -5,7 +9,7 @@
     height: 100%;
     overflow: visible;
 
-    div {
+    div, button {
         display: flex;
         align-items: center;
     }
@@ -40,13 +44,14 @@
             background-color: lime;
             background-color: #527083;
             height: 44px;
-            // margin: 0 4px;
             position: relative;
             top: 4px;
             align-items: start;
-            border-radius: 6px 6px 0 0;
+            border-radius: $buttonBorderRadius $buttonBorderRadius 0 0;
             overflow: visible;
 
+            // Background-Container WHITE
+            // --------------------------
             .header-item-container-white {
                 background-color: orange;
                 background-color: white;
@@ -54,27 +59,89 @@
                 align-items: start;
                 padding: 0 4px;
 
-                .header-item-button {
-                    background-color: yellow;
-                    background-color: rgba(44, 80, 103, 0.2);
-                    border: 1px solid rgba(44, 80, 103, 0.12);
+                // ##  DROPDOWN  ##
+                // ################
+                .dropdown-container {
+                    // background-color: lime;
                     position: relative;
-                    height: 36px;
-                    border-radius: 6px;
-                    padding: 0 8px;
+                    overflow: visible;
+                    z-index: 10;
+
+                    // ##  BUTTON Layout  ##
+                    // #####################
+                    .drop-button {
+                        background-color: yellow;
+                        background-color: rgba(44, 80, 103, 0.2);
+                        border: 1px solid rgba(44, 80, 103, 0.12);
+                        position: relative;
+                        height: 36px;
+                        border-radius: $buttonBorderRadius;
+                        padding: 0 8px;
+
+                        .button-icon {
+                            font-size: 1.4em;
+                            margin-right: 4px;
+                        }
+                    }
+
+                    .drop-button:not(.active):hover {
+                        background-color: rgba(44, 80, 103, 0.3);
+                        border: 1px solid rgba(44, 80, 103, 0.18);
+                        cursor: pointer;
+
+                        .button-icon {
+                        }
+                    }
+
+                    // ##  CONTENT Layout  ##
+                    // ######################
+                    .drop-content-container {
+                        background-color: orange;
+                        background-color: #D4DCE0;
+                        border: 1px solid rgba(44, 80, 103, 0.18);
+                        position: fixed;
+                        top: 48px;
+                        display: block;
+                        border-radius: 16px;
+
+                        .drop-item-container {
+                            // background-color: lime;
+                            display: flex;
+                            justify-content: space-between;
+
+                            .drop-item {
+                                padding: 8px 12px;
+                                width: 100%;
+                            }
+
+                            .icon-star {
+                                font-size: 1.4em;
+                                padding-right: 12px;
+                            }
+                        }
+
+                        .drop-item-container:hover {
+                            background-color: rgba(44, 80, 103, 0.2);
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
 
+            // ##  CONTAINER / BUTTON - STATUS  ##
+            // ###################################
             .header-item-container-white.pre-active {
-                border-radius: 0 0 6px 0;
+                border-radius: 0 0 $buttonBorderRadius 0;
                 padding-right: 8px;
             }
 
             .header-item-container-white.active {
                 background-color: transparent;
 
-                .header-item-button {
+                .drop-button.active {
                     background-color: transparent;
+                    border: none;
+                    cursor: default;
 
                     span {
                         color: white;
@@ -83,27 +150,11 @@
             }
 
             .header-item-container-white.post-active {
-                border-radius: 0 0 0 6px;
+                border-radius: 0 0 0 $buttonBorderRadius;
                 padding-left: 8px;
             }
-
-
-
         }
-
-
-
-
-
-        .header-item-bg-Container-green {
-
-        }
-
-
-
-
     }
-
 
 
 

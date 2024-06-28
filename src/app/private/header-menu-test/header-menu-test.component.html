@@ -13,10 +13,24 @@
 
             <div class="header-item-container-green" *ngFor="let menuItem of menuItems, index">
                 <div class="header-item-container-white" [ngClass]="menuItem.status">
-                    <div class="header-item-button">
-                        <span>
-                            {{menuItem.name}}
-                        </span>
+                    <div class="dropdown-container">
+
+                        <button class="drop-button" [ngClass]="menuItem.status">
+                            <span class="button-icon" [ngClass]="menuItem.iconClass"></span>
+                            <span class="button-text">{{menuItem.name}}</span>
+                        </button>
+
+                        <div class="drop-content-container" *ngIf="menuItem.showDropdown">
+
+                                <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
+                                    <div class="drop-item-container" *ngIf="menuSubItem.parentName == menuItem.name">
+                                        <span class="drop-item">{{menuSubItem.title}}</span>
+                                        <span class="icon-star"></span>
+                                    </div>
+                                </ng-container>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

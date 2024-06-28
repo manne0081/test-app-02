@@ -113,7 +113,7 @@ export class HeaderMenuTest2Component implements AfterViewInit {
         // *********
         { name: "task", parentName: 'workspace', title: "Aufgaben", class: "/private/workspace", url: "/private/task", favorite: true, hasDropdown: true },
         { name: "planner", parentName: 'workspace', title: "Planner", class: "/private/workspace", url: "/private/planner", favorite: false, hasDropdown: true },
-        { name: "campagne", parentName: 'workspace', title: "Kampangen", class: "/private/workspace", url: "/private/campagne", favorite: false, hasDropdown: true },
+        { name: "campagne", parentName: 'workspace', title: "Kampagnen", class: "/private/workspace", url: "/private/campagne", favorite: false, hasDropdown: true },
         { name: "email", parentName: 'workspace', title: "E-Mail", class: "/private/workspace", url: "/private/email", favorite: false, hasDropdown: true },
 
         // Contact (as Kontakte)
