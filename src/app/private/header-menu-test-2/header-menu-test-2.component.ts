@@ -69,10 +69,10 @@ export class HeaderMenuTest2Component implements AfterViewInit {
     showSubTest: boolean = false;
 
     menuItems: { name: string,
-                 hasIconOnly: boolean,
-                 iconClass: string,
-                 container1Class: string,
 
+                 hasIconOnly?: boolean,
+                 iconClass?: string,
+                 container1Class?: string,
                  title?: string,
                  class?: string,
                  showSubMenu?: boolean,
@@ -80,26 +80,28 @@ export class HeaderMenuTest2Component implements AfterViewInit {
                  buttonRef?: ElementRef,
                  dropdownRef?: ElementRef } [] = [
 
-                    { name: 'searching', hasIconOnly: true, iconClass: 'icon-search', container1Class: 'classContacts',
+                    { name: 'searching', hasIconOnly: true, iconClass: 'icon-search',
                       class: '', showSubMenu: false },
 
                     { name: 'favorites', hasIconOnly: true, iconClass: 'icon-star favorite', container1Class: 'classFavorite',
-                      class: '/private/favorites', showSubMenu: false },
+                      class: 'pre-active', showSubMenu: false },
 
                     { name: 'dashboard', hasIconOnly: false, iconClass: 'icon-grid menu-icon', title: 'Dashboard', container1Class: 'classDashboard',
-                      class: '', showSubMenu: false, routerLink: '/private/dashboard' },
+                      class: 'active', showSubMenu: false, routerLink: '/private/dashboard' },
 
                     { name: 'workspace', hasIconOnly: false, iconClass: 'icon-pencilwrench menu-icon', title: 'Workspace', container1Class: 'classWorkspace',
-                      class: '/private/workspace', showSubMenu: false },
+                      class: 'post-active', showSubMenu: false },
 
                     { name: 'contact', hasIconOnly: false, iconClass: 'icon-group menu-icon', title: 'Kontakte', container1Class: 'classContacts',
-                      class: '/private/contact', showSubMenu: false },
+                      class: '', showSubMenu: false },
+
+                    { name: 'placeholder', hasIconOnly: false, iconClass: '' },
     ]
 
-    menuSubItems: { name: string, title: string, class: string, url: string, favorite: boolean, hasDropdown: boolean, iconOnly: boolean } [] = [
+    menuSubItems: { name: string, parentName?: string, title: string, class: string, url: string, favorite: boolean, hasDropdown: boolean, iconOnly: boolean } [] = [
         // Favorites
         // *********
-        { name: "favorites", title: "Favorites", class: "/private/favorites", url: "/private/favorites", favorite: false, hasDropdown: true, iconOnly: true },
+        { name: "favorites", parentName: 'favorites', title: "Favorites", class: "/private/favorites", url: "/private/favorites", favorite: false, hasDropdown: true, iconOnly: true },
 
         // Dashboard
         // *********
@@ -107,30 +109,30 @@ export class HeaderMenuTest2Component implements AfterViewInit {
 
         // Workspace
         // *********
-        { name: "task", title: "Aufgaben", class: "/private/workspace", url: "/private/task", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "planner", title: "Planner", class: "/private/workspace", url: "/private/planner", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "campagne", title: "Kampangen", class: "/private/workspace", url: "/private/campagne", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "email", title: "E-Mail", class: "/private/workspace", url: "/private/email", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "task", parentName: 'workspace', title: "Aufgaben", class: "/private/workspace", url: "/private/task", favorite: true, hasDropdown: true, iconOnly: false },
+        { name: "planner", parentName: 'workspace', title: "Planner", class: "/private/workspace", url: "/private/planner", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "campagne", parentName: 'workspace', title: "Kampangen", class: "/private/workspace", url: "/private/campagne", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "email", parentName: 'workspace', title: "E-Mail", class: "/private/workspace", url: "/private/email", favorite: false, hasDropdown: true, iconOnly: false },
 
         // Contact (as Kontakte)
         // *********************
-        { name: "company", title: "Unternehmen", class: "/private/contact", url: "/private/company", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "supplier", title: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "contact", title: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "user", title: "Benutzer", class: "/private/contact", url: "/private/user", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "module-auth", title: "Modulberechtigungen", class: "/private/contact", url: "/private/module-auth", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "company-wiki", title: "Unternehmens-Wiki", class: "/private/contact", url: "/private/company-wiki", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "debitor-data", title: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "address", title: "Adressen", class: "/private/contact", url: "/private/address", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "company", parentName: 'contact', title: "Unternehmen", class: "/private/contact", url: "/private/company", favorite: true, hasDropdown: true, iconOnly: false },
+        { name: "supplier", parentName: 'contact', title: "Lieferanten", class: "/private/contact", url: "/private/supplier", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "contact", parentName: 'contact', title: "Ansprechpartner", class: "/private/contact", url: "/private/contact", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "user", parentName: 'contact', title: "Benutzer", class: "/private/contact", url: "/private/user", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "module-auth", parentName: 'contact', title: "Modulberechtigungen", class: "/private/contact", url: "/private/module-auth", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "company-wiki", parentName: 'contact', title: "Unternehmens-Wiki", class: "/private/contact", url: "/private/company-wiki", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "debitor-data", parentName: 'contact', title: "Debitor Daten", class: "/private/contact", url: "/private/debitor-data", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "address", parentName: 'contact', title: "Adressen", class: "/private/contact", url: "/private/address", favorite: false, hasDropdown: true, iconOnly: false },
 
         // operations (as Vorgänge & Belege)
         // *********************************
-        { name: "verkaufsvorgänge", title: "", class: "/private/operations", url: "/private/sales-transaction", favorite: true, hasDropdown: true, iconOnly: false },
-        { name: "angebote", title: "", class: "/private/operations", url: "/private/offer", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "aufträge", title: "", class: "/private/operations", url: "/private/order", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "rechnungen", title: "", class: "/private/operations", url: "/private/invoice", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "teilaufträge", title: "", class: "/private/operations", url: "/private/partial-order", favorite: false, hasDropdown: true, iconOnly: false },
-        { name: "alleBelege", title: "", class: "/private/operations", url: "/private/document", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "verkaufsvorgänge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/sales-transaction", favorite: true, hasDropdown: true, iconOnly: false },
+        { name: "angebote", parentName: 'operations', title: "", class: "/private/operations", url: "/private/offer", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "aufträge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/order", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "rechnungen", parentName: 'operations', title: "", class: "/private/operations", url: "/private/invoice", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "teilaufträge", parentName: 'operations', title: "", class: "/private/operations", url: "/private/partial-order", favorite: false, hasDropdown: true, iconOnly: false },
+        { name: "alleBelege", parentName: 'operations', title: "", class: "/private/operations", url: "/private/document", favorite: false, hasDropdown: true, iconOnly: false },
 
         // orderProcessing (as Auftragsabwicklung)
         // ***************************************
@@ -190,7 +192,7 @@ export class HeaderMenuTest2Component implements AfterViewInit {
     }
 
     ngOnInit(): void {
-        this.setItemClass("/private/dashboard");
+        // this.setItemClass("/private/dashboard");
         this.onSelectionChange('Dashboard');
     }
 
@@ -203,11 +205,11 @@ export class HeaderMenuTest2Component implements AfterViewInit {
         //     console.error('Buttons QueryList is not initialized');
         // }
 
-        console.log('ngAfterViewInit - Buttons QueryList:', this.buttons);
+        // console.log('ngAfterViewInit - Buttons QueryList:', this.buttons);
 
         if (this.buttons && this.buttons.toArray().length > 0) {
             this.buttons.forEach((button, index) => {
-                console.log(`Assigning buttonRef for index ${index}`);
+                // console.log(`Assigning buttonRef for index ${index}`);
                 this.menuItems[index].buttonRef = button;
             });
         } else {
@@ -216,7 +218,7 @@ export class HeaderMenuTest2Component implements AfterViewInit {
 
         if (this.dropdowns && this.dropdowns.toArray().length > 0) {
             this.dropdowns.forEach((dropdown, index) => {
-                console.log(`Assigning dropdownRef for index ${index}`);
+                // console.log(`Assigning dropdownRef for index ${index}`);
                 this.menuItems[index].dropdownRef = dropdown;
             });
         } else {
@@ -240,147 +242,179 @@ export class HeaderMenuTest2Component implements AfterViewInit {
      * Changes the CSS-Classes from the active / pre-active / post-active menu-item
      * @param url
      */
-    setItemClass(url: string): void {
-        if (url == "/private/dashboard") {
-            this.classFavorite = "pre-active";
-            this.classDashboard = "active";
-            this.classWorkspace = "post-active";
-            this.classContacts = "";
-            this.classOperations = "";
-            this.classOrderProcessing = "";
-            this.classAccounting = "";
-            this.classProductManagement = "";
-            this.classContracting = "";
-            this.classToolsAssets = "";
-            this.classStatisticsReporting = "";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/workspace") {
-            this.classFavorite = "";
-            this.classDashboard = "pre-active";
-            this.classWorkspace = "active";
-            this.classContacts = "post-active";
-            this.classOperations = "";
-            this.classOrderProcessing = "";
-            this.classAccounting = "";
-            this.classProductManagement = "";
-            this.classContracting = "";
-            this.classToolsAssets = "";
-            this.classStatisticsReporting = "";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/contact") {
-            this.classFavorite = "";
-            this.classDashboard = "";
-            this.classWorkspace = "pre-active"
-            this.classContacts = "active"
-            this.classOperations = "post-active";
-            this.classOrderProcessing = "";
-            this.classAccounting = "";
-            this.classProductManagement = "";
-            this.classContracting = "";
-            this.classToolsAssets = "";
-            this.classStatisticsReporting = "";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/operations") {
-            this.classFavorite = "";
-            this.classDashboard = "";
-            this.classWorkspace = ""
-            this.classContacts = "pre-active"
-            this.classOperations = "active";
-            this.classOrderProcessing = "post-active";
-            this.classAccounting = "";
-            this.classProductManagement = "";
-            this.classContracting = "";
-            this.classToolsAssets = "";
-            this.classStatisticsReporting = "";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/orderProcessing") {
-            this.classFavorite = "";
-            this.classDashboard = "";
-            this.classWorkspace = ""
-            this.classContacts = ""
-            this.classOperations = "pre-active";
-            this.classOrderProcessing = "active";
-            this.classAccounting = "post-active";
-            this.classProductManagement = "";
-            this.classContracting = "";
-            this.classToolsAssets = "";
-            this.classStatisticsReporting = "";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/accounting") {
-            this.classFavorite = "";
-            this.classDashboard = "";
-            this.classWorkspace = ""
-            this.classContacts = ""
-            this.classOperations = "";
-            this.classOrderProcessing = "pre-active";
-            this.classAccounting = "active";
-            this.classProductManagement = "post-active";
-            this.classContracting = "";
-            this.classToolsAssets = "";
-            this.classStatisticsReporting = "";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/productManagement") {
-            this.classFavorite = "";
-            this.classDashboard = "";
-            this.classWorkspace = ""
-            this.classContacts = ""
-            this.classOperations = "";
-            this.classOrderProcessing = "";
-            this.classAccounting = "pre-active";
-            this.classProductManagement = "active";
-            this.classContracting = "post-active";
-            this.classToolsAssets = "";
-            this.classStatisticsReporting = "";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/contracting") {
-            this.classFavorite = "";
-            this.classDashboard = "";
-            this.classWorkspace = ""
-            this.classContacts = ""
-            this.classOperations = "";
-            this.classOrderProcessing = "";
-            this.classAccounting = "";
-            this.classProductManagement = "pre-active";
-            this.classContracting = "active";
-            this.classToolsAssets = "post-active";
-            this.classStatisticsReporting = "";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/toolsAssets") {
-            this.classFavorite = "";
-            this.classDashboard = "";
-            this.classWorkspace = ""
-            this.classContacts = ""
-            this.classOperations = "";
-            this.classOrderProcessing = "";
-            this.classAccounting = "";
-            this.classProductManagement = "";
-            this.classContracting = "pre-active";
-            this.classToolsAssets = "active";
-            this.classStatisticsReporting = "post-active";
-            this.classPlaceholder = "";
-        };
-        if (url == "/private/statisticsReporting") {
-            this.classFavorite = "";
-            this.classDashboard = "";
-            this.classWorkspace = ""
-            this.classContacts = ""
-            this.classOperations = "";
-            this.classOrderProcessing = "";
-            this.classAccounting = "";
-            this.classProductManagement = "";
-            this.classContracting = "";
-            this.classToolsAssets = "pre-active";
-            this.classStatisticsReporting = "active";
-            this.classPlaceholder = "post-active";
-        };
+    setItemClass(name: string): void {
+
+        this.menuItems.forEach((item) => {
+            item.class = '';
+        });
+
+        this.menuItems.forEach((item, index) => {
+
+            if (item.name === name) {
+                item.class = 'active';
+                console.log(`Item "${name}" found at index ${index}. Set to 'active'.`);
+
+                // Set 'pre-active' for the previous item if it exists
+                if (index > 0) {
+                    this.menuItems[index - 1].class = 'pre-active';
+                    console.log(`Previous item at index ${index - 1} set to 'pre-active'.`);
+                }
+
+                // Set 'post-active' for the next item if it exists
+                if (index < this.menuItems.length - 1) {
+                    this.menuItems[index + 1].class = 'post-active';
+                    console.log(`Next item at index ${index + 1} set to 'post-active'.`);
+                } else {
+                    console.log(`Next item at index ${index + 1} does not exist.`);
+                }
+            }
+        });
+
+
+
+        // if (url == "/private/dashboard") {
+        //     this.classFavorite = "pre-active";
+        //     this.classDashboard = "active";
+        //     this.classWorkspace = "post-active";
+        //     this.classContacts = "";
+        //     this.classOperations = "";
+        //     this.classOrderProcessing = "";
+        //     this.classAccounting = "";
+        //     this.classProductManagement = "";
+        //     this.classContracting = "";
+        //     this.classToolsAssets = "";
+        //     this.classStatisticsReporting = "";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/workspace") {
+        //     this.classFavorite = "";
+        //     this.classDashboard = "pre-active";
+        //     this.classWorkspace = "active";
+        //     this.classContacts = "post-active";
+        //     this.classOperations = "";
+        //     this.classOrderProcessing = "";
+        //     this.classAccounting = "";
+        //     this.classProductManagement = "";
+        //     this.classContracting = "";
+        //     this.classToolsAssets = "";
+        //     this.classStatisticsReporting = "";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/contact") {
+
+        //     console.log('url == /private/contact');
+
+        //     this.classFavorite = "";
+        //     this.classDashboard = "";
+        //     this.classWorkspace = "pre-active"
+        //     this.classContacts = "active"
+        //     this.classOperations = "post-active";
+        //     this.classOrderProcessing = "";
+        //     this.classAccounting = "";
+        //     this.classProductManagement = "";
+        //     this.classContracting = "";
+        //     this.classToolsAssets = "";
+        //     this.classStatisticsReporting = "";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/operations") {
+        //     this.classFavorite = "";
+        //     this.classDashboard = "";
+        //     this.classWorkspace = ""
+        //     this.classContacts = "pre-active"
+        //     this.classOperations = "active";
+        //     this.classOrderProcessing = "post-active";
+        //     this.classAccounting = "";
+        //     this.classProductManagement = "";
+        //     this.classContracting = "";
+        //     this.classToolsAssets = "";
+        //     this.classStatisticsReporting = "";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/orderProcessing") {
+        //     this.classFavorite = "";
+        //     this.classDashboard = "";
+        //     this.classWorkspace = ""
+        //     this.classContacts = ""
+        //     this.classOperations = "pre-active";
+        //     this.classOrderProcessing = "active";
+        //     this.classAccounting = "post-active";
+        //     this.classProductManagement = "";
+        //     this.classContracting = "";
+        //     this.classToolsAssets = "";
+        //     this.classStatisticsReporting = "";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/accounting") {
+        //     this.classFavorite = "";
+        //     this.classDashboard = "";
+        //     this.classWorkspace = ""
+        //     this.classContacts = ""
+        //     this.classOperations = "";
+        //     this.classOrderProcessing = "pre-active";
+        //     this.classAccounting = "active";
+        //     this.classProductManagement = "post-active";
+        //     this.classContracting = "";
+        //     this.classToolsAssets = "";
+        //     this.classStatisticsReporting = "";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/productManagement") {
+        //     this.classFavorite = "";
+        //     this.classDashboard = "";
+        //     this.classWorkspace = ""
+        //     this.classContacts = ""
+        //     this.classOperations = "";
+        //     this.classOrderProcessing = "";
+        //     this.classAccounting = "pre-active";
+        //     this.classProductManagement = "active";
+        //     this.classContracting = "post-active";
+        //     this.classToolsAssets = "";
+        //     this.classStatisticsReporting = "";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/contracting") {
+        //     this.classFavorite = "";
+        //     this.classDashboard = "";
+        //     this.classWorkspace = ""
+        //     this.classContacts = ""
+        //     this.classOperations = "";
+        //     this.classOrderProcessing = "";
+        //     this.classAccounting = "";
+        //     this.classProductManagement = "pre-active";
+        //     this.classContracting = "active";
+        //     this.classToolsAssets = "post-active";
+        //     this.classStatisticsReporting = "";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/toolsAssets") {
+        //     this.classFavorite = "";
+        //     this.classDashboard = "";
+        //     this.classWorkspace = ""
+        //     this.classContacts = ""
+        //     this.classOperations = "";
+        //     this.classOrderProcessing = "";
+        //     this.classAccounting = "";
+        //     this.classProductManagement = "";
+        //     this.classContracting = "pre-active";
+        //     this.classToolsAssets = "active";
+        //     this.classStatisticsReporting = "post-active";
+        //     this.classPlaceholder = "";
+        // };
+        // if (url == "/private/statisticsReporting") {
+        //     this.classFavorite = "";
+        //     this.classDashboard = "";
+        //     this.classWorkspace = ""
+        //     this.classContacts = ""
+        //     this.classOperations = "";
+        //     this.classOrderProcessing = "";
+        //     this.classAccounting = "";
+        //     this.classProductManagement = "";
+        //     this.classContracting = "";
+        //     this.classToolsAssets = "pre-active";
+        //     this.classStatisticsReporting = "active";
+        //     this.classPlaceholder = "post-active";
+        // };
     }
 
     /**
@@ -391,10 +425,10 @@ export class HeaderMenuTest2Component implements AfterViewInit {
     openDropdown(event: Event, name: string): void {
         this.closeAllDropdowns();
 
-        this.menuItems.forEach(item => {
-            console.log('openDropdown > menu-items: ' + item.name);
+        this.menuItems.forEach((item, index) => {
+            // console.log('openDropdown > menu-items: ' + item.name);
             if (item.name == name) {
-                console.log('openDropdown > clicked-name: ' + name);
+                console.log('openDropdown > clicked-name > item.name: ' + item.name + '  -  name: ' + name);
                 item.showSubMenu = true;
             }
         });

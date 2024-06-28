@@ -103,12 +103,12 @@
             <!-- TEST > Menu-Items and Menu-Sub-Items from Array -->
             <!-- ############################################### -->
 
-            <div *ngFor="let menuItem of menuItems" class="header-item-container-1" [ngClass]="menuItem.container1Class">
+            <div *ngFor="let menuItem of menuItems" class="header-item-container-1" [ngClass]="menuItem.class">
                 <div class="header-item-container-2">
-                    <div class="dropdown" #dropdown>
+                    <div class="dropdown" #dropdown *ngIf="menuItem.name!='placeholder'">
 
                         <!-- <button id="menuContact" #dropdownButtonContact class="drop-button" (click)="openDropdown($event, menuItem.name)" routerLink="{{menuItem.routerLink}}"> -->
-                        <button id="menuContact" #dropdownButton class="drop-button" (click)="openDropdown($event, menuItem.name)" routerLink="{{menuItem.routerLink}}">
+                        <button id="menuContact" #dropdownButton class="drop-button" (click)="openDropdown($event, menuItem.name)" (click)="setItemClass(menuItem.name)" routerLink="{{menuItem.routerLink}}">
                             <span class="{{menuItem.iconClass}}"></span>
                             <span *ngIf="!menuItem.hasIconOnly">{{menuItem.title}}</span>
                         </button>
@@ -118,8 +118,8 @@
 
                                 <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
 
-                                    <div *ngIf="menuSubItem.class == menuItem.class" class="drop-item-container"
-                                        (click)="setItemClass(menuSubItem.class)"
+                                    <div *ngIf="menuSubItem.parentName == menuItem.name" class="drop-item-container"
+                                        (click)="setItemClass(menuSubItem.parentName)"
                                         (click)="onSelectionChange(menuSubItem.title)"
                                         (click)="closeAllDropdowns()"
                                         [routerLink]="menuSubItem.url"
@@ -399,7 +399,7 @@
             </div> -->
 
             <!-- TEST -->
-            <div class="header-item-container-1" [ngClass]="classPlaceholder">
+            <!-- <div class="header-item-container-1" [ngClass]="classPlaceholder">
                 <div class="header-item-container-2">
                     <div class="dropdown right">
 
@@ -428,13 +428,13 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Placeholder -->
             <!-- <div class="header-item-container-1" [ngClass]="classPlaceholder">
                 <div class="header-item-container-2">
                     <button class="drop-button">
-                        <span routerLink="/test3" style="cursor: pointer;">TEST-3</span>
+                        <span></span>
                     </button>
                 </div>
             </div> -->
