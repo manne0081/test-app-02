@@ -15,20 +15,41 @@
                 <div class="header-item-container-white" [ngClass]="menuItem.status">
                     <div #dropdown class="dropdown-container">
 
-                        <button #dropdownButton class="drop-button" [ngClass]="menuItem.status" *ngIf="menuItem.name!='placeholder'" (click)="openDropdown(menuItem.name)">
+                        <!-- <button #dropdownButton class="drop-button" [ngClass]="menuItem.status" *ngIf="menuItem.name !== 'placeholder'"
+                                (click)="openDropdown(menuItem.name)" [routerLink]="menuItem.hasLink ? menuItem.route : ''"
+                        >
                             <span [class]="'button-icon ' + menuItem.iconClass" [ngClass]="{ 'button-icon-is-favorite': menuItem.isFavorite }"></span>
                             <span class="button-text" *ngIf="menuItem.hasTitle">{{menuItem.title}}</span>
-                        </button>
+                        </button> -->
+
+                        <!-- TEST -->
+                        <ng-container *ngIf="menuItem.hasLink; else noLink">
+                            <button #dropdownButton class="drop-button" [ngClass]="menuItem.status" *ngIf="menuItem.name !== 'placeholder'"
+                                (click)="openDropdown(menuItem.name)" (click)="setItemClass(menuItem.name)" [routerLink]="menuItem.hasLink ? menuItem.route : ''"
+                            >
+                                <span [class]="'button-icon ' + menuItem.iconClass" [ngClass]="{ 'button-icon-is-favorite': menuItem.isFavorite }"></span>
+                                <span class="button-text" *ngIf="menuItem.hasTitle">{{menuItem.title}}</span>
+                            </button>
+                        </ng-container>
+
+                        <ng-template #noLink>
+                            <button #dropdownButton class="drop-button" [ngClass]="menuItem.status" *ngIf="menuItem.name !== 'placeholder'"
+                                (click)="openDropdown(menuItem.name)"
+                            >
+                                <span [class]="'button-icon ' + menuItem.iconClass" [ngClass]="{ 'button-icon-is-favorite': menuItem.isFavorite }"></span>
+                                <span class="button-text" *ngIf="menuItem.hasTitle">{{menuItem.title}}</span>
+                            </button>
+                        </ng-template>
 
                         <div class="drop-content-container" *ngIf="menuItem.showDropdown">
-
                                 <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
-                                    <div class="drop-item-container" *ngIf="menuSubItem.parentName == menuItem.name">
+                                    <div class="drop-item-container" *ngIf="menuSubItem.parentName == menuItem.name"
+                                         [routerLink]="menuSubItem.route" (click)="setItemClass(menuSubItem.parentName)" (click)="closeAllDropdowns()"
+                                    >
                                         <span class="drop-item">{{menuSubItem.title}}</span>
-                                        <span [ngClass]="menuSubItem.isFavorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(menuSubItem.name)"></span>
+                                        <span [ngClass]="menuSubItem.isFavorite == true ? 'icon-star is-favorite' : 'icon-star'" (click)="toggleFavorite(menuSubItem.name); $event.stopPropagation()"></span>
                                     </div>
                                 </ng-container>
-
                         </div>
 
                     </div>
