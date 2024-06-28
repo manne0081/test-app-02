@@ -43,6 +43,7 @@ export class HeaderMenuTestComponent implements AfterViewInit {
 
     ngOnInit(): void {
         this.toggleFavorite('task');
+        this.toggleFavorite('company');
     }
 
     ngAfterViewInit() {
