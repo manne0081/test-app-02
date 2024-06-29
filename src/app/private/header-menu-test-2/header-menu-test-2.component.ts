@@ -288,7 +288,7 @@ export class HeaderMenuTest2Component implements AfterViewInit {
         this.menuItems.forEach((item, index) => {
             // console.log('openDropdown > menu-items: ' + item.name);
             if (item.name == name) {
-                console.log('item.name: ' + item.name + '  -  name: ' + name);
+                // console.log('item.name: ' + item.name + '  -  name: ' + name);
                 item.showSubMenu = true;
             }
         });

@@ -27,20 +27,20 @@ export class HeaderMenuTestComponent implements AfterViewInit {
         { name: 'placeholder', iconClass: '', hasDropdown: true, showDropdown: false, hasTitle: false, hasLink: false },
     ]
 
-    menuSubItems: { parentName: string, name: string, title: string, isFavorite: boolean, route: string } [] = [
-        { parentName: 'workspace', name: 'task', title: 'Aufgaben', isFavorite: false, route: '/private/task' },
-        { parentName: 'workspace', name: 'planner', title: 'Planner', isFavorite: false, route: '/private/planner' },
-        { parentName: 'workspace', name: 'campagne', title: 'Kampagnen', isFavorite: false, route: '/private/campagne' },
-        { parentName: 'workspace', name: 'email', title: 'E-Mail', isFavorite: false, route: '/private/email' },
+    menuSubItems: { parentName: string, name: string, title: string, isFavorite: boolean, route: string, parentForMenuItemState: string } [] = [
+        { parentName: 'workspace', name: 'task', title: 'Aufgaben', isFavorite: false, route: '/private/task', parentForMenuItemState: 'workspace' },
+        { parentName: 'workspace', name: 'planner', title: 'Planner', isFavorite: false, route: '/private/planner', parentForMenuItemState: 'workspace' },
+        { parentName: 'workspace', name: 'campagne', title: 'Kampagnen', isFavorite: false, route: '/private/campagne', parentForMenuItemState: 'workspace' },
+        { parentName: 'workspace', name: 'email', title: 'E-Mail', isFavorite: false, route: '/private/email', parentForMenuItemState: 'workspace' },
 
-        { parentName: 'contacts', name: 'company', title: 'Unternehmen', isFavorite: false, route: '/private/company' },
-        { parentName: 'contacts', name: 'supplier', title: 'Lieferanten', isFavorite: false, route: '/private/supplier' },
-        { parentName: 'contacts', name: 'contact', title: 'Ansprechpartner', isFavorite: false, route: '/private/contact' },
-        { parentName: 'contacts', name: 'user', title: 'Benutzer', isFavorite: false, route: '/private/user' },
-        { parentName: 'contacts', name: 'module-auth', title: 'Modulberechtigungen', isFavorite: false, route: '/private/module-auth' },
-        { parentName: 'contacts', name: 'company-wiki', title: 'Unternehmens-Wiki', isFavorite: false, route: '/private/company-wiki' },
-        { parentName: 'contacts', name: 'debitor-data', title: 'Debitor Daten', isFavorite: false, route: '/private/debitor-data' },
-        { parentName: 'contacts', name: 'address', title: 'Adressen', isFavorite: false, route: '/private/address' },
+        { parentName: 'contacts', name: 'company', title: 'Unternehmen', isFavorite: false, route: '/private/company', parentForMenuItemState: 'contacts' },
+        { parentName: 'contacts', name: 'supplier', title: 'Lieferanten', isFavorite: false, route: '/private/supplier', parentForMenuItemState: 'contacts' },
+        { parentName: 'contacts', name: 'contact', title: 'Ansprechpartner', isFavorite: false, route: '/private/contact', parentForMenuItemState: 'contacts' },
+        { parentName: 'contacts', name: 'user', title: 'Benutzer', isFavorite: false, route: '/private/user', parentForMenuItemState: 'contacts' },
+        { parentName: 'contacts', name: 'module-auth', title: 'Modulberechtigungen', isFavorite: false, route: '/private/module-auth', parentForMenuItemState: 'contacts' },
+        { parentName: 'contacts', name: 'company-wiki', title: 'Unternehmens-Wiki', isFavorite: false, route: '/private/company-wiki', parentForMenuItemState: 'contacts' },
+        { parentName: 'contacts', name: 'debitor-data', title: 'Debitor Daten', isFavorite: false, route: '/private/debitor-data', parentForMenuItemState: 'contacts' },
+        { parentName: 'contacts', name: 'address', title: 'Adressen', isFavorite: false, route: '/private/address', parentForMenuItemState: 'contacts' },
     ]
 
     constructor (private router: Router, private eRef: ElementRef) {
@@ -80,9 +80,7 @@ export class HeaderMenuTestComponent implements AfterViewInit {
         this.closeAllDropdowns();
 
         this.menuItems.forEach((item, index) => {
-            // console.log('openDropdown > menu-items: ' + item.name);
             if (item.name == name) {
-                console.log('item.name: ' + item.name + '  -  name: ' + name);
                 if (item.hasDropdown) {
                     item.showDropdown = true;
                 }
@@ -113,6 +111,7 @@ export class HeaderMenuTestComponent implements AfterViewInit {
                 if (item.isFavorite) {
                     const favoriteItem = {
                         parentName: 'favorites',
+                        parentForMenuItemState: item.parentName,
                         name: item.name,
                         title: item.title,
                         isFavorite: true,
@@ -120,6 +119,7 @@ export class HeaderMenuTestComponent implements AfterViewInit {
                     };
                     this.menuSubItems.push(favoriteItem);
                 } else {
+                    // Remove the subMenuItem from the favorites-array
                     this.menuSubItems = this.menuSubItems.filter(subItem =>
                         !(subItem.parentName === 'favorites' && subItem.name === item.name)
                     );
@@ -149,9 +149,9 @@ export class HeaderMenuTestComponent implements AfterViewInit {
 
     /**
      * Changes the CSS-Classes from the active / pre-active / post-active menu-item
-     * @param url
+     * @param name
      */
-    setItemClass(name: string): void {
+    markMenuItemAsActive(name: string): void {
 
         if (name == 'searching') {
             console.log("Funktion wird unterbrochen.");
@@ -170,18 +170,24 @@ export class HeaderMenuTestComponent implements AfterViewInit {
                 // Set 'pre-active' for the previous item if it exists
                 if (index > 0) {
                     this.menuItems[index - 1].status = 'pre-active';
-                    // console.log(`Previous item at index ${index - 1} set to 'pre-active'.`);
                 }
 
                 // Set 'post-active' for the next item if it exists
                 if (index < this.menuItems.length - 1) {
                     this.menuItems[index + 1].status = 'post-active';
-                    // console.log(`Next item at index ${index + 1} set to 'post-active'.`);
                 } else {
                     console.log(`Next item at index ${index + 1} does not exist.`);
                 }
             }
         });
+    }
+
+    /**
+     * Sends the name of the current selected menu-item to the parant (private) component to show the menu-name at the content title
+     * @param selectedValue
+     */
+    onSelectionChange(selectedValue: string): void {
+        this.selectionChanged.emit(selectedValue);
     }
 
 }
