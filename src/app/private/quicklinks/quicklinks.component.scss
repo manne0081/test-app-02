@@ -17,14 +17,36 @@
         font-size: 1.1em;
     }
 
-    input {
-        width: 100%;
+    .searching-wrapper {
         background-color: rgb(225, 225, 225);
+        display: flex;
+        align-items: center;
         margin-top: 8px;
+        height: 28px;
         border: 1px solid #b9b9b9;
         border-radius: 4px;
-        padding: 4px 6px;
-        font-size: .9em;
+
+        input {
+            width: 100%;
+            padding: 4px 6px;
+            font-size: .9em;
+        }
+
+        .icon-cancel {
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            height: 80%;
+            width: 24px;
+            margin: 0 3px 0 4px;
+            justify-content: space-around;
+        }
+
+        .icon-cancel:hover {
+            background-color: rgba(168, 40, 40, 0.6);
+            color: white;
+            cursor: pointer;
+        }
     }
 }
 

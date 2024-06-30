@@ -1,5 +1,5 @@
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 import { DragDropModule, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     styleUrl: './quicklinks.component.scss'
 })
 
-export class QuicklinksComponent {
+export class QuicklinksComponent implements OnInit {
     quicklinksVisible:boolean = true;
     searchTerm: string = '';
 
@@ -53,9 +53,17 @@ export class QuicklinksComponent {
 
     constructor() {}
 
+    ngOnInit(): void {
+        this.searchTerm = 'tas';
+    }
+
     get filteredQuicklinks() {
         return this.quicklinks.filter(link =>
             link.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    }
+
+    removeFilterTerm(): void {
+        this.searchTerm = '';
     }
 
     moveDropdown(event: CdkDragDrop<string[]>) {
