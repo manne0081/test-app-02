@@ -26,8 +26,6 @@
 
             <!-- Menuname -->
             <!-- -------- -->
-            <!-- TODO -->
-            <!-- Wie komme ich jetzt in der private-component an die Info, welcher Menüpunkt gewählt wurde? -->
             <span class="content-title-value">{{selectedValueFromMainMenu}}</span>
 
             <!-- Button toggle AddInfos -->
@@ -63,8 +61,8 @@
                 </div>
 
                 <div class="content-items">
-                    <button (click)="toggleMenu()" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px;">{{toggleMenuTitel}}</button>
-                    <br><br>
+                    <!-- <button (click)="toggleMenu()" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px;">{{toggleMenuTitel}}</button>
+                    <br><br> -->
                     <router-outlet></router-outlet>
                 </div>
 
@@ -80,7 +78,10 @@
             <div class="add-info-container" *ngIf="addInfoVisible">
 
                 <div class="add-info-header">AddInfo-Header</div>
-                <div class="add-info-items">Additional Infos</div>
+                <div class="add-info-items">
+                    <button (click)="toggleMenu()" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px;">{{toggleMenuTitel}}</button>
+                </div>
+
 
             </div>
 
