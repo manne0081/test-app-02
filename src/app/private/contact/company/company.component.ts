@@ -22,8 +22,21 @@ export class CompanyComponent implements OnInit {
     generateCompanyItems(): void {
         const numberCompanies: number = 15;
         const companies: string[] = [
-        'Alpha Corp', 'Beta LLC', 'Gamma Inc', 'Delta Ltd', 'Epsilon PLC',
-        'Zeta Group', 'Eta Co', 'Theta Enterprises', 'Iota Partners', 'Kappa Holdings'
+            'Alpha Technologie GmbH',
+            'Beta Solutions AG',
+            'Gamma Industries KG',
+            'Delta Handels OHG',
+            'Epsilon Software UG',
+            'Zeta Bau GmbH & Co. KG',
+            'Eta Logistik GmbH',
+            'Theta Immobilien AG',
+            'Iota Consulting GmbH',
+            'Kappa Electronics SE',
+            'Lambda Energie GmbH',
+            'Mu Transport AG',
+            'Nu Medizintechnik KG',
+            'Xi Finanzdienstleistungen OHG',
+            'Omikron Maschinenbau UG'
         ];
 
         for (let i = 0; i < numberCompanies; i++) {
