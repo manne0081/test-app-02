@@ -1,17 +1,15 @@
 <div class="quicklink-header">
 
     <span>My Quicklinks</span><br>
-    <input type="text" placeholder="Searching...">
+    <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm">
 
 </div>
 
 <div class="quicklink-items-wrapper example-list" cdkDropList
     (cdkDropListDropped)="moveDropdown($event)">
 
-<!-- <div class="quicklink-items-wrapper example-list" cdkDropList> -->
-
     <div class="quicklink-item-container example-box"
-        *ngFor="let item of quicklinks; index as i" cdkDrag>
+        *ngFor="let item of filteredQuicklinks; index as i" cdkDrag>
 
         <div class="quicklink-drag" cdkDragHandle>
             <span class="icon-fullscreen"></span>

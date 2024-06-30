@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DragDropModule, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-quicklinks',
     standalone: true,
     imports: [CommonModule,
               DragDropModule,
+              FormsModule,
               ],
     templateUrl: './quicklinks.component.html',
     styleUrl: './quicklinks.component.scss'
@@ -15,6 +16,7 @@ import { DragDropModule, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-
 
 export class QuicklinksComponent {
     quicklinksVisible:boolean = true;
+    searchTerm: string = '';
 
     quicklinks: string[] = [
         "First Quicklink",
@@ -50,6 +52,11 @@ export class QuicklinksComponent {
     ];
 
     constructor() {}
+
+    get filteredQuicklinks() {
+        return this.quicklinks.filter(link =>
+            link.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    }
 
     moveDropdown(event: CdkDragDrop<string[]>) {
         moveItemInArray(this.quicklinks, event.previousIndex, event.currentIndex);

@@ -95,9 +95,15 @@ $buttonBorderRadius: 16px;
 
                     // ##  DROPDOWN-BUTTON : HOVER ##
                     // ##############################
-                    .drop-button:not(.active):hover {
+                    .drop-button:hover {
                         background-color: rgba(44, 80, 103, 0.3);
                         border: 1px solid rgba(44, 80, 103, 0.18);
+                        cursor: pointer;
+                    }
+
+                    .drop-button.active:hover {
+                        background-color: transparent;
+                        border: 1px solid transparent;
                         cursor: pointer;
                     }
 
@@ -180,7 +186,7 @@ $buttonBorderRadius: 16px;
 
                 .drop-button.active {
                     background-color: transparent;
-                    border: none;
+                    border: 1px solid transparent;
                     cursor: default;
 
                     span {

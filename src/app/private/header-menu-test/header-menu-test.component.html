@@ -41,9 +41,9 @@
                             </button>
                         </ng-template>
 
-                        <!-- Dropdown-Content if the menuItem is not favorites / Will be show by clicking a sub-menu-item -->
-                        <!-- ******************************************************************************************** -->
-                        <div class="drop-content-container" *ngIf="menuItem.showDropdown">
+                        <!-- Dropdown-Content if the clicked menuItem.name is not searching -->
+                        <!-- ************************************************************** -->
+                        <div class="drop-content-container" *ngIf="menuItem.showDropdown && menuItem.name !== 'searching'">
                             <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
                                 <div class="drop-item-container" *ngIf="menuSubItem.parentName == menuItem.name"
                                         [routerLink]="menuSubItem.route" (click)="markMenuItemAsActive(menuSubItem.parentForMenuItemState)" (click)="closeAllDropdowns()"
@@ -56,6 +56,20 @@
                                 </div>
                             </ng-container>
                         </div>
+
+                        <!-- Dropdown-Content if the clicked menuItem.name is searching -->
+                        <!-- ********************************************************** -->
+                        <div class="drop-content-container" *ngIf="menuItem.showDropdown && menuItem.name === 'searching'"
+                             style="padding: 8px 16px; font-size: 2em; min-width: 500px; min-height: 200px; display: flex; align-items: center; justify-content: space-around;"
+                        >
+                            WIP
+
+                            <!-- todo -->
+
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>
