@@ -54,7 +54,7 @@ export class QuicklinksComponent implements OnInit {
     constructor() {}
 
     ngOnInit(): void {
-        this.searchTerm = 'tas';
+        // this.searchTerm = 'tas';
     }
 
     get filteredQuicklinks() {
