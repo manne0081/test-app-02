@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { HeaderMenuTestComponent } from './header-menu-test/header-menu-test.component';
@@ -16,6 +17,7 @@ import { QuicklinksComponent } from './quicklinks/quicklinks.component';
         HeaderMenuTestComponent,
         HeaderMenuTest2Component,
         QuicklinksComponent,
+        FormsModule,
     ],
     templateUrl: './private.component.html',
     styleUrl: './private.component.scss'
@@ -25,6 +27,7 @@ export class PrivateComponent {
     selectedValueFromMainMenu: string = '';
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
+    searchTerm: string = '';
 
     toggleMenuTitel?: string;
     menu1: boolean = false;
@@ -69,4 +72,7 @@ export class PrivateComponent {
         }
     }
 
+    removeFilterTerm(): void {
+        this.searchTerm = '';
+    }
 }

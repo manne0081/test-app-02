@@ -113,14 +113,47 @@ $highlight-color-lighter: #fae4d7;
             background-color: orange;
             background-image: url(../../assets/images/background_3.jpg);
             display: grid;
-            grid-template-rows: 48px auto 48px;
+            grid-template-rows: auto auto 48px;
 
             .content-header {
                 background-color: white;
                 box-shadow: 0px 6px 4px -2px rgba(0, 0, 0, .20);
                 border-radius: 0 0 12px 12px;
-                padding: 4px 8px;
+                padding: 4px 17px 12px 13px;
                 z-index: 10;
+
+                .searching-wrapper {
+                    background-color: rgb(225, 225, 225);
+                    display: flex;
+                    align-items: center;
+                    margin-top: 8px;
+                    height: 28px;
+                    border: 1px solid #b9b9b9;
+                    border-radius: 4px;
+
+                    input {
+                        width: 100%;
+                        padding: 4px 6px;
+                        font-size: .9em;
+                    }
+
+                    .icon-cancel {
+                        border-radius: 14px;
+                        display: flex;
+                        align-items: center;
+                        height: 80%;
+                        width: 24px;
+                        margin: 0 3px 0 4px;
+                        justify-content: space-around;
+                    }
+
+                    .icon-cancel:hover {
+                        background-color: rgba(168, 40, 40, 0.6);
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+
             }
 
             .content-items {
