@@ -47,7 +47,7 @@ export class PrivateComponent implements OnInit {
     ngOnInit(): void {
         this.toggleQuicklinkVisibility();
         this.toggleAddInfoVisibility();
-        this.onMainMenuSelectionChanged('Dashboard');
+        // this.onMainMenuSelectionChanged('Dashboard');
 
         // Abonniere den selectedCompany$ Observable
         this.companySubscription = this.companyService.selectedCompany$.subscribe((company) => {
@@ -71,6 +71,7 @@ export class PrivateComponent implements OnInit {
 
     onMainMenuSelectionChanged(selectedValue: string) {
         this.selectedValueFromMainMenu = selectedValue;
+        this.addInfoContent = '';
     }
 
     toggleQuicklinkVisibility(): void {
@@ -105,6 +106,7 @@ export class PrivateComponent implements OnInit {
     removeSearchTerm(): void {
         this.searchTerm = '';
         this.updateRoute();
+        this.addInfoContent = '';
     }
 
     updateRoute(): void {

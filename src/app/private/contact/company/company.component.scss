@@ -23,4 +23,8 @@
         cursor: pointer;
     }
 
+    .item-container.selected {
+        background-color: lime;
+    }
+
 }
