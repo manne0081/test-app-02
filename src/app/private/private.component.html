@@ -42,7 +42,6 @@
                             'content-container-without-addinfo' : quicklinksVisible && !addInfoVisible,
                             'content-container-tiles-only' : !quicklinksVisible && !addInfoVisible
                         }">
-        <!-- <div> -->
 
             <!-- QUICKLINKS -->
             <!-- ********** -->
@@ -59,15 +58,13 @@
                 <div class="content-header">
 
                     <div class="searching-wrapper">
-                        <input type="text" placeholder="Searching...  (WIP)" [(ngModel)]="searchTerm">
+                        <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChanged($event)">
                         <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeFilterTerm()"></div>
                     </div>
 
                 </div>
 
                 <div class="content-items">
-                    <!-- <button (click)="toggleMenu()" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px;">{{toggleMenuTitel}}</button>
-                    <br><br> -->
                     <router-outlet></router-outlet>
                 </div>
 
