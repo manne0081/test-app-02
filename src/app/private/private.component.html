@@ -59,7 +59,7 @@
 
                     <div class="searching-wrapper">
                         <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChanged($event)">
-                        <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeFilterTerm()"></div>
+                        <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
                     </div>
 
                 </div>
@@ -81,14 +81,14 @@
 
                 <div class="add-info-header">AddInfo-Header</div>
                 <div class="add-info-items">
+
                     <button (click)="toggleMenu()" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px;">{{toggleMenuTitel}}</button>
+                    <div class="add-info-item">
+                        {{addInfoContent}}
+                    </div>
+
                 </div>
-
-
             </div>
-
         </div>
-
     </div>
-
 </div>

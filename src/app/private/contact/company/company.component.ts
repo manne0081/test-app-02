@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { CompanyService } from './company.service';
 
 @Component({
     selector: 'app-company',
@@ -15,25 +16,27 @@ import { ActivatedRoute } from '@angular/router';
 export class CompanyComponent implements OnInit {
     @Input() searchTerm: string = '';
 
-    contactItems: { id: number, title: string } [] = [
-    ]
+    sortOrder: string = 'asc';
 
-    searchItems:  { id: number, title: string } [] = []
+    companyItems: { id: number, title: string } [] = []
+    filteredItems: { id: number, title: string } [] = []
 
-    constructor ( private route: ActivatedRoute ) {
+    constructor ( private route: ActivatedRoute, private companyService: CompanyService ) {
+        this.generateCompanyItems();
     }
 
     ngOnInit(): void {
-        this.generateCompanyItems();
-
         this.route.queryParams.subscribe(params => {
             this.searchTerm = params['searchTerm'] || '';
             this.applyFilter();
         });
     }
 
+    /**
+     *
+     */
     generateCompanyItems(): void {
-        const numberCompanies: number = 15;
+        const numberCompanies: number = 17;
         const companies: string[] = [
             'Alpha Technologie GmbH',
             'Beta Solutions AG',
@@ -49,22 +52,44 @@ export class CompanyComponent implements OnInit {
             'Mu Transport AG',
             'Nu Medizintechnik KG',
             'Xi Finanzdienstleistungen OHG',
-            'Omikron Maschinenbau UG'
+            'Omikron Maschinenbau UG',
+            'Pi Software Solutions GmbH',
+            'Rho Finance GmbH',
+            // 'Sigma Healthcare AG',
+            // 'Tau Engineering KG',
+            // 'Upsilon Media OHG'
         ];
 
+        const shuffledCompanies = companies.sort(() => Math.random() - 0.5);
+
         for (let i = 0; i < numberCompanies; i++) {
-        const id = i + 1;
-        const title = companies[Math.floor(Math.random() * companies.length)];
-        this.contactItems.push({ id, title });
+            const id = i + 1;
+            const title = shuffledCompanies[i];
+            this.companyItems.push({ id, title });
         }
     }
 
+    /**
+     *
+     */
     applyFilter(): void {
-        this.searchItems = this.contactItems.filter(item =>
-          item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-        );
+        this.filteredItems = this.companyItems
+            .filter(item => item.title.toLowerCase().includes(this.searchTerm.toLowerCase()))
+            .sort((a, b) => {
+                if (this.sortOrder === 'asc') {
+                  return a.title.localeCompare(b.title);
+                } else {
+                  return b.title.localeCompare(a.title);
+                }
+            });
     }
 
-
+    /**
+     *
+     * @param contact
+     */
+    onSelectCompany( company: { id: number, title: string } ): void {
+        this.companyService.onSelectCompany(company);
+    }
 
 }
