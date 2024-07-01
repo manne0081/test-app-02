@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-company',
@@ -12,11 +13,23 @@ import { CommonModule } from '@angular/common';
 })
 
 export class CompanyComponent implements OnInit {
+    @Input() searchTerm: string = '';
+
     contactItems: { id: number, title: string } [] = [
     ]
 
+    searchItems:  { id: number, title: string } [] = []
+
+    constructor ( private route: ActivatedRoute ) {
+    }
+
     ngOnInit(): void {
         this.generateCompanyItems();
+
+        this.route.queryParams.subscribe(params => {
+            this.searchTerm = params['searchTerm'] || '';
+            this.applyFilter();
+        });
     }
 
     generateCompanyItems(): void {
@@ -45,4 +58,13 @@ export class CompanyComponent implements OnInit {
         this.contactItems.push({ id, title });
         }
     }
+
+    applyFilter(): void {
+        this.searchItems = this.contactItems.filter(item =>
+          item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+    }
+
+
+
 }

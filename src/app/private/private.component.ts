@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule, ɵnormalizeQueryParams } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
@@ -34,13 +34,15 @@ export class PrivateComponent {
     menu2: boolean = true;
     menu3: boolean = false;
 
-    constructor(private router: RouterModule) {
+    constructor(private router: Router) {
     }
 
     ngOnInit(): void {
         this.toggleQuicklinkVisibility();
         this.toggleAddInfoVisibility();
         this.onMainMenuSelectionChanged('Dashboard');
+
+        // testing toggl header menu
         this.setButtonTitle();
     }
 
@@ -72,7 +74,20 @@ export class PrivateComponent {
         }
     }
 
+    onSearchTermChanged(term: string) {
+        this.searchTerm = term;
+        this.updateRoute();
+    }
+
     removeFilterTerm(): void {
         this.searchTerm = '';
+        this.updateRoute();
+    }
+
+    updateRoute(): void {
+        this.router.navigate([], {
+            queryParams: { searchTerm: this.searchTerm },
+            queryParamsHandling: 'merge',
+        })
     }
 }
