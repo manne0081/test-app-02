@@ -20,6 +20,7 @@ export class CompanyComponent implements OnInit {
 
     companyItems: { id: number, title: string } [] = []
     filteredItems: { id: number, title: string } [] = []
+    selectedCompanyId: number | null = null;
 
     constructor ( private route: ActivatedRoute, private companyService: CompanyService ) {
         this.generateCompanyItems();
@@ -81,7 +82,7 @@ export class CompanyComponent implements OnInit {
                 } else {
                   return b.title.localeCompare(a.title);
                 }
-            });
+        });
     }
 
     /**
@@ -90,6 +91,7 @@ export class CompanyComponent implements OnInit {
      */
     onSelectCompany( company: { id: number, title: string } ): void {
         this.companyService.onSelectCompany(company);
+        this.selectedCompanyId = company.id;
     }
 
 }

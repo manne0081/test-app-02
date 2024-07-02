@@ -79,15 +79,8 @@
             <!-- ********************** -->
             <div class="add-info-container" *ngIf="addInfoVisible">
 
-                <div class="add-info-header">AddInfo-Header</div>
-                <div class="add-info-items">
+                <app-add-info></app-add-info>
 
-                    <!-- <button (click)="toggleMenu()" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px; margin-bottom: 8px;">{{toggleMenuTitel}}</button> -->
-                    <div class="add-info-item" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px; background-color: #fafafa;" *ngIf="addInfoContent">
-                        {{addInfoContent}}
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ import { HeaderMenuTest2Component } from './header-menu-test-2/header-menu-test-
 import { QuicklinksComponent } from './quicklinks/quicklinks.component';
 
 import { CompanyService } from './contact/company/company.service';
+import { AddInfoComponent } from './add-info/add-info.component';
 
 @Component({
     selector: 'app-private',
@@ -21,6 +22,7 @@ import { CompanyService } from './contact/company/company.service';
         HeaderMenuTestComponent,
         HeaderMenuTest2Component,
         QuicklinksComponent,
+        AddInfoComponent,
         FormsModule,
     ],
     templateUrl: './private.component.html',
