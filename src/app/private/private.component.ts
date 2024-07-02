@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -29,7 +29,7 @@ import { AddInfoComponent } from './add-info/add-info.component';
     styleUrl: './private.component.scss'
 })
 
-export class PrivateComponent implements OnInit {
+export class PrivateComponent implements OnInit, OnDestroy {
     selectedValueFromMainMenu: string = '';
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
@@ -49,7 +49,7 @@ export class PrivateComponent implements OnInit {
     ngOnInit(): void {
         this.toggleQuicklinkVisibility();
         this.toggleAddInfoVisibility();
-        // this.onMainMenuSelectionChanged('Dashboard');
+        this.onMainMenuSelectionChanged('Dashboard');
 
         // Abonniere den selectedCompany$ Observable
         this.companySubscription = this.companyService.selectedCompany$.subscribe((company) => {
@@ -69,10 +69,12 @@ export class PrivateComponent implements OnInit {
         if (this.companySubscription) {
           this.companySubscription.unsubscribe();
         }
-      }
+    }
 
     onMainMenuSelectionChanged(selectedValue: string) {
         this.selectedValueFromMainMenu = selectedValue;
+
+        // Damit die Zusatzinfo entfernt wird, wenn ein anderer Menüpunkt gewählt wird...
         this.addInfoContent = '';
     }
 

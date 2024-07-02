@@ -175,19 +175,19 @@ $highlight-color-lighter: #fae4d7;
         .add-info-container {
             // background-color: lime;
             border-left: 1px solid rgb(180, 180, 180);
-            display: grid;
-            grid-template-rows: 40px auto;
-            overflow-y: scroll;
+            // display: grid;
+            // grid-template-rows: 40px auto;
+            // overflow-y: scroll;
 
             .add-info-header {
                 // background-color: yellow;
-                box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, .20);
-                padding: 4px 8px;
-                z-index: 1;
+                // box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, .20);
+                // padding: 4px 8px;
+                // z-index: 1;
             }
 
             .add-info-items {
-                padding: 8px 8px;
+                // padding: 8px 8px;
 
             }
         }
