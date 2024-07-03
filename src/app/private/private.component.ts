@@ -35,11 +35,8 @@ export class PrivateComponent implements OnInit, OnDestroy {
     addInfoVisible?: boolean;
     searchTerm: string = '';
     addInfoContent: string = '';
-
     private companySubscription!: Subscription;
 
-    toggleMenuTitel?: string;
-    menu1: boolean = false;
     menu2: boolean = true;
     menu3: boolean = false;
 
@@ -50,8 +47,9 @@ export class PrivateComponent implements OnInit, OnDestroy {
         this.toggleQuicklinkVisibility();
         this.toggleAddInfoVisibility();
         this.onMainMenuSelectionChanged('Dashboard');
+        this.router.navigate(['private/dashboard']);
 
-        // Abonniere den selectedCompany$ Observable
+        // Subscribe the selectedCompany$ observable
         this.companySubscription = this.companyService.selectedCompany$.subscribe((company) => {
             if (company) {
                 this.addInfoContent = company.title;
@@ -59,9 +57,11 @@ export class PrivateComponent implements OnInit, OnDestroy {
                 this.addInfoContent = '';
             }
         });
+    }
 
-        // testing toggl header menu
-        this.setButtonTitle();
+    toggelMenu():void {
+        this.menu2 = !this.menu2
+        this.menu3 = !this.menu3
     }
 
     ngOnDestroy(): void {
@@ -73,8 +73,6 @@ export class PrivateComponent implements OnInit, OnDestroy {
 
     onMainMenuSelectionChanged(selectedValue: string) {
         this.selectedValueFromMainMenu = selectedValue;
-
-        // Damit die Zusatzinfo entfernt wird, wenn ein anderer Menüpunkt gewählt wird...
         this.addInfoContent = '';
     }
 
@@ -84,22 +82,6 @@ export class PrivateComponent implements OnInit, OnDestroy {
 
     toggleAddInfoVisibility(): void {
         this.addInfoVisible = !this.addInfoVisible;
-    }
-
-    toggleMenu(): void {
-        // this.menu1 = !this.menu1;
-        this.menu2 = !this.menu2;
-        this.menu3 = !this.menu3;
-
-        this.setButtonTitle();
-    }
-
-    setButtonTitle(): void {
-        if (this.menu3) {
-            this.toggleMenuTitel = "Toggle menu to Menu-2";
-        } else {
-            this.toggleMenuTitel = "Toggle menu to Menu-3";
-        }
     }
 
     onSearchTermChanged(term: string) {
@@ -118,11 +100,5 @@ export class PrivateComponent implements OnInit, OnDestroy {
             queryParams: { searchTerm: this.searchTerm },
             queryParamsHandling: 'merge',
         })
-    }
-
-    receiveCompanyInfo(company: { id: number, title: string }): void {
-        console.log('Received company: ', company);
-        // Hier kannst du die Eigenschaften des Unternehmens verwenden
-        // this.addInfoContent = `Company Name: ${company.title}, ID: ${company.id}`;
     }
 }

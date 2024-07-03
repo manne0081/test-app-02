@@ -6,11 +6,8 @@
     <!-- Header -->
     <!-- ****** -->
     <div class="page-header-container" style="overflow: visible;">
-
-        <app-header-menu *ngIf="menu1"></app-header-menu>
         <app-header-menu-test *ngIf="menu2" (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test>
         <app-header-menu-test-2 *ngIf="menu3" (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test-2>
-
     </div>
 
     <!-- CONTENT-CONTAINER -->
@@ -21,16 +18,14 @@
 
             <!-- Button toggle Quicklinks -->
             <!-- ------------------------ -->
-            <!-- <button class="content-title-quicklinks" [ngClass]="{'active' : quicklinksVisible}" (click)="toggleQuicklinkVisibility()">Quicklinks</button> -->
             <button class="content-title-quicklinks" (click)="toggleQuicklinkVisibility()">Quicklinks</button>
 
             <!-- Menuname -->
             <!-- -------- -->
-            <span class="content-title-value">{{selectedValueFromMainMenu}}</span>
+            <span class="content-title-value" (click)="toggelMenu()">{{selectedValueFromMainMenu}}</span>
 
             <!-- Button toggle AddInfos -->
             <!-- ---------------------- -->
-            <!-- <button class="content-title-addinfo" [ngClass]="{'active' : addInfoVisible}" (click)="toggleAddInfoVisibility()">Add Info</button> -->
             <button class="content-title-addinfo" (click)="toggleAddInfoVisibility()">Add Info</button>
 
         </div>
@@ -46,9 +41,7 @@
             <!-- QUICKLINKS -->
             <!-- ********** -->
             <div class="quicklinks-container" *ngIf="quicklinksVisible">
-
                 <app-quicklinks></app-quicklinks>
-
             </div>
 
             <!-- Content -->
@@ -56,12 +49,10 @@
             <div class="main-content-container">
 
                 <div class="content-header">
-
                     <div class="searching-wrapper">
                         <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChanged($event)">
                         <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
                     </div>
-
                 </div>
 
                 <div class="content-items">
@@ -78,9 +69,7 @@
             <!-- ADDITIONAL INFORMATION -->
             <!-- ********************** -->
             <div class="add-info-container" *ngIf="addInfoVisible">
-
                 <app-add-info [info]="addInfoContent"></app-add-info>
-
             </div>
         </div>
     </div>

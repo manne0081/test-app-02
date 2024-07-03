@@ -22,10 +22,13 @@
 .add-info-wrapper {
     position: relative;
     top: 40px;
-    padding: 4px 8px;
-    border: 1px solid grey;
-    border-radius: 4px;
-    background-color: #fafafa;
     margin: 8px;
     margin-right: 12px;
+}
+
+.add-info-item {
+    background-color: #fafafa;
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 4px 8px;
 }

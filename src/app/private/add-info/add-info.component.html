@@ -1,19 +1,9 @@
 <div class="add-info-header">
-
     <span>Additional Informations</span><br>
-
 </div>
 
-<div class="add-info-wrapper">    <!--  *ngIf="info !== NULL"    /     *ngIf="info !== ''" -->
-
-    {{info}}
-
+<div class="add-info-wrapper" *ngIf="info">
+    <div class="add-info-item">
+        {{info}}
+    </div>
 </div>
-
-    <!-- <button (click)="toggleMenu()" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px; margin-bottom: 8px;">{{toggleMenuTitel}}</button> -->
-    <!-- <div class="add-info-item" style="padding: 4px 8px; border: 1px solid grey; border-radius: 4px; background-color: #fafafa;" *ngIf="addInfoContent">
-        {{addInfoContent}}
-    </div> -->
-
-    <!-- </div> -->
-
