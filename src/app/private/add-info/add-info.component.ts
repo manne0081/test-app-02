@@ -15,7 +15,6 @@ export class AddInfoComponent implements OnInit {
     @Input() info: string | null = null;
 
     constructor() {
-
     }
 
     ngOnInit(): void {
