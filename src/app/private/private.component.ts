@@ -30,12 +30,13 @@ import { AddInfoComponent } from './add-info/add-info.component';
 })
 
 export class PrivateComponent implements OnInit, OnDestroy {
+    private companySubscription!: Subscription;
+
     selectedValueFromMainMenu: string = '';
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
     searchTerm: string = '';
     addInfoContent: any = '';
-    private companySubscription!: Subscription;
 
     menu2: boolean = true;
     menu3: boolean = false;
