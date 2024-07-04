@@ -81,6 +81,7 @@ export class PrivateComponent implements OnInit, OnDestroy {
 
         console.log('onMainMenuSelectionChanged - param : ' + selectedValue);
         this.unsubscribeAll();
+
         switch (selectedValue) {
             case 'companies':
                 this.subscribeToObservable(this.companyService.getSelectedCompany());
