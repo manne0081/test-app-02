@@ -70,7 +70,7 @@ export class CompanyComponent implements OnInit {
                 } else {
                     return b.name.localeCompare(a.name);
                 }
-            });
+        });
     }
 
     /**

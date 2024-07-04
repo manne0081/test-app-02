@@ -70,7 +70,7 @@ export class TaskComponent implements OnInit {
                 } else {
                     return b.title.localeCompare(a.title);
                 }
-            });
+        });
     }
 
     /**
