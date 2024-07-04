@@ -17,6 +17,6 @@ export const COMPANY_MOCK: Company[] = [
     { id: 13, number: 'Knd-00014', name: 'Xi Finanzdienstleistungen OHG' },
     { id: 14, number: 'Knd-00015', name: 'Omikron Maschinenbau UG' },
     { id: 15, number: 'Knd-00016', name: 'Pi Software Solutions GmbH' },
-    { id: 16, number: 'Knd-00017', name: 'Rho Finance GmbH' },
-    { id: 17, number: 'Knd-00018', name: 'Sigma Healthcare AG' },
+    // { id: 16, number: 'Knd-00017', name: 'Rho Finance GmbH' },
+    // { id: 17, number: 'Knd-00018', name: 'Sigma Healthcare AG' },
 ]

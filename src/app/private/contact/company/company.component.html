@@ -1,5 +1,5 @@
 <div class="grid-container">
-    <div class="item-container" [ngClass]="{ 'selected': company.id === selectedCompanyId }" *ngFor="let company of filteredItems" ><!--(click)="onSelectCompany(company)"-->
+    <div class="item-container" [ngClass]="{ 'selected': company.id === selectedCompanyId }" *ngFor="let company of companyItems" (click)="onSelectCompany(company)"><!--(click)="onSelectCompany(company)"-->
         {{company.name}}
     </div>
 </div>

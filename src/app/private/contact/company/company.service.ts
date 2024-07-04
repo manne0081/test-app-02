@@ -9,16 +9,16 @@ import { COMPANY_MOCK } from './company.mock';
 })
 
 export class CompanyService {
-    private selectedCompanySubject = new BehaviorSubject<{ id: number; title: string } | null>(null);
+    private selectedCompanySubject = new BehaviorSubject<Company | null>(null);
     selectedCompany$ = this.selectedCompanySubject.asObservable();
 
     constructor() { }
 
-    onSelectCompany(company: { id: number; title: string }) {
-        this.selectedCompanySubject.next(company);
-    }
-
     getCompanies(): Observable<Company[]> {
         return of(COMPANY_MOCK);
+    }
+
+    onSelectCompany(company: Company ) {
+        this.selectedCompanySubject.next(company);
     }
 }

@@ -18,72 +18,42 @@ import { CompanyService } from './company.service';
 export class CompanyComponent implements OnInit {
     @Input() searchTerm: string = '';
 
+    companyItems: Company[] = [];
+    selectedCompanyId: number | null = null;
     sortOrder: string = 'asc';
 
-    // filteredItems: { id: number, title: string } [] = []
-    companyItems: Company[] = [];
-    filteredItems: Company[] = [];
-    selectedCompanyId: number | null = null;
-
     constructor ( private route: ActivatedRoute, private companyService: CompanyService ) {
-        // this.generateCompanyItems();
     }
 
     ngOnInit(): void {
-        this.companyService.getCompanies().subscribe((data: Company[]) => {
-            this.filteredItems = data;
-            console.log('data: ', this.filteredItems);
+        this.getCompanies();
+
+        this.route.queryParams.subscribe(params => {
+            this.searchTerm = params['searchTerm'] || '';
+                if(this.searchTerm) {
+                    // console.log('searchTerm = true: ' + this.searchTerm);
+                    this.applyFilter();
+                } else {
+                    // console.log('searchTerm = false: ' + this.searchTerm);
+                    this.getCompanies();
+                }
         });
-
-        if(this.route.queryParams) {
-            console.log('params = true');
-
-            // this.route.queryParams.subscribe(params => {
-            //     this.searchTerm = params['searchTerm'] || '';
-            //     this.applyFilter();
-            // });
-        }
     }
 
     /**
-     *
+     * Get all companies from mock-data and set them to the companyItems-array
      */
-    // generateCompanyItems(): void {
-    //     const numberCompanies: number = 17;
-    //     const companies: string[] = [
-    //         'Alpha Technologie GmbH',
-    //         'Beta Solutions AG',
-    //         'Gamma Industries KG',
-    //         'Delta Handels OHG',
-    //         'Epsilon Software UG',
-    //         'Zeta Bau GmbH & Co. KG',
-    //         'Eta Logistik GmbH',
-    //         'Theta Immobilien AG',
-    //         'Iota Consulting GmbH',
-    //         'Kappa Electronics SE',
-    //         'Lambda Energie GmbH',
-    //         'Mu Transport AG',
-    //         'Nu Medizintechnik KG',
-    //         'Xi Finanzdienstleistungen OHG',
-    //         'Omikron Maschinenbau UG',
-    //         'Pi Software Solutions GmbH',
-    //         'Rho Finance GmbH',
-    //     ];
-
-    //     const shuffledCompanies = companies.sort(() => Math.random() - 0.5);
-
-    //     for (let i = 0; i < numberCompanies; i++) {
-    //         const id = i + 1;
-    //         const title = shuffledCompanies[i];
-    //         this.companyItems.push({ id, title });
-    //     }
-    // }
+    getCompanies(): void {
+        this.companyService.getCompanies().subscribe((data: Company[]) => {
+            this.companyItems = data;
+        });
+    }
 
     /**
-     *
+     * Takes the companyItems and filter and sort them about the searchTerm variable
      */
     applyFilter(): void {
-        this.filteredItems = this.companyItems
+        this.companyItems = this.companyItems
             .filter(item => item.name.toLowerCase().includes(this.searchTerm.toLowerCase()))
             .sort((a, b) => {
                 if (this.sortOrder === 'asc') {
@@ -98,9 +68,8 @@ export class CompanyComponent implements OnInit {
      *
      * @param contact
      */
-    onSelectCompany( company: { id: number, title: string } ): void {
+    onSelectCompany( company: Company ): void {
         this.companyService.onSelectCompany(company);
         this.selectedCompanyId = company.id;
     }
-
 }
