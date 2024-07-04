@@ -46,6 +46,7 @@ export class CompanyComponent implements OnInit {
     getCompanies(): void {
         this.companyService.getCompanies().subscribe((data: Company[]) => {
             this.companyItems = data;
+            this.sortCompanyItems();
         });
     }
 
@@ -54,14 +55,22 @@ export class CompanyComponent implements OnInit {
      */
     applyFilter(): void {
         this.companyItems = this.companyItems
-            .filter(item => item.name.toLowerCase().includes(this.searchTerm.toLowerCase()))
+            .filter(item => item.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
+            this.sortCompanyItems();
+    }
+
+    /**
+     *
+     */
+    sortCompanyItems(): void {
+        this.companyItems = this.companyItems
             .sort((a, b) => {
                 if (this.sortOrder === 'asc') {
-                  return a.name.localeCompare(b.name);
+                    return a.name.localeCompare(b.name);
                 } else {
-                  return b.name.localeCompare(a.name);
+                    return b.name.localeCompare(a.name);
                 }
-        });
+            });
     }
 
     /**
