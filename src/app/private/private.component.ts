@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { HeaderMenuTestComponent } from './header-menu-test/header-menu-test.component';
@@ -30,13 +30,15 @@ import { AddInfoComponent } from './add-info/add-info.component';
 })
 
 export class PrivateComponent implements OnInit, OnDestroy {
-    private companySubscription!: Subscription;
 
+    // private companySubscription!: Subscription;
+
+    private subscriptions: Subscription[] = [];
     selectedValueFromMainMenu: string = '';
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
     searchTerm: string = '';
-    addInfoContent: any = '';
+    addInfoObject: any = '';
 
     menu2: boolean = true;
     menu3: boolean = false;
@@ -52,13 +54,13 @@ export class PrivateComponent implements OnInit, OnDestroy {
 
         // Subscribe the selectedCompany$ observable - gets the selected company and shows the additional-infos
         // ----------------------------------------------------------------------------------------------------
-        this.companySubscription = this.companyService.selectedCompany$.subscribe((company) => {
-            if (company) {
-                this.addInfoContent = company;
-            } else {
-                this.addInfoContent = '';
-            }
-        });
+        // this.companySubscription = this.companyService.selectedCompany$.subscribe((company) => {
+        //     if (company) {
+        //         this.addInfoContent = company;
+        //     } else {
+        //         this.addInfoContent = '';
+        //     }
+        // });
     }
 
     toggelMenu():void {
@@ -67,15 +69,40 @@ export class PrivateComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        // Unsubscribe to avoid memory leaks
-        if (this.companySubscription) {
-          this.companySubscription.unsubscribe();
-        }
+        // Unsubscribe to avoid memory leaks > KANN VERMUTLICH WEG, WENN ALLES UMGESTELLT IST
+        // if (this.companySubscription) {
+        //   this.companySubscription.unsubscribe();
+        // }
     }
 
     onMainMenuSelectionChanged(selectedValue: string) {
         this.selectedValueFromMainMenu = selectedValue;
-        this.addInfoContent = '';
+        this.addInfoObject = '';
+
+        console.log('onMainMenuSelectionChanged - param : ' + selectedValue);
+        this.unsubscribeAll();
+        switch (selectedValue) {
+            case 'companies':
+                this.subscribeToObservable(this.companyService.getSelectedCompany());
+                break;
+            // Füge hier weitere Fälle für andere Objekte hinzu
+            default:
+                break;
+        }
+    }
+
+    private subscribeToObservable(observable: Observable<any>): void {
+        const subscription = observable.subscribe((data) => {
+            this.addInfoObject = data ? data : '';
+            console.log('subscribeToObservable - data: ' + data);
+        });
+
+        this.subscriptions.push(subscription);
+    }
+
+    private unsubscribeAll(): void {
+        this.subscriptions.forEach(sub => sub.unsubscribe());
+        this.subscriptions = [];
     }
 
     toggleQuicklinkVisibility(): void {
@@ -109,7 +136,7 @@ export class PrivateComponent implements OnInit, OnDestroy {
      * removes the searching-term and the additional-informations
      */
     removeSearchTerm(): void {
-        this.addInfoContent = '';
+        this.addInfoObject = '';
         this.searchTerm = '';
         this.updateRoute();
     }

@@ -2,14 +2,8 @@
     <span>Additional Informations</span><br>
 </div>
 
-<div class="add-info-wrapper" *ngIf="info">
+<div class="add-info-wrapper" *ngIf="addInfoObject">
     <div class="add-info-item">
-        ID: {{info.id}}
-    </div>
-    <div class="add-info-item">
-        {{info.number}}
-    </div>
-    <div class="add-info-item">
-        Category: {{info.category}}
+        {{addInfoObject.id}}
     </div>
 </div>

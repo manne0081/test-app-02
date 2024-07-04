@@ -1,1 +1,5 @@
-<p>task works!</p>
+<div class="grid-container">
+    <div class="item-container" [ngClass]="{ 'selected': task.id === selectedTaskId }" *ngFor="let task of taskItems" (click)="onSelectTask(task)"><!--(click)="onSelectCompany(company)"-->
+        {{task.title}}
+    </div>
+</div>

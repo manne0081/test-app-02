@@ -20,4 +20,8 @@ export class CompanyService {
     onSelectCompany(company: Company ) {
         this.selectedCompanySubject.next(company);
     }
+
+    getSelectedCompany(): Observable<Company | null> {
+        return this.selectedCompany$;
+    }
 }

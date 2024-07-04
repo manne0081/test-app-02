@@ -12,7 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class AddInfoComponent implements OnInit {
-    @Input() info: any | null = null;
+    @Input() addInfoObject: any | null = null;
 
     constructor() {
     }

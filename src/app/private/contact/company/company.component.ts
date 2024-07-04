@@ -77,7 +77,7 @@ export class CompanyComponent implements OnInit {
      *
      * @param contact
      */
-    onSelectCompany( company: Company ): void {
+    onSelectCompany(company: Company): void {
         this.companyService.onSelectCompany(company);
         this.selectedCompanyId = company.id;
     }
