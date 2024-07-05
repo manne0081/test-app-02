@@ -31,7 +31,7 @@ import { AddInfoComponent } from './add-info/add-info.component';
 
 export class PrivateComponent implements OnInit, OnDestroy {
 
-    // private companySubscription!: Subscription;
+    private companySubscription!: Subscription;
 
     private subscriptions: Subscription[] = [];
     selectedValueFromMainMenu: string = '';
@@ -56,9 +56,9 @@ export class PrivateComponent implements OnInit, OnDestroy {
         // ----------------------------------------------------------------------------------------------------
         // this.companySubscription = this.companyService.selectedCompany$.subscribe((company) => {
         //     if (company) {
-        //         this.addInfoContent = company;
+        //         this.addInfoObject = company;
         //     } else {
-        //         this.addInfoContent = '';
+        //         this.addInfoObject = '';
         //     }
         // });
     }
@@ -83,7 +83,10 @@ export class PrivateComponent implements OnInit, OnDestroy {
         this.unsubscribeAll();
 
         switch (selectedValue) {
-            case 'companies':
+            case 'Unternehmen':
+                this.subscribeToObservable(this.companyService.getSelectedCompany());
+                break;
+            case 'Aufgaben':
                 this.subscribeToObservable(this.companyService.getSelectedCompany());
                 break;
             // Füge hier weitere Fälle für andere Objekte hinzu
