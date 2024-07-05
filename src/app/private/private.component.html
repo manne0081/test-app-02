@@ -5,14 +5,14 @@
 
     <!-- Header -->
     <!-- ****** -->
-    <div class="page-header-container" style="overflow: visible;">
+    <header class="page-header-container" style="overflow: visible;">
         <app-header-menu-test *ngIf="menu2" (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test>
         <app-header-menu-test-2 *ngIf="menu3" (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test-2>
-    </div>
+    </header>
 
-    <!-- CONTENT-CONTAINER -->
-    <!-- ***************** -->
-    <div class="page-content-container">
+    <!-- Main-Content -->
+    <!-- ************ -->
+    <main class="page-content-container">
 
         <div class="content-title-container">
 
@@ -33,9 +33,9 @@
         <!-- Different Classes wether quicklinks or addInfo should be visible or not -->
         <!-- *********************************************************************** -->
         <div [ngClass]="{'content-container-full' : quicklinksVisible && addInfoVisible,
-                            'content-container-without-quicklinks' : !quicklinksVisible && addInfoVisible,
-                            'content-container-without-addinfo' : quicklinksVisible && !addInfoVisible,
-                            'content-container-tiles-only' : !quicklinksVisible && !addInfoVisible
+                         'content-container-without-quicklinks' : !quicklinksVisible && addInfoVisible,
+                         'content-container-without-addinfo' : quicklinksVisible && !addInfoVisible,
+                         'content-container-tiles-only' : !quicklinksVisible && !addInfoVisible
                         }">
 
             <!-- QUICKLINKS -->
@@ -48,6 +48,8 @@
             <!-- ******* -->
             <div class="main-content-container">
 
+                <!-- Content-Header -->
+                <!-- ************** -->
                 <div class="content-header">
                     <div class="searching-wrapper">
                         <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChanged($event)">
@@ -55,22 +57,24 @@
                     </div>
                 </div>
 
+                <!-- Content -->
+                <!-- ******* -->
                 <div class="content-items">
                     <router-outlet></router-outlet>
                 </div>
 
+                <!-- Content-Actions -->
+                <!-- *************** -->
                 <div class="content-actions">
                     Actions
                 </div>
-
             </div>
 
-            <!-- TODO -->
             <!-- ADDITIONAL INFORMATION -->
             <!-- ********************** -->
             <div class="add-info-container" *ngIf="addInfoVisible">
                 <app-add-info [addInfoObject]="addInfoObject"></app-add-info>
             </div>
         </div>
-    </div>
+    </main>
 </div>
