@@ -1,14 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { HeaderMenuTestComponent } from './header-menu-test/header-menu-test.component';
 import { HeaderMenuTest2Component } from './header-menu-test-2/header-menu-test-2.component';
 import { QuicklinksComponent } from './quicklinks/quicklinks.component';
 
+import { PrivateService } from './private.service';
 import { CompanyService } from './contact/company/company.service';
 import { AddInfoComponent } from './add-info/add-info.component';
 
@@ -29,12 +30,8 @@ import { AddInfoComponent } from './add-info/add-info.component';
     styleUrl: './private.component.scss'
 })
 
-export class PrivateComponent implements OnInit, OnDestroy {
-
-    // private companySubscription!: Subscription;
-
-    private subscriptions: Subscription[] = [];
-    selectedValueFromMainMenu: string = '';
+export class PrivateComponent implements OnInit {
+    selectedValueFromMainMenu: string | null = null;
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
     searchTerm: string = '';
@@ -43,7 +40,8 @@ export class PrivateComponent implements OnInit, OnDestroy {
     menu2: boolean = true;
     menu3: boolean = false;
 
-    constructor( private router: Router, private route: ActivatedRoute, private companyService: CompanyService ) {
+    constructor( private router: Router,
+                 private privateService: PrivateService ) {
     }
 
     ngOnInit(): void {
@@ -52,15 +50,14 @@ export class PrivateComponent implements OnInit, OnDestroy {
         this.onMainMenuSelectionChanged('Dashboard');
         this.router.navigate(['private/dashboard']);
 
-        // Subscribe the selectedCompany$ observable - gets the selected company and shows the additional-infos
-        // ----------------------------------------------------------------------------------------------------
-        // this.companySubscription = this.companyService.selectedCompany$.subscribe((company) => {
-        //     if (company) {
-        //         this.addInfoContent = company;
-        //     } else {
-        //         this.addInfoContent = '';
-        //     }
-        // });
+        this.privateService.selectedMenu$.subscribe(menu => {
+            this.selectedValueFromMainMenu = menu;
+        })
+
+        this.privateService.selectedObject$.subscribe(obj => {
+            this.addInfoObject = obj;
+            console.log('private > addInfoObject: ' + this.addInfoObject);
+        });
     }
 
     toggelMenu():void {
@@ -68,42 +65,9 @@ export class PrivateComponent implements OnInit, OnDestroy {
         this.menu3 = !this.menu3
     }
 
-    ngOnDestroy(): void {
-        // Unsubscribe to avoid memory leaks > KANN VERMUTLICH WEG, WENN ALLES UMGESTELLT IST
-        // if (this.companySubscription) {
-        //   this.companySubscription.unsubscribe();
-        // }
-    }
-
-    onMainMenuSelectionChanged(selectedValue: string) {
-        this.selectedValueFromMainMenu = selectedValue;
-        this.addInfoObject = '';
-
-        console.log('onMainMenuSelectionChanged - param : ' + selectedValue);
-        this.unsubscribeAll();
-
-        switch (selectedValue) {
-            case 'companies':
-                this.subscribeToObservable(this.companyService.getSelectedCompany());
-                break;
-            // Füge hier weitere Fälle für andere Objekte hinzu
-            default:
-                break;
-        }
-    }
-
-    private subscribeToObservable(observable: Observable<any>): void {
-        const subscription = observable.subscribe((data) => {
-            this.addInfoObject = data ? data : '';
-            console.log('subscribeToObservable - data: ' + data);
-        });
-
-        this.subscriptions.push(subscription);
-    }
-
-    private unsubscribeAll(): void {
-        this.subscriptions.forEach(sub => sub.unsubscribe());
-        this.subscriptions = [];
+    onMainMenuSelectionChanged(menuItem: string) {
+        // console.log(menuItem);
+        this.privateService.selectMenu(menuItem);
     }
 
     toggleQuicklinkVisibility(): void {
