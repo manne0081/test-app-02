@@ -41,7 +41,8 @@ export class PrivateComponent implements OnInit {
     menu3: boolean = false;
 
     constructor( private router: Router,
-                 private privateService: PrivateService ) {
+                 private privateService: PrivateService,
+                 private companyService: CompanyService ) {
     }
 
     ngOnInit(): void {
@@ -56,8 +57,13 @@ export class PrivateComponent implements OnInit {
 
         this.privateService.selectedObject$.subscribe(obj => {
             this.addInfoObject = obj;
-            console.log('private > addInfoObject: ' + this.addInfoObject);
+            console.log('private > ngOnInit: ' + this.addInfoObject);
         });
+
+        // this.companyService.getSelectedCompany.subcsribe((obj2: any) => {
+        //     console.log(obj2);
+        // });
+
     }
 
     toggelMenu():void {

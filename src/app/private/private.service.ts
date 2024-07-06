@@ -21,4 +21,6 @@ export class PrivateService {
         console.log('privateService - selectObject: ' + obj);
         this.selectedObjectSubject.next(obj);
     }
+
+
 }

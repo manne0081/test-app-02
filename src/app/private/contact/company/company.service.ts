@@ -18,6 +18,11 @@ export class CompanyService {
     }
 
     onSelectCompany(company: Company ) {
+        // this.selectedCompanySubject.next(company);
+    }
+
+    setSelectedCompany(company: Company): void {
+        console.log('company.service - setSelectedCompany: ' + company.name);
         this.selectedCompanySubject.next(company);
     }
 

@@ -19,6 +19,8 @@ export class CompanyComponent implements OnInit {
     @Input() searchTerm: string = '';
 
     companyItems: Company[] = [];
+    selectedCompany!: Company;
+
     selectedCompanyId: number | null = null;
     sortOrder: string = 'asc';
 
@@ -78,7 +80,8 @@ export class CompanyComponent implements OnInit {
      * @param contact
      */
     onSelectCompany(company: Company): void {
-        this.companyService.onSelectCompany(company);
+        // this.companyService.onSelectCompany(company);
+        this.companyService.setSelectedCompany(company);
         this.selectedCompanyId = company.id;
     }
 }
