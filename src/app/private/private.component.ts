@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { HeaderMenuTestComponent } from './header-menu-test/header-menu-test.component';
@@ -10,9 +9,9 @@ import { HeaderMenuTest2Component } from './header-menu-test-2/header-menu-test-
 import { QuicklinksComponent } from './quicklinks/quicklinks.component';
 
 import { PrivateService } from './private.service';
+import { Company } from './contact/company/company';
 import { CompanyService } from './contact/company/company.service';
 import { AddInfoComponent } from './add-info/add-info.component';
-import { Company } from './contact/company/company';
 
 @Component({
     selector: 'app-private',
