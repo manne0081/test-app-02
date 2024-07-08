@@ -13,14 +13,15 @@ export class PrivateService {
     selectedObject$ = this.selectedObjectSubject.asObservable();
 
     selectMenu(menu: string | null) {
-        console.log('privateService - selectMenu: ' + menu);
+        // console.log('privateService - selectMenu: ' + menu);
         this.selectedMenuSubject.next(menu);
     }
 
     selectObject(obj: any) {
-        console.log('privateService - selectObject: ' + obj);
+        // console.log('privateService - selectObject: ' + obj);
         this.selectedObjectSubject.next(obj);
     }
+
 
 
 }

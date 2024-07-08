@@ -18,14 +18,14 @@
     .item-container:hover {
         background-color: rgba(255, 255, 255, .96);
         box-shadow: -1px -1px 8px -4px rgba(0, 0, 0, 8) inset;
-        border-bottom: 3px solid #869ba8;
+        border-bottom: 3px solid #a6b1b8;
         cursor: pointer;
     }
 
     .item-container.selected {
         background-color: rgba(255, 255, 255, 1);
         box-shadow: -1px -2px 8px -4px rgba(0, 0, 0, 1) inset;
-        border-bottom: 4px solid #527083;
+        border-bottom: 3px solid #527083;
     }
 
 }

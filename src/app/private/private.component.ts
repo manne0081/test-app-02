@@ -12,6 +12,7 @@ import { QuicklinksComponent } from './quicklinks/quicklinks.component';
 import { PrivateService } from './private.service';
 import { CompanyService } from './contact/company/company.service';
 import { AddInfoComponent } from './add-info/add-info.component';
+import { Company } from './contact/company/company';
 
 @Component({
     selector: 'app-private',
@@ -35,6 +36,8 @@ export class PrivateComponent implements OnInit {
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
     searchTerm: string = '';
+
+    selectedCompany: Company | null = null;
     addInfoObject: any = '';
 
     menu2: boolean = true;
@@ -51,19 +54,13 @@ export class PrivateComponent implements OnInit {
         this.onMainMenuSelectionChanged('Dashboard');
         this.router.navigate(['private/dashboard']);
 
-        this.privateService.selectedMenu$.subscribe(menu => {
-            this.selectedValueFromMainMenu = menu;
-        })
-
-        this.privateService.selectedObject$.subscribe(obj => {
-            this.addInfoObject = obj;
-            console.log('private > ngOnInit: ' + this.addInfoObject);
+        this.companyService.selectedCompany$.subscribe({
+            next: (company) => {
+                this.selectedCompany = company;
+                this.addInfoObject = company;
+                // console.log('Company data received 1:', company);
+            }
         });
-
-        // this.companyService.getSelectedCompany.subcsribe((obj2: any) => {
-        //     console.log(obj2);
-        // });
-
     }
 
     toggelMenu():void {
