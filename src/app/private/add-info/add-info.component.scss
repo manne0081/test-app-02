@@ -24,11 +24,21 @@
     margin-right: 12px;
 }
 
-.add-info-item {
+.fst {
     background-color: #fafafa;
     border: 1px solid rgb(165, 165, 165);
     border-radius: 4px;
     padding: 4px 8px;
     display: inline-block;
     margin-right: 4px;
+    width: 100%;
+
+    .add-info-item {
+        // background-color: #fafafa;
+        // border: 1px solid rgb(165, 165, 165);
+        // border-radius: 4px;
+        // padding: 4px 8px;
+        // display: inline-block;
+        // margin-right: 4px;
+    }
 }

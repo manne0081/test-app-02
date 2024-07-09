@@ -3,10 +3,13 @@
 </div>
 
 <div class="add-info-wrapper" *ngIf="addInfoObject"> <!--  *ngIf="addInfoObject"-->
-    <div class="add-info-item">
-        ID: {{addInfoObject.id}}
-    </div>
-    <div class="add-info-item">
-        {{addInfoObject.name}}
+    <div class="fst">
+        <div class="add-info-item">
+            ID: {{addInfoObject.id}}
+        </div>
+        <hr style="margin: 4px 0px;">
+        <div class="add-info-item">
+            {{addInfoObject.name}}
+        </div>
     </div>
 </div>
