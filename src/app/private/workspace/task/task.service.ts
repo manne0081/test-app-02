@@ -9,6 +9,7 @@ import { Task, TASK_MOCK } from './task';
 export class TaskService {
     private selectedTaskSubject = new BehaviorSubject<Task | null>(null);
     selectedTask$ = this.selectedTaskSubject.asObservable();
+    selectedTask!: Task;
 
     constructor() { }
 
@@ -18,6 +19,7 @@ export class TaskService {
 
     onSelectTask(task: Task ) {
         this.selectedTaskSubject.next(task);
+        this.selectedTask = task;
     }
 
     getSelectedTask(): Observable<Task | null> {

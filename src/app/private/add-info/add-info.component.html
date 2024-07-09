@@ -4,12 +4,17 @@
 
 <div class="add-info-wrapper" *ngIf="addInfoObject"> <!--  *ngIf="addInfoObject"-->
     <div class="fst">
-        <div class="add-info-item">
+        <div class="add-info-item-id">
             ID: {{addInfoObject.id}}
         </div>
-        <hr style="margin: 4px 0px;">
-        <div class="add-info-item">
+        <hr style="margin: 4px 0px;" *ngIf="addInfoObject.name">
+        <div class="add-info-item-name" *ngIf="addInfoObject.name">
             {{addInfoObject.name}}
+        </div>
+    </div>
+    <div class="snd" *ngIf="addInfoObject.title">
+        <div class="add-info-item-id">
+            {{addInfoObject.title}}
         </div>
     </div>
 </div>

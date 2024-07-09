@@ -19,6 +19,7 @@ export class TaskComponent implements OnInit {
     @Input() searchTerm: string = '';
 
     taskItems: Task[] = [];
+    selectedTask!: Task;
     selectedTaskId: number | null = null;
     sortOrder: string = 'asc';
 

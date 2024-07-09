@@ -20,7 +20,6 @@ export class CompanyComponent implements OnInit {
 
     companyItems: Company[] = [];
     selectedCompany!: Company;
-
     selectedCompanyId: number | null = null;
     sortOrder: string = 'asc';
 

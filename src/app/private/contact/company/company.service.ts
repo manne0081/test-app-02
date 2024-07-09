@@ -10,7 +10,6 @@ import { Company, COMPANY_MOCK } from './company';
 export class CompanyService {
     private selectedCompanySubject = new BehaviorSubject<Company | null>(null);
     selectedCompany$ = this.selectedCompanySubject.asObservable();
-
     selectedCompany!: Company;
 
     constructor() { }

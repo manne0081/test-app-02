@@ -7,11 +7,13 @@ import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { HeaderMenuTestComponent } from './header-menu-test/header-menu-test.component';
 import { HeaderMenuTest2Component } from './header-menu-test-2/header-menu-test-2.component';
 import { QuicklinksComponent } from './quicklinks/quicklinks.component';
+import { AddInfoComponent } from './add-info/add-info.component';
 
 import { PrivateService } from './private.service';
 import { Company } from './contact/company/company';
 import { CompanyService } from './contact/company/company.service';
-import { AddInfoComponent } from './add-info/add-info.component';
+import { Task } from './workspace/task/task';
+import { TaskService } from './workspace/task/task.service';
 
 @Component({
     selector: 'app-private',
@@ -37,6 +39,7 @@ export class PrivateComponent implements OnInit {
     searchTerm: string = '';
 
     selectedCompany: Company | null = null;
+    selectedTask: Task | null = null;
     addInfoObject: any = '';
 
     menu2: boolean = true;
@@ -44,7 +47,8 @@ export class PrivateComponent implements OnInit {
 
     constructor( private router: Router,
                  private privateService: PrivateService,
-                 private companyService: CompanyService ) {
+                 private companyService: CompanyService,
+                 private taskService: TaskService ) {
     }
 
     ngOnInit(): void {
@@ -52,14 +56,37 @@ export class PrivateComponent implements OnInit {
         this.toggleAddInfoVisibility();
         this.onMainMenuSelectionChanged('Dashboard');
         this.router.navigate(['private/dashboard']);
+        // this.setAddInfoObject();
+    }
 
-        this.companyService.selectedCompany$.subscribe({
-            next: (company) => {
-                this.selectedCompany = company;
-                this.addInfoObject = company;
-                // console.log('Company data received 1:', company);
-            }
-        });
+    setAddInfoObject(menuItem?: string): void {
+        switch (menuItem) {
+            case 'Unternehmen':
+                console.log('case: Unternehmen');
+                this.companyService.selectedCompany$.subscribe({
+                    next: (company) => {
+                        this.selectedCompany = company;
+                        this.addInfoObject = company;
+                        // console.log('Company data received 1:', company);
+                    }
+                });
+                break;
+
+            case 'Aufgaben':
+                console.log('case: Aufgaben');
+                this.taskService.selectedTask$.subscribe({
+                    next: (task) => {
+                        this.selectedTask = task;
+                        this.addInfoObject = task;
+                        // console.log('Company data received 1:', company);
+                    }
+                });
+                break;
+
+            default:
+                console.log('case: default');
+                break;
+        }
     }
 
     toggelMenu():void {
@@ -68,8 +95,9 @@ export class PrivateComponent implements OnInit {
     }
 
     onMainMenuSelectionChanged(menuItem: string) {
-        // console.log(menuItem);
         this.privateService.selectMenu(menuItem);
+        this.setAddInfoObject(menuItem);
+        this.addInfoObject = '';
     }
 
     toggleQuicklinkVisibility(): void {
