@@ -131,7 +131,6 @@ export class PrivateComponent implements OnInit {
      * removes the searching-term and the additional-informations
      */
     removeSearchTerm(): void {
-        this.addInfoObject = '';
         this.searchTerm = '';
         this.updateRoute();
     }
