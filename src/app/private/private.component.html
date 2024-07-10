@@ -51,12 +51,56 @@
                 <!-- Content-Header -->
                 <!-- ************** -->
                 <div class="content-header-container">
+                    <!-- Searching-Area -->
+                    <!-- -------------- -->
                     <div class="searching-wrapper">
                         <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChanged($event)">
                         <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
                     </div>
-                    <div class="sorting">
-                        <app-dropdown [items]="['Select an option', 'Option 1', 'Option 2', 'Option 3']" placeholder="Select an option"></app-dropdown>
+
+                    <!-- FILTER - DROPDOWN -->
+                    <!-- ----------------- -->
+                    <div class="dropdown">
+                        <div class="drop-button">
+                            <div class="icon-filter" style="font-size: 1.2em"></div>
+                            <p style="margin-right: 2px;">Filter (WIP)</p>
+                        </div>
+                        <div class="drop-content-container">
+                            <div class="drop-content-items-container">
+                                <div style="padding: 8px 12px;">
+                                    WIP
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SORTING - DROPDOWN -->
+                    <!-- ------------------ -->
+                    <div class="dropdown">
+                        <div class="drop-button">
+                            <div class="icon-sort" style="font-size: 1.2em"></div>
+                            <p style="margin-right: 2px;">Sort (WIP)</p>
+                        </div>
+                        <div class="drop-content-container">
+                            <div class="drop-content-items-container">
+                                <div class="drop-item-wrapper">
+                                    <p style="margin-right: 2px;">Sort-Option-1</p>
+                                    <div class="icon-sort-amount-asc" style="font-size: .8em"></div>
+                                </div>
+                                <div class="drop-item-wrapper">
+                                    <p style="margin-right: 2px;">Sort-Option-2</p>
+                                    <div class="icon-sort-amount-desc" style="font-size: .8em"></div>
+                                </div>
+                                <div class="drop-item-wrapper">
+                                    <p style="margin-right: 2px;">Sort-Option-3</p>
+                                    <div class="icon-sort-asc" style="font-size: 1.4em"></div>
+                                </div>
+                                <div class="drop-item-wrapper">
+                                    <p style="margin-right: 2px;">Sort-Option-4</p>
+                                    <div class="icon-sort-desc" style="font-size: 1.4em"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
