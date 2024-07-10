@@ -18,8 +18,8 @@
                 <div class="header-item-container-white" [ngClass]="menuItem.status">
                     <div #dropdown class="dropdown-container">
 
-                        <!-- Menu-Button / When the menu-item has no dropdown and have the url-link directly -->
-                        <!-- ******************************************************************************* -->
+                        <!-- MENU-BUTTON (Dashboard) / When the menu-item has no dropdown and have the url-link directly -->
+                        <!-- ******************************************************************************************* -->
                         <ng-container *ngIf="menuItem.hasLink; else noLink">
                             <button #dropdownButton class="drop-button" [ngClass]="menuItem.status" *ngIf="menuItem.name !== 'placeholder'"
                                 (click)="openDropdown(menuItem.name)" (click)="markMenuItemAsActive(menuItem.name)" (click)="onSelectionChange(menuItem.title!)"
@@ -30,8 +30,8 @@
                             </button>
                         </ng-container>
 
-                        <!-- Menu-Button / When the menu-item has a dropdown and dont have an url-link -->
-                        <!-- ************************************************************************* -->
+                        <!-- MENU-BUTTON (!Dashboard) / When the menu-item has a dropdown and dont have an url-link -->
+                        <!-- ************************************************************************************** -->
                         <ng-template #noLink>
                             <button #dropdownButton class="drop-button" [ngClass]="menuItem.status" *ngIf="menuItem.name !== 'placeholder'"
                                 (click)="openDropdown(menuItem.name)"
@@ -41,7 +41,18 @@
                             </button>
                         </ng-template>
 
-                        <!-- Dropdown-Content if the clicked menuItem.name is not searching -->
+                        <!-- DROPDOWN-CONTENT if the clicked menuItem.name is searching -->
+                        <!-- ********************************************************** -->
+                        <div class="drop-content-container" *ngIf="menuItem.showDropdown && menuItem.name === 'searching'"
+                             style="padding: 8px 16px; font-size: 2em; min-width: 500px; min-height: 200px; display: flex; align-items: center; justify-content: space-around;"
+                        >
+                            WIP
+
+                            <!-- todo -->
+
+                        </div>
+
+                        <!-- DROPDOWN-CONTENT if the clicked menuItem.name is not searching -->
                         <!-- ************************************************************** -->
                         <div class="drop-content-container" *ngIf="menuItem.showDropdown && menuItem.name !== 'searching'">
                             <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
@@ -56,20 +67,6 @@
                                 </div>
                             </ng-container>
                         </div>
-
-                        <!-- Dropdown-Content if the clicked menuItem.name is searching -->
-                        <!-- ********************************************************** -->
-                        <div class="drop-content-container" *ngIf="menuItem.showDropdown && menuItem.name === 'searching'"
-                             style="padding: 8px 16px; font-size: 2em; min-width: 500px; min-height: 200px; display: flex; align-items: center; justify-content: space-around;"
-                        >
-                            WIP
-
-                            <!-- todo -->
-
-                        </div>
-
-
-
                     </div>
                 </div>
             </div>

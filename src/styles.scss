@@ -71,6 +71,8 @@ $test-app-02-theme: mat.define-light-theme((
     --quicklinks-width: calc(188px + var(--navigation-width));
 
     --additional-info-width: calc(var(--quicklinks-width) - var(--navigation-width));
+
+    --dropdown-button-padding: 0px 8px;
 }
 
 

@@ -1,0 +1,9 @@
+<!-- dropdown.component.html -->
+<div class="dropdown">
+    <button class="dropdown-button" (click)="toggleDropdown($event)">
+        {{ selectedItem || placeholder }}
+    </button>
+    <div class="dropdown-content" [class.show]="isOpen">
+        <a *ngFor="let item of items" (click)="selectItem(item)">{{ item }}</a>
+    </div>
+</div>

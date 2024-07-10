@@ -50,10 +50,13 @@
 
                 <!-- Content-Header -->
                 <!-- ************** -->
-                <div class="content-header">
+                <div class="content-header-container">
                     <div class="searching-wrapper">
                         <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChanged($event)">
                         <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
+                    </div>
+                    <div class="sorting">
+                        <app-dropdown [items]="['Select an option', 'Option 1', 'Option 2', 'Option 3']" placeholder="Select an option"></app-dropdown>
                     </div>
                 </div>
 

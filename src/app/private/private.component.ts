@@ -3,6 +3,8 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { DropdownComponent } from './_test/shared/dropdown/dropdown.component';
+
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { HeaderMenuTestComponent } from './header-menu-test/header-menu-test.component';
 import { HeaderMenuTest2Component } from './header-menu-test-2/header-menu-test-2.component';
@@ -24,6 +26,7 @@ import { TaskService } from './workspace/task/task.service';
         HeaderMenuComponent,
         HeaderMenuTestComponent,
         HeaderMenuTest2Component,
+        DropdownComponent,
         QuicklinksComponent,
         AddInfoComponent,
         FormsModule,
@@ -60,9 +63,10 @@ export class PrivateComponent implements OnInit {
     }
 
     setAddInfoObject(menuItem?: string): void {
+        var log: string = 'private.component - setAddInfoObject - ';
         switch (menuItem) {
             case 'Unternehmen':
-                console.log('case: Unternehmen');
+                console.log(log + 'case: Unternehmen');
                 this.companyService.selectedCompany$.subscribe({
                     next: (company) => {
                         this.selectedCompany = company;
@@ -73,7 +77,7 @@ export class PrivateComponent implements OnInit {
                 break;
 
             case 'Aufgaben':
-                console.log('case: Aufgaben');
+                console.log(log + 'case: Aufgaben');
                 this.taskService.selectedTask$.subscribe({
                     next: (task) => {
                         this.selectedTask = task;
@@ -84,7 +88,7 @@ export class PrivateComponent implements OnInit {
                 break;
 
             default:
-                console.log('case: default');
+                console.log(log + 'case: default');
                 break;
         }
     }

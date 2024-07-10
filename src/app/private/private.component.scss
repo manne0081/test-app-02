@@ -114,13 +114,17 @@ $highlight-color-lighter: #fae4d7;
             background-image: url(../../assets/images/background_3.jpg);
             display: grid;
             grid-template-rows: min-content auto 48px;
+            position: relative;
 
-            .content-header {
+            .content-header-container {
                 background-color: white;
                 box-shadow: 0px 6px 4px -2px rgba(0, 0, 0, .20);
                 border-radius: 0 0 12px 12px;
                 padding: 4px 17px 4px 13px;
                 z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
 
                 .searching-wrapper {
                     background-color: rgb(225, 225, 225);
@@ -128,7 +132,9 @@ $highlight-color-lighter: #fae4d7;
                     align-items: center;
                     margin-top: 8px;
                     margin-bottom: 8px;
+                    margin-right: 12px;
                     height: 28px;
+                    width: 100%;
                     border: 1px solid #b9b9b9;
                     border-radius: 4px;
 
@@ -153,6 +159,17 @@ $highlight-color-lighter: #fae4d7;
                         color: white;
                         cursor: pointer;
                     }
+                }
+
+                .sorting {
+                    background-color: lime; padding: 10px;
+                    // position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    display: flex;
+                    justify-content: end;
+                    width: 300px;
+
                 }
 
             }
