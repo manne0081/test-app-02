@@ -46,11 +46,12 @@
 
             <!-- Content -->
             <!-- ******* -->
-            <div class="main-content-container">    <!-- [ngClass]="selectedValueFromMainMenu === 'Dashboard' ? 'main-content-container-dashboard' : 'main-content-container'"-->
+            <!-- <div class="main-content-container"> -->
+            <div [ngClass]="selectedValueFromMainMenu === 'Dashboard' ? 'main-content-container-dashboard' : 'main-content-container'">
 
                 <!-- Content-Header -->
                 <!-- ************** -->
-                <div class="content-header-container">    <!--  [ngStyle]="{ 'visibility': selectedValueFromMainMenu === 'Dashboard' ? 'hidden' : 'visible' }"-->
+                <div class="content-header-container" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">    <!--  [ngStyle]="{ 'visibility': selectedValueFromMainMenu === 'Dashboard' ? 'hidden' : 'visible' }"-->
                     <!-- Searching-Area -->
                     <!-- -------------- -->
                     <div class="searching-wrapper">
@@ -112,7 +113,7 @@
 
                 <!-- Content-Actions -->
                 <!-- *************** -->
-                <div class="content-actions">
+                <div class="content-actions" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
                     Actions
                 </div>
             </div>

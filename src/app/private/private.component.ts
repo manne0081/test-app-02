@@ -102,6 +102,11 @@ export class PrivateComponent implements OnInit {
     onMainMenuSelectionChanged(menuItem: string) {
         this.privateService.selectMenu(menuItem);
         this.selectedValueFromMainMenu = menuItem;
+        if (menuItem === 'Dashboard') {
+            this.addInfoVisible = false;
+        } else {
+            this.addInfoVisible = true;
+        }
         this.setAddInfoObject(menuItem);
         this.addInfoObject = '';
     }

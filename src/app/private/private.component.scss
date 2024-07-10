@@ -123,9 +123,9 @@ $highlight-color-lighter: #fae4d7;
 
         .main-content-container-dashboard {
             background-color: orange;
-            // background-image: url(../../assets/images/background_3.jpg);
+            background-image: url(../../assets/images/background_3.jpg);
             display: grid;
-            grid-template-rows: auto 48px;
+            grid-template-rows: auto;
             position: relative;
         }
 
