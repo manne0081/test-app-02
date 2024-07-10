@@ -46,11 +46,11 @@
 
             <!-- Content -->
             <!-- ******* -->
-            <div class="main-content-container">
+            <div class="main-content-container">    <!-- [ngClass]="selectedValueFromMainMenu === 'Dashboard' ? 'main-content-container-dashboard' : 'main-content-container'"-->
 
                 <!-- Content-Header -->
                 <!-- ************** -->
-                <div class="content-header-container">
+                <div class="content-header-container">    <!--  [ngStyle]="{ 'visibility': selectedValueFromMainMenu === 'Dashboard' ? 'hidden' : 'visible' }"-->
                     <!-- Searching-Area -->
                     <!-- -------------- -->
                     <div class="searching-wrapper">

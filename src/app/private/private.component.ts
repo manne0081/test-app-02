@@ -59,6 +59,7 @@ export class PrivateComponent implements OnInit {
         this.toggleAddInfoVisibility();
         this.onMainMenuSelectionChanged('Dashboard');
         this.router.navigate(['private/dashboard']);
+        console.log(this.selectedValueFromMainMenu);
         // this.setAddInfoObject();
     }
 
@@ -100,6 +101,7 @@ export class PrivateComponent implements OnInit {
 
     onMainMenuSelectionChanged(menuItem: string) {
         this.privateService.selectMenu(menuItem);
+        this.selectedValueFromMainMenu = menuItem;
         this.setAddInfoObject(menuItem);
         this.addInfoObject = '';
     }
