@@ -17,16 +17,15 @@
         justify-content: space-between;
 
         .add-button {
-            background-color: rgb(225, 225, 225);
-            border: 1px solid #b9b9b9;
-            border-radius: 4px;
+            border-radius: 6px;
             color: #2c5067;
+            color: #7a7a7a;
             font-weight: bold;
             padding: 4px 6px;
         }
 
         .add-button:hover {
-            background-color: #2c5067;
+            background-color: #527083;
             color: white;
             cursor: pointer;
         }
