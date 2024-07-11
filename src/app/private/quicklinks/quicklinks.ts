@@ -5,11 +5,11 @@ export interface Quicklinks {
 }
 
 export const QUICKLINKS_MOCK: Quicklinks[] = [
-    { id: 0, title: 'WIP / Aufgaben', url: 'private/task/' },
+    { id: 0, title: 'Aufgaben', url: 'private/task/' },
     // { id: 1, title: 'Planner', url: 'private/planner/' },
     // { id: 2, title: 'Kampagnen', url: 'private/campagne/' },
     // { id: 3, title: 'E-Mail', url: 'private/email/' },
-    { id: 4, title: 'WIP / Unternehmen', url: 'private/company/' },
+    { id: 4, title: 'Unternehmen', url: 'private/company/' },
     // { id: 5, title: 'Lieferanten', url: 'private/supplier/' },
     // { id: 6, title: 'Ansprechpartner', url: 'private/contact/' },
     // { id: 7, title: 'Benutzer', url: 'private/user/' },

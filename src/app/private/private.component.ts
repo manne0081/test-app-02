@@ -112,6 +112,7 @@ export class PrivateComponent implements OnInit {
         this.selectedValueFromMainMenu = item.titel;
         this.addInfoVisible = true;
         this.addInfoObject = '';
+        this.setAddInfoObject(item.title);
     }
 
 
