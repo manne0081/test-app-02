@@ -1,6 +1,10 @@
 <div class="quicklink-header">
 
-    <span>My Quicklinks</span><br>
+    <div class="headline-wrapper">
+        <span>My Quicklinks</span>
+        <div class="icon-add add-button"></div>
+    </div>
+
     <div class="searching-wrapper">
         <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm">
         <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeFilterTerm()"></div>
