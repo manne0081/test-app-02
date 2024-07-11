@@ -6,8 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { DropdownComponent } from './_test/shared/dropdown/dropdown.component';
 
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
-import { HeaderMenuTestComponent } from './header-menu-test/header-menu-test.component';
-import { HeaderMenuTest2Component } from './header-menu-test-2/header-menu-test-2.component';
 import { QuicklinksComponent } from './quicklinks/quicklinks.component';
 import { AddInfoComponent } from './add-info/add-info.component';
 
@@ -16,6 +14,7 @@ import { Company } from './contact/company/company';
 import { CompanyService } from './contact/company/company.service';
 import { Task } from './workspace/task/task';
 import { TaskService } from './workspace/task/task.service';
+import { QuicklinksService } from './quicklinks/quicklinks.service';
 
 @Component({
     selector: 'app-private',
@@ -24,8 +23,6 @@ import { TaskService } from './workspace/task/task.service';
         CommonModule,
         RouterModule,
         HeaderMenuComponent,
-        HeaderMenuTestComponent,
-        HeaderMenuTest2Component,
         DropdownComponent,
         QuicklinksComponent,
         AddInfoComponent,
@@ -50,16 +47,22 @@ export class PrivateComponent implements OnInit {
     constructor( private router: Router,
                  private privateService: PrivateService,
                  private companyService: CompanyService,
-                 private taskService: TaskService ) {
+                 private taskService: TaskService,
+                 private quicklinkService: QuicklinksService,
+                ) {
     }
 
     ngOnInit(): void {
         this.toggleQuicklinkVisibility();
         this.toggleAddInfoVisibility();
-        this.onMainMenuSelectionChanged('Dashboard');
+        this.onSelectMenuItem('Dashboard');
         this.router.navigate(['private/dashboard']);
         // console.log(this.selectedValueFromMainMenu);
         // this.setAddInfoObject();
+
+        this.quicklinkService.selectedQuicklink$.subscribe(item => {
+            this.onSelectQuicklink(item);
+        });
     }
 
     /**
@@ -70,7 +73,7 @@ export class PrivateComponent implements OnInit {
         var log: string = 'private.component - setAddInfoObject - ';
         switch (menuItem) {
             case 'Unternehmen':
-                // console.log(log + 'case: Unternehmen');
+                console.log(log + 'case: Unternehmen');
                 this.companyService.selectedCompany$.subscribe({
                     next: (company) => {
                         this.selectedCompany = company;
@@ -81,7 +84,7 @@ export class PrivateComponent implements OnInit {
                 break;
 
             case 'Aufgaben':
-                // console.log(log + 'case: Aufgaben');
+                console.log(log + 'case: Aufgaben');
                 this.taskService.selectedTask$.subscribe({
                     next: (task) => {
                         this.selectedTask = task;
@@ -101,7 +104,7 @@ export class PrivateComponent implements OnInit {
      *
      * @param menuItem
      */
-    onMainMenuSelectionChanged(menuItem: string) {
+    onSelectMenuItem(menuItem: string) {
         this.privateService.selectMenu(menuItem);
         this.selectedValueFromMainMenu = menuItem;
         if (menuItem === 'Dashboard') {
@@ -113,12 +116,8 @@ export class PrivateComponent implements OnInit {
         this.addInfoObject = '';
     }
 
-    /**
-     *
-     * @param item
-     */
-    onSelectQuicklink(item: any) {
-        // this.selectedValueFromMainMenu = item.titel;
+    onSelectQuicklink(item: any): void {
+        this.selectedValueFromMainMenu = item.titel;
         this.addInfoVisible = true;
         this.addInfoObject = '';
         this.setAddInfoObject(item.title);

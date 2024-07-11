@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 import { Quicklinks, QUICKLINKS_MOCK } from './quicklinks';
 
@@ -7,12 +7,17 @@ import { Quicklinks, QUICKLINKS_MOCK } from './quicklinks';
     providedIn: 'root'
 })
 export class QuicklinksService {
-    // private selectedCompanySubject = new BehaviorSubject<Quicklinks | null>(null);
-    // selectedCompany$ = this.selectedCompanySubject.asObservable();
+    private selectedQuicklinkSource = new Subject<Quicklinks>();
+    selectedQuicklink$ = this.selectedQuicklinkSource.asObservable();
 
     constructor() { }
 
     getQuicklinks(): Observable<Quicklinks[]> {
         return of(QUICKLINKS_MOCK);
+    }
+
+    onSelectQuicklink(item: Quicklinks) {
+        this.selectedQuicklinkSource.next(item);
+        // console.log('quicklink.service - onSelectQuicklink: ' + item);
     }
 }

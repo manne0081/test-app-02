@@ -5,7 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PrivateComponent } from './private/private.component';
 import { DashboardComponent } from './private/dashboard/dashboard.component';
-import { HeaderMenuTest2Component } from './private/header-menu-test-2/header-menu-test-2.component';
 import { TaskComponent } from './private/workspace/task/task.component';
 import { PlannerComponent } from './private/workspace/planner/planner.component';
 import { CampagneComponent } from './private/workspace/campagne/campagne.component';
@@ -57,7 +56,6 @@ export const routes: Routes = [
     // { path: '',   redirectTo: 'home', pathMatch: 'full' },
     { path: '',   redirectTo: 'private/dashboard', pathMatch: 'full' },
 
-    { path: 'nav-test', component: HeaderMenuTest2Component },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'private', component: PrivateComponent,

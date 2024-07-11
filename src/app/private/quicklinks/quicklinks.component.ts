@@ -104,7 +104,8 @@ export class QuicklinksComponent implements OnInit {
 
         // For sharing the selected Quicklink-Item with the private.component, to show the add-info-container
         // and to show the Content-Header and the Actions Container
-        this.onSelectQuicklink.emit(item);
+        // this.onSelectQuicklink.emit(item);
+        this.quicklinkService.onSelectQuicklink(item);
     }
 
     openContext(item: any): void {
