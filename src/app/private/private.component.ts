@@ -108,6 +108,14 @@ export class PrivateComponent implements OnInit {
         this.addInfoObject = '';
     }
 
+    onSelectQuicklink(item: any) {
+        this.selectedValueFromMainMenu = item.titel;
+        this.addInfoVisible = true;
+        this.addInfoObject = '';
+    }
+
+
+
     toggleQuicklinkVisibility(): void {
         this.quicklinksVisible = !this.quicklinksVisible;
     }

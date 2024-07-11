@@ -7,7 +7,7 @@
 
     <div class="searching-wrapper">
         <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm">
-        <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeFilterTerm()"></div>
+        <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
     </div>
 
 </div>
@@ -22,8 +22,9 @@
             <span class="icon-fullscreen"></span>
         </div>
 
-        <div class="quicklink-value" (click)="openQuicklink(item)">
-            <span>{{item}}</span>
+        <!-- <div class="quicklink-value" (click)="openQuicklink(item)"> -->
+        <div class="quicklink-value" (click)="test3(item)">
+            <span>{{item.title}}</span>
         </div>
 
         <div class="quicklink-more" (click)="openContext(item)">

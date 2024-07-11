@@ -42,7 +42,7 @@
             <!-- QUICKLINKS -->
             <!-- ********** -->
             <div class="quicklinks-container" *ngIf="quicklinksVisible">
-                <app-quicklinks></app-quicklinks>
+                <app-quicklinks (onSelectQuicklink)="onSelectQuicklink($event)"></app-quicklinks>
             </div>
 
             <!-- Content -->

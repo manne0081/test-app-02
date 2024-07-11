@@ -23,7 +23,9 @@ export class CompanyComponent implements OnInit {
     selectedCompany!: Company;
     selectedCompanyId: number | null = null;
 
-    constructor ( private route: ActivatedRoute, private companyService: CompanyService ) {
+    constructor (
+        private route: ActivatedRoute,
+        private companyService: CompanyService ) {
     }
 
     ngOnInit(): void {
