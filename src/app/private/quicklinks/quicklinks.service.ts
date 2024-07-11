@@ -6,6 +6,7 @@ import { Quicklinks, QUICKLINKS_MOCK } from './quicklinks';
 @Injectable({
     providedIn: 'root'
 })
+
 export class QuicklinksService {
     private selectedQuicklinkSource = new Subject<Quicklinks>();
     selectedQuicklink$ = this.selectedQuicklinkSource.asObservable();
@@ -18,6 +19,5 @@ export class QuicklinksService {
 
     onSelectQuicklink(item: Quicklinks) {
         this.selectedQuicklinkSource.next(item);
-        // console.log('quicklink.service - onSelectQuicklink: ' + item);
     }
 }

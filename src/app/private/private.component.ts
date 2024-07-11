@@ -71,14 +71,17 @@ export class PrivateComponent implements OnInit {
      */
     setAddInfoObject(menuItem?: string): void {
         var log: string = 'private.component - setAddInfoObject - ';
+
         switch (menuItem) {
             case 'Unternehmen':
                 console.log(log + 'case: Unternehmen');
                 this.companyService.selectedCompany$.subscribe({
                     next: (company) => {
-                        this.selectedCompany = company;
-                        this.addInfoObject = company;
-                        // console.log('Company data received 1:', company);
+                        if (company) {
+                            this.selectedCompany = company;
+                            this.addInfoObject = company;
+                            // console.log('Company data received 1:', company);
+                        }
                     }
                 });
                 break;
@@ -119,7 +122,6 @@ export class PrivateComponent implements OnInit {
     onSelectQuicklink(item: any): void {
         this.selectedValueFromMainMenu = item.titel;
         this.addInfoVisible = true;
-        this.addInfoObject = '';
         this.setAddInfoObject(item.title);
     }
 
