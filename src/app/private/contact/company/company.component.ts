@@ -17,11 +17,11 @@ import { CompanyService } from './company.service';
 
 export class CompanyComponent implements OnInit {
     @Input() searchTerm: string = '';
+    @Input() sortingTerm: string = '';
 
     companyItems: Company[] = [];
     selectedCompany!: Company;
     selectedCompanyId: number | null = null;
-    sortOrder: string = 'asc';
 
     constructor ( private route: ActivatedRoute, private companyService: CompanyService ) {
     }
@@ -30,12 +30,12 @@ export class CompanyComponent implements OnInit {
         this.getCompanies();
 
         this.route.queryParams.subscribe(params => {
+
+            this.sortingTerm = (params['sortingTerm'] || 'name-asc');
             this.searchTerm = params['searchTerm'] || '';
                 if(this.searchTerm) {
-                    // console.log('searchTerm = true: ' + this.searchTerm);
                     this.applyFilter();
                 } else {
-                    // console.log('searchTerm = false: ' + this.searchTerm);
                     this.getCompanies();
                 }
         });
@@ -64,13 +64,18 @@ export class CompanyComponent implements OnInit {
      *
      */
     sortCompanyItems(): void {
-        this.companyItems = this.companyItems
-            .sort((a, b) => {
-                if (this.sortOrder === 'asc') {
-                    return a.name.localeCompare(b.name);
-                } else {
-                    return b.name.localeCompare(a.name);
-                }
+        this.companyItems = this.companyItems.sort((a, b) => {
+            if (this.sortingTerm === 'name-asc') {
+                return a.name.localeCompare(b.name);
+            } else if (this.sortingTerm === 'name-desc') {
+                return b.name.localeCompare(a.name);
+            } else if (this.sortingTerm === 'id-asc') {
+                return a.id - b.id;
+            } else if (this.sortingTerm === 'id-desc') {
+                return b.id - a.id;
+            } else {
+                return 0; // Falls kein gültiger Sortierbegriff angegeben ist, bleibt die Reihenfolge unverändert
+            }
         });
     }
 

@@ -182,8 +182,8 @@ $highlight-color-lighter: #fae4d7;
                 overflow: visible;
 
                 .drop-button {
-                    background-color: rgb(225, 225, 225);;
-                    background-color: orange;
+                    background-color: rgb(225, 225, 225);
+                    // background-color: orange;
                     border: 1px solid #b9b9b9;
                     position: relative;
                     border-radius: 4px;
@@ -206,8 +206,9 @@ $highlight-color-lighter: #fae4d7;
                     // padding-top: 4px;
 
                     .drop-content-items-container {
+                        background-color: rgb(225, 225, 225);
+                        // background-color: yellow;
                         position: absolute;
-                        background-color: yellow;
                         right: 0;
                         top: 100%;
                         z-index: 1000;
@@ -227,7 +228,8 @@ $highlight-color-lighter: #fae4d7;
                         }
 
                         .drop-item-wrapper:hover {
-                            background-color: orangered;
+                            background-color: rgba(0, 0, 0, .12);
+                            // background-color: orangered;
                         }
                     }
                 }

@@ -39,14 +39,16 @@ export class PrivateComponent implements OnInit {
     selectedValueFromMainMenu: string | null = null;
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
+
     searchTerm: string = '';
+    sortingTerm: string = '';
 
     selectedCompany: Company | null = null;
     selectedTask: Task | null = null;
     addInfoObject: any = '';
 
-    menu2: boolean = true;
-    menu3: boolean = false;
+    // menu2: boolean = true;
+    // menu3: boolean = false;
 
     constructor( private router: Router,
                  private privateService: PrivateService,
@@ -59,7 +61,7 @@ export class PrivateComponent implements OnInit {
         this.toggleAddInfoVisibility();
         this.onMainMenuSelectionChanged('Dashboard');
         this.router.navigate(['private/dashboard']);
-        console.log(this.selectedValueFromMainMenu);
+        // console.log(this.selectedValueFromMainMenu);
         // this.setAddInfoObject();
     }
 
@@ -67,7 +69,7 @@ export class PrivateComponent implements OnInit {
         var log: string = 'private.component - setAddInfoObject - ';
         switch (menuItem) {
             case 'Unternehmen':
-                console.log(log + 'case: Unternehmen');
+                // console.log(log + 'case: Unternehmen');
                 this.companyService.selectedCompany$.subscribe({
                     next: (company) => {
                         this.selectedCompany = company;
@@ -78,7 +80,7 @@ export class PrivateComponent implements OnInit {
                 break;
 
             case 'Aufgaben':
-                console.log(log + 'case: Aufgaben');
+                // console.log(log + 'case: Aufgaben');
                 this.taskService.selectedTask$.subscribe({
                     next: (task) => {
                         this.selectedTask = task;
@@ -89,14 +91,9 @@ export class PrivateComponent implements OnInit {
                 break;
 
             default:
-                console.log(log + 'case: default');
+                // console.log(log + 'case: default');
                 break;
         }
-    }
-
-    toggelMenu():void {
-        this.menu2 = !this.menu2
-        this.menu3 = !this.menu3
     }
 
     onMainMenuSelectionChanged(menuItem: string) {
@@ -128,12 +125,18 @@ export class PrivateComponent implements OnInit {
         this.updateRoute();
     }
 
+    setSortingOrder(term: string) {
+        this.sortingTerm = term;
+        this.updateRoute();
+        // console.log('private.component - setSortingOrder: ' + term);
+    }
+
     /**
      *
      */
     updateRoute(): void {
         this.router.navigate([], {
-            queryParams: { searchTerm: this.searchTerm },
+            queryParams: { searchTerm: this.searchTerm, sortingTerm: this.sortingTerm },
             queryParamsHandling: 'merge',
         })
     }

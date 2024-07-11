@@ -6,8 +6,9 @@
     <!-- Header -->
     <!-- ****** -->
     <header class="page-header-container" style="overflow: visible;">
-        <app-header-menu-test *ngIf="menu2" (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test>
-        <app-header-menu-test-2 *ngIf="menu3" (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test-2>
+        <!-- <app-header-menu-test *ngIf="menu2" (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test> -->
+        <!-- <app-header-menu-test-2 *ngIf="menu3" (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test-2> -->
+        <app-header-menu-test (selectionChanged)="onMainMenuSelectionChanged($event)"></app-header-menu-test>
     </header>
 
     <!-- Main-Content -->
@@ -22,11 +23,11 @@
 
             <!-- Menuname -->
             <!-- -------- -->
-            <span class="content-title-value" (click)="toggelMenu()">{{selectedValueFromMainMenu}}</span>
+            <span class="content-title-value">{{selectedValueFromMainMenu}}</span>
 
             <!-- Button toggle AddInfos -->
             <!-- ---------------------- -->
-            <button class="content-title-addinfo" (click)="toggleAddInfoVisibility()">Add Info</button>
+            <button class="content-title-addinfo" (click)="toggleAddInfoVisibility()" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">Add Info</button>
 
         </div>
 
@@ -64,7 +65,7 @@
                     <div class="dropdown">
                         <div class="drop-button">
                             <div class="icon-filter" style="font-size: 1.2em"></div>
-                            <p style="margin-right: 2px;">Filter (WIP)</p>
+                            <p style="margin-right: 2px;">Filter</p>
                         </div>
                         <div class="drop-content-container">
                             <div class="drop-content-items-container">
@@ -80,24 +81,26 @@
                     <div class="dropdown">
                         <div class="drop-button">
                             <div class="icon-sort" style="font-size: 1.2em"></div>
-                            <p style="margin-right: 2px;">Sort (WIP)</p>
+                            <p style="margin-right: 2px;">Sort</p>
                         </div>
                         <div class="drop-content-container">
                             <div class="drop-content-items-container">
-                                <div class="drop-item-wrapper">
-                                    <p style="margin-right: 2px;">Sort-Option-1</p>
+                                <!-- todo -->
+                                <!-- Should to get open by click and not by hover -->
+                                <div class="drop-item-wrapper" (click)="setSortingOrder('name-asc')">
+                                    <p style="margin-right: 2px;">Name aufsteigend</p>
                                     <div class="icon-sort-amount-asc" style="font-size: .8em"></div>
                                 </div>
-                                <div class="drop-item-wrapper">
-                                    <p style="margin-right: 2px;">Sort-Option-2</p>
+                                <div class="drop-item-wrapper" (click)="setSortingOrder('name-desc')">
+                                    <p style="margin-right: 2px;">Name absteigend</p>
                                     <div class="icon-sort-amount-desc" style="font-size: .8em"></div>
                                 </div>
-                                <div class="drop-item-wrapper">
-                                    <p style="margin-right: 2px;">Sort-Option-3</p>
+                                <div class="drop-item-wrapper" (click)="setSortingOrder('id-asc')">
+                                    <p style="margin-right: 2px;">ID aufsteigend</p>
                                     <div class="icon-sort-asc" style="font-size: 1.4em"></div>
                                 </div>
-                                <div class="drop-item-wrapper">
-                                    <p style="margin-right: 2px;">Sort-Option-4</p>
+                                <div class="drop-item-wrapper" (click)="setSortingOrder('id-desc')">
+                                    <p style="margin-right: 2px;">ID absteigend</p>
                                     <div class="icon-sort-desc" style="font-size: 1.4em"></div>
                                 </div>
                             </div>
