@@ -47,9 +47,6 @@ export class PrivateComponent implements OnInit {
     selectedTask: Task | null = null;
     addInfoObject: any = '';
 
-    // menu2: boolean = true;
-    // menu3: boolean = false;
-
     constructor( private router: Router,
                  private privateService: PrivateService,
                  private companyService: CompanyService,
@@ -65,6 +62,10 @@ export class PrivateComponent implements OnInit {
         // this.setAddInfoObject();
     }
 
+    /**
+     *
+     * @param menuItem
+     */
     setAddInfoObject(menuItem?: string): void {
         var log: string = 'private.component - setAddInfoObject - ';
         switch (menuItem) {
@@ -96,6 +97,10 @@ export class PrivateComponent implements OnInit {
         }
     }
 
+    /**
+     *
+     * @param menuItem
+     */
     onMainMenuSelectionChanged(menuItem: string) {
         this.privateService.selectMenu(menuItem);
         this.selectedValueFromMainMenu = menuItem;
@@ -108,19 +113,27 @@ export class PrivateComponent implements OnInit {
         this.addInfoObject = '';
     }
 
+    /**
+     *
+     * @param item
+     */
     onSelectQuicklink(item: any) {
-        this.selectedValueFromMainMenu = item.titel;
+        // this.selectedValueFromMainMenu = item.titel;
         this.addInfoVisible = true;
         this.addInfoObject = '';
         this.setAddInfoObject(item.title);
     }
 
-
-
+    /**
+     *
+     */
     toggleQuicklinkVisibility(): void {
         this.quicklinksVisible = !this.quicklinksVisible;
     }
 
+    /**
+     *
+     */
     toggleAddInfoVisibility(): void {
         this.addInfoVisible = !this.addInfoVisible;
     }
@@ -134,6 +147,10 @@ export class PrivateComponent implements OnInit {
         this.updateRoute();
     }
 
+    /**
+     *
+     * @param term
+     */
     setSortingOrder(term: string) {
         this.sortingTerm = term;
         this.updateRoute();
