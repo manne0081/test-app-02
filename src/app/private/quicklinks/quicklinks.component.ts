@@ -48,6 +48,13 @@ export class QuicklinksComponent implements OnInit {
             link.title.toLowerCase().includes(this.searchTerm.toLowerCase()));
     }
 
+    truncateText(text: string, maxLength: number): string {
+        if (text.length <= maxLength) {
+            return text;
+        }
+        return text.slice(0, maxLength - 3) + '...';
+    }
+
     removeSearchTerm(): void {
         this.searchTerm = '';
     }

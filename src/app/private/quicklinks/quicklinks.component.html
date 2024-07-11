@@ -24,7 +24,7 @@
 
         <!-- <div class="quicklink-value" (click)="openQuicklink(item)"> -->
         <div class="quicklink-value" (click)="test3(item)">
-            <span>{{item.title}}</span>
+            <span>{{ truncateText(item.title, 20) }}</span>
         </div>
 
         <div class="quicklink-more" (click)="openContext(item)">
