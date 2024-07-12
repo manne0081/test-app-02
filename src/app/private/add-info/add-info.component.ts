@@ -19,5 +19,6 @@ export class AddInfoComponent implements OnInit {
 
     ngOnInit(): void {
         // console.log('add-info - ngOnInit: ');
+        this.addInfoObject = null;
     }
 }

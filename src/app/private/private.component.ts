@@ -123,6 +123,7 @@ export class PrivateComponent implements OnInit {
         this.selectedValueFromMainMenu = item.titel;
         this.addInfoVisible = true;
         this.setAddInfoObject(item.title);
+        this.addInfoObject = '';
     }
 
     /**
