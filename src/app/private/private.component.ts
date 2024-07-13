@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -45,6 +45,7 @@ export class PrivateComponent implements OnInit {
     addInfoObject: any = '';
 
     constructor( private router: Router,
+                 private route: ActivatedRoute,
                  private privateService: PrivateService,
                  private companyService: CompanyService,
                  private taskService: TaskService,
@@ -57,11 +58,13 @@ export class PrivateComponent implements OnInit {
         this.toggleAddInfoVisibility();
         this.onSelectMenuItem('Dashboard');
         this.router.navigate(['private/dashboard']);
-        // console.log(this.selectedValueFromMainMenu);
-        // this.setAddInfoObject();
 
         this.quicklinkService.selectedQuicklink$.subscribe(item => {
             this.onSelectQuicklink(item);
+        });
+
+        this.route.queryParams.subscribe(params => {
+            this.searchTerm = params['searchTerm'] || '';
         });
     }
 
@@ -71,7 +74,6 @@ export class PrivateComponent implements OnInit {
      */
     setAddInfoObject(menuItem?: string): void {
         var log: string = 'private.component - setAddInfoObject - ';
-
         switch (menuItem) {
             case 'Unternehmen':
                 console.log(log + 'case: Unternehmen');
@@ -80,23 +82,19 @@ export class PrivateComponent implements OnInit {
                         if (company) {
                             this.selectedCompany = company;
                             this.addInfoObject = company;
-                            // console.log('Company data received 1:', company);
                         }
                     }
                 });
                 break;
-
             case 'Aufgaben':
                 console.log(log + 'case: Aufgaben');
                 this.taskService.selectedTask$.subscribe({
                     next: (task) => {
                         this.selectedTask = task;
                         this.addInfoObject = task;
-                        // console.log('Company data received 1:', company);
                     }
                 });
                 break;
-
             default:
                 // console.log(log + 'case: default');
                 break;
@@ -119,6 +117,10 @@ export class PrivateComponent implements OnInit {
         this.addInfoObject = '';
     }
 
+    /**
+     *
+     * @param item
+     */
     onSelectQuicklink(item: any): void {
         this.selectedValueFromMainMenu = item.titel;
         this.addInfoVisible = true;
@@ -144,12 +146,11 @@ export class PrivateComponent implements OnInit {
      * Sets the searching-term for searching and showing the companies
      * @param event
      */
-    // onSearchTermChanged(term: string) {
     onSearchTermChanged(event: Event) {
         const inputElement = event.target as HTMLInputElement;
         this.searchTerm = inputElement.value;
         console.log(this.searchTerm);
-        this.updateRoute2();
+        this.updateRoute();
     }
 
     /**
@@ -159,20 +160,12 @@ export class PrivateComponent implements OnInit {
     setSortingOrder(term: string) {
         this.sortingTerm = term;
         this.updateRoute();
-        // console.log('private.component - setSortingOrder: ' + term);
     }
 
     /**
      *
      */
     updateRoute(): void {
-        this.router.navigate([], {
-            queryParams: { searchTerm: this.searchTerm, sortingTerm: this.sortingTerm },
-            queryParamsHandling: 'merge',
-        })
-    }
-
-    updateRoute2(): void {
         console.log('Navigating with:', {
             searchTerm: this.searchTerm,
             sortingTerm: this.sortingTerm
@@ -188,8 +181,6 @@ export class PrivateComponent implements OnInit {
             }
         });
     }
-
-
 
     /**
      * removes the searching-term and the additional-informations

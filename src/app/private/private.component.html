@@ -50,11 +50,11 @@
 
                 <!-- Content-Header -->
                 <!-- ************** -->
-                <div class="content-header-container" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">    <!--  [ngStyle]="{ 'visibility': selectedValueFromMainMenu === 'Dashboard' ? 'hidden' : 'visible' }"-->
+                <div class="content-header-container" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
                     <!-- Searching-Area -->
                     <!-- -------------- -->
                     <div class="searching-wrapper">
-                        <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (keyup)="onSearchTermChanged($event)">  <!-- $event.target.value-->
+                        <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (keyup)="onSearchTermChanged($event)">
                         <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
                     </div>
 

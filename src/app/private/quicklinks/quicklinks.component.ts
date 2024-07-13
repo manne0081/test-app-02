@@ -78,26 +78,22 @@ export class QuicklinksComponent implements OnInit {
     }
 
     test3(item: Quicklinks): void {
-        // this.router.navigate([item.url]);
-        // this.onSelectQuicklink.emit(item);
-
         const urlParts = item.url.split('?');
         const path = urlParts[0];
         const queryParamsString = urlParts[1];
 
-        console.log('item: ' + item);
-        console.log('urlParts: ' + urlParts);
-        console.log('path: ' + path);
-        console.log('queryParamsString: ' + queryParamsString);
+        // console.log('item: ' + item);
+        // console.log('urlParts: ' + urlParts);
+        // console.log('path: ' + path);
+        // console.log('queryParamsString: ' + queryParamsString);
 
-        let queryParams = {};
+        let queryParams: Record<string, string> = {};
         if (queryParamsString) {
             queryParams = queryParamsString.split('&').reduce((params, param) => {
                 const [key, value] = param.split('=');
-                // todo
-                // params[key] = value;
+                params[key] = value;
                 return params;
-            }, {});
+            }, {}  as Record<string, string> );
         }
 
         this.router.navigate([path], { queryParams });
