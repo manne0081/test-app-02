@@ -18,8 +18,8 @@ import { CompanyService } from './company.service';
 export class CompanyComponent implements OnInit {
     @Input() searchTerm: string = '';
     @Input() sortingTerm: string = '';
-
     companyItems: Company[] = [];
+
     selectedCompany!: Company;
     selectedCompanyId: number | null = null;
 
@@ -32,14 +32,9 @@ export class CompanyComponent implements OnInit {
         this.getCompanies();
 
         this.route.queryParams.subscribe(params => {
-
             this.sortingTerm = (params['sortingTerm'] || 'name-asc');
             this.searchTerm = params['searchTerm'] || '';
-                if(this.searchTerm) {
-                    this.applyFilter();
-                } else {
-                    this.getCompanies();
-                }
+            this.getCompanies();
         });
     }
 
@@ -50,6 +45,9 @@ export class CompanyComponent implements OnInit {
         this.companyService.getCompanies().subscribe((data: Company[]) => {
             this.companyItems = data;
             this.sortCompanyItems();
+            if (this.searchTerm) {
+                this.applyFilter();
+            }
         });
     }
 
@@ -59,7 +57,7 @@ export class CompanyComponent implements OnInit {
     applyFilter(): void {
         this.companyItems = this.companyItems
             .filter(item => item.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
-            this.sortCompanyItems();
+        this.sortCompanyItems();
     }
 
     /**

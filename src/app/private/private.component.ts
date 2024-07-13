@@ -142,11 +142,14 @@ export class PrivateComponent implements OnInit {
 
     /**
      * Sets the searching-term for searching and showing the companies
-     * @param term
+     * @param event
      */
-    onSearchTermChanged(term: string) {
-        this.searchTerm = term;
-        this.updateRoute();
+    // onSearchTermChanged(term: string) {
+    onSearchTermChanged(event: Event) {
+        const inputElement = event.target as HTMLInputElement;
+        this.searchTerm = inputElement.value;
+        console.log(this.searchTerm);
+        this.updateRoute2();
     }
 
     /**
@@ -168,6 +171,25 @@ export class PrivateComponent implements OnInit {
             queryParamsHandling: 'merge',
         })
     }
+
+    updateRoute2(): void {
+        console.log('Navigating with:', {
+            searchTerm: this.searchTerm,
+            sortingTerm: this.sortingTerm
+        });
+        this.router.navigate([], {
+            queryParams: { searchTerm: this.searchTerm, sortingTerm: this.sortingTerm },
+            queryParamsHandling: 'merge',
+        }).then(success => {
+            if (success) {
+                console.log('Navigation successful');
+            } else {
+                console.log('Navigation failed');
+            }
+        });
+    }
+
+
 
     /**
      * removes the searching-term and the additional-informations
