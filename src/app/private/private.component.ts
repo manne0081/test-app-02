@@ -37,12 +37,18 @@ export class PrivateComponent implements OnInit {
     quicklinksVisible?: boolean;
     addInfoVisible?: boolean;
 
-    searchTerm: string = '';
-    sortingTerm: string = '';
-
     selectedCompany: Company | null = null;
     selectedTask: Task | null = null;
     addInfoObject: any = '';
+
+    searchTerm: string = '';
+    sortingTerm: string = '';
+
+    filterItems: any[] = [
+        {id: 0, name: 'wip-1'},
+        {id: 1, name: 'wip-2'},
+    ]
+    filterItemSearchValue?: number;
 
     constructor( private router: Router,
                  private route: ActivatedRoute,
@@ -76,7 +82,7 @@ export class PrivateComponent implements OnInit {
         var log: string = 'private.component - setAddInfoObject - ';
         switch (menuItem) {
             case 'Unternehmen':
-                console.log(log + 'case: Unternehmen');
+                // console.log(log + 'case: Unternehmen');
                 this.companyService.selectedCompany$.subscribe({
                     next: (company) => {
                         if (company) {
@@ -87,7 +93,7 @@ export class PrivateComponent implements OnInit {
                 });
                 break;
             case 'Aufgaben':
-                console.log(log + 'case: Aufgaben');
+                // console.log(log + 'case: Aufgaben');
                 this.taskService.selectedTask$.subscribe({
                     next: (task) => {
                         this.selectedTask = task;
@@ -149,8 +155,55 @@ export class PrivateComponent implements OnInit {
     onSearchTermChanged(event: Event) {
         const inputElement = event.target as HTMLInputElement;
         this.searchTerm = inputElement.value;
-        console.log(this.searchTerm);
         this.updateRoute();
+        this.updateFilterItems();
+    }
+
+    updateFilterItems(): void {
+        var i: number = this.filterItems.length;
+
+        // console.log('searchItem: ' + this.filterItemSearchValue);
+
+        if (this.filterItemSearchValue === undefined) {
+            // Add new
+
+            const newItem = {
+                id: this.filterItems.length,  // Generiere eine eindeutige ID basierend auf der Array-Länge
+                name: this.searchTerm
+            };
+
+            this.filterItems.push(newItem);
+            this.filterItemSearchValue = newItem.id;
+            console.log(this.filterItems);
+
+        } else if (this.searchTerm.length > 0 && this.filterItemSearchValue) {
+            // Change exist
+            this.filterItems[this.filterItemSearchValue] = this.searchTerm;
+
+
+
+        } else {
+            // delete when searchTerm is empty
+            this.removeFilterItem();
+        }
+
+    }
+
+    /**
+     *
+     * @param index
+     */
+    removeFilterItem(index?: number): void {
+        if (index) {
+            console.log('remone mit index');
+            this.filterItems.splice(index, 1);
+            return;
+        }
+
+        if (this.filterItemSearchValue! >= 0 && this.filterItemSearchValue! < this.filterItems.length) {
+            console.log('remone ohne index');
+            this.filterItems.splice(this.filterItemSearchValue!, 1);
+        }
     }
 
     /**
@@ -175,9 +228,9 @@ export class PrivateComponent implements OnInit {
             queryParamsHandling: 'merge',
         }).then(success => {
             if (success) {
-                console.log('Navigation successful');
+                // console.log('Navigation successful');
             } else {
-                console.log('Navigation failed');
+                // console.log('Navigation failed');
             }
         });
     }
@@ -187,6 +240,7 @@ export class PrivateComponent implements OnInit {
      */
     removeSearchTerm(): void {
         this.searchTerm = '';
+        this.removeFilterItem();
         this.updateRoute();
     }
 }
