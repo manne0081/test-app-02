@@ -57,7 +57,6 @@
                         <!-- -------------- -->
                         <div class="searching-wrapper">
                             <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (keyup)="onSearchTermChanged($event)">
-                            <!-- <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (input)="handleSearchTermChange($event)"> -->
                             <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
                         </div>
 

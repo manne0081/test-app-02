@@ -188,13 +188,14 @@ export class PrivateComponent implements OnInit {
         }
     }
 
-
     /**
      *
      * @param index
      */
     removeFilterItem(item: any): void {
-        this.filterItems = this.filterItems.filter(item => item.id !== 'searchTerm');
+        this.filterItems = this.filterItems.filter(filterItem => item.id !== filterItem.id);
+        this.searchTerm = '';
+        this.updateRoute();
     }
 
     /**
@@ -231,7 +232,7 @@ export class PrivateComponent implements OnInit {
      */
     removeSearchTerm(): void {
         this.searchTerm = '';
-        // this.removeFilterItem();
+        this.filterItems = this.filterItems.filter(item => item.id !== 'searchTerm');
         this.updateRoute();
     }
 }
