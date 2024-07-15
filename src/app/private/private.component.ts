@@ -160,7 +160,6 @@ export class PrivateComponent implements OnInit {
     onSearchTermChanged(event: Event) {
         const inputElement = event.target as HTMLInputElement;
         this.searchTerm = inputElement.value;
-        // this.updateFilterItems();
         this.handleSearchTermChange(event);
         this.updateRoute();
     }
@@ -192,7 +191,7 @@ export class PrivateComponent implements OnInit {
      *
      * @param index
      */
-    removeFilterItem(item: any): void {
+    removeFilterItem(item: FilterItem): void {
         this.filterItems = this.filterItems.filter(filterItem => item.id !== filterItem.id);
         this.searchTerm = '';
         this.updateRoute();
