@@ -57,6 +57,7 @@
                         <!-- -------------- -->
                         <div class="searching-wrapper">
                             <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (keyup)="onSearchTermChanged($event)">
+                            <!-- <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (input)="handleSearchTermChange($event)"> -->
                             <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
                         </div>
 
@@ -113,7 +114,7 @@
                         <ng-container *ngIf="filterItems.length > 0">
                             <div class="show-filter-item-container" *ngFor="let item of filterItems">
                                 <span>{{item.name}}</span>
-                                <div class="icon-cancel" (click)="removeFilterItem(item.id)"></div>
+                                <div class="icon-cancel" (click)="removeFilterItem(item)"></div>
                             </div>
                         </ng-container>
                         <!-- <div *ngIf="filterItems.length === 0">

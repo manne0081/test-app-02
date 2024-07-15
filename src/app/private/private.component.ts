@@ -16,6 +16,11 @@ import { Task } from './workspace/task/task';
 import { TaskService } from './workspace/task/task.service';
 import { QuicklinksService } from './quicklinks/quicklinks.service';
 
+interface FilterItem {
+    id: number | string;
+    name: string;
+}
+
 @Component({
     selector: 'app-private',
     standalone: true,
@@ -44,11 +49,11 @@ export class PrivateComponent implements OnInit {
     searchTerm: string = '';
     sortingTerm: string = '';
 
-    filterItems: any[] = [
-        {id: 0, name: 'wip-1'},
-        {id: 1, name: 'wip-2'},
-    ]
-    filterItemSearchValue: number = 0;
+    filterItems: FilterItem[] = [
+        { id: 0, name: 'wip-1' },
+        { id: 1, name: 'wip-2' }
+    ];
+    idFilterItemSearchValue: number = 0;
 
     constructor( private router: Router,
                  private route: ActivatedRoute,
@@ -155,58 +160,41 @@ export class PrivateComponent implements OnInit {
     onSearchTermChanged(event: Event) {
         const inputElement = event.target as HTMLInputElement;
         this.searchTerm = inputElement.value;
+        // this.updateFilterItems();
+        this.handleSearchTermChange(event);
         this.updateRoute();
-        this.updateFilterItems();
     }
 
-    updateFilterItems(): void {
-        var i: number = this.filterItems.length;
+    /**
+     *
+     * @param event
+     */
+    handleSearchTermChange(event: Event): void {
+        const inputElement = event.target as HTMLInputElement;
+        const searchTerm = inputElement.value.trim();
+        const searchTermItem = this.filterItems.find(item => item.id === 'searchTerm');
 
-        console.log(this.filterItems);
-
-        if (this.filterItemSearchValue === 0) {
-            // Add new
-            const newItem = {
-                id: this.filterItems.length,  // Generiere eine eindeutige ID basierend auf der Array-Länge
-                name: this.searchTerm
-            };
-            this.filterItems.push(newItem);
-            this.filterItemSearchValue = newItem.id;
-            console.log(this.filterItems);
-
-        } else if (this.searchTerm.length > 1 && this.filterItemSearchValue) {
-            // Change exist
-            for (let item of this.filterItems) {
-                if (item.id === this.filterItemSearchValue) {
-                  item.name = this.searchTerm;
-                  break; // Beenden der Schleife, wenn das Element gefunden und aktualisiert wurde
-                }
-              }
-        } else {
-            // delete when searchTerm is empty
-            this.removeFilterItem();
+        if (searchTerm) {
+            if (searchTermItem) {
+                // Update the existing searchTerm item
+                searchTermItem.name = searchTerm;
+            } else {
+                // Add a new searchTerm item
+                this.filterItems.push({ id: 'searchTerm', name: searchTerm });
+            }
+        } else if (searchTermItem) {
+            // Remove the searchTerm item if the input is empty
+            this.filterItems = this.filterItems.filter(item => item.id !== 'searchTerm');
         }
     }
+
 
     /**
      *
      * @param index
      */
-    removeFilterItem(index?: number): void {
-        var i: number;
-
-        if (index) {
-            i = index;
-        } else {
-            i = this.filterItemSearchValue;
-        }
-
-        // if (this.filterItemSearchValue! >= 0 && this.filterItemSearchValue! < this.filterItems.length) {
-        //     console.log('remone ohne index');
-            this.filterItems.splice(i, 1);
-            this.filterItemSearchValue = 0;
-            this.removeSearchTerm();
-        // }
+    removeFilterItem(item: any): void {
+        this.filterItems = this.filterItems.filter(item => item.id !== 'searchTerm');
     }
 
     /**
@@ -243,7 +231,7 @@ export class PrivateComponent implements OnInit {
      */
     removeSearchTerm(): void {
         this.searchTerm = '';
-        this.removeFilterItem();
+        // this.removeFilterItem();
         this.updateRoute();
     }
 }
