@@ -48,7 +48,7 @@ export class PrivateComponent implements OnInit {
         {id: 0, name: 'wip-1'},
         {id: 1, name: 'wip-2'},
     ]
-    filterItemSearchValue?: number;
+    filterItemSearchValue: number = 0;
 
     constructor( private router: Router,
                  private route: ActivatedRoute,
@@ -162,31 +162,30 @@ export class PrivateComponent implements OnInit {
     updateFilterItems(): void {
         var i: number = this.filterItems.length;
 
-        // console.log('searchItem: ' + this.filterItemSearchValue);
+        console.log(this.filterItems);
 
-        if (this.filterItemSearchValue === undefined) {
+        if (this.filterItemSearchValue === 0) {
             // Add new
-
             const newItem = {
                 id: this.filterItems.length,  // Generiere eine eindeutige ID basierend auf der Array-Länge
                 name: this.searchTerm
             };
-
             this.filterItems.push(newItem);
             this.filterItemSearchValue = newItem.id;
             console.log(this.filterItems);
 
-        } else if (this.searchTerm.length > 0 && this.filterItemSearchValue) {
+        } else if (this.searchTerm.length > 1 && this.filterItemSearchValue) {
             // Change exist
-            this.filterItems[this.filterItemSearchValue] = this.searchTerm;
-
-
-
+            for (let item of this.filterItems) {
+                if (item.id === this.filterItemSearchValue) {
+                  item.name = this.searchTerm;
+                  break; // Beenden der Schleife, wenn das Element gefunden und aktualisiert wurde
+                }
+              }
         } else {
             // delete when searchTerm is empty
             this.removeFilterItem();
         }
-
     }
 
     /**
@@ -194,16 +193,20 @@ export class PrivateComponent implements OnInit {
      * @param index
      */
     removeFilterItem(index?: number): void {
+        var i: number;
+
         if (index) {
-            console.log('remone mit index');
-            this.filterItems.splice(index, 1);
-            return;
+            i = index;
+        } else {
+            i = this.filterItemSearchValue;
         }
 
-        if (this.filterItemSearchValue! >= 0 && this.filterItemSearchValue! < this.filterItems.length) {
-            console.log('remone ohne index');
-            this.filterItems.splice(this.filterItemSearchValue!, 1);
-        }
+        // if (this.filterItemSearchValue! >= 0 && this.filterItemSearchValue! < this.filterItems.length) {
+        //     console.log('remone ohne index');
+            this.filterItems.splice(i, 1);
+            this.filterItemSearchValue = 0;
+            this.removeSearchTerm();
+        // }
     }
 
     /**
