@@ -126,6 +126,8 @@ export class PrivateComponent implements OnInit {
         }
         this.setAddInfoObject(menuItem);
         this.addInfoObject = '';
+
+        // todo > remove all filterItems
     }
 
     /**
@@ -137,6 +139,8 @@ export class PrivateComponent implements OnInit {
         this.addInfoVisible = true;
         this.setAddInfoObject(item.title);
         this.addInfoObject = '';
+
+        // todo > remove all filterItems
     }
 
     /**

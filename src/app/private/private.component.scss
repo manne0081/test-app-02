@@ -116,9 +116,6 @@ $highlight-color-lighter: #fae4d7;
             display: grid;
             grid-template-rows: min-content auto 48px;
             position: relative;
-
-
-
         }
 
         .main-content-container-dashboard {
@@ -141,7 +138,6 @@ $highlight-color-lighter: #fae4d7;
             overflow: visible;
 
             .add-filter-wrapper {
-                // background-color: lime;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -184,14 +180,12 @@ $highlight-color-lighter: #fae4d7;
                 }
 
                 .dropdown {
-                    // background-color: lime;
                     display: inline-block;
                     position: relative;
                     overflow: visible;
 
                     .drop-button {
                         background-color: rgb(225, 225, 225);
-                        // background-color: orange;
                         border: 1px solid #b9b9b9;
                         position: relative;
                         border-radius: 4px;
@@ -205,17 +199,14 @@ $highlight-color-lighter: #fae4d7;
                     }
 
                     .drop-button:hover {
-                        // background-color: blue;
                         cursor: pointer;
                     }
 
                     .drop-content-container {
                         display: none;
-                        // padding-top: 4px;
 
                         .drop-content-items-container {
                             background-color: rgb(225, 225, 225);
-                            // background-color: yellow;
                             position: absolute;
                             right: 0;
                             top: 100%;
@@ -237,7 +228,6 @@ $highlight-color-lighter: #fae4d7;
 
                             .drop-item-wrapper:hover {
                                 background-color: rgba(0, 0, 0, .12);
-                                // background-color: orangered;
                             }
                         }
                     }
@@ -250,9 +240,8 @@ $highlight-color-lighter: #fae4d7;
             }
 
             .show-filter-wrapper {
-                // background-color: darkseagreen;
                 align-items: center;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
 
                 .show-filter-item-container {
                     background-color: rgb(225, 225, 225);
@@ -274,7 +263,7 @@ $highlight-color-lighter: #fae4d7;
                         border-radius: 8px;
                         position: absolute;
                         right: 3px;
-                        padding: 1px 1px 2px 2px;
+                        padding: 3px 2px 2px 2px;
                     }
 
                     .icon-cancel:hover {
@@ -283,7 +272,6 @@ $highlight-color-lighter: #fae4d7;
                     }
                 }
             }
-
         }
 
         .content-items {

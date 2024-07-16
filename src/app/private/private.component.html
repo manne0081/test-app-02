@@ -108,14 +108,13 @@
                         </div>
                     </div>
 
-                    <div class="show-filter-wrapper">
+                    <div class="show-filter-wrapper" *ngIf="filterItems.length > 0">
 
-                        <ng-container *ngIf="filterItems.length > 0">
-                            <div class="show-filter-item-container" *ngFor="let item of filterItems">
-                                <span>{{item.name}}</span>
-                                <div class="icon-cancel" (click)="removeFilterItem(item)"></div>
-                            </div>
-                        </ng-container>
+                        <div class="show-filter-item-container" *ngFor="let item of filterItems">
+                            <span>{{item.name}}</span>
+                            <div class="icon-cancel" (click)="removeFilterItem(item)"></div>
+                        </div>
+
                         <!-- <div *ngIf="filterItems.length === 0">
                             Keine Einträge gefunden
                         </div> -->
