@@ -134,13 +134,11 @@ export class PrivateComponent implements OnInit {
      * @param item
      */
     onSelectQuicklink(item: any): void {
-        this.selectedValueFromMainMenu = item.titel;
+        this.selectedValueFromMainMenu = item.menuTitle;
         this.addInfoVisible = true;
         this.setAddInfoObject(item.title);
         this.addInfoObject = '';
         this.removeAllFilterItems();
-
-        // todo - Set filterItem bei changing a quicklink
         this.filterItems.push({ id: 'searchTerm', name: item.title });
     }
 

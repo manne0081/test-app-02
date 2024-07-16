@@ -3,6 +3,7 @@ export interface Quicklinks {
     title: string;
     url: string;
     parent: string;
+    menuTitle: string;
 }
 
 export const QUICKLINKS_MOCK: Quicklinks[] = [
@@ -18,8 +19,8 @@ export const QUICKLINKS_MOCK: Quicklinks[] = [
     // { id: 9, title: 'Unternehmenswikis', url: 'private/company-wiki/', parent: 'contacts' },
     // { id: 10, title: 'Debitor Daten', url: 'private/debitor-data/', parent: 'contacts' },
     // { id: 11, title: 'Adressen', url: 'private/address/', parent: 'contacts' },
-    { id: 0, title: 'Gmbh / Name=desc', url: 'private/company?searchTerm=gmbh&sortingTerm=name-desc', parent: 'contacts' },
-    { id: 1, title: 'task=web', url: 'private/task?searchTerm=web&sortingTerm=', parent: 'workspace' },
-    { id: 2, title: 'Unternehmen=Solution', url: 'private/company?searchTerm=sol&sortingTerm=id-desc', parent: 'contacts' },
+    { id: 0, title: 'Gmbh / Name=desc', url: 'private/company?searchTerm=gmbh&sortingTerm=name-desc', parent: 'contacts', menuTitle: 'Unternehmen' },
+    { id: 1, title: 'task=web', url: 'private/task?searchTerm=web&sortingTerm=', parent: 'workspace', menuTitle: 'Aufgaben' },
+    { id: 2, title: 'Unternehmen=Solution', url: 'private/company?searchTerm=sol&sortingTerm=id-desc', parent: 'contacts', menuTitle: 'Unternehmen' },
 ];
 
