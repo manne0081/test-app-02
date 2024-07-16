@@ -104,6 +104,10 @@ export class QuicklinksComponent implements OnInit {
         this.quicklinkService.onSelectQuicklink(item);
     }
 
+    onAddQuicklink(): void {
+        window.alert('WIP');
+    }
+
     openContext(item: any): void {
         window.alert("3P-Menu " + item.title + " clicked!");
     }
