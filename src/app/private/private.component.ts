@@ -50,8 +50,8 @@ export class PrivateComponent implements OnInit {
     sortingTerm: string = '';
 
     filterItems: FilterItem[] = [
-        { id: 0, name: 'wip-1' },
-        { id: 1, name: 'wip-2' }
+        // { id: 0, name: 'wip-1' },
+        // { id: 1, name: 'wip-2' },
     ];
     idFilterItemSearchValue: number = 0;
 
@@ -126,8 +126,7 @@ export class PrivateComponent implements OnInit {
         }
         this.setAddInfoObject(menuItem);
         this.addInfoObject = '';
-
-        // todo > remove all filterItems
+        this.removeAllFilterItems();
     }
 
     /**
@@ -139,8 +138,10 @@ export class PrivateComponent implements OnInit {
         this.addInfoVisible = true;
         this.setAddInfoObject(item.title);
         this.addInfoObject = '';
+        this.removeAllFilterItems();
 
-        // todo > remove all filterItems
+        // todo - Set filterItem bei changing a quicklink
+        this.filterItems.push({ id: 'searchTerm', name: item.title });
     }
 
     /**
@@ -199,6 +200,13 @@ export class PrivateComponent implements OnInit {
         this.filterItems = this.filterItems.filter(filterItem => item.id !== filterItem.id);
         this.searchTerm = '';
         this.updateRoute();
+    }
+
+    /**
+     *
+     */
+    removeAllFilterItems(): void {
+        this.filterItems = [];
     }
 
     /**
