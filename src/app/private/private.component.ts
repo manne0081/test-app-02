@@ -3,8 +3,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { DropdownComponent } from './_test/shared/dropdown/dropdown.component';
-
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { QuicklinksComponent } from './quicklinks/quicklinks.component';
 import { AddInfoComponent } from './add-info/add-info.component';
@@ -16,6 +14,8 @@ import { Task } from './workspace/task/task';
 import { TaskService } from './workspace/task/task.service';
 import { QuicklinksService } from './quicklinks/quicklinks.service';
 
+import { DropdownComponent } from './_shared/dropdown.component';
+
 interface FilterItem {
     id: number | string;
     name: string;
@@ -26,12 +26,12 @@ interface FilterItem {
     standalone: true,
     imports: [
         CommonModule,
+        FormsModule,
         RouterModule,
         HeaderMenuComponent,
-        DropdownComponent,
         QuicklinksComponent,
         AddInfoComponent,
-        FormsModule,
+        DropdownComponent,
     ],
     templateUrl: './private.component.html',
     styleUrl: './private.component.scss'

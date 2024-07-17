@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropdownComponent } from '../../_test/shared/dropdown/dropdown.component';
 
 @Component({
     selector: 'app-planner',
@@ -9,7 +8,6 @@ import { DropdownComponent } from '../../_test/shared/dropdown/dropdown.componen
     styleUrl: './planner.component.scss',
     imports: [
         CommonModule,
-        DropdownComponent,
     ]
 })
 

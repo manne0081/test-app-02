@@ -67,10 +67,18 @@
                                 <div class="icon-filter" style="font-size: 1.2em"></div>
                                 <p style="margin-right: 2px;">Filter</p>
                             </div>
+
                             <div class="drop-content-container">
                                 <div class="drop-content-items-container">
                                     <div style="padding: 8px 12px;">
+                                         <!-- todo -->
+                                        <!-- Adding filter-function -->
                                         WIP
+                                        <br>
+                                        Fitler by:
+                                        <br>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -106,19 +114,20 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- DROPDOWN - Component - TEST -->
+                        <!-- --------------------------- -->
+                        <app-dropdown style="overflow: visible; background-color: red;"></app-dropdown>
+
                     </div>
 
+                    <!-- Filter-Elements when exists -->
+                    <!-- --------------------------- -->
                     <div class="show-filter-wrapper" *ngIf="filterItems.length > 0">
-
                         <div class="show-filter-item-container" *ngFor="let item of filterItems">
                             <span>{{item.name}}</span>
                             <div class="icon-cancel" (click)="removeFilterItem(item)"></div>
                         </div>
-
-                        <!-- <div *ngIf="filterItems.length === 0">
-                            Keine Einträge gefunden
-                        </div> -->
-
                     </div>
 
                 </div>
