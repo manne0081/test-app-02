@@ -52,7 +52,7 @@
                 <!-- ************** -->
                 <div class="content-header-container" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
 
-                    <div class="add-filter-wrapper">
+                    <div class="add-filter-wrapper" style="overflow: visible;">
                         <!-- Searching-Area -->
                         <!-- -------------- -->
                         <div class="searching-wrapper">
@@ -62,7 +62,7 @@
 
                         <!-- FILTER - DROPDOWN -->
                         <!-- ----------------- -->
-                        <div class="dropdown">
+                        <!-- <div class="dropdown">
                             <div class="drop-button">
                                 <div class="icon-filter" style="font-size: 1.2em"></div>
                                 <p style="margin-right: 2px;">Filter</p>
@@ -71,8 +71,6 @@
                             <div class="drop-content-container">
                                 <div class="drop-content-items-container">
                                     <div style="padding: 8px 12px;">
-                                         <!-- todo -->
-                                        <!-- Adding filter-function -->
                                         WIP
                                         <br>
                                         Fitler by:
@@ -82,19 +80,17 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- SORTING - DROPDOWN -->
                         <!-- ------------------ -->
-                        <div class="dropdown">
+                        <!-- <div class="dropdown">
                             <div class="drop-button">
                                 <div class="icon-sort" style="font-size: 1.2em"></div>
                                 <p style="margin-right: 2px;">Sort</p>
                             </div>
                             <div class="drop-content-container">
                                 <div class="drop-content-items-container">
-                                    <!-- todo -->
-                                    <!-- Should to get open by click and not by hover -->
                                     <div class="drop-item-wrapper" (click)="setSortingOrder('name-asc')">
                                         <p style="margin-right: 2px;">Name aufsteigend</p>
                                         <div class="icon-sort-amount-asc" style="font-size: .8em"></div>
@@ -113,11 +109,33 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- DROPDOWN - Component - TEST -->
                         <!-- --------------------------- -->
-                        <app-dropdown style="overflow: visible; background-color: red;"></app-dropdown>
+                        <app-dropdown [buttonText]="'Filter'" [dropdownId]="'filter'" style="overflow: visible; position: relative;">
+                            <!-- Inhalt für Filtern -->
+                            <div class="drop-content-items-container">
+                                <p>Filter by option 1</p>
+                                <p>Filter by option 2</p>
+                            </div>
+                        </app-dropdown>
+
+                        <app-dropdown [buttonText]="'Sort'" [dropdownId]="'sort'" style="overflow: visible; position: relative;">
+                            <!-- Inhalt für Gruppieren -->
+                            <div class="drop-content-items-container">
+                                <p>Sort by option 1</p>
+                                <p>Sort by option 2</p>
+                            </div>
+                        </app-dropdown>
+
+                        <app-dropdown [buttonText]="'Group'" [dropdownId]="'group'" style="overflow: visible; position: relative;">
+                            <!-- Inhalt für Sortieren -->
+                            <div class="drop-content-items-container">
+                                <p>Group by option 1</p>
+                                <p>Group by option 2</p>
+                            </div>
+                        </app-dropdown>
 
                     </div>
 

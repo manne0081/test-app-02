@@ -1,5 +1,7 @@
-import { Component, Input, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { DropdownService } from './dropdown.service';
 
 @Component({
     selector: 'app-dropdown',
@@ -11,25 +13,39 @@ import { CommonModule } from '@angular/common';
     styleUrl: './dropdown.component.scss'
 })
 
-export class DropdownComponent {
-    @Input() items: string[] = [];
-    @Input() placeholder: string = 'Select an option';
+export class DropdownComponent implements OnInit, OnDestroy{
+    @Input() buttonText: string = '';
+    @Input() dropdownId: string = '';
 
-    selectedItem: string | null = null;
-    isOpen = false;
+    showDropContent: boolean = false;
+    private subscription: Subscription = new Subscription();
 
-    toggleDropdown(event: Event) {
-        event.stopPropagation(); // Verhindert das Schließen beim Klicken auf das Dropdown
-        this.isOpen = !this.isOpen;
+    constructor(
+        private dropdownService: DropdownService,
+    ) {}
+
+    ngOnInit(): void {
+        this.subscription = this.dropdownService.getOpenDropdownId().subscribe(id => {
+            this.showDropContent = this.dropdownId === id;
+        });
     }
 
-    selectItem(item: string) {
-        this.selectedItem = item;
-        this.isOpen = false;
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+
+    onClickItem(event: Event): void {
+        event.stopPropagation();
+        this.showDropContent = !this.showDropContent;
+        this.dropdownService.setOpenDropdownId(this.showDropContent ? this.dropdownId : null);
     }
 
     @HostListener('document:click', ['$event'])
-    closeDropdown() {
-        this.isOpen = false;
+    closeDropdown(event: Event): void {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.dropdown')) {
+            this.showDropContent = false;
+            this.dropdownService.setOpenDropdownId(null);
+        }
     }
 }

@@ -1,12 +1,13 @@
-<div class="dropdown">
-    <div class="drop-button">
+<div class="dropdown" (document:click)="closeDropdown($event)">
+    <div id="id-drop-button" class="drop-button" (click)="onClickItem($event)">
         <div class="icon-sort" style="font-size: 1.2em"></div>
-        <p style="margin-right: 2px;">Sort</p>
+        <p style="margin-right: 2px;">{{buttonText}}</p>
     </div>
-    <div class="drop-content-container">
+    <div class="drop-content-container" *ngIf="showDropContent">
         <div class="drop-content-items-container">
-            <!-- todo -->
-            Sort by
+
+            <ng-content></ng-content>
+
         </div>
     </div>
 </div>
