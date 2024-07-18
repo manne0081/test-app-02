@@ -1,8 +1,13 @@
 <div class="dropdown" (document:click)="closeDropdown($event)">
     <div id="id-drop-button" class="drop-button" (click)="onClickItem($event)">
-        <div class="icon-sort" style="font-size: 1.2em"></div>
+
+        <div class="icon-filter" style="font-size: 1.2em" *ngIf="buttonText == 'Filter'"></div>
+        <div class="icon-sort" style="font-size: 1.2em" *ngIf="buttonText == 'Sort'"></div>
+        <div class="icon-grid" style="font-size: 1.2em" *ngIf="buttonText == 'Group'"></div>
         <p style="margin-right: 2px;">{{buttonText}}</p>
+
     </div>
+
     <div class="drop-content-container" *ngIf="showDropContent">
         <div class="drop-content-items-container">
 
