@@ -1,13 +1,10 @@
 <div class="dropdown" (document:click)="closeDropdown($event)">
-    <div
-        id="id-drop-button"
-        class="drop-button"
-        (click)="onClickItem($event)"
+    <div id="id-drop-button" class="drop-button" (click)="onClickItem($event)"
         [ngClass]="{
             'filter-button': buttonText === 'Filter',
             'sort-button': buttonText === 'Sort',
             'group-button': buttonText === 'Group',
-            active: showDropContent
+            'active': showDropContent
         }"
     >
         <div class="icon-filter" *ngIf="buttonText == 'Filter'"></div>
@@ -24,12 +21,12 @@
         <!-- ------ -->
         <div *ngIf="dropdownId === 'filter'">
             <div class="option-wrapper filter">
-                <div class="filter-condition">
-                    <div class="label">Where</div>
+                <div class="filter-item-wrapper" *ngFor="let item of filterCondition">
+                    <div class="label">{{item.label}}</div>
 
                     <div class="condition-item name">
                         <button class="name" (click)="openSelect('field')">
-                            Name
+                            {{item.name}}
                         </button>
                         <div class="icon-arrow-drop-down"></div>
                     </div>
@@ -41,7 +38,7 @@
                         <div class="icon-arrow-drop-down"></div>
                     </div>
 
-                    <input type="text" placeholder="Enter a value" [(ngModel)]="filterValue"/>
+                    <input type="text" placeholder="" [(ngModel)]="filterValue"/>
 
                     <div class="icon-cancel-circle"></div>
                 </div>
@@ -50,10 +47,17 @@
             <!-- Add conditions / -group -->
             <!-- ----------------------- -->
             <div class="filter-actions">
-                <button (click)="addCondition()">Add condition</button>
-                <button (click)="addConditionGroup()">
-                    Add condition group
+
+                <button class="filter-action-button" (click)="addCondition()">
+                    <div class="icon-add"></div>
+                    <span>Add condition</span>
                 </button>
+
+                <button class="filter-action-button" (click)="addConditionGroup()">
+                    <div class="icon-add"></div>
+                    <span>Add condition group</span>
+                </button>
+
             </div>
         </div>
 

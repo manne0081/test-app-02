@@ -116,6 +116,7 @@ $highlight-color-lighter: #fae4d7;
             display: grid;
             grid-template-rows: min-content auto 48px;
             position: relative;
+            overflow: visible;
         }
 
         .main-content-container-dashboard {

@@ -25,8 +25,12 @@ export class DropdownComponent implements OnInit, OnDestroy{
     showOperatorSelect: boolean = false;
     filterValue: string = '';
 
-    filterCondition: string[] = [];
-
+    filterCondition: { name: string, label: string } [] = [
+        { name: 'Name', label: 'Where' },
+        { name: 'Test', label: 'and' },
+    ];
+    sortCondition: string[] = [];
+    groupCondition: string[] = [];
 
 
 

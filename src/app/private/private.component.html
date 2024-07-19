@@ -25,17 +25,13 @@
 
             <!-- Menuname -->
             <!-- -------- -->
-            <span class="content-title-value">{{
-                selectedValueFromMainMenu
-            }}</span>
+            <span class="content-title-value">
+                {{selectedValueFromMainMenu}}
+            </span>
 
             <!-- Button toggle AddInfos -->
             <!-- ---------------------- -->
-            <button
-                class="content-title-addinfo"
-                (click)="toggleAddInfoVisibility()"
-                *ngIf="selectedValueFromMainMenu !== 'Dashboard'"
-            >
+            <button class="content-title-addinfo" (click)="toggleAddInfoVisibility()" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
                 Add Info
             </button>
         </div>
@@ -56,9 +52,7 @@
             <!-- QUICKLINKS -->
             <!-- ********** -->
             <div class="quicklinks-container" *ngIf="quicklinksVisible">
-                <app-quicklinks
-                    (onSelectQuicklink)="onSelectQuicklink($event)"
-                ></app-quicklinks>
+                <app-quicklinks (onSelectQuicklink)="onSelectQuicklink($event)"></app-quicklinks>
             </div>
 
             <!-- Content -->
