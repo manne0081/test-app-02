@@ -18,8 +18,36 @@
         height: 28px; /* Beispielhöhe */
         margin-bottom: 4px;
 
+        &.filter-button.active {
+            background-color: #ffcccc; /* Rot für Filter wenn aktiv */
+        }
+
+        &.sort-button.active {
+            background-color: #ccffcc; /* Grün für Sort wenn aktiv */
+        }
+
+        &.group-button.active {
+            background-color: #ccccff; /* Blau für Group wenn aktiv */
+        }
+
+        &:hover {
+            background-color: #d3d3d3; /* Hellgrau bei Hover */
+            cursor: pointer;
+        }
+
         div {
             margin-right: 4px;
+            font-size: 1.2em
+        }
+
+        .icon-sort {
+            position: relative;
+            top: -1px;
+        }
+
+        .icon-drawer {
+            position: relative;
+            top: -3px;
         }
     }
 
@@ -29,7 +57,7 @@
 
     .drop-content-container {
         // background-color: orange;
-        background-color: rgb(225, 225, 225);
+        background-color: rgb(255, 255, 255);
         position: absolute;
         right: 0;
         top: 100%;
@@ -39,7 +67,7 @@
         border: 1px solid rgba(44, 80, 103, 0.18);
         padding: 8px 12px;
         box-sizing: border-box;
-        // display: none;
+        box-shadow: 0px 4px 8px 2px rgba(44, 80, 103, 0.4);
 
         .drop-content-items-container {
             // background-color: lightsalmon;
