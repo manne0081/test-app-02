@@ -10,9 +10,9 @@
             active: showDropContent
         }"
     >
-        <div class="icon-filter" style="" *ngIf="buttonText == 'Filter'"></div>
-        <div class="icon-sort" style="" *ngIf="buttonText == 'Sort'"></div>
-        <div class="icon-drawer" style="" *ngIf="buttonText == 'Group'"></div>
+        <div class="icon-filter" *ngIf="buttonText == 'Filter'"></div>
+        <div class="icon-sort" *ngIf="buttonText == 'Sort'"></div>
+        <div class="icon-drawer" *ngIf="buttonText == 'Group'"></div>
 
         <p style="margin-right: 2px">{{ buttonText }}</p>
     </div>
@@ -25,37 +25,30 @@
         <div *ngIf="dropdownId === 'filter'">
             <div class="option-wrapper filter">
                 <div class="filter-condition">
-                    <div class="filter-label">Where</div>
-                    <div class="filter-select">
-                        <button (click)="openSelect('field')">Name</button>
-                        <ul *ngIf="showFieldSelect">
-                            <li (click)="selectField('Name')">Name</li>
-                            <li (click)="selectField('Date')">Date</li>
-                            <li (click)="selectField('Status')">Status</li>
-                        </ul>
+                    <div class="label">Where</div>
+
+                    <div class="condition-item name">
+                        <button class="name" (click)="openSelect('field')">
+                            Name
+                        </button>
+                        <div class="icon-arrow-drop-down"></div>
                     </div>
-                    <div class="filter-select">
-                        <button (click)="openSelect('operator')">
+
+                    <div class="condition-item select">
+                        <button class="condition" (click)="openSelect('operator')">
                             contains
                         </button>
-                        <ul *ngIf="showOperatorSelect">
-                            <li (click)="selectOperator('contains')">
-                                contains
-                            </li>
-                            <li (click)="selectOperator('equals')">equals</li>
-                            <li (click)="selectOperator('starts with')">
-                                starts with
-                            </li>
-                        </ul>
+                        <div class="icon-arrow-drop-down"></div>
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Enter a value"
-                        [(ngModel)]="filterValue"
-                    />
+
+                    <input type="text" placeholder="Enter a value" [(ngModel)]="filterValue"/>
+
+                    <div class="icon-cancel-circle"></div>
                 </div>
             </div>
 
+            <!-- Add conditions / -group -->
+            <!-- ----------------------- -->
             <div class="filter-actions">
                 <button (click)="addCondition()">Add condition</button>
                 <button (click)="addConditionGroup()">
@@ -66,10 +59,10 @@
 
         <!-- SORT -->
         <!-- ----- -->
-        <div *ngIf="dropdownId === 'sort'">options sort</div>
+        <div *ngIf="dropdownId === 'sort'">sort options</div>
 
         <!-- GROUP -->
         <!-- ----- -->
-        <div *ngIf="dropdownId === 'group'">options group</div>
+        <div *ngIf="dropdownId === 'group'">group options</div>
     </div>
 </div>
