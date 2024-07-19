@@ -62,34 +62,45 @@
         right: 0;
         top: 100%;
         z-index: 1000;
-        min-width: 200px;
+        min-width: 400px;
         border-radius: 4px;
         border: 1px solid rgba(44, 80, 103, 0.18);
         padding: 8px 12px;
         box-sizing: border-box;
         box-shadow: 0px 4px 8px 2px rgba(44, 80, 103, 0.4);
 
-        .drop-content-items-container {
-            // background-color: lightsalmon;
-            min-width: 400px;
-            padding: 8px 12px;
-            box-sizing: border-box;
+        // .drop-content-items-container {
+        //     background-color: lightsalmon;
+        //     min-width: 400px;
+        //     padding: 8px 12px;
+        //     box-sizing: border-box;
 
-            .drop-item-wrapper {
-                padding: 8px 12px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+        //     .drop-item-wrapper {
+        //         padding: 8px 12px;
+        //         display: flex;
+        //         align-items: center;
+        //         justify-content: space-between;
 
-                div {
-                    margin-right: 4px;
-                }
-            }
+        //         div {
+        //             margin-right: 4px;
+        //         }
+        //     }
 
-            .drop-item-wrapper:hover {
-                // Hintergrundfarbe für Hover-Effekt hier festlegen
-            }
+        //     .drop-item-wrapper:hover {
+        //         // Hintergrundfarbe für Hover-Effekt hier festlegen
+        //     }
+        // }
+
+        .filter-condition {
+            background-color: lime;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
         }
+
+
+
+
     }
 }
 

@@ -25,6 +25,13 @@ export class DropdownComponent implements OnInit, OnDestroy{
     showOperatorSelect: boolean = false;
     filterValue: string = '';
 
+    filterCondition: string[] = [];
+
+
+
+
+
+
     private subscription: Subscription = new Subscription();
 
     private static openedDropdownId: string | null = null;
