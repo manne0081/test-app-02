@@ -25,9 +25,9 @@ export class DropdownComponent implements OnInit, OnDestroy{
     showOperatorSelect: boolean = false;
     filterValue: string = '';
 
-    filterConditions: { name: string, label: string } [] = [
-        { name: 'Name', label: 'Where' },
-        { name: 'Test', label: 'and' },
+    filterConditions: { label: string, name: string, condition: string, value: string } [] = [
+        { label: 'Where', name: 'Name', condition: 'contains', value: 'Solution' },
+        { label: 'and', name: 'Test', condition: 'contains', value: 'Test' },
     ];
     sortCondition: string[] = [];
     groupCondition: string[] = [];
@@ -91,7 +91,7 @@ export class DropdownComponent implements OnInit, OnDestroy{
 
     addCondition(): void {
         console.log('Add condition clicked');
-        this.filterConditions.push({ name: 'New Condition', label: 'and' });
+        this.filterConditions.push({ label: 'and', name: '', condition: '', value: '' });
     }
 
     addConditionGroup(): void {
