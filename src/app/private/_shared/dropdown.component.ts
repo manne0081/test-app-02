@@ -25,16 +25,10 @@ export class DropdownComponent implements OnInit, OnDestroy{
     showOperatorSelect: boolean = false;
     filterValue: string = '';
 
-    filterConditions: { label: string, name: string, condition: string, value: string } [] = [
-        { label: 'Where', name: 'Name', condition: 'contains', value: 'Solution' },
-        { label: 'and', name: 'Test', condition: 'contains', value: 'Test' },
-    ];
+    filterConditions: { label: string, name: string, condition: string, value: string } [] = [];
+
     sortCondition: string[] = [];
     groupCondition: string[] = [];
-
-
-
-
 
     private subscription: Subscription = new Subscription();
 
@@ -48,10 +42,15 @@ export class DropdownComponent implements OnInit, OnDestroy{
         this.subscription = this.dropdownService.getOpenDropdownId().subscribe(id => {
             this.showDropContent = this.dropdownId === id;
         });
+        this.getFilterConditions();
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+    }
+
+    getFilterConditions(): void {
+        this.filterConditions = this.dropdownService.getFilterConditions();
     }
 
     onClickItem(event: Event): void {
@@ -79,9 +78,12 @@ export class DropdownComponent implements OnInit, OnDestroy{
         }
     }
 
-    selectField(field: string): void {
+    selectField(field: string, index: number): void {
         this.showFieldSelect = false;
         console.log('Selected field:', field);
+
+        this.dropdownService.setFilterCondition(index, field, this.filterConditions[index].condition, this.filterConditions[index].value);
+        this.showFieldSelect = false;
     }
 
     selectOperator(operator: string): void {
@@ -91,13 +93,18 @@ export class DropdownComponent implements OnInit, OnDestroy{
 
     addCondition(): void {
         console.log('Add condition clicked');
-        this.filterConditions.push({ label: 'and', name: '', condition: '', value: '' });
+        // this.filterConditions.push({ label: 'and', name: '', condition: '', value: '' });
+        this.dropdownService.addFilterCondition();
+        this.getFilterConditions();
+    }
+
+    removeCondition(event: Event, index: number): void {
+        event.stopPropagation();
+        this.filterConditions.splice(index, 1);
+        // Update service's filterConditions if needed
     }
 
     addConditionGroup(): void {
         console.log('Add condition group clicked');
     }
-
-
-
 }

@@ -76,6 +76,7 @@
             align-items: center;
             padding: 2px 0px;
             margin-bottom: 0px;
+            height: 32px;
 
             .label {
                 margin-right: 8px;
@@ -89,6 +90,7 @@
                 display: flex;
                 align-items: center;
                 padding: 4px 8px;
+                height: 100%;
 
                 button {
                     background-color: transparent;
@@ -117,6 +119,7 @@
                 border: 1px solid rgb(200, 200, 200);
                 padding: 4px 6px;
                 margin-right: 8px;
+                height: 100%;
             }
 
             input:hover {
