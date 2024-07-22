@@ -77,6 +77,8 @@ $highlight-color-lighter: #fae4d7;
             }
         }
 
+
+
         // Page-Content-Container-Width > With Quicklinks, Content and AddInfo
         // *******************************************************************
         .content-container-full {
@@ -102,8 +104,8 @@ $highlight-color-lighter: #fae4d7;
             display: grid;
             grid-template-columns: auto;
         }
-        // End > Page-Content-Container-Width
-        // **********************************
+
+
 
         .quicklinks-container {
             border-right: 1px solid rgb(180, 180, 180);
@@ -116,7 +118,7 @@ $highlight-color-lighter: #fae4d7;
             display: grid;
             grid-template-rows: min-content auto 48px;
             position: relative;
-            overflow: visible;
+            overflow-y: auto;
         }
 
         .main-content-container-dashboard {

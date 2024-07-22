@@ -25,7 +25,7 @@ export class DropdownComponent implements OnInit, OnDestroy{
     showOperatorSelect: boolean = false;
     filterValue: string = '';
 
-    filterConditions: { label: string, name: string, condition: string, value: string } [] = [];
+    filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
 
     sortCondition: string[] = [];
     groupCondition: string[] = [];
@@ -69,31 +69,30 @@ export class DropdownComponent implements OnInit, OnDestroy{
     }
 
     openSelect(type: string): void {
-        if (type === 'field') {
-            this.showFieldSelect = !this.showFieldSelect;
-            this.showOperatorSelect = false;
-        } else if (type === 'operator') {
-            this.showOperatorSelect = !this.showOperatorSelect;
-            this.showFieldSelect = false;
-        }
+        // if (type === 'field') {
+        //     this.showFieldSelect = !this.showFieldSelect;
+        //     this.showOperatorSelect = false;
+        // } else if (type === 'operator') {
+        //     this.showOperatorSelect = !this.showOperatorSelect;
+        //     this.showFieldSelect = false;
+        // }
     }
 
     selectField(field: string, index: number): void {
-        this.showFieldSelect = false;
-        console.log('Selected field:', field);
+        // this.showFieldSelect = false;
+        // console.log('Selected field:', field);
 
-        this.dropdownService.setFilterCondition(index, field, this.filterConditions[index].condition, this.filterConditions[index].value);
-        this.showFieldSelect = false;
+        // this.dropdownService.setFilterCondition(index, field, this.filterConditions[index].condition, this.filterConditions[index].value);
+        // this.showFieldSelect = false;
     }
 
     selectOperator(operator: string): void {
-        this.showOperatorSelect = false;
-        console.log('Selected operator:', operator);
+        // this.showOperatorSelect = false;
+        // console.log('Selected operator:', operator);
     }
 
     addCondition(): void {
-        console.log('Add condition clicked');
-        // this.filterConditions.push({ label: 'and', name: '', condition: '', value: '' });
+        // console.log('Add condition clicked');
         this.dropdownService.addFilterCondition();
         this.getFilterConditions();
     }
@@ -105,6 +104,6 @@ export class DropdownComponent implements OnInit, OnDestroy{
     }
 
     addConditionGroup(): void {
-        console.log('Add condition group clicked');
+        console.log('Add condition-group clicked');
     }
 }

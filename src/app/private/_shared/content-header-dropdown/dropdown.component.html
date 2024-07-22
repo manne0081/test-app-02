@@ -5,8 +5,8 @@
             'sort-button': buttonText === 'Sort',
             'group-button': buttonText === 'Group',
             'active': showDropContent
-        }"
-    >
+        }">
+
         <div class="icon-filter" *ngIf="buttonText == 'Filter'"></div>
         <div class="icon-sort" *ngIf="buttonText == 'Sort'"></div>
         <div class="icon-drawer" *ngIf="buttonText == 'Group'"></div>
@@ -21,26 +21,51 @@
         <!-- ------ -->
         <div *ngIf="dropdownId === 'filter'">
             <div class="option-wrapper filter">
-                <div class="filter-item-wrapper" *ngFor="let item of filterConditions; let i = index">
-                    <div class="label">{{item.label}}</div>
+                <div class="filter-item-wrapper" *ngFor="let condition of filterConditions">
 
-                    <div class="condition-item name">
+                    <!-- Label for the first condition -->
+                    <!-- ----------------------------- -->
+                    <div class="label" *ngIf="condition.index === 0">{{condition.label}}</div>
+
+                    <!-- Label for all other conditions -->
+                    <!-- ------------------------------ -->
+                    <div class="condition-dropdown label" *ngIf="condition.index > 0">
                         <button class="name" (click)="openSelect('field')">
-                            {{item.name}}
+                            {{condition.label}}
                         </button>
                         <div class="icon-arrow-drop-down"></div>
                     </div>
 
-                    <div class="condition-item select">
+                    <!-- Filter by field-name -->
+                    <!-- -------------------- -->
+                    <div class="condition-dropdown name">
+                        <button class="name" (click)="openSelect('field')">
+                            {{condition.name}}
+                        </button>
+                        <div class="icon-arrow-drop-down"></div>
+                    </div>
+
+                    <!-- Filter by condition (contains, exactly etc.) -->
+                    <!-- -------------------------------------------- -->
+                    <div class="condition-dropdown select">
                         <button class="condition" (click)="openSelect('operator')">
-                            contains
+                            {{condition.condition}}
                         </button>
                         <div class="icon-arrow-drop-down"></div>
                     </div>
 
-                    <input type="text" placeholder="" [(ngModel)]="filterValue"/>
+                    <!-- Filter by value -->
+                    <!-- --------------- -->
+                    <input type="text" placeholder="" value="{{condition.value}}"/>    <!-- [(ngModel)]="filterValue"-->
 
-                    <div class="icon-cancel-circle" (click)="removeCondition($event, i)"></div>
+                    <!-- Remove filter-condition -->
+                    <!-- ----------------------- -->
+                    <div class="icon-cancel-circle" (click)="removeCondition($event, condition.index)"></div>
+
+                    <!-- ONLY FOR TESTING -->
+                    <!-- ---------------- -->
+                    <span style="margin-left: 8px;">{{condition.index}}</span>
+
                 </div>
             </div>
 
@@ -63,10 +88,10 @@
 
         <!-- SORT -->
         <!-- ----- -->
-        <!-- <div *ngIf="dropdownId === 'sort'" (click)="addCondition()">sort options</div> -->
+        <div *ngIf="dropdownId === 'sort'" (click)="addCondition()">sort options</div>
 
         <!-- GROUP -->
         <!-- ----- -->
-        <!-- <div *ngIf="dropdownId === 'group'">group options</div> -->
+        <div *ngIf="dropdownId === 'group'">group options</div>
     </div>
 </div>

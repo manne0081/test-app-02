@@ -14,7 +14,7 @@ import { Task } from './workspace/task/task';
 import { TaskService } from './workspace/task/task.service';
 import { QuicklinksService } from './quicklinks/quicklinks.service';
 
-import { DropdownComponent } from './_shared/dropdown.component';
+import { DropdownComponent } from './_shared/content-header-dropdown/dropdown.component';
 
 interface FilterItem {
     id: number | string;

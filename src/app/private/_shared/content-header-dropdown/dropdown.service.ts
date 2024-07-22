@@ -8,8 +8,8 @@ import { BehaviorSubject, filter } from 'rxjs';
 export class DropdownService {
     private openDropdownId = new BehaviorSubject<string | null>(null);
 
-    filterConditions: { label: string, name: string, condition: string, value: string } [] = [
-        { label: 'Where', name: 'Name', condition: 'contains', value: 'Solution' },
+    filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [
+        { index: 0, label: 'Where', name: 'Name', condition: 'contains', value: 'Solution' },
     ];
 
     constructor() { }
@@ -27,10 +27,11 @@ export class DropdownService {
     }
 
     setFilterCondition(index: number, name: string, condition: string, value: string): void {
-        this.filterConditions[index] = { label: index === 0 ? 'Where' : 'and', name, condition, value };
+        // this.filterConditions[index] = { label: index === 0 ? 'Where' : 'and', name, condition, value };
     }
 
     addFilterCondition(): void {
-        this.filterConditions.push({ label: 'and', name: '', condition: '', value: '' });
+        var newIndex: number = this.filterConditions.length;
+        this.filterConditions.push({ index: newIndex, label: 'and', name: '', condition: '', value: '' });
     }
 }

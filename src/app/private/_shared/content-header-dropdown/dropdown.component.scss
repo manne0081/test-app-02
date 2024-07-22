@@ -6,6 +6,9 @@
     box-sizing: border-box;
     margin-top: 3px;
 
+    // position: absolute;
+
+
     .drop-button {
         background-color: rgb(225, 225, 225);
         border: 1px solid #b9b9b9;
@@ -16,6 +19,7 @@
         align-items: center;
         box-sizing: border-box;
         height: 28px; /* Beispielhöhe */
+        margin-top: 1px;
         margin-bottom: 4px;
 
         &.filter-button.active {
@@ -58,7 +62,7 @@
     .drop-content-container {
         // background-color: orange;
         background-color: rgb(255, 255, 255);
-        border: 1px solid rgba(44, 80, 103, 0.4);
+        border: 1px solid rgb(200, 200, 200);
         position: absolute;
         right: 0;
         top: 100%;
@@ -80,10 +84,10 @@
 
             .label {
                 margin-right: 8px;
-                min-width: 48px;
+                min-width: 72px;
             }
 
-            .condition-item {
+            .condition-dropdown {
                 border-top: 1px solid rgb(200, 200, 200);
                 border-bottom: 1px solid rgb(200, 200, 200);
                 border-left: 1px solid rgb(200, 200, 200);
@@ -101,7 +105,7 @@
                 }
             }
 
-            .condition-item:hover {
+            .condition-dropdown:hover {
                 background-color: #f1f1f1;
                 cursor: pointer;
 
@@ -110,7 +114,16 @@
                 }
             }
 
-            .condition-item.name {
+            .condition-dropdown.label {
+                border-radius: 4px 4px 4px 4px;
+                border-right: 1px solid rgb(200, 200, 200);
+
+                button {
+                    min-width: 38px;
+                }
+            }
+
+            .condition-dropdown.name {
                 border-radius: 4px 0px 0px 4px;
             }
 
@@ -138,7 +151,7 @@
         .filter-actions {
             // background-color: lime;
             margin-top: 8px;
-            margin-left: 48px;
+            margin-left: 72px;
             display: flex;
 
             .filter-action-button {
