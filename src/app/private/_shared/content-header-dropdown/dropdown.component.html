@@ -25,46 +25,65 @@
 
                     <!-- Label for the first condition -->
                     <!-- ----------------------------- -->
-                    <div class="label" *ngIf="condition.index === 0">{{condition.label}}</div>
+                    <div class="label" style="border: transparent" *ngIf="condition.index === 0">{{condition.label}}</div>
 
                     <!-- Label for all other conditions -->
                     <!-- ------------------------------ -->
                     <div class="condition-dropdown label" *ngIf="condition.index > 0">
-                        <button class="name" (click)="openSelect('field')">
-                            {{condition.label}}
-                        </button>
-                        <div class="icon-arrow-drop-down"></div>
+                        <div class="condition-drop-button">
+                            <button class="name" (click)="openSelect('field')">
+                                {{condition.label}}
+                            </button>
+                            <div class="icon-arrow-drop-down"></div>
+                        </div>
+                        <div class="condition-drop-content" style="position: absolute;">
+                            test
+                        </div>
                     </div>
 
                     <!-- Filter by field-name -->
                     <!-- -------------------- -->
                     <div class="condition-dropdown name">
-                        <button class="name" (click)="openSelect('field')">
-                            {{condition.name}}
-                        </button>
-                        <div class="icon-arrow-drop-down"></div>
+                        <div class="condition-drop-button">
+                            <button class="name" (click)="openSelect('field')">
+                                {{condition.name}}
+                            </button>
+                            <div class="icon-arrow-drop-down"></div>
+                        </div>
+                        <div class="condition-drop-content">
+                            test
+                        </div>
                     </div>
 
                     <!-- Filter by condition (contains, exactly etc.) -->
                     <!-- -------------------------------------------- -->
                     <div class="condition-dropdown select">
-                        <button class="condition" (click)="openSelect('operator')">
-                            {{condition.condition}}
-                        </button>
-                        <div class="icon-arrow-drop-down"></div>
+                        <div class="condition-drop-button">
+                            <button class="name" (click)="openSelect('operator')">
+                                {{condition.condition}}
+                            </button>
+                            <div class="icon-arrow-drop-down"></div>
+                        </div>
+                        <div class="condition-drop-content">
+                            test
+                        </div>
                     </div>
 
                     <!-- Filter by value -->
                     <!-- --------------- -->
-                    <input type="text" placeholder="" value="{{condition.value}}"/>    <!-- [(ngModel)]="filterValue"-->
+                    <input type="text" placeholder="" value="{{condition.value}}"/>
 
                     <!-- Remove filter-condition -->
                     <!-- ----------------------- -->
                     <div class="icon-cancel-circle" (click)="removeCondition($event, condition.index)"></div>
 
+
+
                     <!-- ONLY FOR TESTING -->
                     <!-- ---------------- -->
-                    <span style="margin-left: 8px;">{{condition.index}}</span>
+                    <div style="display: flex; width: 26px">
+                        <span style="width: 100%; text-align: end;">{{condition.index}}</span>
+                    </div>
 
                 </div>
             </div>

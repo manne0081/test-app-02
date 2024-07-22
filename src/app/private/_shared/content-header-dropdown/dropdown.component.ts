@@ -19,18 +19,16 @@ export class DropdownComponent implements OnInit, OnDestroy{
     @Input() buttonText: string = '';
     @Input() dropdownId: string = '';
 
-    showDropContent: boolean = false;
+    private subscription: Subscription = new Subscription();
 
+    showDropContent: boolean = false;
     showFieldSelect: boolean = false;
     showOperatorSelect: boolean = false;
     filterValue: string = '';
 
     filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
-
     sortCondition: string[] = [];
     groupCondition: string[] = [];
-
-    private subscription: Subscription = new Subscription();
 
     private static openedDropdownId: string | null = null;
 
@@ -99,8 +97,8 @@ export class DropdownComponent implements OnInit, OnDestroy{
 
     removeCondition(event: Event, index: number): void {
         event.stopPropagation();
-        this.filterConditions.splice(index, 1);
-        // Update service's filterConditions if needed
+        this.dropdownService.removeFilter(index);
+        this.getFilterConditions();
     }
 
     addConditionGroup(): void {
