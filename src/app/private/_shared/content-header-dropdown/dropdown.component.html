@@ -19,7 +19,7 @@
 
         <!-- FILTER -->
         <!-- ------ -->
-        <div *ngIf="dropdownId === 'filter'">
+        <div *ngIf="dropdownId === 'filter'" style="overflow: visible;">
             <div class="option-wrapper filter">
                 <div class="filter-item-wrapper" *ngFor="let condition of filterConditions">
 
@@ -37,7 +37,10 @@
                             <div class="icon-arrow-drop-down"></div>
                         </div>
                         <div class="condition-drop-content-container" style="position: absolute;">
-                            And / Or
+                            And
+                        </div>
+                        <div class="condition-drop-content-container" style="position: absolute;">
+                            Or
                         </div>
                     </div>
 
@@ -51,7 +54,15 @@
                             <div class="icon-arrow-drop-down"></div>
                         </div>
                         <div class="condition-drop-content-container">
-                            List with fieldnames
+                            <div>
+                                Name
+                            </div>
+                            <div>
+                                Category
+                            </div>
+                            <div>
+                                Size
+                            </div>
                         </div>
                     </div>
 
@@ -65,7 +76,18 @@
                             <div class="icon-arrow-drop-down"></div>
                         </div>
                         <div class="condition-drop-content-container">
-                            List with conditions (contains / contains not / exactly / any of)
+                            <div>
+                                Contains
+                            </div>
+                            <div>
+                                Contains not
+                            </div>
+                            <div>
+                                Exactly
+                            </div>
+                            <div>
+                                Any of
+                            </div>
                         </div>
                     </div>
 
