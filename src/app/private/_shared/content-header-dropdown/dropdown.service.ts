@@ -6,7 +6,7 @@ import { BehaviorSubject, filter } from 'rxjs';
 })
 
 export class DropdownService {
-    private openDropdownId = new BehaviorSubject<string | null>(null);
+    private openedDropdownId = new BehaviorSubject<string | null>(null);
     private newFilterConditionIndex: number = 0;
 
     filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [
@@ -20,11 +20,11 @@ export class DropdownService {
     }
 
     getOpenDropdownId() {
-        return this.openDropdownId.asObservable();
+        return this.openedDropdownId.asObservable();
     }
 
     setOpenDropdownId(id: string | null) {
-        this.openDropdownId.next(id);
+        this.openedDropdownId.next(id);
     }
 
     addFilterCondition(): void {

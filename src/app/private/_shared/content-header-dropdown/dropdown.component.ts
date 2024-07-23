@@ -64,6 +64,10 @@ export class DropdownComponent implements OnInit, OnDestroy{
             this.showDropContent = false;
             this.dropdownService.setOpenDropdownId(null);
         }
+        if (!target.closest('.condition-dropdown')) {
+            this.showDropContent = false;
+            this.dropdownService.setOpenDropdownId(null);
+        }
     }
 
     openSelect(type: string): void {

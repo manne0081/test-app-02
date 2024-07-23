@@ -127,11 +127,11 @@
                         position: absolute;
                         top: 28px;
                         left: -1px;
-                        min-width: 100%;
+                        min-width: max-content;
                         padding: 4px 8px;
                         border-radius: 4px;
                         z-index: 100;
-                        display: none;
+                        // display: none;
                     }
                 }
 
