@@ -93,8 +93,9 @@ export class DropdownComponent implements OnInit, OnDestroy{
         // console.log('Selected operator:', operator);
     }
 
-    addCondition(): void {
+    addCondition(event: Event): void {
         // console.log('Add condition clicked');
+        event.stopPropagation();
         this.dropdownService.addFilterCondition();
         this.getFilterConditions();
     }

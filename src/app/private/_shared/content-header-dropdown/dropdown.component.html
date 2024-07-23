@@ -37,10 +37,12 @@
                             <div class="icon-arrow-drop-down"></div>
                         </div>
                         <div class="condition-drop-content-container" style="position: absolute;">
-                            And
-                        </div>
-                        <div class="condition-drop-content-container" style="position: absolute;">
-                            Or
+                            <div>
+                                And
+                            </div>
+                            <div>
+                                Or
+                            </div>
                         </div>
                     </div>
 
@@ -114,7 +116,7 @@
             <!-- ----------------------- -->
             <div class="filter-actions">
 
-                <button class="filter-action-button" (click)="addCondition()">
+                <button class="filter-action-button" (click)="addCondition($event)">
                     <span class="icon-add"></span>
                     <span>Add condition</span>
                 </button>
@@ -129,7 +131,7 @@
 
         <!-- SORT -->
         <!-- ----- -->
-        <div *ngIf="dropdownId === 'sort'" (click)="addCondition()">sort options</div>
+        <div *ngIf="dropdownId === 'sort'" (click)="addCondition($event)">sort options</div>
 
         <!-- GROUP -->
         <!-- ----- -->
