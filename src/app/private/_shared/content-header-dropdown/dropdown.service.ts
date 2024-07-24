@@ -10,7 +10,7 @@ export class DropdownService {
     private newFilterConditionIndex: number = 0;
 
     filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [
-        { index: 0, label: 'Where', name: 'Name', condition: 'Contains', value: 'Solution' },
+        { index: 0, label: 'Where', name: 'Bitte wählen...', condition: 'Bitte wählen...', value: 'Bitte eingeben...' },
     ];
 
     constructor() { }

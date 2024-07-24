@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild, Input, HostListener, ElementRef, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, Input, HostListener, ElementRef, AfterViewInit, ViewChildren, QueryList, resolveForwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { QuicklinksService } from '../quicklinks/quicklinks.service';
@@ -207,6 +207,18 @@ export class HeaderMenuComponent implements AfterViewInit {
     onSelectQuicklink(item: any): void {
         // console.log(item);
         this.markMenuItemAsActive(item.parent);
+    }
+
+    async testFunction() {
+        try {
+            let response = await fetch('https://catfact.ninja/fact');
+            let result = await response.json();
+
+            console.log(result.fact);
+
+        } catch (e) {
+            console.log('Es ist ein Fehler aufgetreten! ' + e);
+        }
     }
 
 }

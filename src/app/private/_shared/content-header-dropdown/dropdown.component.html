@@ -31,7 +31,7 @@
                     <!-- ------------------------------ -->
                     <div class="condition-dropdown label" *ngIf="condition.index > 0">
                         <div class="condition-drop-button" (click)="onClickItem($event)">
-                            <button class="name">
+                            <button class="label">
                                 {{condition.label}}
                             </button>
                             <div class="icon-arrow-drop-down"></div>
@@ -72,7 +72,7 @@
                     <!-- -------------------------------------------- -->
                     <div class="condition-dropdown select">
                         <div class="condition-drop-button">
-                            <button class="name" (click)="openSelect('operator')">
+                            <button class="condition" (click)="openSelect('operator')">
                                 {{condition.condition}}
                             </button>
                             <div class="icon-arrow-drop-down"></div>
@@ -99,13 +99,13 @@
 
                     <!-- Remove filter-condition -->
                     <!-- ----------------------- -->
-                    <div class="icon-cancel-circle" (click)="removeCondition($event, condition.index)"></div>
+                    <div class="icon-cancel-circle" (click)="removeCondition($event, condition.index)" *ngIf="condition.index > 0"></div>
 
 
 
                     <!-- ONLY FOR TESTING -->
                     <!-- ---------------- -->
-                    <div style="display: flex; width: 26px">
+                    <div style="display: flex; width: 26px" *ngIf="condition.index > 0">
                         <span style="width: 100%; text-align: end;">{{condition.index}}</span>
                     </div>
 

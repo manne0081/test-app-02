@@ -120,6 +120,10 @@
                             text-align: left;
                             outline: transparent;
                         }
+
+                        button.label {
+                            min-width: 32px;
+                        }
                     }
 
                     .condition-drop-content-container {
