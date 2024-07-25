@@ -179,6 +179,7 @@ export class HeaderMenuComponent implements AfterViewInit {
         this.menuItems.forEach((item, index) => {
 
             if (item.name === name) {
+                // Set 'active' for the clicked item
                 item.status = 'active';
 
                 // Set 'pre-active' for the previous item if it exists
