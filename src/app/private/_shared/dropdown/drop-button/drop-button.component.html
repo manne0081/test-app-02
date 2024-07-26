@@ -1,0 +1,25 @@
+<!-- INNER Dropdown (Button) -->
+
+<!-- Design > Looks like a normal button with an left-side icon and a right-side Value. And it have the function like a dropdown -->
+<!-- --------------------------------------------------------------------------------------------------------------------------- -->
+<div id="id-drop-button" class="drop-button-1"
+    *ngIf="buttonKeyValue === 'filter' || buttonKeyValue === 'sort' || buttonKeyValue === 'group'">
+
+    <div class="{{ buttonIcon }}"></div>
+    <p style="margin-right: 2px">{{ buttonKeyValue | titlecase }}</p>
+
+</div>
+
+<!-- Design > Looks a little bit like a normal button but it have the dropdown-arrow on the right and the Value on the left -->
+<!-- ---------------------------------------------------------------------------------------------------------------------- -->
+<div id="id-drop-button" class="drop-button-2"
+    *ngIf="buttonKeyValue === 'test'">
+
+    <div class="condition-drop-button">
+        <button class="name">
+            test
+        </button>
+        <div class="icon-arrow-drop-down"></div>
+    </div>
+
+</div>

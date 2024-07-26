@@ -1,0 +1,107 @@
+<!-- INNER Dropdown (Content) -->
+<div class="drop-content-container" *ngIf="showDropdown">
+
+    <!-- Content for FILTER -->
+    <div style="overflow: visible;">
+        <div class="option-wrapper filter">
+            <div class="filter-item-wrapper">
+
+                <!-- Label for the first condition -->
+                <!-- ----------------------------- -->
+                <div class="label" style="border: transparent">Where</div>
+
+                <!-- Label for all other conditions -->
+                <!-- ------------------------------ -->
+                <div class="condition-dropdown label">
+                    <div class="condition-drop-button">
+                        <button class="label">
+                            test
+                        </button>
+                        <div class="icon-arrow-drop-down"></div>
+                    </div>
+                    <div class="condition-drop-content-container" style="position: absolute;">
+                        <div>
+                            And
+                        </div>
+                        <div>
+                            Or
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter by field-name -->
+                <!-- -------------------- -->
+                <div class="condition-dropdown name">
+                    <div class="condition-drop-button">
+                        <button class="name">
+                            test
+                        </button>
+                        <div class="icon-arrow-drop-down"></div>
+                    </div>
+                    <div class="condition-drop-content-container">
+                        <div>
+                            Name
+                        </div>
+                        <div>
+                            Category
+                        </div>
+                        <div>
+                            Size
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter by condition (contains, exactly etc.) -->
+                <!-- -------------------------------------------- -->
+                <div class="condition-dropdown select">
+                    <div class="condition-drop-button">
+                        <button class="condition">
+                            test
+                        </button>
+                        <div class="icon-arrow-drop-down"></div>
+                    </div>
+                    <div class="condition-drop-content-container">
+                        <div>
+                            Contains
+                        </div>
+                        <div>
+                            Contains not
+                        </div>
+                        <div>
+                            Exactly
+                        </div>
+                        <div>
+                            Any of
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter by value -->
+                <!-- --------------- -->
+                <input type="text" placeholder="" value="test"/>
+
+                <!-- Remove filter-condition -->
+                <!-- ----------------------- -->
+                <div class="icon-cancel-circle"></div>
+
+            </div>
+        </div>
+
+        <!-- Add conditions / -group -->
+        <!-- ----------------------- -->
+        <div class="filter-actions">
+
+            <button class="filter-action-button">
+                <span class="icon-add"></span>
+                <span>Add condition</span>
+            </button>
+
+            <button class="filter-action-button">
+                <span class="icon-add"></span>
+                <span>Add condition group</span>
+            </button>
+
+        </div>
+    </div>
+
+</div>

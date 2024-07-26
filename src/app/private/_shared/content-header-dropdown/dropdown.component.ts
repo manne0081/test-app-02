@@ -5,7 +5,7 @@ import { DropdownService } from './dropdown.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-dropdown',
+    selector: 'app-dropdown-1',
     standalone: true,
     imports: [
         CommonModule,
@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
     styleUrl: './dropdown.component.scss'
 })
 
-export class DropdownComponent implements OnInit, OnDestroy{
+export class DropdownComponentOne implements OnInit, OnDestroy{
     @Input() buttonText: string = '';
     @Input() dropdownId: string = '';
 

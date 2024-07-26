@@ -14,7 +14,8 @@ import { Task } from './workspace/task/task';
 import { TaskService } from './workspace/task/task.service';
 import { QuicklinksService } from './quicklinks/quicklinks.service';
 
-import { DropdownComponent } from './_shared/content-header-dropdown/dropdown.component';
+import { DropdownComponentOne } from './_shared/content-header-dropdown/dropdown.component';
+import { DropdownComponent } from './_shared/dropdown/dropdown/dropdown.component';
 
 interface FilterItem {
     id: number | string;
@@ -31,6 +32,7 @@ interface FilterItem {
         HeaderMenuComponent,
         QuicklinksComponent,
         AddInfoComponent,
+        DropdownComponentOne,
         DropdownComponent,
     ],
     templateUrl: './private.component.html',
@@ -81,35 +83,16 @@ export class PrivateComponent implements OnInit {
 
     /**
      *
-     * @param menuItem
      */
-    setAddInfoObject(menuItem?: string): void {
-        var log: string = 'private.component - setAddInfoObject - ';
-        switch (menuItem) {
-            case 'Unternehmen':
-                // console.log(log + 'case: Unternehmen');
-                this.companyService.selectedCompany$.subscribe({
-                    next: (company) => {
-                        if (company) {
-                            this.selectedCompany = company;
-                            this.addInfoObject = company;
-                        }
-                    }
-                });
-                break;
-            case 'Aufgaben':
-                // console.log(log + 'case: Aufgaben');
-                this.taskService.selectedTask$.subscribe({
-                    next: (task) => {
-                        this.selectedTask = task;
-                        this.addInfoObject = task;
-                    }
-                });
-                break;
-            default:
-                // console.log(log + 'case: default');
-                break;
-        }
+    toggleQuicklinkVisibility(): void {
+        this.quicklinksVisible = !this.quicklinksVisible;
+    }
+
+    /**
+     *
+     */
+    toggleAddInfoVisibility(): void {
+        this.addInfoVisible = !this.addInfoVisible;
     }
 
     /**
@@ -140,20 +123,6 @@ export class PrivateComponent implements OnInit {
         this.addInfoObject = '';
         this.removeAllFilterItems();
         this.activeFilterItems.push({ id: 'searchTerm', name: item.title });
-    }
-
-    /**
-     *
-     */
-    toggleQuicklinkVisibility(): void {
-        this.quicklinksVisible = !this.quicklinksVisible;
-    }
-
-    /**
-     *
-     */
-    toggleAddInfoVisibility(): void {
-        this.addInfoVisible = !this.addInfoVisible;
     }
 
     /**
@@ -188,6 +157,10 @@ export class PrivateComponent implements OnInit {
             // Remove the searchTerm item if the input is empty
             this.activeFilterItems = this.activeFilterItems.filter(item => item.id !== 'searchTerm');
         }
+    }
+
+    onClickContentHeaderViewOption(): void {
+        console.log('private.component - onClickContentHeaderViewOption: ');
     }
 
     /**
@@ -244,4 +217,38 @@ export class PrivateComponent implements OnInit {
         this.activeFilterItems = this.activeFilterItems.filter(filterItem => filterItem.id !== 'searchTerm');
         this.updateRoute();
     }
+
+    /**
+     *
+     * @param menuItem
+     */
+    setAddInfoObject(menuItem?: string): void {
+        var log: string = 'private.component - setAddInfoObject - ';
+        switch (menuItem) {
+            case 'Unternehmen':
+                // console.log(log + 'case: Unternehmen');
+                this.companyService.selectedCompany$.subscribe({
+                    next: (company) => {
+                        if (company) {
+                            this.selectedCompany = company;
+                            this.addInfoObject = company;
+                        }
+                    }
+                });
+                break;
+            case 'Aufgaben':
+                // console.log(log + 'case: Aufgaben');
+                this.taskService.selectedTask$.subscribe({
+                    next: (task) => {
+                        this.selectedTask = task;
+                        this.addInfoObject = task;
+                    }
+                });
+                break;
+            default:
+                // console.log(log + 'case: default');
+                break;
+        }
+    }
+
 }

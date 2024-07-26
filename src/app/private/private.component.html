@@ -67,23 +67,32 @@
 
                         <!-- DROPDOWN - Component - TEST -->
                         <!-- --------------------------- -->
-                        <app-dropdown [buttonText]="'Filter'" [dropdownId]="'filter'" style="overflow: visible; position: relative">
+                        <app-dropdown-1 [buttonText]="'Filter'" [dropdownId]="'filter'" style="overflow: visible; position: relative">
                             <!-- Inhalt für Filtern -->
-                            <p>Filter by (WIP)</p>
+                            <p>Filter by (Alte Version, wird ausgetauscht...)</p>
                             <br />
-                        </app-dropdown>
+                        </app-dropdown-1>
 
-                        <app-dropdown [buttonText]="'Sort'" [dropdownId]="'sort'" style="overflow: visible; position: relative">
-                            <!-- Inhalt für Gruppieren -->
-                            <p>Sort by (WIP)</p>
-                            <br />
-                        </app-dropdown>
+                        <app-dropdown style="overflow: visible; position: relative"
+                            [buttonKeyValue]="'filter'"
+                            [buttonIcon]="'icon-filter'"
+                            [contentType]="'object-filter'"
+                            (click)="onClickContentHeaderViewOption()"
+                        ></app-dropdown>
 
-                        <app-dropdown [buttonText]="'Group'" [dropdownId]="'group'" style="overflow: visible; position: relative">
-                            <!-- Inhalt für Sortieren -->
-                            <p>Group by (WIP)</p>
-                            <br />
-                        </app-dropdown>
+                        <app-dropdown style="overflow: visible; position: relative"
+                            [buttonKeyValue]="'sort'"
+                            [buttonIcon]="'icon-sort'"
+                            [contentType]="'object-sort'"
+                            (click)="onClickContentHeaderViewOption()"
+                        ></app-dropdown>
+
+                        <app-dropdown style="overflow: visible; position: relative"
+                            [buttonKeyValue]="'group'"
+                            [buttonIcon]="'icon-drawer'"
+                            [contentType]="'object-group'"
+                            (click)="onClickContentHeaderViewOption()"
+                        ></app-dropdown>
                     </div>
 
                     <!-- Filter-Elements when exists -->
@@ -113,6 +122,16 @@
             <!-- ********************** -->
             <div class="add-info-container" *ngIf="addInfoVisible">
                 <app-add-info [addInfoObject]="addInfoObject"></app-add-info>
+
+                <!-- note -->
+                <!-- Only for testing -->
+                <app-dropdown style="margin-top: 80px;"
+                    [buttonKeyValue]="'test'"
+                    [buttonIcon]="'icon-grid'"
+                    [contentType]="'object-test'"
+                ></app-dropdown>
+                <!-- End for testing -->
+
             </div>
         </div>
     </main>
