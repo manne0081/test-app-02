@@ -9,14 +9,14 @@ export class DropdownService {
     private openedDropdownId = new BehaviorSubject<string | null>(null);
     private newFilterConditionIndex: number = 0;
 
-    filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [
+    activeFilterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [
         { index: 0, label: 'Where', name: 'Bitte wählen...', condition: 'Bitte wählen...', value: 'Bitte eingeben...' },
     ];
 
     constructor() { }
 
     getFilterConditions(): any {
-        return this.filterConditions;
+        return this.activeFilterConditions;
     }
 
     getOpenDropdownId() {
@@ -30,14 +30,14 @@ export class DropdownService {
     addFilterCondition(): void {
         // let newIndex = this.filterConditions[this.filterConditions.length - 1].index + 1;    // Example -> Navigate to the last array entry
         this.newFilterConditionIndex++;
-        this.filterConditions.push({ index: this.newFilterConditionIndex, label: 'and', name: '', condition: '', value: '' });
+        this.activeFilterConditions.push({ index: this.newFilterConditionIndex, label: 'and', name: '', condition: '', value: '' });
         console.log('newIndex: ', this.newFilterConditionIndex);
     }
 
     removeFilter(index: number): void {
-        const arrayIndex = this.filterConditions.findIndex(filter => filter.index === index);
+        const arrayIndex = this.activeFilterConditions.findIndex(filter => filter.index === index);
         if (arrayIndex !== -1) {
-            this.filterConditions.splice(arrayIndex, 1);
+            this.activeFilterConditions.splice(arrayIndex, 1);
         }
     }
 

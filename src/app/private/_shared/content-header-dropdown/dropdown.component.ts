@@ -22,15 +22,15 @@ export class DropdownComponent implements OnInit, OnDestroy{
     private subscription: Subscription = new Subscription();
 
     showDropContent: boolean = false;
+
     showFieldSelect: boolean = false;
     showOperatorSelect: boolean = false;
+
     filterValue: string = '';
 
     filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
     sortCondition: string[] = [];
     groupCondition: string[] = [];
-
-    private static openedDropdownId: string | null = null;
 
     constructor(
         private dropdownService: DropdownService,
@@ -40,6 +40,8 @@ export class DropdownComponent implements OnInit, OnDestroy{
         this.subscription = this.dropdownService.getOpenDropdownId().subscribe(id => {
             this.showDropContent = this.dropdownId === id;
         });
+
+        // For the first line
         this.getFilterConditions();
     }
 
@@ -51,8 +53,12 @@ export class DropdownComponent implements OnInit, OnDestroy{
         this.filterConditions = this.dropdownService.getFilterConditions();
     }
 
+    /**
+     *
+     * @param event
+     */
     onClickItem(event: Event): void {
-        event.stopPropagation();
+        event.stopPropagation();    // prevents the event from being propagated further upwards to the document:click (@HostListener)
         this.showDropContent = !this.showDropContent;
         this.dropdownService.setOpenDropdownId(this.showDropContent ? this.dropdownId : null);
     }
@@ -60,11 +66,8 @@ export class DropdownComponent implements OnInit, OnDestroy{
     @HostListener('document:click', ['$event'])
     closeDropdown(event: Event): void {
         const target = event.target as HTMLElement;
-        if (!target.closest('.dropdown')) {
-            this.showDropContent = false;
-            this.dropdownService.setOpenDropdownId(null);
-        }
-        if (!target.closest('.condition-dropdown')) {
+
+        if (!target.closest('.drop-content-container')) {
             this.showDropContent = false;
             this.dropdownService.setOpenDropdownId(null);
         }

@@ -5,9 +5,7 @@
     <!-- Header -->
     <!-- ****** -->
     <header class="page-header-container" style="overflow: visible">
-        <app-header-menu
-            (selectedMenuItem)="onSelectMenuItem($event)"
-        ></app-header-menu>
+        <app-header-menu (selectedMenuItem)="onSelectMenuItem($event)"></app-header-menu>
     </header>
 
     <!-- Main-Content -->
@@ -16,10 +14,7 @@
         <div class="content-title-container">
             <!-- Button toggle Quicklinks -->
             <!-- ------------------------ -->
-            <button
-                class="content-title-quicklinks"
-                (click)="toggleQuicklinkVisibility()"
-            >
+            <button class="content-title-quicklinks" (click)="toggleQuicklinkVisibility()">
                 Quicklinks
             </button>
 
@@ -38,8 +33,7 @@
 
         <!-- Different Classes wether quicklinks or addInfo should be visible or not -->
         <!-- *********************************************************************** -->
-        <div
-            [ngClass]="{
+        <div [ngClass]="{
                 'content-container-full': quicklinksVisible && addInfoVisible,
                 'content-container-without-quicklinks':
                     !quicklinksVisible && addInfoVisible,
@@ -58,63 +52,34 @@
             <!-- Content -->
             <!-- ******* -->
             <!-- <div class="main-content-container"> -->
-            <div
-                [ngClass]="
-                    selectedValueFromMainMenu === 'Dashboard'
-                        ? 'main-content-container-dashboard'
-                        : 'main-content-container'
-                "
+            <div [ngClass]="selectedValueFromMainMenu === 'Dashboard' ? 'main-content-container-dashboard' : 'main-content-container'"
             >
                 <!-- Content-Header -->
                 <!-- ************** -->
-                <div
-                    class="content-header-container"
-                    *ngIf="selectedValueFromMainMenu !== 'Dashboard'"
-                >
+                <div class="content-header-container" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
                     <div class="add-filter-wrapper" style="overflow: visible">
                         <!-- Searching-Area -->
                         <!-- -------------- -->
                         <div class="searching-wrapper">
-                            <input
-                                type="text"
-                                placeholder="Searching..."
-                                [(ngModel)]="searchTerm"
-                                (keyup)="onSearchTermChanged($event)"
-                            />
-                            <div
-                                class="icon-cancel"
-                                *ngIf="searchTerm != ''"
-                                (click)="removeSearchTerm()"
-                            ></div>
+                            <input type="text" placeholder="Searching..." [(ngModel)]="searchTerm" (keyup)="onSearchTermChanged($event)"/>
+                            <div class="icon-cancel" *ngIf="searchTerm != ''" (click)="removeSearchTerm()"></div>
                         </div>
 
                         <!-- DROPDOWN - Component - TEST -->
                         <!-- --------------------------- -->
-                        <app-dropdown
-                            [buttonText]="'Filter'"
-                            [dropdownId]="'filter'"
-                            style="overflow: visible; position: relative"
-                        >
+                        <app-dropdown [buttonText]="'Filter'" [dropdownId]="'filter'" style="overflow: visible; position: relative">
                             <!-- Inhalt für Filtern -->
                             <p>Filter by (WIP)</p>
                             <br />
                         </app-dropdown>
 
-                        <app-dropdown
-                            [buttonText]="'Sort'"
-                            [dropdownId]="'sort'"
-                            style="overflow: visible; position: relative"
-                        >
+                        <app-dropdown [buttonText]="'Sort'" [dropdownId]="'sort'" style="overflow: visible; position: relative">
                             <!-- Inhalt für Gruppieren -->
                             <p>Sort by (WIP)</p>
                             <br />
                         </app-dropdown>
 
-                        <app-dropdown
-                            [buttonText]="'Group'"
-                            [dropdownId]="'group'"
-                            style="overflow: visible; position: relative"
-                        >
+                        <app-dropdown [buttonText]="'Group'" [dropdownId]="'group'" style="overflow: visible; position: relative">
                             <!-- Inhalt für Sortieren -->
                             <p>Group by (WIP)</p>
                             <br />
@@ -123,19 +88,10 @@
 
                     <!-- Filter-Elements when exists -->
                     <!-- --------------------------- -->
-                    <div
-                        class="show-filter-wrapper"
-                        *ngIf="filterItems.length > 0"
-                    >
-                        <div
-                            class="show-filter-item-container"
-                            *ngFor="let item of filterItems"
-                        >
+                    <div class="show-filter-wrapper" *ngIf="activeFilterItems.length > 0">
+                        <div class="show-filter-item-container" *ngFor="let item of activeFilterItems">
                             <span>{{ item.name }}</span>
-                            <div
-                                class="icon-cancel"
-                                (click)="removeFilterItem(item)"
-                            ></div>
+                            <div class="icon-cancel" (click)="removeFilterItem(item)"></div>
                         </div>
                     </div>
                 </div>
@@ -148,10 +104,7 @@
 
                 <!-- Content-Actions -->
                 <!-- *************** -->
-                <div
-                    class="content-actions"
-                    *ngIf="selectedValueFromMainMenu !== 'Dashboard'"
-                >
+                <div class="content-actions" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
                     Actions
                 </div>
             </div>

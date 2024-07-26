@@ -1,4 +1,7 @@
+<!-- OUTER Dropdown (Frame) -->
 <div class="dropdown" (document:click)="closeDropdown($event)">
+
+    <!-- INNER Dropdown (Button) -->
     <div id="id-drop-button" class="drop-button" (click)="onClickItem($event)"
         [ngClass]="{
             'filter-button': buttonText === 'Filter',
@@ -14,11 +17,11 @@
         <p style="margin-right: 2px">{{ buttonText }}</p>
     </div>
 
+    <!-- INNER Dropdown (Content) -->
     <div class="drop-content-container" *ngIf="showDropContent">
         <ng-content></ng-content>
 
-        <!-- FILTER -->
-        <!-- ------ -->
+        <!-- Content for FILTER -->
         <div *ngIf="dropdownId === 'filter'" style="overflow: visible;">
             <div class="option-wrapper filter">
                 <div class="filter-item-wrapper" *ngFor="let condition of filterConditions">
@@ -129,12 +132,14 @@
             </div>
         </div>
 
-        <!-- SORT -->
-        <!-- ----- -->
-        <div *ngIf="dropdownId === 'sort'" (click)="addCondition($event)">sort options</div>
+        <!-- Content for SORT -->
+        <div *ngIf="dropdownId === 'sort'" (click)="addCondition($event)">
+            sort options
+        </div>
 
-        <!-- GROUP -->
-        <!-- ----- -->
-        <div *ngIf="dropdownId === 'group'">group options</div>
+        <!-- Content for GROUP -->
+        <div *ngIf="dropdownId === 'group'">
+            group options
+        </div>
     </div>
 </div>

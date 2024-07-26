@@ -49,7 +49,7 @@ export class PrivateComponent implements OnInit {
     searchTerm: string = '';
     sortingTerm: string = '';
 
-    filterItems: FilterItem[] = [
+    activeFilterItems: FilterItem[] = [
         // { id: 0, name: 'wip-1' },
         // { id: 1, name: 'wip-2' },
     ];
@@ -139,7 +139,7 @@ export class PrivateComponent implements OnInit {
         this.setAddInfoObject(item.title);
         this.addInfoObject = '';
         this.removeAllFilterItems();
-        this.filterItems.push({ id: 'searchTerm', name: item.title });
+        this.activeFilterItems.push({ id: 'searchTerm', name: item.title });
     }
 
     /**
@@ -174,7 +174,7 @@ export class PrivateComponent implements OnInit {
     handleSearchTermChange(event: Event): void {
         const inputElement = event.target as HTMLInputElement;
         const searchTerm = inputElement.value.trim();
-        const searchTermItem = this.filterItems.find(item => item.id === 'searchTerm');
+        const searchTermItem = this.activeFilterItems.find(item => item.id === 'searchTerm');
 
         if (searchTerm) {
             if (searchTermItem) {
@@ -182,11 +182,11 @@ export class PrivateComponent implements OnInit {
                 searchTermItem.name = searchTerm;
             } else {
                 // Add a new searchTerm item
-                this.filterItems.push({ id: 'searchTerm', name: searchTerm });
+                this.activeFilterItems.push({ id: 'searchTerm', name: searchTerm });
             }
         } else if (searchTermItem) {
             // Remove the searchTerm item if the input is empty
-            this.filterItems = this.filterItems.filter(item => item.id !== 'searchTerm');
+            this.activeFilterItems = this.activeFilterItems.filter(item => item.id !== 'searchTerm');
         }
     }
 
@@ -195,7 +195,7 @@ export class PrivateComponent implements OnInit {
      * @param index
      */
     removeFilterItem(item: FilterItem): void {
-        this.filterItems = this.filterItems.filter(filterItem => item.id !== filterItem.id);
+        this.activeFilterItems = this.activeFilterItems.filter(filterItem => item.id !== filterItem.id);
         this.searchTerm = '';
         this.updateRoute();
     }
@@ -204,7 +204,7 @@ export class PrivateComponent implements OnInit {
      *
      */
     removeAllFilterItems(): void {
-        this.filterItems = [];
+        this.activeFilterItems = [];
     }
 
     /**
@@ -241,7 +241,7 @@ export class PrivateComponent implements OnInit {
      */
     removeSearchTerm(): void {
         this.searchTerm = '';
-        this.filterItems = this.filterItems.filter(item => item.id !== 'searchTerm');
+        this.activeFilterItems = this.activeFilterItems.filter(filterItem => filterItem.id !== 'searchTerm');
         this.updateRoute();
     }
 }
