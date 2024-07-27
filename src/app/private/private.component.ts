@@ -161,6 +161,7 @@ export class PrivateComponent implements OnInit {
 
     onClickDropdownButton(event: Event): void {
         // console.log('pc - ElementID: ' + (event.currentTarget as HTMLElement).id);
+        event.stopPropagation();
         const clickedButtonId: string = (event.currentTarget as HTMLElement).id;
         this.privateService.setOpenedDropdownId(clickedButtonId);
     }

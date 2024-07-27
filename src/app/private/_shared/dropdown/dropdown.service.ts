@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
+
 export class DropdownService {
 
-  constructor() { }
+    constructor() { }
+
+    // todo
+    // - extract 'showDropdown' from drop-content components
+
 }

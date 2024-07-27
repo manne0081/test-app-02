@@ -1,18 +1,23 @@
 <!-- INNER Dropdown (Content) -->
-<div class="drop-content-container" *ngIf="showDropdown">
+<div id="test" class="drop-content-container" *ngIf="showDropdown">
+
+    <h3>Filter</h3>
 
     <!-- Content for FILTER -->
     <div style="overflow: visible;">
         <div class="option-wrapper filter">
-            <div class="filter-item-wrapper" *ngFor="let condition of filterConditions">
+            <div class="filter-item-wrapper" *ngFor="let condition of filterConditions, let i = index">
+
+                <!-- todo -->
+
 
                 <!-- Label for the first condition -->
                 <!-- ----------------------------- -->
-                <div class="label" style="border: transparent" *ngIf="condition.index === 0">Where</div>
+                <div class="label" style="border: transparent" *ngIf="i === 0">Where</div>
 
                 <!-- Label for all other conditions -->
                 <!-- ------------------------------ -->
-                <div class="condition-dropdown label" *ngIf="condition.index > 0">
+                <div class="condition-dropdown label" *ngIf="i > 0">
                     <div class="condition-drop-button">
                         <button class="label">
                             test
@@ -82,11 +87,11 @@
 
                 <!-- Remove filter-condition -->
                 <!-- ----------------------- -->
-                <div class="icon-cancel-circle" *ngIf="condition.index > 0" (click)="removeCondition($event, condition.index)"></div>
+                <div class="icon-cancel-circle" (click)="removeCondition($event, condition.index)"></div>
 
                 <!-- ONLY FOR TESTING -->
                 <!-- ---------------- -->
-                <div style="display: flex; width: 26px" *ngIf="condition.index > 0">
+                <div style="display: flex; width: 26px">
                     <span style="width: 100%; text-align: end;">{{condition.index}}</span>
                 </div>
 
@@ -102,10 +107,10 @@
                 <span>Add condition</span>
             </button>
 
-            <button class="filter-action-button">
+            <!-- <button class="filter-action-button">
                 <span class="icon-add"></span>
                 <span>Add condition group</span>
-            </button>
+            </button> -->
 
         </div>
     </div>

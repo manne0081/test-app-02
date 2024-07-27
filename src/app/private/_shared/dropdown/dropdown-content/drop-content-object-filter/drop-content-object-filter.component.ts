@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PrivateService } from '../../../../private.service';
@@ -23,7 +23,6 @@ export class DropContentObjectFilterComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        // Show dropdown
         this.privateService.clickedButtonId$.subscribe(item => {
             this.setShowDropdown(item)
         });
@@ -54,5 +53,14 @@ export class DropContentObjectFilterComponent implements OnInit {
         event.stopPropagation();
         this.dropContentFilterService.removeFilter(index);
         this.getFilterConditions();
+    }
+
+    @HostListener('document:click', ['$event'])
+    closeDropdown(event: Event): void {
+        const target = event.target as HTMLElement;
+
+        if (!target.closest('.drop-content-container')) {
+            this.showDropdown = false;
+        }
     }
 }

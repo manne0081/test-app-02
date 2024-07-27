@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PrivateService } from '../../../../private.service';
@@ -28,6 +28,15 @@ export class DropContentObjectGroupComponent implements OnInit {
         if (dropdownId === 'view-option-group') {
             this.showDropdown = true;
         } else {
+            this.showDropdown = false;
+        }
+    }
+
+    @HostListener('document:click', ['$event'])
+    closeDropdown(event: Event): void {
+        const target = event.target as HTMLElement;
+
+        if (!target.closest('.drop-content-container')) {
             this.showDropdown = false;
         }
     }
