@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { PrivateService } from '../../../../private.service';
+import { DropContentObjectFilterService } from './drop-content-object-filter.service';
 
 @Component({
     selector: 'app-drop-content-object-filter',
@@ -11,6 +14,45 @@ import { CommonModule } from '@angular/common';
     styleUrl: './drop-content-object-filter.component.scss'
 })
 
-export class DropContentObjectFilterComponent {
-    showDropdown: boolean = true;
+export class DropContentObjectFilterComponent implements OnInit {
+    showDropdown: boolean = false;
+    filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
+
+    constructor(private privateService: PrivateService,
+                private dropContentFilterService: DropContentObjectFilterService,
+    ) {}
+
+    ngOnInit(): void {
+        // Show dropdown
+        this.privateService.clickedButtonId$.subscribe(item => {
+            this.setShowDropdown(item)
+        });
+
+        this.getFilterConditions();
+    }
+
+    setShowDropdown(dropdownId: any): void {
+        if (dropdownId === 'view-option-filter') {
+            this.showDropdown = true;
+        } else {
+            this.showDropdown = false;
+        }
+    }
+
+    getFilterConditions(): void {
+        this.filterConditions = this.dropContentFilterService.getFilterConditions();
+    }
+
+    addCondition(event: Event): void {
+        // console.log('Add condition clicked');
+        event.stopPropagation();
+        this.dropContentFilterService.addFilterCondition();
+        this.getFilterConditions();
+    }
+
+    removeCondition(event: Event, index: number): void {
+        event.stopPropagation();
+        this.dropContentFilterService.removeFilter(index);
+        this.getFilterConditions();
+    }
 }

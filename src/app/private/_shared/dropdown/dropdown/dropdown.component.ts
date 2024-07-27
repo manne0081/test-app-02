@@ -6,6 +6,8 @@ import { DropContentObjectFilterComponent } from '../dropdown-content/drop-conte
 import { DropContentObjectSortComponent } from '../dropdown-content/drop-content-object-sort/drop-content-object-sort.component';
 import { DropContentObjectGroupComponent } from '../dropdown-content/drop-content-object-group/drop-content-object-group.component';
 
+import { PrivateService } from '../../../private.service';
+
 @Component({
     selector: 'app-dropdown',
     standalone: true,
@@ -22,17 +24,16 @@ import { DropContentObjectGroupComponent } from '../dropdown-content/drop-conten
 
 export class DropdownComponent implements OnInit{
     @Input()
-    buttonKeyValue: string = '';
+    buttonValue: string = '';
 
     @Input()
     buttonIcon: string = '';
 
     @Input()
-    contentType: string = '';
+    contentOption: string = '';    // object-filter, object-sort, object-group
 
-    openedDropdown: string = 'object-filter';
+    constructor() {}
 
     ngOnInit(): void {
-        console.log('dropdown.component - ngOnInit: ' + this.contentType);
     }
 }

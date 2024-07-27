@@ -13,11 +13,11 @@ import { CommonModule } from '@angular/common';
 
 export class DropButtonComponent implements OnInit {
     @Input()
-    buttonKeyValue: string = '';
+    buttonValue: string = '';
     @Input()
     buttonIcon: string = '';
 
     ngOnInit(): void {
-        // console.log(this.buttonKeyValue);
+        // console.log('ddb - OnInit: ' + this.buttonKeyValue);
     }
 }

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { PrivateService } from '../../../../private.service';
 
 @Component({
     selector: 'app-drop-content-object-group',
@@ -11,6 +13,22 @@ import { CommonModule } from '@angular/common';
     styleUrl: './drop-content-object-group.component.scss'
 })
 
-export class DropContentObjectGroupComponent {
-    showDropdown: boolean = true;
+export class DropContentObjectGroupComponent implements OnInit {
+    showDropdown: boolean = false;
+
+    constructor(private privateService: PrivateService) {}
+
+    ngOnInit(): void {
+        this.privateService.clickedButtonId$.subscribe(item => {
+            this.setShowDropdown(item)
+        });
+    }
+
+    setShowDropdown(dropdownId: any): void {
+        if (dropdownId === 'view-option-group') {
+            this.showDropdown = true;
+        } else {
+            this.showDropdown = false;
+        }
+    }
 }

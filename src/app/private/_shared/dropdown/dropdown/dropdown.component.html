@@ -2,11 +2,11 @@
 <div class="dropdown">
 
     <!-- Drop-Button -->
-    <app-drop-button [buttonKeyValue]="buttonKeyValue" [buttonIcon]="buttonIcon"></app-drop-button>
+    <app-drop-button [buttonValue]="buttonValue" [buttonIcon]="buttonIcon"></app-drop-button>
 
     <!-- Drop-Content -->
-    <app-drop-content-object-filter *ngIf="contentType === 'object-filter' && openedDropdown === 'object-filter'"></app-drop-content-object-filter>
-    <app-drop-content-object-sort *ngIf="contentType === 'object-sort' && openedDropdown === 'object-sort'"></app-drop-content-object-sort>
-    <app-drop-content-object-group *ngIf="contentType === 'object-group' && openedDropdown === 'object-group'"></app-drop-content-object-group>
+    <app-drop-content-object-filter *ngIf="contentOption === 'object-filter'"></app-drop-content-object-filter>
+    <app-drop-content-object-sort *ngIf="contentOption === 'object-sort'"></app-drop-content-object-sort>
+    <app-drop-content-object-group *ngIf="contentOption === 'object-group'"></app-drop-content-object-group>
 
 </div>

@@ -100,7 +100,7 @@ export class PrivateComponent implements OnInit {
      * @param menuItem
      */
     onSelectMenuItem(menuItem: string) {
-        this.privateService.selectMenu(menuItem);
+        // this.privateService.selectMenu(menuItem);
         this.selectedValueFromMainMenu = menuItem;
         if (menuItem === 'Dashboard') {
             this.addInfoVisible = false;
@@ -159,8 +159,10 @@ export class PrivateComponent implements OnInit {
         }
     }
 
-    onClickContentHeaderViewOption(): void {
-        console.log('private.component - onClickContentHeaderViewOption: ');
+    onClickDropdownButton(event: Event): void {
+        // console.log('pc - ElementID: ' + (event.currentTarget as HTMLElement).id);
+        const clickedButtonId: string = (event.currentTarget as HTMLElement).id;
+        this.privateService.setOpenedDropdownId(clickedButtonId);
     }
 
     /**

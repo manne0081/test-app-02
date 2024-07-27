@@ -73,25 +73,25 @@
                             <br />
                         </app-dropdown-1>
 
-                        <app-dropdown style="overflow: visible; position: relative"
-                            [buttonKeyValue]="'filter'"
+                        <app-dropdown id="view-option-filter" style="overflow: visible; position: relative"
+                            [buttonValue]="'filter'"
                             [buttonIcon]="'icon-filter'"
-                            [contentType]="'object-filter'"
-                            (click)="onClickContentHeaderViewOption()"
+                            [contentOption]="'object-filter'"
+                            (click)="onClickDropdownButton($event)"
                         ></app-dropdown>
 
-                        <app-dropdown style="overflow: visible; position: relative"
-                            [buttonKeyValue]="'sort'"
+                        <app-dropdown id="view-option-sort" style="overflow: visible; position: relative"
+                            [buttonValue]="'sort'"
                             [buttonIcon]="'icon-sort'"
-                            [contentType]="'object-sort'"
-                            (click)="onClickContentHeaderViewOption()"
+                            [contentOption]="'object-sort'"
+                            (click)="onClickDropdownButton($event)"
                         ></app-dropdown>
 
-                        <app-dropdown style="overflow: visible; position: relative"
-                            [buttonKeyValue]="'group'"
+                        <app-dropdown id="view-option-group" style="overflow: visible; position: relative"
+                            [buttonValue]="'group'"
                             [buttonIcon]="'icon-drawer'"
-                            [contentType]="'object-group'"
-                            (click)="onClickContentHeaderViewOption()"
+                            [contentOption]="'object-group'"
+                            (click)="onClickDropdownButton($event)"
                         ></app-dropdown>
                     </div>
 
@@ -125,10 +125,10 @@
 
                 <!-- note -->
                 <!-- Only for testing -->
-                <app-dropdown style="margin-top: 80px;"
-                    [buttonKeyValue]="'test'"
+                <app-dropdown style="position:absolute; top: 48px; left: 12px;"
+                    [buttonValue]="'test'"
                     [buttonIcon]="'icon-grid'"
-                    [contentType]="'object-test'"
+                    [contentOption]="'object-test'"
                 ></app-dropdown>
                 <!-- End for testing -->
 
