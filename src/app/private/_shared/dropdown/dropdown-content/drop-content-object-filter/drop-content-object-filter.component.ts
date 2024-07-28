@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { PrivateService } from '../../../../private.service';
 import { DropContentObjectFilterService } from './drop-content-object-filter.service';
+import { DropdownComponent } from '../../dropdown/dropdown.component';
 
 @Component({
     selector: 'app-drop-content-object-filter',
     standalone: true,
     imports: [
         CommonModule,
+        DropdownComponent,
     ],
     templateUrl: './drop-content-object-filter.component.html',
     styleUrl: './drop-content-object-filter.component.scss'
