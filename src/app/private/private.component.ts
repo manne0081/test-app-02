@@ -159,8 +159,11 @@ export class PrivateComponent implements OnInit {
         }
     }
 
+    /**
+     *
+     * @param event
+     */
     onClickDropdownButton(event: Event): void {
-        // console.log('pc - ElementID: ' + (event.currentTarget as HTMLElement).id);
         event.stopPropagation();
         const clickedButtonId: string = (event.currentTarget as HTMLElement).id;
         this.privateService.setOpenedDropdownId(clickedButtonId);
@@ -168,7 +171,7 @@ export class PrivateComponent implements OnInit {
 
     /**
      *
-     * @param index
+     * @param item
      */
     removeFilterItem(item: FilterItem): void {
         this.activeFilterItems = this.activeFilterItems.filter(filterItem => item.id !== filterItem.id);
@@ -253,5 +256,4 @@ export class PrivateComponent implements OnInit {
                 break;
         }
     }
-
 }

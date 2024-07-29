@@ -1,5 +1,5 @@
 <!-- INNER Dropdown (Content) -->
-<div id="test" class="drop-content-container" *ngIf="showDropdown">
+<div id="test" class="drop-content-container" *ngIf="showDropdown" (click)="$event.stopPropagation()">
 
     <h3>Filter</h3>
 
@@ -34,21 +34,16 @@
                     </div>
                 </div>
 
+                <app-nested-dropdown></app-nested-dropdown>
+
                 <!-- Filter by field-name -->
                 <!-- -------------------- -->
-                <div class="condition-dropdown name">
+                <!-- <div class="condition-dropdown name">
                     <div class="condition-drop-button">
                         <button class="name">
                             test
                         </button>
                         <div class="icon-arrow-drop-down"></div>
-
-                        <!-- <app-dropdown style="position:absolute; top: 48px; left: 12px;"
-                            [buttonValue]="'test'"
-                            [buttonIcon]="'icon-grid'"
-                            [contentOption]="'object-test'"
-                        ></app-dropdown> -->
-
                     </div>
                     <div class="condition-drop-content-container">
                         <div>
@@ -61,12 +56,11 @@
                             Size
                         </div>
                     </div>
-
-                </div>
+                </div> -->
 
                 <!-- Filter by condition (contains, exactly etc.) -->
                 <!-- -------------------------------------------- -->
-                <div class="condition-dropdown select">
+                <!-- <div class="condition-dropdown select">
                     <div class="condition-drop-button">
                         <button class="condition">
                             test
@@ -87,7 +81,7 @@
                             Any of
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Filter by value -->
                 <!-- --------------- -->
