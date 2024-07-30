@@ -13,7 +13,7 @@
     box-shadow: 0px 2px 8px 0px rgba(44, 80, 103, 0.4);
     overflow: visible;
 
-    .option-wrapper {
+    .filter-wrapper {
         overflow: visible;
 
         .filter-item-wrapper {
@@ -26,101 +26,127 @@
             height: 32px;
             overflow: visible;
 
-            .label {
+            .filter {
+                background-color: yellow;
+                // border: 1px solid rgb(200, 200, 200);
+                height: 100%;
+            }
+
+            .filter.label {
+                background-color: lime;
                 margin-right: 8px;
                 min-width: 73px;
             }
 
-            .condition-label {
-                margin-right: 34px;
+            .filter.label.button {
+                background-color: orange;
+                border-radius: 4px;
             }
 
-            .condition-dropdown {
-                // background-color: orange;
-                position: relative;
-                display: flex;
-                align-items: center;
-                padding: 4px 8px;
-                height: 100%;
-                overflow: visible;
-                border-top: 1px solid rgb(200, 200, 200);
-                border-bottom: 1px solid rgb(200, 200, 200);
-                border-left: 1px solid rgb(200, 200, 200);
-
-                .condition-drop-button {
-                    // background-color: lime;
-                    display: flex;
-                    align-items: center;
-
-                    button {
-                        background-color: transparent;
-                        border: transparent;
-                        min-width: 150px;
-                        text-align: left;
-                        outline: transparent;
-                    }
-
-                    button.label {
-                        min-width: 32px;
-                    }
-                }
-
-                .condition-drop-content-container {
-                    background-color: white;
-                    border: 1px solid rgb(200, 200, 200);
-                    position: absolute;
-                    top: 28px;
-                    left: -1px;
-                    width: max-content;
-                    min-width: 180px;
-                    padding: 4px 8px;
-                    border-radius: 4px;
-                    z-index: 100;
-                    display: none;
-                }
-            }
-
-            .condition-dropdown:hover {
-                cursor: pointer;
-
-                button:hover {
-                    cursor: pointer;
-                }
-            }
-
-            .condition-dropdown.label {
-                border-radius: 4px 4px 4px 4px;
-                border-right: 1px solid rgb(200, 200, 200);
-                width: 72px;
-
-                button {
-                    min-width: 38px;
-                }
-            }
-
-            .condition-dropdown.name {
+            .filter.button.name {
+                background-color: lime;
                 border-radius: 4px 0px 0px 4px;
             }
 
-            input {
-                border-radius: 0 4px 4px 0;
-                border: 1px solid rgb(200, 200, 200);
-                padding: 4px 6px;
-                margin-right: 8px;
-                height: 100%;
+            .filter.button.condition {
+                background-color: orange;
             }
 
-            input:hover {
-                cursor: pointer;
+            .filter.input {
+                background-color: lime;
             }
 
-            [class*="icon-"] {
-                color: rgb(114, 114, 114);
-            }
 
-            [class*="icon-cancel-"]:hover {
-                color: red;
-            }
+            // .condition-label {
+            //     margin-right: 34px;
+            // }
+
+            // .condition-dropdown {
+            //     background-color: orange;
+            //     position: relative;
+            //     display: flex;
+            //     align-items: center;
+            //     padding: 4px 8px;
+            //     height: 100%;
+            //     overflow: visible;
+            //     border-top: 1px solid rgb(200, 200, 200);
+            //     border-bottom: 1px solid rgb(200, 200, 200);
+            //     border-left: 1px solid rgb(200, 200, 200);
+
+            //     .condition-drop-button {
+            //         background-color: lime;
+            //         display: flex;
+            //         align-items: center;
+
+            //         button {
+            //             background-color: transparent;
+            //             border: transparent;
+            //             min-width: 150px;
+            //             text-align: left;
+            //             outline: transparent;
+            //         }
+
+            //         button.label {
+            //             min-width: 32px;
+            //         }
+            //     }
+
+            //     .condition-drop-content-container {
+            //         background-color: white;
+            //         border: 1px solid rgb(200, 200, 200);
+            //         position: absolute;
+            //         top: 28px;
+            //         left: -1px;
+            //         width: max-content;
+            //         min-width: 180px;
+            //         padding: 4px 8px;
+            //         border-radius: 4px;
+            //         z-index: 100;
+            //         display: none;
+            //     }
+            // }
+
+            // .condition-dropdown:hover {
+            //     cursor: pointer;
+
+            //     button:hover {
+            //         cursor: pointer;
+            //     }
+            // }
+
+            // .condition-dropdown.label {
+            //     border-radius: 4px 4px 4px 4px;
+            //     border-right: 1px solid rgb(200, 200, 200);
+            //     width: 72px;
+
+            //     button {
+            //         min-width: 38px;
+            //     }
+            // }
+
+            // .condition-dropdown.name {
+            //     border-radius: 4px 0px 0px 4px;
+            // }
+
+            // input {
+            //     border-radius: 0 4px 4px 0;
+            //     border: 1px solid rgb(200, 200, 200);
+            //     padding: 4px 6px;
+            //     margin-right: 8px;
+            //     height: 100%;
+            // }
+
+            // input:hover {
+            //     cursor: pointer;
+            // }
+
+            // [class*="icon-"] {
+            //     color: rgb(114, 114, 114);
+            // }
+
+            // [class*="icon-cancel-"]:hover {
+            //     color: red;
+            // }
         }
     }
 

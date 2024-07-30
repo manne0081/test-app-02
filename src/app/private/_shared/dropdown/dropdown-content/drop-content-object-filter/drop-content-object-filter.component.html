@@ -5,87 +5,29 @@
 
     <!-- Content for FILTER -->
     <div style="overflow: visible;">
-        <div class="option-wrapper filter">
+        <div class="filter-wrapper">
             <div class="filter-item-wrapper" *ngFor="let condition of filterConditions, let i = index">
 
                 <!-- todo -->
-
-
                 <!-- Label for the first condition -->
                 <!-- ----------------------------- -->
-                <div class="label" style="border: transparent" *ngIf="i === 0">Where</div>
+                <div class="filter label" *ngIf="i === 0">Where</div>
 
                 <!-- Label for all other conditions -->
                 <!-- ------------------------------ -->
-                <div class="condition-dropdown label" *ngIf="i > 0">
-                    <div class="condition-drop-button">
-                        <button class="label">
-                            test
-                        </button>
-                        <div class="icon-arrow-drop-down"></div>
-                    </div>
-                    <div class="condition-drop-content-container" style="position: absolute;">
-                        <div>
-                            and
-                        </div>
-                        <div>
-                            or
-                        </div>
-                    </div>
-                </div>
-
-                <app-nested-dropdown></app-nested-dropdown>
+                <app-nested-dropdown class="filter label button" *ngIf="i > 0"></app-nested-dropdown>
 
                 <!-- Filter by field-name -->
                 <!-- -------------------- -->
-                <!-- <div class="condition-dropdown name">
-                    <div class="condition-drop-button">
-                        <button class="name">
-                            test
-                        </button>
-                        <div class="icon-arrow-drop-down"></div>
-                    </div>
-                    <div class="condition-drop-content-container">
-                        <div>
-                            Name
-                        </div>
-                        <div>
-                            Category
-                        </div>
-                        <div>
-                            Size
-                        </div>
-                    </div>
-                </div> -->
+                <app-nested-dropdown class="filter button name"></app-nested-dropdown>
 
                 <!-- Filter by condition (contains, exactly etc.) -->
                 <!-- -------------------------------------------- -->
-                <!-- <div class="condition-dropdown select">
-                    <div class="condition-drop-button">
-                        <button class="condition">
-                            test
-                        </button>
-                        <div class="icon-arrow-drop-down"></div>
-                    </div>
-                    <div class="condition-drop-content-container">
-                        <div>
-                            Contains
-                        </div>
-                        <div>
-                            Contains not
-                        </div>
-                        <div>
-                            Exactly
-                        </div>
-                        <div>
-                            Any of
-                        </div>
-                    </div>
-                </div> -->
+                <app-nested-dropdown class="filter button condition"></app-nested-dropdown>
 
                 <!-- Filter by value -->
                 <!-- --------------- -->
-                <input type="text" placeholder="" value="test"/>
+                <input class="filter input" type="text" placeholder="" value="test"/>
 
                 <!-- Remove filter-condition -->
                 <!-- ----------------------- -->
@@ -108,11 +50,6 @@
                 <span class="icon-add"></span>
                 <span>Add condition</span>
             </button>
-
-            <!-- <button class="filter-action-button">
-                <span class="icon-add"></span>
-                <span>Add condition group</span>
-            </button> -->
 
         </div>
     </div>
