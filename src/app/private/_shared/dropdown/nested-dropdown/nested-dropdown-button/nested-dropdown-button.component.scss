@@ -1,56 +1,4 @@
-.drop-button-1 {
-    background-color: rgb(225, 225, 225);
-    border: 1px solid #b9b9b9;
-    position: relative;
-    border-radius: 4px;
-    padding: 3px 6px;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    height: 28px; /* Beispielhöhe */
-    margin-top: 1px;
-    margin-bottom: 4px;
-
-    &.filter-button.active {
-        background-color: #ffcccc; /* Rot für Filter wenn aktiv */
-    }
-
-    &.sort-button.active {
-        background-color: #ccffcc; /* Grün für Sort wenn aktiv */
-    }
-
-    &.group-button.active {
-        background-color: #ccccff; /* Blau für Group wenn aktiv */
-    }
-
-    &:hover {
-        background-color: #d3d3d3; /* Hellgrau bei Hover */
-        cursor: pointer;
-    }
-
-    div {
-        margin-right: 4px;
-        font-size: 1.2em
-    }
-
-    .icon-sort {
-        position: relative;
-        top: -1px;
-    }
-
-    .icon-drawer {
-        position: relative;
-        top: -3px;
-    }
-}
-
-.drop-button-1:hover {
-    cursor: pointer;
-}
-
-
-
-.drop-button-2 {
+.drop-button {
     // background-color: orange;
     position: relative;
     display: flex;
@@ -58,9 +6,6 @@
     padding: 4px 8px;
     height: 100%;
     overflow: visible;
-    border-top: 1px solid rgb(200, 200, 200);
-    border-bottom: 1px solid rgb(200, 200, 200);
-    border-left: 1px solid rgb(200, 200, 200);
 
     .condition-drop-button {
         // background-color: lime;
@@ -82,7 +27,6 @@
 
     .condition-drop-content-container {
         background-color: white;
-        border: 1px solid rgb(200, 200, 200);
         position: absolute;
         top: 28px;
         left: -1px;
