@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 
-export class DropContentObjectFilterService {
+export class DropContentFilterService {
     activeFilterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [
         { index: 0, label: 'Where', name: 'Bitte wählen...', condition: 'Bitte wählen...', value: 'Bitte eingeben...' },
     ];

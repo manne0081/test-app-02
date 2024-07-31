@@ -26,37 +26,36 @@
             height: 32px;
             overflow: visible;
 
-            .filter {
-                background-color: yellow;
-                // border: 1px solid rgb(200, 200, 200);
-                height: 100%;
-            }
+            // .filter {
+            //     background-color: yellow;
+            //     height: 100%;
+            // }
 
-            .filter.label {
-                background-color: lime;
-                margin-right: 8px;
-                min-width: 73px;
-                display: flex;
-                align-items: center;
-            }
+            // .filter.label {
+            //     background-color: lime;
+            //     margin-right: 8px;
+            //     min-width: 73px;
+            //     display: flex;
+            //     align-items: center;
+            // }
 
-            .filter.label.button {
-                background-color: orange;
-                border-radius: 4px;
-            }
+            // .filter.label.button {
+            //     background-color: orange;
+            //     border-radius: 4px;
+            // }
 
-            .filter.button.name {
-                background-color: lime;
-                border-radius: 4px 0px 0px 4px;
-            }
+            // .filter.button.name {
+            //     background-color: lime;
+            //     border-radius: 4px 0px 0px 4px;
+            // }
 
-            .filter.button.condition {
-                background-color: orange;
-            }
+            // .filter.button.condition {
+            //     background-color: orange;
+            // }
 
-            .filter.input {
-                background-color: lime;
-            }
+            // .filter.input {
+            //     background-color: lime;
+            // }
 
 
             // .condition-label {

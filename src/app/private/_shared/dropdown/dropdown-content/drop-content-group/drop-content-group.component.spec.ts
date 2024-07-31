@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropButtonComponent } from './drop-button.component';
+import { DropContentGroupComponent } from './drop-content-group.component';
 
-describe('DropButtonComponent', () => {
-  let component: DropButtonComponent;
-  let fixture: ComponentFixture<DropButtonComponent>;
+describe('DropContentGroupComponent', () => {
+  let component: DropContentGroupComponent;
+  let fixture: ComponentFixture<DropContentGroupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DropButtonComponent]
+      imports: [DropContentGroupComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(DropButtonComponent);
+
+    fixture = TestBed.createComponent(DropContentGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

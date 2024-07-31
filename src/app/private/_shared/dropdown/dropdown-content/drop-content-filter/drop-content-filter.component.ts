@@ -2,26 +2,28 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PrivateService } from '../../../../private.service';
-import { DropContentObjectFilterService } from './drop-content-object-filter.service';
+import { DropContentFilterService } from './drop-content-filter.service';
+
 import { NestedDropdownComponent } from '../../nested-dropdown/nested-dropdown/nested-dropdown.component';
 
 @Component({
-    selector: 'app-drop-content-object-filter',
+    selector: 'app-drop-content-filter',
     standalone: true,
     imports: [
         CommonModule,
         NestedDropdownComponent,
     ],
-    templateUrl: './drop-content-object-filter.component.html',
-    styleUrl: './drop-content-object-filter.component.scss'
+    templateUrl: './drop-content-filter.component.html',
+    styleUrl: './drop-content-filter.component.scss'
 })
 
-export class DropContentObjectFilterComponent implements OnInit {
+export class DropContentFilterComponent implements OnInit {
     showDropdown: boolean = false;
     filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
 
-    constructor(private privateService: PrivateService,
-                private dropContentFilterService: DropContentObjectFilterService,
+    constructor(
+        private privateService: PrivateService,
+        private dropContentFilterService: DropContentFilterService,
     ) {}
 
     ngOnInit(): void {

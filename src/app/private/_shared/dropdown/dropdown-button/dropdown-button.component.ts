@@ -1,17 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-drop-button',
+    selector: 'app-dropdown-button',
     standalone: true,
     imports: [
         CommonModule,
     ],
-    templateUrl: './drop-button.component.html',
-    styleUrl: './drop-button.component.scss'
+    templateUrl: './dropdown-button.component.html',
+    styleUrl: './dropdown-button.component.scss'
 })
 
-export class DropButtonComponent implements OnInit {
+export class DropdownButtonComponent implements OnInit{
     @Input()
     buttonValue: string = '';
     @Input()

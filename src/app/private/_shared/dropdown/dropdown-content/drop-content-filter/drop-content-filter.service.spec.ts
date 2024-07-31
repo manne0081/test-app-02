@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DropContentObjectFilterService } from './drop-content-object-filter.service';
+import { DropContentFilterService } from './drop-content-filter.service';
 
 describe('DropContentObjectFilterService', () => {
-  let service: DropContentObjectFilterService;
+  let service: DropContentFilterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DropContentObjectFilterService);
+    service = TestBed.inject(DropContentFilterService);
   });
 
   it('should be created', () => {

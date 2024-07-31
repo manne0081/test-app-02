@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DropButtonComponent } from '../drop-button/drop-button.component';
-import { DropContentObjectFilterComponent } from '../dropdown-content/drop-content-object-filter/drop-content-object-filter.component';
-import { DropContentObjectSortComponent } from '../dropdown-content/drop-content-object-sort/drop-content-object-sort.component';
-import { DropContentObjectGroupComponent } from '../dropdown-content/drop-content-object-group/drop-content-object-group.component';
+import { DropdownButtonComponent } from '../dropdown-button/dropdown-button.component';
+import { DropContentFilterComponent } from '../dropdown-content/drop-content-filter/drop-content-filter.component';
+import { DropContentSortComponent } from '../dropdown-content/drop-content-sort/drop-content-sort.component';
+import { DropContentGroupComponent } from '../dropdown-content/drop-content-group/drop-content-group.component';
 
 import { PrivateService } from '../../../private.service';
 
@@ -13,10 +13,10 @@ import { PrivateService } from '../../../private.service';
     standalone: true,
     imports: [
         CommonModule,
-        DropButtonComponent,
-        DropContentObjectFilterComponent,
-        DropContentObjectSortComponent,
-        DropContentObjectGroupComponent,
+        DropdownButtonComponent,
+        DropContentFilterComponent,
+        DropContentSortComponent,
+        DropContentGroupComponent,
     ],
     templateUrl: './dropdown.component.html',
     styleUrl: './dropdown.component.scss'

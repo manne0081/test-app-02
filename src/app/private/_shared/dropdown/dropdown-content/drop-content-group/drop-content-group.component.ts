@@ -4,16 +4,16 @@ import { CommonModule } from '@angular/common';
 import { PrivateService } from '../../../../private.service';
 
 @Component({
-    selector: 'app-drop-content-object-sort',
+    selector: 'app-drop-content-group',
     standalone: true,
     imports: [
         CommonModule,
     ],
-    templateUrl: './drop-content-object-sort.component.html',
-    styleUrl: './drop-content-object-sort.component.scss'
+    templateUrl: './drop-content-group.component.html',
+    styleUrl: './drop-content-group.component.scss'
 })
 
-export class DropContentObjectSortComponent implements OnInit {
+export class DropContentGroupComponent implements OnInit {
     showDropdown: boolean = false;
 
     constructor(private privateService: PrivateService) {}
@@ -25,7 +25,7 @@ export class DropContentObjectSortComponent implements OnInit {
     }
 
     setShowDropdown(dropdownId: any): void {
-        if (dropdownId === 'view-option-sort') {
+        if (dropdownId === 'view-option-group') {
             this.showDropdown = true;
         } else {
             this.showDropdown = false;

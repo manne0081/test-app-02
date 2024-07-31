@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropContentObjectFilterComponent } from './drop-content-object-filter.component';
+import { DropContentFilterComponent } from './drop-content-filter.component';
 
 describe('DropContentObjectFilterComponent', () => {
-  let component: DropContentObjectFilterComponent;
-  let fixture: ComponentFixture<DropContentObjectFilterComponent>;
+  let component: DropContentFilterComponent;
+  let fixture: ComponentFixture<DropContentFilterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DropContentObjectFilterComponent]
+      imports: [DropContentFilterComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(DropContentObjectFilterComponent);
+
+    fixture = TestBed.createComponent(DropContentFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
