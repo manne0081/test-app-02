@@ -17,7 +17,19 @@
 
                 <!-- Label for all other conditions -->
                 <!-- ------------------------------ -->
-                <app-nested-dropdown class="filter label button" *ngIf="i > 0"></app-nested-dropdown>
+                <app-nested-dropdown id="view-option-filter-label" *ngIf="i > 0"
+                    [buttonCategorie] = "'filter-label'"
+
+                ></app-nested-dropdown>
+
+
+                <!-- <app-dropdown id="view-option-filter" style="overflow: visible; position: relative"
+                    [buttonValue]="'filter'"
+                    [buttonIcon]="'icon-filter'"
+                    [contentOption]="'object-filter'"
+                    (click)="onClickDropdownButton($event)"
+                ></app-dropdown> -->
+
 
                 <!-- Filter by field-name -->
                 <!-- -------------------- -->
