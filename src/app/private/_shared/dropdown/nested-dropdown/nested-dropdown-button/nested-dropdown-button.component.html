@@ -1,13 +1,24 @@
 <!-- Design > Looks a little bit like a normal button but it have the dropdown-arrow on the right and the Value on the left -->
 <!-- ---------------------------------------------------------------------------------------------------------------------- -->
-<div id="id-drop-button" class="drop-button" >    <!-- *ngIf="buttonValue === 'test'"-->
+<div id="id-drop-button" class="drop-button-2" *ngIf="buttonCategory === 'label'"
+    style="width: 80px; border-right: 1px solid rgb(200, 200, 200); margin-right: 12px; border-radius: 4px;">
 
     <div class="condition-drop-button">
         <!-- <div class="icon-grid" style="margin-right: 6px;"></div> -->
-        <button class="name">
-
+        <button class="name" style="width: 60px;">
+            {{buttonCategory}}
         </button>
         <div class="icon-arrow-drop-down"></div>
     </div>
+</div>
 
+
+<div id="id-drop-button" class="drop-button-2" *ngIf="buttonCategory != 'label'" style="width: 200px; margin-right: 0px;">
+    <div class="condition-drop-button">
+        <!-- <div class="icon-grid" style="margin-right: 6px;"></div> -->
+        <button class="name" style="width: 180px;">
+            {{buttonCategory}}
+        </button>
+        <div class="icon-arrow-drop-down"></div>
+    </div>
 </div>

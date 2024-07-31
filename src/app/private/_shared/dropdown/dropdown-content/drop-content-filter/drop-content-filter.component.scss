@@ -10,7 +10,7 @@
     border-radius: 4px;
     padding: 10px 12px;
     box-sizing: border-box;
-    box-shadow: 0px 2px 8px 0px rgba(44, 80, 103, 0.4);
+    // box-shadow: 0px 2px 8px 0px rgba(44, 80, 103, 0.4);
     overflow: visible;
 
     .filter-wrapper {
@@ -22,10 +22,14 @@
             flex-direction: row;
             align-items: center;
             padding: 2px 0px;
-            margin-bottom: 0px;
+            margin-bottom: 4px;
             height: 32px;
             overflow: visible;
 
+            .filter-label {
+                width: 80px;
+                margin-right: 12px;
+            }
             // .filter {
             //     background-color: yellow;
             //     height: 100%;
@@ -154,7 +158,7 @@
     .filter-actions {
         // background-color: lime;
         margin-top: 8px;
-        margin-left: 72px;
+        margin-left: 84px;
         display: flex;
 
         .filter-action-button {

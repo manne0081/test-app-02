@@ -11,32 +11,29 @@
                 <!-- todo -->
                 <!-- Label for the first condition -->
                 <!-- ----------------------------- -->
-                <div class="filter label" *ngIf="i === 0">
+                <div class="filter-label" *ngIf="i === 0">
                     <p>Where</p>
                 </div>
 
                 <!-- Label for all other conditions -->
                 <!-- ------------------------------ -->
                 <app-nested-dropdown id="view-option-filter-label" *ngIf="i > 0"
-                    [buttonCategorie] = "'filter-label'"
-
+                    [buttonCategory] = "'label'"
                 ></app-nested-dropdown>
-
-                <!-- <app-dropdown id="view-option-filter" style="overflow: visible; position: relative"
-                    [buttonValue]="'filter'"
-                    [buttonIcon]="'icon-filter'"
-                    [contentOption]="'object-filter'"
-                    (click)="onClickDropdownButton($event)"
-                ></app-dropdown> -->
-
 
                 <!-- Filter by field-name -->
                 <!-- -------------------- -->
-                <app-nested-dropdown class="filter button name"></app-nested-dropdown>
+                <!-- <app-nested-dropdown class="filter button name"></app-nested-dropdown> -->
+                <app-nested-dropdown id="view-option-filter-name"
+                    [buttonCategory] = "'name'"
+                ></app-nested-dropdown>
 
                 <!-- Filter by condition (contains, exactly etc.) -->
                 <!-- -------------------------------------------- -->
-                <app-nested-dropdown class="filter button condition"></app-nested-dropdown>
+                <!-- <app-nested-dropdown class="filter button condition"></app-nested-dropdown> -->
+                <app-nested-dropdown id="view-option-filter-condition"
+                    [buttonCategory] = "'condition'"
+                ></app-nested-dropdown>
 
                 <!-- Filter by value -->
                 <!-- --------------- -->

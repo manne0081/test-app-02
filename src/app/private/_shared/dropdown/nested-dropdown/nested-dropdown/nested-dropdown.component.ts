@@ -15,10 +15,9 @@ import { NestedDropdownContentLabelComponent } from '../nested-dropdown-content-
 
 export class NestedDropdownComponent implements OnInit {
     @Input()
-    buttonCategorie: string = '';
+    buttonCategory: string = '';
 
     ngOnInit(): void {
-        console.log('nestedDD - OnInit: ' + this.buttonCategorie);
+        console.log('nestedDD - OnInit: ' + this.buttonCategory);
     }
-
 }
