@@ -1,14 +1,13 @@
-.drop-button-2 {
+.nested-drop-button {
     // background-color: orange;
     position: relative;
     display: flex;
     align-items: center;
-    padding: 4px 8px;
+    // padding: 4px 8px;
     height: 100%;
     overflow: visible;
-    border-top: 1px solid rgb(200, 200, 200);
-    border-bottom: 1px solid rgb(200, 200, 200);
-    border-left: 1px solid rgb(200, 200, 200);
+    // border: 1px solid rgb(200, 200, 200);
+    // border-right: none;
 
     .condition-drop-button {
         // background-color: lime;
@@ -16,15 +15,19 @@
         align-items: center;
 
         button {
-            background-color: transparent;
-            border: transparent;
-            // min-width: 150px;
-            text-align: left;
-            outline: transparent;
+            all: unset;
+            // background-color: transparent;
+            // border: transparent;
+            min-width: 150px;
+            padding: 4px 8px;
+            // text-align: left;
+            // outline: transparent;
+            // height: 100%;
+
         }
 
         button.label {
-            min-width: 56px;
+            min-width: 32px;
         }
     }
 

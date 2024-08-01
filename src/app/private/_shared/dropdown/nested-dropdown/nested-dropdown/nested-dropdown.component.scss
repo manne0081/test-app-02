@@ -1,10 +1,13 @@
 .nested-dropdown {
-    // background-color: yellow;
+    background-color: lime;
     display: inline-block;
     position: relative;
     overflow: visible;
     box-sizing: border-box;
     margin-top: 3px;
-    // margin-right: 12px;
+    height: 100%;
+}
 
+.nested-dropdown:hover {
+    background-color: lightblue;
 }
