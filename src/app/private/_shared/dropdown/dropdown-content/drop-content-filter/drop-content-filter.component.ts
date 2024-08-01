@@ -18,7 +18,7 @@ import { NestedDropdownComponent } from '../../nested-dropdown/nested-dropdown/n
 })
 
 export class DropContentFilterComponent implements OnInit {
-    showDropdown: boolean = false;
+    showDropContent: boolean = false;
     filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
 
     constructor(
@@ -36,9 +36,9 @@ export class DropContentFilterComponent implements OnInit {
 
     setShowDropdown(dropdownId: any): void {
         if (dropdownId === 'view-option-filter') {
-            this.showDropdown = true;
+            this.showDropContent = true;
         } else {
-            this.showDropdown = false;
+            this.showDropContent = false;
         }
     }
 
@@ -64,7 +64,7 @@ export class DropContentFilterComponent implements OnInit {
         const target = event.target as HTMLElement;
 
         if (!target.closest('.drop-content-container')) {
-            this.showDropdown = false;
+            this.showDropContent = false;
         }
     }
 }
