@@ -67,12 +67,14 @@
 
                         <!-- DROPDOWN - Component - TEST -->
                         <!-- --------------------------- -->
+                        <!-- TEST - 1 -->
                         <!-- <app-dropdown-1 [buttonText]="'Filter'" [dropdownId]="'filter'" style="overflow: visible; position: relative">
                             <p>Filter by (Alte Version, wird ausgetauscht...)</p>
                             <br />
                         </app-dropdown-1> -->
 
-                        <app-dropdown id="view-option-filter" style="overflow: visible; position: relative"
+                        <!-- TEST - 2 -->
+                        <!-- <app-dropdown id="view-option-filter" style="overflow: visible; position: relative"
                             [buttonValue]="'filter'"
                             [buttonIcon]="'icon-filter'"
                             [contentOption]="'object-filter'"
@@ -91,7 +93,28 @@
                             [buttonIcon]="'icon-drawer'"
                             [contentOption]="'object-group'"
                             (click)="onClickDropdownButton($event)"
-                        ></app-dropdown>
+                        ></app-dropdown> -->
+
+                        <!-- TEST - 3 -->
+                        <app-tile-view-dropdown
+                            [buttonValue]="'filter'"
+                            [buttonIcon]="'icon-filter'"
+                            [contentOption]="'object-filter'"
+                        ></app-tile-view-dropdown>
+
+                        <app-tile-view-dropdown
+                            [buttonValue]="'sort'"
+                            [buttonIcon]="'icon-sort'"
+                            [contentOption]="'object-sort'"
+                        ></app-tile-view-dropdown>
+
+                        <app-tile-view-dropdown
+                            [buttonValue]="'group'"
+                            [buttonIcon]="'icon-drawer'"
+                            [contentOption]="'object-group'"
+                        ></app-tile-view-dropdown>
+
+
                     </div>
 
                     <!-- Filter-Elements when exists -->

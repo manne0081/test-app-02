@@ -15,7 +15,8 @@ import { TaskService } from './workspace/task/task.service';
 import { QuicklinksService } from './quicklinks/quicklinks.service';
 
 import { DropdownComponentOne } from './_shared/content-header-dropdown/dropdown.component';
-import { DropdownComponent } from './_shared/dropdown/dropdown/dropdown.component';
+import { DropdownComponent } from './_shared/dropdown/dropdown/dropdown.component'
+import { TileViewDropdownComponent } from './_shared/dropdowns/content-tile-view/tile-view-dropdown/tile-view-dropdown.component';
 
 interface FilterItem {
     id: number | string;
@@ -34,6 +35,7 @@ interface FilterItem {
         AddInfoComponent,
         DropdownComponentOne,
         DropdownComponent,
+        TileViewDropdownComponent,
     ],
     templateUrl: './private.component.html',
     styleUrl: './private.component.scss'

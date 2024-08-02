@@ -1,0 +1,27 @@
+<!-- INNER Dropdown (Content) -->
+<div id="test" class="drop-content-container" *ngIf="showDropContent" (click)="$event.stopPropagation()">
+
+    <h3>Filter</h3>
+
+    <!-- Content for FILTER -->
+    <div style="overflow: visible;">
+        <div class="filter-wrapper">
+            <!-- <div class="filter-item-wrapper" *ngFor="let condition of filterConditions, let i = index">
+
+
+            </div> -->
+        </div>
+
+        <!-- Add conditions / -group -->
+        <!-- ----------------------- -->
+        <div class="filter-actions">
+
+            <!-- <button class="filter-action-button" (click)="addCondition($event)">
+                <span class="icon-add"></span>
+                <span>Add condition</span>
+            </button> -->
+
+        </div>
+    </div>
+
+</div>
