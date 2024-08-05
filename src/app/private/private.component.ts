@@ -14,8 +14,6 @@ import { Task } from './workspace/task/task';
 import { TaskService } from './workspace/task/task.service';
 import { QuicklinksService } from './quicklinks/quicklinks.service';
 
-import { DropdownComponentOne } from './_shared/content-header-dropdown/dropdown.component';
-import { DropdownComponent } from './_shared/dropdown/dropdown/dropdown.component'
 import { TileViewDropdownComponent } from './_shared/dropdowns/content-tile-view/tile-view-dropdown/tile-view-dropdown.component';
 
 interface FilterItem {
@@ -33,8 +31,6 @@ interface FilterItem {
         HeaderMenuComponent,
         QuicklinksComponent,
         AddInfoComponent,
-        DropdownComponentOne,
-        DropdownComponent,
         TileViewDropdownComponent,
     ],
     templateUrl: './private.component.html',
@@ -159,16 +155,6 @@ export class PrivateComponent implements OnInit {
             // Remove the searchTerm item if the input is empty
             this.activeFilterItems = this.activeFilterItems.filter(item => item.id !== 'searchTerm');
         }
-    }
-
-    /**
-     *
-     * @param event
-     */
-    onClickDropdownButton(event: Event): void {
-        event.stopPropagation();
-        const clickedButtonId: string = (event.currentTarget as HTMLElement).id;
-        this.privateService.setOpenedDropdownId(clickedButtonId);
     }
 
     /**

@@ -9,10 +9,10 @@ export class ContentTileViewService {
     private clickedButton = new BehaviorSubject<any>(null);
     clickedButton$ = this.clickedButton.asObservable();
 
-    constructor() { }
+    constructor() {}
 
     setOpenedDropdownId(clickedButtonValue: string): void {
-        this.clickedButton.next(clickedButtonValue);
         console.log('ContentTileViewService - setOpenedDropdownId: ' + clickedButtonValue);
+        this.clickedButton.next(clickedButtonValue);
     }
 }

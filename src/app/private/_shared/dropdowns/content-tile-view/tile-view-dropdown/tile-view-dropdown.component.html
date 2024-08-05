@@ -6,6 +6,10 @@
     <app-tile-view-dropdown-button [buttonValue]="buttonValue" [buttonIcon]="buttonIcon"></app-tile-view-dropdown-button>
 
     <!-- OUTER DROPDOWN > Drop-Content -->
+    <app-dropdown-data-filter *ngIf="dropdownContent === 'filter'"></app-dropdown-data-filter>
+    <app-dropdown-data-sort *ngIf="dropdownContent === 'sort'"></app-dropdown-data-sort>
+    <app-dropdown-data-group *ngIf="dropdownContent === 'group'"></app-dropdown-data-group>
+
     <!-- <app-drop-content-filter *ngIf="contentOption === 'object-filter'"></app-drop-content-filter>
     <app-drop-content-sort *ngIf="contentOption === 'object-sort'"></app-drop-content-sort>
     <app-drop-content-group *ngIf="contentOption === 'object-group'"></app-drop-content-group> -->

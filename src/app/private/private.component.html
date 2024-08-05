@@ -67,51 +67,22 @@
 
                         <!-- DROPDOWN - Component - TEST -->
                         <!-- --------------------------- -->
-                        <!-- TEST - 1 -->
-                        <!-- <app-dropdown-1 [buttonText]="'Filter'" [dropdownId]="'filter'" style="overflow: visible; position: relative">
-                            <p>Filter by (Alte Version, wird ausgetauscht...)</p>
-                            <br />
-                        </app-dropdown-1> -->
-
-                        <!-- TEST - 2 -->
-                        <!-- <app-dropdown id="view-option-filter" style="overflow: visible; position: relative"
+                        <app-tile-view-dropdown style="overflow: visible"
                             [buttonValue]="'filter'"
                             [buttonIcon]="'icon-filter'"
-                            [contentOption]="'object-filter'"
-                            (click)="onClickDropdownButton($event)"
-                        ></app-dropdown>
-
-                        <app-dropdown id="view-option-sort" style="overflow: visible; position: relative"
-                            [buttonValue]="'sort'"
-                            [buttonIcon]="'icon-sort'"
-                            [contentOption]="'object-sort'"
-                            (click)="onClickDropdownButton($event)"
-                        ></app-dropdown>
-
-                        <app-dropdown id="view-option-group" style="overflow: visible; position: relative"
-                            [buttonValue]="'group'"
-                            [buttonIcon]="'icon-drawer'"
-                            [contentOption]="'object-group'"
-                            (click)="onClickDropdownButton($event)"
-                        ></app-dropdown> -->
-
-                        <!-- TEST - 3 -->
-                        <app-tile-view-dropdown
-                            [buttonValue]="'filter'"
-                            [buttonIcon]="'icon-filter'"
-                            [contentOption]="'object-filter'"
+                            [dropdownContent]="'filter'"
                         ></app-tile-view-dropdown>
 
-                        <app-tile-view-dropdown
+                        <app-tile-view-dropdown style="overflow: visible"
                             [buttonValue]="'sort'"
                             [buttonIcon]="'icon-sort'"
-                            [contentOption]="'object-sort'"
+                            [dropdownContent]="'sort'"
                         ></app-tile-view-dropdown>
 
-                        <app-tile-view-dropdown
+                        <app-tile-view-dropdown style="overflow: visible"
                             [buttonValue]="'group'"
                             [buttonIcon]="'icon-drawer'"
-                            [contentOption]="'object-group'"
+                            [dropdownContent]="'group'"
                         ></app-tile-view-dropdown>
 
 
