@@ -2,12 +2,14 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ContentTileViewService } from '../../content-tile-view.service';
+import { FilterDataDropdownComponent } from './filter-data/filter-data-dropdown/filter-data-dropdown.component';
 
 @Component({
     selector: 'app-dropdown-data-filter',
     standalone: true,
     imports: [
         CommonModule,
+        FilterDataDropdownComponent,
     ],
     templateUrl: './dropdown-data-filter.component.html',
     styleUrl: './dropdown-data-filter.component.scss'
@@ -15,6 +17,8 @@ import { ContentTileViewService } from '../../content-tile-view.service';
 
 export class DropdownDataFilterComponent implements OnInit {
     showDropContent: boolean = false;
+    filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
+    private newFilterConditionIndex: number = 0;
 
     constructor(
         private contentTileViewService: ContentTileViewService,
@@ -37,8 +41,8 @@ export class DropdownDataFilterComponent implements OnInit {
     addCondition(event: Event): void {
         console.log('dropdown-data-filter > add condition clicked');
         event.stopPropagation();
-        // this.dropContentFilterService.addFilterCondition();
-        // this.getFilterConditions();
+        this.newFilterConditionIndex++;
+        this.filterConditions.push({ index: this.newFilterConditionIndex, label: 'and', name: '', condition: '', value: '' });
     }
 
     @HostListener('document:click', ['$event'])
@@ -49,5 +53,4 @@ export class DropdownDataFilterComponent implements OnInit {
             this.showDropContent = false;
         }
     }
-
 }

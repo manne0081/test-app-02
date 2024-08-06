@@ -78,9 +78,8 @@
     }
 
     .filter-actions {
-        // background-color: lime;
         margin-top: 8px;
-        margin-left: 84px;
+        // margin-left: 84px;
         display: flex;
 
         .filter-action-button {
@@ -89,9 +88,10 @@
 
         button {
             background-color: transparent;
-            border: 1px solid rgb(200, 200, 200);
-            border: transparent;
-            padding: 4px 8px;
+            border: 1px solid transparent;
+            // border: 1px solid rgb(225, 225, 225);
+            // padding: 4px 6px;
+            margin: 4px 0px;
             margin-right: 8px;
             border-radius: 4px;
 
@@ -103,11 +103,14 @@
             span.icon-add {
                 position: relative;
                 top: 2px;
+                margin-right: 2px;
             }
         }
 
+
+
         button:hover span {
-            color: #353535;
+            color: #727272;
             cursor: pointer;
         }
     }

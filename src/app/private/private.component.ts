@@ -220,7 +220,6 @@ export class PrivateComponent implements OnInit {
         var log: string = 'private.component - setAddInfoObject - ';
         switch (menuItem) {
             case 'Unternehmen':
-                // console.log(log + 'case: Unternehmen');
                 this.companyService.selectedCompany$.subscribe({
                     next: (company) => {
                         if (company) {
@@ -231,7 +230,6 @@ export class PrivateComponent implements OnInit {
                 });
                 break;
             case 'Aufgaben':
-                // console.log(log + 'case: Aufgaben');
                 this.taskService.selectedTask$.subscribe({
                     next: (task) => {
                         this.selectedTask = task;
@@ -240,7 +238,6 @@ export class PrivateComponent implements OnInit {
                 });
                 break;
             default:
-                // console.log(log + 'case: default');
                 break;
         }
     }
