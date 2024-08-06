@@ -2,9 +2,9 @@
 <div class="dropdown">
 
     <!-- INNER DROPDOWN > Dropdown-Button -->
-    <app-filter-data-dropdown-button [buttonType]="buttonType"></app-filter-data-dropdown-button>
+    <app-filter-data-dropdown-button #dropdownButton [buttonType]="buttonType" [dropdownUuidV4]="dropdownUuidV4"></app-filter-data-dropdown-button>
 
     <!-- INNER DROPDOWN > Dropdown-Content -->
-    <app-filter-data-dropdown-data [dropdownContent]="buttonType"></app-filter-data-dropdown-data>
+    <app-filter-data-dropdown-data #dropdownData [dropdownContent]="buttonType" [dropdownUuidV4]="dropdownUuidV4"></app-filter-data-dropdown-data>
 
 </div>

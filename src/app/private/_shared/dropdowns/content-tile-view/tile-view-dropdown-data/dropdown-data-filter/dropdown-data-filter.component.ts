@@ -39,7 +39,6 @@ export class DropdownDataFilterComponent implements OnInit {
     }
 
     addCondition(event: Event): void {
-        console.log('dropdown-data-filter > add condition clicked');
         event.stopPropagation();
         this.newFilterConditionIndex++;
         this.filterConditions.push({ index: this.newFilterConditionIndex, label: 'and', name: '', condition: '', value: '' });
@@ -48,6 +47,7 @@ export class DropdownDataFilterComponent implements OnInit {
     @HostListener('document:click', ['$event'])
     closeDropdown(event: Event): void {
         const target = event.target as HTMLElement;
+        // console.log('FilterDataDropdownDataComponent: ' + target);
 
         if (!target.closest('.drop-content-container')) {
             this.showDropContent = false;

@@ -5,13 +5,14 @@ import { BehaviorSubject } from 'rxjs';
     providedIn: 'root'
 })
 export class FilterDataService {
-    private clickedButton = new BehaviorSubject<any>(null);
-    clickedButton$ = this.clickedButton.asObservable();
+    private clickedButtonUuidV4 = new BehaviorSubject<any>(null);
+    clickedButtonUuidV4$ = this.clickedButtonUuidV4.asObservable();
 
     constructor() {}
 
-    setClickedButtonId(clickedButtonValue: string): void {
-        this.clickedButton.next(clickedButtonValue);
-        console.log('filter-data-service > setClickedButtonId: ' + clickedButtonValue);
+
+    setClickedButtonUuid4(clickedButtonID: string): void {
+        this.clickedButtonUuidV4.next(clickedButtonID);
     }
+
 }

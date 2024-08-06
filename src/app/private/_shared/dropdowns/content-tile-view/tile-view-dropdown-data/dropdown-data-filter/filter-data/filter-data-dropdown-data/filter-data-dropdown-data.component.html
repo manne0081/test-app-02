@@ -1,11 +1,11 @@
-<div class="drop-content-container" *ngIf="dropdownContent === 'operator'">
+<div class="drop-content-container-nested" *ngIf="dropdownContent ==='operator' && showDropContent">
     operator
 </div>
 
-<div class="drop-content-container" *ngIf="dropdownContent === 'fieldname'">
+<div class="drop-content-container-nested" *ngIf="dropdownContent ==='fieldname' && showDropContent">
     fieldname
 </div>
 
-<div class="drop-content-container" *ngIf="dropdownContent === 'condition'">
+<div class="drop-content-container-nested" *ngIf="dropdownContent ==='condition' && showDropContent">
     condition
 </div>
