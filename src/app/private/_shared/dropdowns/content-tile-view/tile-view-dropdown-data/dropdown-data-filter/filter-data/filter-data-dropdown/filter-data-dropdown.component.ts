@@ -25,7 +25,4 @@ export class FilterDataDropdownComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
-
-
 }

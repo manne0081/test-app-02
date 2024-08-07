@@ -1,5 +1,5 @@
 <!-- INNER Dropdown (Content) -->
-<div id="test" class="drop-content-container" *ngIf="showDropContent" (click)="$event.stopPropagation()">
+<div id="test" class="drop-content-container" *ngIf="showDropContent">    <!--  (click)="$event.stopPropagation()"-->
 
     <h3>Filter records</h3>
 
@@ -8,21 +8,21 @@
         <div class="filter-wrapper">
             <div class="filter-item-wrapper" *ngFor="let condition of filterConditions, let i = index">
 
-                <div *ngIf="i === 0">Where </div>
+                <div class="filter-item label operator" *ngIf="i === 0">Where </div>
 
-                <app-filter-data-dropdown *ngIf="i > 0" style="overflow: visible"
+                <app-filter-data-dropdown class="filter-item button operator" *ngIf="i > 0" style="overflow: visible"
                     [buttonType]="'operator'"
                 ></app-filter-data-dropdown>
 
-                <app-filter-data-dropdown style="overflow: visible"
+                <app-filter-data-dropdown class="filter-item button fieldname" style="overflow: visible"
                     [buttonType]="'fieldname'"
                 ></app-filter-data-dropdown>
 
-                <app-filter-data-dropdown style="overflow: visible"
+                <app-filter-data-dropdown class="filter-item button condition" style="overflow: visible"
                     [buttonType]="'condition'"
                 ></app-filter-data-dropdown>
 
-                <div>Input</div>
+                <div class="filter-item input">Input</div>
                 <div class="icon-cancel"></div>
                 <div>{{i}}</div>
 

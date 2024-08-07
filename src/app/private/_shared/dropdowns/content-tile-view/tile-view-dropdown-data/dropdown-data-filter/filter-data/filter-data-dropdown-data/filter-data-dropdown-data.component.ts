@@ -42,11 +42,10 @@ export class FilterDataDropdownDataComponent implements OnInit {
     @HostListener('document:click', ['$event'])
     closeDropdown(event: Event): void {
         const target = event.target as HTMLElement;
-        console.log('FilterDataDropdownDataComponent: ' + target);
+        // console.log(target);
 
         if (!target.closest('.drop-content-container-nested')) {
             this.showDropContent = false;
         }
     }
-
 }

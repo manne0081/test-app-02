@@ -26,26 +26,39 @@
             overflow: visible;
 
             .filter-item {
-                height: 100%;
-                display: flex;
-                align-items: center;
+                // position: relative;
             }
 
-            .filter-item.label {
-                width: 80px;
-                margin-right: 12px;
+            .filter-item.label.operator,.filter-item.button.operator {
+                // background-color: lime;
+                // width: 76px;
+                // margin-right: 12px;
             }
 
-            .filter-item.name,.filter-item.condition,.filter-item.value {
-                width: 180px;
+            .filter-item.button,.filter-item.input {
+                // width: 160px;
+                // padding: 4px 8px;
+                // border: 1px solid rgb(200, 200, 200);
+                // border-radius: 2px;
+                // overflow: visible;
             }
 
-            .filter-item.value {
-                margin-right: 12px;
+
+
+
+            .filter-item.button.operator {
             }
 
-            .filter-item.remove {
-                margin-right: 12px;
+            .filter-item.button.fieldname {
+                // overflow: visible;
+            }
+
+            .filter-item.button.condition {
+                // overflow: visible;
+            }
+
+            .filter-item.input {
+
             }
 
 
