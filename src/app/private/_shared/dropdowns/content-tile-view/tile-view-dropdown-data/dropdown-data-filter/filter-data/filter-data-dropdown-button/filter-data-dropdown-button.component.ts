@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { FilterDataService } from '../filter-data.service';
 
 @Component({
     selector: 'app-filter-data-dropdown-button',
     standalone: true,
-    imports: [],
+    imports: [
+        CommonModule,
+    ],
     templateUrl: './filter-data-dropdown-button.component.html',
     styleUrl: './filter-data-dropdown-button.component.scss'
 })

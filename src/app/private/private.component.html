@@ -35,12 +35,9 @@
         <!-- *********************************************************************** -->
         <div [ngClass]="{
                 'content-container-full': quicklinksVisible && addInfoVisible,
-                'content-container-without-quicklinks':
-                    !quicklinksVisible && addInfoVisible,
-                'content-container-without-addinfo':
-                    quicklinksVisible && !addInfoVisible,
-                'content-container-tiles-only':
-                    !quicklinksVisible && !addInfoVisible
+                'content-container-without-quicklinks': !quicklinksVisible && addInfoVisible,
+                'content-container-without-addinfo': quicklinksVisible && !addInfoVisible,
+                'content-container-tiles-only': !quicklinksVisible && !addInfoVisible
             }"
         >
             <!-- QUICKLINKS -->

@@ -1,30 +1,35 @@
 <!-- INNER Dropdown (Content) -->
 <div id="test" class="drop-content-container" *ngIf="showDropContent">    <!--  (click)="$event.stopPropagation()"-->
 
-    <h3>Filter records</h3>
+    <h3>Filter</h3>
 
     <!-- Content for FILTER -->
     <div style="overflow: visible;">
         <div class="filter-wrapper">
             <div class="filter-item-wrapper" *ngFor="let condition of filterConditions, let i = index">
 
-                <div class="filter-item label operator" *ngIf="i === 0">Where </div>
+                <div class="filter-item-operator label" *ngIf="i === 0">Where </div>
 
-                <app-filter-data-dropdown class="filter-item button operator" *ngIf="i > 0" style="overflow: visible"
+                <app-filter-data-dropdown style="overflow: visible" *ngIf="i > 0"
                     [buttonType]="'operator'"
                 ></app-filter-data-dropdown>
 
-                <app-filter-data-dropdown class="filter-item button fieldname" style="overflow: visible"
+                <app-filter-data-dropdown style="overflow: visible"
                     [buttonType]="'fieldname'"
                 ></app-filter-data-dropdown>
 
-                <app-filter-data-dropdown class="filter-item button condition" style="overflow: visible"
+                <app-filter-data-dropdown style="overflow: visible"
                     [buttonType]="'condition'"
                 ></app-filter-data-dropdown>
 
-                <div class="filter-item input">Input</div>
-                <div class="icon-cancel"></div>
-                <div>{{i}}</div>
+                <div class="filter-item input">
+                    <input type="text" placeholder="Input">
+                </div>
+
+                <div class="filter-item remove" (click)="removeFilter($event, condition.index)">
+                    <span class="icon-cancel-circle"></span>
+                </div>
+                <div style="margin-left: 12px;">{{condition.index}}</div>
 
             </div>
         </div>

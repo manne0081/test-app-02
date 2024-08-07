@@ -1,3 +1,21 @@
-<div class="drop-button" (click)="onClickButton($event)">
+<div class="drop-button" (click)="onClickButton($event)"
+    [ngClass]="{
+        'drop-button-operator': buttonType === 'operator',
+        'drop-button-fieldname': buttonType === 'fieldname',
+        'drop-button-condition': buttonType === 'condition'
+    }"
+>
+
     {{buttonType}}
+
 </div>
+
+
+
+
+<!-- [ngClass]="{
+    'content-container-full': quicklinksVisible && addInfoVisible,
+    'content-container-without-quicklinks': !quicklinksVisible && addInfoVisible,
+    'content-container-without-addinfo': quicklinksVisible && !addInfoVisible,
+    'content-container-tiles-only': !quicklinksVisible && !addInfoVisible
+}" -->

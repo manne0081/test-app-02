@@ -16,51 +16,37 @@
         overflow: visible;
 
         .filter-item-wrapper {
-            // background-color: rgb(255, 255, 150);
+            // background-color: orange;
             display: flex;
             flex-direction: row;
             align-items: center;
             padding: 2px 0px;
             margin-bottom: 4px;
             height: 32px;
+            position: relative;
             overflow: visible;
 
-            .filter-item {
-                // position: relative;
-            }
-
-            .filter-item.label.operator,.filter-item.button.operator {
-                // background-color: lime;
-                // width: 76px;
-                // margin-right: 12px;
-            }
-
-            .filter-item.button,.filter-item.input {
-                // width: 160px;
-                // padding: 4px 8px;
-                // border: 1px solid rgb(200, 200, 200);
-                // border-radius: 2px;
-                // overflow: visible;
-            }
-
-
-
-
-            .filter-item.button.operator {
-            }
-
-            .filter-item.button.fieldname {
-                // overflow: visible;
-            }
-
-            .filter-item.button.condition {
-                // overflow: visible;
+            .filter-item-operator {
+                width: 76px;
+                margin-right: 12px;
             }
 
             .filter-item.input {
-
+                // background-color: lime;
+                border: 1px solid rgb(200, 200, 200);
+                border-radius: 0px 4px 4px 0px;
+                height: 32px;
+                margin-right: 12px;
+                margin-top: 3px;
+                width: 160px;
+                display: flex;
+                align-items: center;
+                padding: 0px 8px;
             }
 
+            [class*="icon-cancel-"]:hover {
+                color: red;
+            }
 
 
 

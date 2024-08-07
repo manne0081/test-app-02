@@ -1,11 +1,40 @@
 .drop-button {
-    background-color: lime;
-    // height: 100%;
-    // width: 100%;
+    // background-color: lime;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 4px 8px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    width: 160px;
 
-    // position: relative;
-    // top: 0px;
-    // right: 0px;
-    // bottom: 0px;
-    // left: 0px;
+}
+
+.drop-button-operator {
+    // background-color: orange;
+    border-radius: 4px;
+    padding: 4px 8px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    width: 76px;
+    margin-right: 12px;
+}
+
+.drop-button-fieldname {
+    // background-color: yellow;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    padding: 4px 8px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.drop-button-condition {
+    // background-color: lightblue;
+    border-right: none;
+    padding: 4px 8px;
+    height: 32px;
+    display: flex;
+    align-items: center;
 }
