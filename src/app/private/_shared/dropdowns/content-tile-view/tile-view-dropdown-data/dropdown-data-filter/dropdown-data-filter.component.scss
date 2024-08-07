@@ -29,6 +29,7 @@
             .filter-item-operator {
                 width: 76px;
                 margin-right: 12px;
+                padding-left: 8px;
             }
 
             .filter-item.input {
@@ -38,10 +39,23 @@
                 height: 32px;
                 margin-right: 12px;
                 margin-top: 3px;
-                width: 160px;
+                width: 180px;
                 display: flex;
                 align-items: center;
                 padding: 0px 8px;
+
+                &:hover {
+                    background-color: rgb(240, 240, 240);
+                }
+            }
+
+            .filter-item.remove {
+                padding-top: 4px;
+
+            }
+
+            [class*="icon-cancel-"] {
+                font-size: 1.1em;
             }
 
             [class*="icon-cancel-"]:hover {

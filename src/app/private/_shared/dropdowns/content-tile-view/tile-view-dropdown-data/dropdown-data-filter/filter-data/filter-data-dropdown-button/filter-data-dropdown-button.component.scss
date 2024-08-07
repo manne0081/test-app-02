@@ -5,8 +5,13 @@
     height: 32px;
     display: flex;
     align-items: center;
-    width: 160px;
+    justify-content: space-between;
+    width: 200px;
 
+    &:hover {
+        background-color: rgb(240, 240, 240);
+        cursor: pointer;
+    }
 }
 
 .drop-button-operator {

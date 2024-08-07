@@ -3,11 +3,23 @@
         'drop-button-operator': buttonType === 'operator',
         'drop-button-fieldname': buttonType === 'fieldname',
         'drop-button-condition': buttonType === 'condition'
-    }"
->
+    }">
 
-    {{buttonType}}
+    <span *ngIf="buttonType === 'operator'">
+        and
+    </span>
 
+    <span *ngIf="buttonType === 'fieldname'">
+        Name
+    </span>
+
+    <span *ngIf="buttonType === 'condition'">
+        contains
+    </span>
+
+    <span class="icon-arrow-drop-down">
+
+    </span>
 </div>
 
 

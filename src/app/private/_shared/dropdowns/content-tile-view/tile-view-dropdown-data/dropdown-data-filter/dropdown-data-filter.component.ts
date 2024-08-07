@@ -46,14 +46,10 @@ export class DropdownDataFilterComponent implements OnInit {
 
     removeFilter(event: Event, index: number): void {
         event.stopPropagation();
-        console.log(index);
-        // this.dropContentFilterService.removeFilter(index);
-        // const arrayIndex = this.activeFilterConditions.findIndex(filter => filter.index === index);
         const arrayIndex = this.filterConditions.findIndex(filter => filter.index === index);
         if (arrayIndex !== -1) {
             this.filterConditions.splice(arrayIndex, 1);
         }
-        // this.getFilterConditions();
     }
 
 
