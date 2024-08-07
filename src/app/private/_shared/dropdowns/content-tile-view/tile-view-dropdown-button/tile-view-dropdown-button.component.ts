@@ -18,6 +18,8 @@ export class TileViewDropdownButtonComponent {
     @Input()
     buttonIcon: string = '';
 
+    buttonClicked: boolean = false;
+
     constructor(
         private contentTileViewService: ContentTileViewService,
     ) {}
@@ -26,5 +28,6 @@ export class TileViewDropdownButtonComponent {
         event.stopPropagation();
         // const clickedButtonId: string = (event.currentTarget as HTMLElement).id;
         this.contentTileViewService.setOpenedDropdownId(this.buttonValue);
+        this.buttonClicked = true;
     }
 }

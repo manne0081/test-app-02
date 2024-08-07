@@ -1,4 +1,10 @@
-<button id="id-drop-button" class="drop-button" (click)="onClickButton($event)">
+<button id="id-drop-button" class="drop-button" (click)="onClickButton($event)"
+    [ngClass]="{
+        'drop-button-filter-active': buttonClicked === true && buttonValue === 'filter',
+        'drop-button-sort-active': buttonClicked === true && buttonValue === 'sort',
+        'drop-button-group-active': buttonClicked === true && buttonValue === 'group'
+    }"
+>
 
     <div class="{{ buttonIcon }}"></div>
     <p style="margin-right: 2px">{{ buttonValue | titlecase }}</p>

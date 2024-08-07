@@ -44,6 +44,29 @@
     }
 }
 
-.drop-button-1:hover {
-    cursor: pointer;
+.drop-button-filter-active {
+    background-color: #a2f3c4;
+
+    &:hover {
+        background-color: #a2f3c4;
+        border: 1px solid #479266;
+    }
+}
+
+.drop-button-sort-active {
+    background-color: #c0e1f5;
+
+    &:hover {
+        background-color: #c0e1f5;
+        border: 1px solid #497794;
+    }
+}
+
+.drop-button-group-active {
+    background-color: #f3fc92;
+
+    &:hover {
+        background-color: #f3fc92;
+        border: 1px solid #898f46;
+    }
 }
