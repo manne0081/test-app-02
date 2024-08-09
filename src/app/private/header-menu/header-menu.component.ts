@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output, ViewChild, Input, HostListener
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { QuicklinksService } from '../quicklinks/quicklinks.service';
+import { ContentTileViewService } from '../_shared/dropdowns/content-tile-view/content-tile-view.service';
 
 @Component({
     selector: 'app-header-menu',
@@ -50,8 +51,9 @@ export class HeaderMenuComponent implements AfterViewInit {
     constructor (
         private router: Router,
         private eRef: ElementRef,
-        private quicklinkService: QuicklinksService, ) {
-    }
+        private quicklinkService: QuicklinksService,
+        private contentTileViewService: ContentTileViewService,
+    ) {}
 
     ngOnInit(): void {
         // Add some items to favorite for testing
@@ -203,6 +205,10 @@ export class HeaderMenuComponent implements AfterViewInit {
      */
     onSelectItem(selectedValue: string): void {
         this.selectedMenuItem.emit(selectedValue);
+
+        this.contentTileViewService.setNumberFilterConditions(0);
+        // todo
+        // remove all filter items by changing the menu-point
     }
 
     onSelectQuicklink(item: any): void {
