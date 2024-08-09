@@ -1,6 +1,33 @@
 <p>planner works!</p>
+<br>
 <hr>
-<!-- parent.component.html -->
- <div style="display: flex; align-items: start;">
+<br>
 
-</div>
+<select [(ngModel)]="dropdownContentOperator">
+    <option value="operator">and</option>
+    <option value="fieldname">or</option>
+</select>
+
+
+
+  <!-- <div class="drop-content-container-nested" *ngIf="dropdownContent === 'operator' && showDropContent">
+      <ul>
+          <li>and</li>
+          <li>or</li>
+      </ul>
+  </div>
+
+  <div class="drop-content-container-nested" *ngIf="dropdownContent === 'fieldname' && showDropContent">
+      <ul>
+          <li>Name</li>
+          <li>City</li>
+          <li>Street</li>
+      </ul>
+  </div>
+
+  <div class="drop-content-container-nested" *ngIf="dropdownContent === 'condition' && showDropContent">
+      <ul>
+          <li>contains</li>
+          <li>does not contain</li>
+      </ul>
+  </div> -->

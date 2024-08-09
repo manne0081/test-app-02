@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-planner',
@@ -8,9 +9,12 @@ import { CommonModule } from '@angular/common';
     styleUrl: './planner.component.scss',
     imports: [
         CommonModule,
+        FormsModule,
     ]
 })
 
 export class PlannerComponent {
-
+    dropdownContent: string = 'fieldname';
+    showDropContent: boolean = true;
+    dropdownContentOperator: any = '';
 }

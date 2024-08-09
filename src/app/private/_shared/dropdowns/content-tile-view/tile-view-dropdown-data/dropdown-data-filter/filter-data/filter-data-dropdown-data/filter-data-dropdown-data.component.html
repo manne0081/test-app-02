@@ -1,11 +1,21 @@
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='operator' && showDropContent">
-    operator
+    <ul>
+        <li>and</li>
+        <li>or</li>
+    </ul>
 </div>
 
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='fieldname' && showDropContent">
-    fieldname
+    <ul>
+        <li>Name</li>
+        <li>City</li>
+        <li>Street</li>
+    </ul>
 </div>
 
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='condition' && showDropContent">
-    condition
+    <ul>
+        <li>contains</li>
+        <li>does not contain</li>
+    </ul>
 </div>
