@@ -1,21 +1,17 @@
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='operator' && showDropContent">
     <ul>
-        <li>and</li>
-        <li>or</li>
+        <li *ngFor="let operator of operatorOptions" (click)="setSelectedOperator(operator)">{{operator}}</li>
     </ul>
 </div>
 
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='fieldname' && showDropContent">
     <ul>
-        <li>Name</li>
-        <li>City</li>
-        <li>Street</li>
+        <li *ngFor="let fieldname of fieldnameOptions" (click)="setSelectedFieldname(fieldname)">{{fieldname}}</li>
     </ul>
 </div>
 
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='condition' && showDropContent">
     <ul>
-        <li>contains</li>
-        <li>does not contain</li>
+        <li *ngFor="let condition of conditionOptions" (click)="setSelectedCondition(condition)">{{condition}}</li>
     </ul>
 </div>

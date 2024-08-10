@@ -21,6 +21,15 @@ export class FilterDataDropdownDataComponent implements OnInit {
 
     showDropContent: boolean = false;
 
+    operatorOptions: string[] = ['and', 'or'];
+    selectedOperator: string | null = null;
+
+    fieldnameOptions: string[] = ['Name', 'Postcode', 'Street'];
+    selectedFieldname: string | null = null;
+
+    conditionOptions: string[] = ['contains', 'does not contain', 'is', 'is not'];
+    selectedCondition: string | null = null;
+
     constructor(
         private filterDataService: FilterDataService,
     ) {}
@@ -37,6 +46,21 @@ export class FilterDataDropdownDataComponent implements OnInit {
         } else {
             this.showDropContent = false;
         }
+    }
+
+    setSelectedOperator(selectedValue: string): void {
+        this.selectedOperator = selectedValue;
+        console.log("selectedOperator: " + this.selectedOperator);
+    }
+
+    setSelectedFieldname(selectedValue: string): void {
+        this.selectedFieldname = selectedValue;
+        console.log("selectedFieldname: " + this.selectedFieldname);
+    }
+
+    setSelectedCondition(selectedValue: string): void {
+        this.selectedCondition = selectedValue;
+        console.log("selectedCondition: " + this.selectedCondition);
     }
 
     @HostListener('document:click', ['$event'])

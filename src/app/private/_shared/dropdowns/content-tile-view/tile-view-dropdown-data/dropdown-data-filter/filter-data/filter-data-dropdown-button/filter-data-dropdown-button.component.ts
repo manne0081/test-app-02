@@ -20,6 +20,8 @@ export class FilterDataDropdownButtonComponent {
     @Input()
     dropdownUuidV4: string = '';
 
+    selectedOption: string | null = null;
+
     constructor(
         private filterDataService: FilterDataService,
     ) {}
