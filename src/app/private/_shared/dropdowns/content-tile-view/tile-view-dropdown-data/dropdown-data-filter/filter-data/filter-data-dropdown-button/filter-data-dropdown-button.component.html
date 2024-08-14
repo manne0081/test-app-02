@@ -6,28 +6,18 @@
     }">
 
     <span *ngIf="buttonType === 'operator'">
-        and
+        {{selectedOption}}
     </span>
 
     <span *ngIf="buttonType === 'fieldname'">
-        Name
+        {{selectedOption}}
     </span>
 
     <span *ngIf="buttonType === 'condition'">
-        contains
+        {{selectedOption}}
     </span>
 
     <span class="icon-arrow-drop-down">
-
     </span>
+
 </div>
-
-
-
-
-<!-- [ngClass]="{
-    'content-container-full': quicklinksVisible && addInfoVisible,
-    'content-container-without-quicklinks': !quicklinksVisible && addInfoVisible,
-    'content-container-without-addinfo': quicklinksVisible && !addInfoVisible,
-    'content-container-tiles-only': !quicklinksVisible && !addInfoVisible
-}" -->

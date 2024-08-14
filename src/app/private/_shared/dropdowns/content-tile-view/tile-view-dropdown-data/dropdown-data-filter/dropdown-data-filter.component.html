@@ -12,9 +12,10 @@
 
                 <app-filter-data-dropdown style="overflow: visible" *ngIf="i === 1"
                     [buttonType]="'operator'"
+                    (selectedOperator)="getSelectedOperator($event)"
                 ></app-filter-data-dropdown>
 
-                <div class="filter-item-operator label" *ngIf="i > 1">and</div>
+                <div class="filter-item-operator label" *ngIf="i > 1">{{selectedOperator || 'and'}}</div>
 
                 <app-filter-data-dropdown style="overflow: visible"
                     [buttonType]="'fieldname'"

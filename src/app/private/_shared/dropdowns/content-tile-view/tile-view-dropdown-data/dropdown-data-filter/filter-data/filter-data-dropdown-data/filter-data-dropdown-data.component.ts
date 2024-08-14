@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, Output, HostListener, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FilterDataService } from '../filter-data.service';
@@ -18,17 +18,14 @@ export class FilterDataDropdownDataComponent implements OnInit {
     dropdownContent: string = '';    // operator, fieldname, condition
     @Input()
     dropdownUuidV4: string = '';
+    @Output()
+    selectedOption = new EventEmitter<string>();
 
     showDropContent: boolean = false;
 
     operatorOptions: string[] = ['and', 'or'];
-    selectedOperator: string | null = null;
-
-    fieldnameOptions: string[] = ['Name', 'Postcode', 'Street'];
-    selectedFieldname: string | null = null;
-
+    fieldnameOptions: string[] = ['Firstname', 'Lastname', 'Postcode', 'Street'];
     conditionOptions: string[] = ['contains', 'does not contain', 'is', 'is not'];
-    selectedCondition: string | null = null;
 
     constructor(
         private filterDataService: FilterDataService,
@@ -40,6 +37,10 @@ export class FilterDataDropdownDataComponent implements OnInit {
         })
     }
 
+    /**
+     * Shows the dropdown, if the uuid from the '@Input' and the clicked Button are the same
+     * @param dropdownUuidV4
+     */
     setShowDropdown(dropdownUuidV4: any): void {
         if (dropdownUuidV4 === this.dropdownUuidV4) {
             this.showDropContent = true;
@@ -48,21 +49,21 @@ export class FilterDataDropdownDataComponent implements OnInit {
         }
     }
 
-    setSelectedOperator(selectedValue: string): void {
-        this.selectedOperator = selectedValue;
-        console.log("selectedOperator: " + this.selectedOperator);
+    /**
+     *
+     * @param selectedValue
+     */
+    setSelectedValue(selectedValue: string): void {
+        this.filterDataService.setSelectedValue(selectedValue, this.dropdownUuidV4);
+        if (selectedValue === 'and' || selectedValue === 'or') {
+            this.selectedOption.emit(selectedValue);
+        }
     }
 
-    setSelectedFieldname(selectedValue: string): void {
-        this.selectedFieldname = selectedValue;
-        console.log("selectedFieldname: " + this.selectedFieldname);
-    }
-
-    setSelectedCondition(selectedValue: string): void {
-        this.selectedCondition = selectedValue;
-        console.log("selectedCondition: " + this.selectedCondition);
-    }
-
+    /**
+     *
+     * @param event
+     */
     @HostListener('document:click', ['$event'])
     closeDropdown(event: Event): void {
         const target = event.target as HTMLElement;

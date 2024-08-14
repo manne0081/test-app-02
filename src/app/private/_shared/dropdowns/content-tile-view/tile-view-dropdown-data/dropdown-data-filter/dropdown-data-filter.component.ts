@@ -20,6 +20,8 @@ export class DropdownDataFilterComponent implements OnInit {
     filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
     private newFilterConditionIndex: number = 0;
 
+    selectedOperator!: string;
+
     constructor(
         private contentTileViewService: ContentTileViewService,
     ) {}
@@ -68,6 +70,10 @@ export class DropdownDataFilterComponent implements OnInit {
             this.filterConditions.splice(arrayIndex, 1);
         }
         this.contentTileViewService.setNumberFilterConditions(this.filterConditions.length);
+    }
+
+    getSelectedOperator(message: string) {
+        this.selectedOperator = message;
     }
 
     /**

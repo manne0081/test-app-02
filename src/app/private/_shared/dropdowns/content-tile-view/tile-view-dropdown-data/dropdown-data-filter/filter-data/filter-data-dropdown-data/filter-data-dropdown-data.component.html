@@ -1,17 +1,17 @@
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='operator' && showDropContent">
     <ul>
-        <li *ngFor="let operator of operatorOptions" (click)="setSelectedOperator(operator)">{{operator}}</li>
+        <li *ngFor="let operator of operatorOptions" (click)="setSelectedValue(operator)">{{operator}}</li>  <!-- setSelectedOperator(operator)-->
     </ul>
 </div>
 
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='fieldname' && showDropContent">
     <ul>
-        <li *ngFor="let fieldname of fieldnameOptions" (click)="setSelectedFieldname(fieldname)">{{fieldname}}</li>
+        <li *ngFor="let fieldname of fieldnameOptions" (click)="setSelectedValue(fieldname)">{{fieldname}}</li>     <!-- setSelectedFieldname(fieldname)-->
     </ul>
 </div>
 
 <div class="drop-content-container-nested" *ngIf="dropdownContent ==='condition' && showDropContent">
     <ul>
-        <li *ngFor="let condition of conditionOptions" (click)="setSelectedCondition(condition)">{{condition}}</li>
+        <li *ngFor="let condition of conditionOptions" (click)="setSelectedValue(condition)">{{condition}}</li>     <!-- setSelectedCondition(condition)-->
     </ul>
 </div>

@@ -5,6 +5,8 @@
     <app-filter-data-dropdown-button #dropdownButton [buttonType]="buttonType" [dropdownUuidV4]="dropdownUuidV4"></app-filter-data-dropdown-button>
 
     <!-- INNER DROPDOWN > Dropdown-Content -->
-    <app-filter-data-dropdown-data #dropdownData [dropdownContent]="buttonType" [dropdownUuidV4]="dropdownUuidV4"></app-filter-data-dropdown-data>
+    <app-filter-data-dropdown-data #dropdownData [dropdownContent]="buttonType" [dropdownUuidV4]="dropdownUuidV4"
+        (selectedOption)="getSelectedOperator($event)"
+    ></app-filter-data-dropdown-data>
 
 </div>
