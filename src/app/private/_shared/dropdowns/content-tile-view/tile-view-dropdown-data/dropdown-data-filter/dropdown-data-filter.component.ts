@@ -1,9 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ContentTileViewService } from '../../content-tile-view.service';
+import { Company } from '../../../../../contact/company/company';
 import { FilterDataDropdownComponent } from './filter-data/filter-data-dropdown/filter-data-dropdown.component';
 
+import { ContentTileViewService } from '../../content-tile-view.service';
+import { CompanyService } from '../../../../../contact/company/company.service';
 @Component({
     selector: 'app-dropdown-data-filter',
     standalone: true,
@@ -19,11 +21,12 @@ export class DropdownDataFilterComponent implements OnInit {
     showDropContent: boolean = false;
     filterConditions: { index: number, label: string, name: string, condition: string, value: string } [] = [];
     private newFilterConditionIndex: number = 0;
-
     selectedOperator!: string;
+    openedObjects!: any;
 
     constructor(
         private contentTileViewService: ContentTileViewService,
+        private companyService: CompanyService,
     ) {}
 
     /**
@@ -32,6 +35,26 @@ export class DropdownDataFilterComponent implements OnInit {
     ngOnInit(): void {
         this.contentTileViewService.clickedButton$.subscribe(item => {
             this.setShowDropdown(item);
+        });
+
+        //todo
+        //Not only for Companies, here should be load all Objects which can be opened
+        this.getCompanies();
+    }
+
+    /**
+     * Get all companies from mock-data and set them to the companyItems-array
+     */
+    getCompanies(): void {
+        this.companyService.getCompanies().subscribe((data: Company[]) => {
+            console.log(data);
+
+            if (data.length > 0) {
+                this.openedObjects = data;
+
+                const fieldNames = Object.keys(data[0]);
+                console.log('Feldnamen:', fieldNames); // ['id', 'number', 'name', 'category']
+            }
         });
     }
 

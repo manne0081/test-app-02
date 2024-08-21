@@ -208,6 +208,7 @@ export class HeaderMenuComponent implements AfterViewInit {
 
         this.contentTileViewService.setNumberFilterConditions(0);
         // todo
+        console.log('test... ', selectedValue);
         // remove all filter items by changing the menu-point
     }
 

@@ -67,7 +67,7 @@ export class PrivateComponent implements OnInit {
     ngOnInit(): void {
         this.toggleQuicklinkVisibility();
         this.toggleAddInfoVisibility();
-        this.onSelectMenuItem('Dashboard');
+        this.onSelectMenuItem('dashboard');
         this.router.navigate(['private/dashboard']);
 
         this.quicklinkService.selectedQuicklink$.subscribe(item => {
@@ -100,7 +100,7 @@ export class PrivateComponent implements OnInit {
     onSelectMenuItem(menuItem: string) {
         // this.privateService.selectMenu(menuItem);
         this.selectedValueFromMainMenu = menuItem;
-        if (menuItem === 'Dashboard') {
+        if (menuItem === 'dashboard') {
             this.addInfoVisible = false;
         } else {
             this.addInfoVisible = true;
@@ -108,6 +108,8 @@ export class PrivateComponent implements OnInit {
         this.setAddInfoObject(menuItem);
         this.addInfoObject = '';
         this.removeAllFilterItems();
+
+        console.log('PrivateComponent / ', 'onSelectMenuItem / ', menuItem);
     }
 
     /**

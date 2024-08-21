@@ -22,7 +22,7 @@
                         <!-- ******************************************************************************************* -->
                         <ng-container *ngIf="menuItem.hasLink; else noLink">
                             <button #dropdownButton class="drop-button" [ngClass]="menuItem.status" *ngIf="menuItem.name !== 'placeholder'"
-                                (click)="openDropdown(menuItem.name)" (click)="markMenuItemAsActive(menuItem.name)" (click)="onSelectItem(menuItem.title!)"
+                                (click)="openDropdown(menuItem.name)" (click)="markMenuItemAsActive(menuItem.name)" (click)="onSelectItem(menuItem.name!)"
                                 [routerLink]="menuItem.hasLink ? menuItem.route : ''"
                             >
                                 <span [class]="'button-icon ' + menuItem.iconClass" [ngClass]="{ 'button-icon-is-favorite': menuItem.isFavorite }"></span>

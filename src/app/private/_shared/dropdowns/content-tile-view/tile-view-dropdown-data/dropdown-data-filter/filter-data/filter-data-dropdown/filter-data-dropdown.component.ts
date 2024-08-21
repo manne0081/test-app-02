@@ -21,6 +21,7 @@ export class FilterDataDropdownComponent implements OnInit {
 
     @Output()
     selectedOperator = new EventEmitter<string>();
+
     receivedMessage!: string;
 
     dropdownUuidV4: string = uuidv4();

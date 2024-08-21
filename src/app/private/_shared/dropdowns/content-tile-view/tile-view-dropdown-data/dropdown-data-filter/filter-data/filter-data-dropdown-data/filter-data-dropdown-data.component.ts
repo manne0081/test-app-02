@@ -2,8 +2,6 @@ import { Component, OnInit, Input, Output, HostListener, EventEmitter } from '@a
 import { CommonModule } from '@angular/common';
 
 import { FilterDataService } from '../filter-data.service';
-import { CompanyService } from '../../../../../../../contact/company/company.service';
-import { Company } from '../../../../../../../contact/company/company';
 
 @Component({
     selector: 'app-filter-data-dropdown-data',
@@ -20,6 +18,7 @@ export class FilterDataDropdownDataComponent implements OnInit {
     dropdownContent: string = '';    // operator, fieldname, condition
     @Input()
     dropdownUuidV4: string = '';
+
     @Output()
     selectedOption = new EventEmitter<string>();
 
@@ -31,7 +30,6 @@ export class FilterDataDropdownDataComponent implements OnInit {
 
     constructor(
         private filterDataService: FilterDataService,
-        private companyService: CompanyService,
     ) {}
 
     ngOnInit(): void {

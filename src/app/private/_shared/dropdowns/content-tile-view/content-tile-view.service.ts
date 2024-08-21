@@ -18,8 +18,6 @@ export class ContentTileViewService {
     private numberGroupConditions = new BehaviorSubject<any>(null);
     numberGroupConditions$ = this.numberGroupConditions.asObservable();
 
-
-
     constructor() {}
 
     setOpenedDropdownId(clickedButtonValue: string): void {

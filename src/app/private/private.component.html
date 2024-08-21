@@ -21,12 +21,12 @@
             <!-- Menuname -->
             <!-- -------- -->
             <span class="content-title-value">
-                {{selectedValueFromMainMenu}}
+                {{selectedValueFromMainMenu | uppercase}}
             </span>
 
             <!-- Button toggle AddInfos -->
             <!-- ---------------------- -->
-            <button class="content-title-addinfo" (click)="toggleAddInfoVisibility()" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
+            <button class="content-title-addinfo" (click)="toggleAddInfoVisibility()" *ngIf="selectedValueFromMainMenu !== 'dashboard'">
                 Add Info
             </button>
         </div>
@@ -53,7 +53,7 @@
             >
                 <!-- Content-Header -->
                 <!-- ************** -->
-                <div class="content-header-container" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
+                <div class="content-header-container" *ngIf="selectedValueFromMainMenu !== 'dashboard'">
                     <div class="add-filter-wrapper" style="overflow: visible">
                         <!-- Searching-Area -->
                         <!-- -------------- -->
@@ -101,7 +101,7 @@
 
                 <!-- Content-Actions -->
                 <!-- *************** -->
-                <div class="content-actions" *ngIf="selectedValueFromMainMenu !== 'Dashboard'">
+                <div class="content-actions" *ngIf="selectedValueFromMainMenu !== 'dashboard'">
                     Actions
                 </div>
             </div>
