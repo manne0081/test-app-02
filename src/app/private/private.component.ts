@@ -15,6 +15,7 @@ import { TaskService } from './workspace/task/task.service';
 import { QuicklinksService } from './quicklinks/quicklinks.service';
 
 import { TileViewDropdownComponent } from './_shared/dropdowns/content-tile-view/tile-view-dropdown/tile-view-dropdown.component';
+import { Subject } from 'rxjs';
 
 interface FilterItem {
     id: number | string;
@@ -81,20 +82,6 @@ export class PrivateComponent implements OnInit {
 
     /**
      *
-     */
-    toggleQuicklinkVisibility(): void {
-        this.quicklinksVisible = !this.quicklinksVisible;
-    }
-
-    /**
-     *
-     */
-    toggleAddInfoVisibility(): void {
-        this.addInfoVisible = !this.addInfoVisible;
-    }
-
-    /**
-     *
      * @param menuItem
      */
     onSelectMenuItem(menuItem: string) {
@@ -110,6 +97,42 @@ export class PrivateComponent implements OnInit {
         this.removeAllFilterItems();
 
         console.log('PrivateComponent / ', 'onSelectMenuItem / ', menuItem);
+
+        this.loadActiveDataFromMock(menuItem);
+    }
+
+    /**
+     *
+     */
+    loadActiveDataFromMock(selectedObject: string): void {
+        console.log('private.component > loadAcitveDataFromMock: ', selectedObject );
+
+        switch (selectedObject) {
+            case 'company' :
+                this.privateService.getCompanies().subscribe(data => {
+                    console.log(data);
+                });
+                break;
+            case 'customer' :
+                this.privateService.getTasks().subscribe(data => {
+                    console.log(data);
+                });
+                break;
+        }
+    }
+
+    /**
+     *
+     */
+    toggleQuicklinkVisibility(): void {
+        this.quicklinksVisible = !this.quicklinksVisible;
+    }
+
+    /**
+     *
+     */
+    toggleAddInfoVisibility(): void {
+        this.addInfoVisible = !this.addInfoVisible;
     }
 
     /**
