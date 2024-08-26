@@ -96,8 +96,6 @@ export class PrivateComponent implements OnInit {
         this.addInfoObject = '';
         this.removeAllFilterItems();
 
-        console.log('PrivateComponent / ', 'onSelectMenuItem / ', menuItem);
-
         this.loadActiveDataFromMock(menuItem);
     }
 
@@ -105,17 +103,15 @@ export class PrivateComponent implements OnInit {
      *
      */
     loadActiveDataFromMock(selectedObject: string): void {
-        console.log('private.component > loadAcitveDataFromMock: ', selectedObject );
-
         switch (selectedObject) {
             case 'company' :
                 this.privateService.getCompanies().subscribe(data => {
-                    console.log(data);
+                    this.privateService.setActiveObject(data);
                 });
                 break;
-            case 'customer' :
+            case 'task' :
                 this.privateService.getTasks().subscribe(data => {
-                    console.log(data);
+                    this.privateService.setActiveObject(data);
                 });
                 break;
         }

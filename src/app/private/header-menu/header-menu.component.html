@@ -58,7 +58,7 @@
                             <ng-container *ngFor="let menuSubItem of menuSubItems, index as i">
                                 <div class="drop-item-container" *ngIf="menuSubItem.parentName == menuItem.name"
                                         [routerLink]="menuSubItem.route" (click)="markMenuItemAsActive(menuSubItem.parentForMenuItemState)" (click)="closeAllDropdowns()"
-                                        (click)="onSelectItem(menuSubItem.title)"
+                                        (click)="onSelectItem(menuSubItem.name)"
                                 >
                                     <span class="drop-item">{{menuSubItem.title}}</span>
                                     <span [ngClass]="menuSubItem.isFavorite == true ? 'icon-star is-favorite' : 'icon-star'"

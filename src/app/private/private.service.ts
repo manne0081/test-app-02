@@ -8,7 +8,7 @@ import { Company, COMPANY_MOCK,
 })
 
 export class PrivateService {
-    companyItems: any[] = [];
+    activeObject: any[] = [];
 
     getCompanies(): Observable<Company[]> {
         return of(COMPANY_MOCK);
@@ -18,7 +18,15 @@ export class PrivateService {
         return of(TASK_MOCK);
     }
 
+    setActiveObject(activeObject: any) {
+        this.activeObject = activeObject;
 
+        console.log('private.service');
+        console.log(activeObject);
+
+        const fieldNames = Object.keys(activeObject[0]);
+        console.log('Feldnamen:', fieldNames); // ['id', 'number', 'name', 'category']
+    }
 
 }
 

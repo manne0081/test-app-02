@@ -48,13 +48,11 @@ export class DropdownDataFilterComponent implements OnInit {
     getCompanies(): void {
         this.companyService.getCompanies().subscribe((data: Company[]) => {
 
-            // console.log(data);
-
             if (data.length > 0) {
                 this.openedObjects = data;
 
-                const fieldNames = Object.keys(data[0]);
-                console.log('Feldnamen:', fieldNames); // ['id', 'number', 'name', 'category']
+                // const fieldNames = Object.keys(data[0]);
+                // console.log('Feldnamen:', fieldNames); // ['id', 'number', 'name', 'category']
             }
         });
     }
