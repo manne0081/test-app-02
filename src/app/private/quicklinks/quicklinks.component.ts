@@ -82,11 +82,6 @@ export class QuicklinksComponent implements OnInit {
         const path = urlParts[0];
         const queryParamsString = urlParts[1];
 
-        // console.log('item: ' + item);
-        // console.log('urlParts: ' + urlParts);
-        // console.log('path: ' + path);
-        // console.log('queryParamsString: ' + queryParamsString);
-
         let queryParams: Record<string, string> = {};
         if (queryParamsString) {
             queryParams = queryParamsString.split('&').reduce((params, param) => {
