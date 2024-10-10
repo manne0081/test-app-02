@@ -156,7 +156,7 @@ export class PrivateComponent implements OnInit {
     }
 
     /**
-     *
+     * Set filter-element-chip
      * @param event
      */
     handleSearchTermChange(event: Event): void {
@@ -179,7 +179,7 @@ export class PrivateComponent implements OnInit {
     }
 
     /**
-     *
+     * Update route
      * @param item
      */
     removeFilterItem(item: FilterItem): void {

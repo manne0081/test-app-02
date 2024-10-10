@@ -44,6 +44,7 @@ export class CompanyComponent implements OnInit {
     getCompanies(): void {
         this.companyService.getCompanies().subscribe((data: Company[]) => {
             this.companyItems = data;
+
             this.sortCompanyItems();
             if (this.searchTerm) {
                 this.applyFilter();
